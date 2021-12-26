@@ -1,0 +1,35 @@
+{
+  "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "5.3.1",
+    "generators": {
+      "cpp-restsdk": {
+        "generatorName": "cpp-restsdk",
+        "httpUserAgent": "MDMC-CPP-SDK",
+        "gitHost": "github.com",
+        "gitRepoId": "cpp-sdk",
+        "gitUserId": "mydatamyconsent",
+        "inputSpec": "https://api.mydatamyconsent.com/swagger/v1/swagger.json",
+        "removeOperationIdPrefix": true,
+        "additionalProperties": {
+          "packageName": "MyDataMyConsent",
+          "apiPackage": "mydatamyconsent.api",
+          "modelPackage": "mydatamyconsent.models",
+          "validatable": false,
+          "developerEmail": "developers@mydatamyconsent.com",
+          "developerName": "Balamurali Pandranki",
+          "developerOrganization": "DataConsent, Inc.",
+          "developerOrganizationUrl": "https://mydatamyconsent.com",
+          "artifactDescription": "My Data My Consent Rest API C++ SDK",
+          "artifactUrl": "https://github.com/mydatamyconsent/cpp-sdk",
+          "mydatamyconsent": "1.0.0",
+          "licenseUrl": "https://mydatamyconsent.com/en-us/legal/terms-of-service",
+          "licenseName": "DataConsent, Inc. ToS",
+          "scmUrl": "https://github.com/mydatamyconsent/cpp-sdk",
+          "scmDeveloperConnection": "scm:git:git@github.com:mydatamyconsent/cpp-sdk.git"
+        }
+      }
+    }
+  }
+}
