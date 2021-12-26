@@ -3,25 +3,20 @@ from conan.tools.cmake import CMakeToolchain, CMake
 from conan.tools.layout import cmake_layout
 
 class MyDataMyConsentSDKConan(ConanFile):
-    name = "hello"
-    name = "cpprestsdk"
+    name = "mydatamyconsent"
+    version = "1.0.0"
     description = "A project for cloud-based client-server communication in native code using a modern asynchronous C++ API design"
     url = "https://github.com/conan-io/conan-center-index"
     homepage = "https://github.com/Microsoft/cpprestsdk"
     topics = ("data-consent", "mydatamyconsent", "data-privacy", "consent", "financial-information", "data")
     license = "MIT"
-
+    requires = "cpprestsdk/2.10.18","boost/1.76.0"
     # Binary configuration
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False], "fPIC": [True, False]}
-    default_options = {"shared": False, "fPIC": True}
-
-    # Sources are located in the same place as this recipe, copy them to the recipe
-    exports_sources = "CMakeLists.txt", "*/*"
-
-    def requirements(self):
-        self.requires("boost/1.78.0")
-        self.requires("cpprestsdk/2.10.18")
+    default_options = {"shared": False, "fPIC": True}    
+    generators = "cmake_paths", "cmake_find_package", "cmake_find_package_multi"
+    exports_sources = "CMakeLists.txt", "Config.cmake.in", "*.h", "*.cpp", "*/*"
 
     def config_options(self):
         if self.settings.os == "Windows":
@@ -41,6 +36,7 @@ class MyDataMyConsentSDKConan(ConanFile):
 
     def package(self):
         cmake = CMake(self)
+        cmake.configure()
         cmake.install()
 
     def package_info(self):
