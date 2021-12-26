@@ -1,12 +1,9 @@
-.gitignore
-.openapi-generator-ignore
 ApiClient.cpp
 ApiClient.h
 ApiConfiguration.cpp
 ApiConfiguration.h
 ApiException.cpp
 ApiException.h
-CMakeLists.txt
 Config.cmake.in
 HttpContent.cpp
 HttpContent.h
@@ -32,7 +29,6 @@ api/DigiLockerCompatIssuerApi.cpp
 api/DigiLockerCompatIssuerApi.h
 api/DocumentsApi.cpp
 api/DocumentsApi.h
-git_push.sh
 model/ApplicationUser.cpp
 model/ApplicationUser.h
 model/AuthorizedPersonnelKycDocumentType.cpp
