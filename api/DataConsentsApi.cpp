@@ -50,7 +50,6 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -175,7 +174,6 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -300,7 +298,6 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -436,7 +433,6 @@ pplx::task<std::shared_ptr<Object>> DataConsentsApi::v1ConsentsConsentIdAccounts
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -561,7 +557,6 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -686,7 +681,6 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -811,7 +805,6 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -935,7 +928,6 @@ pplx::task<std::shared_ptr<Object>> DataConsentsApi::v1ConsentsConsentIdDocument
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -1059,7 +1051,6 @@ pplx::task<std::shared_ptr<Object>> DataConsentsApi::v1ConsentsConsentIdGet(util
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -1182,7 +1173,6 @@ pplx::task<std::shared_ptr<Object>> DataConsentsApi::v1ConsentsGet(boost::option
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 

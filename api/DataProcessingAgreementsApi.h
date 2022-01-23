@@ -23,9 +23,11 @@
 
 #include "ApiClient.h"
 
-#include "model/DataProcessingAgreement.h"
-#include "model/DataProcessingAgreementPaginatedList.h"
+#include "model/CreateDataProcessingAgreementRequestModel.h"
+#include "model/DataProcessingAgreementDto.h"
+#include "model/DataProcessingAgreementDtoPaginatedList.h"
 #include "model/ProblemDetails.h"
+#include "model/UpdateDataProcessingAgreementRequestModel.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -52,7 +54,7 @@ public:
     /// </remarks>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementPaginatedList>> v1DataAgreementsGet(
+    pplx::task<std::shared_ptr<DataProcessingAgreementDtoPaginatedList>> v1DataAgreementsGet(
         boost::optional<int32_t> pageNo,
         boost::optional<int32_t> pageSize
     ) const;
@@ -73,7 +75,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="id"></param>
-    pplx::task<std::shared_ptr<DataProcessingAgreement>> v1DataAgreementsIdGet(
+    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> v1DataAgreementsIdGet(
         utility::string_t id
     ) const;
     /// <summary>
@@ -83,10 +85,10 @@ public:
     /// 
     /// </remarks>
     /// <param name="id"></param>
-    /// <param name="dataProcessingAgreement"> (optional)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreement>> v1DataAgreementsIdPut(
+    /// <param name="updateDataProcessingAgreementRequestModel"> (optional)</param>
+    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> v1DataAgreementsIdPut(
         utility::string_t id,
-        boost::optional<std::shared_ptr<DataProcessingAgreement>> dataProcessingAgreement
+        boost::optional<std::shared_ptr<UpdateDataProcessingAgreementRequestModel>> updateDataProcessingAgreementRequestModel
     ) const;
     /// <summary>
     /// Terminate a data processing agreement.
@@ -104,9 +106,9 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="dataProcessingAgreement"> (optional)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreement>> v1DataAgreementsPost(
-        boost::optional<std::shared_ptr<DataProcessingAgreement>> dataProcessingAgreement
+    /// <param name="createDataProcessingAgreementRequestModel"> (optional)</param>
+    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> v1DataAgreementsPost(
+        boost::optional<std::shared_ptr<CreateDataProcessingAgreementRequestModel>> createDataProcessingAgreementRequestModel
     ) const;
 
 protected:

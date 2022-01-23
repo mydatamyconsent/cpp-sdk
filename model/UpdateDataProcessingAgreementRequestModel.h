@@ -11,19 +11,18 @@
  */
 
 /*
- * DataConsentRequestModel.h
+ * UpdateDataProcessingAgreementRequestModel.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
+#ifndef MYDATAMYCONSENT_MODELS_UpdateDataProcessingAgreementRequestModel_H_
+#define MYDATAMYCONSENT_MODELS_UpdateDataProcessingAgreementRequestModel_H_
 
 
 #include "ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
-#include "model/Receiver.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -32,12 +31,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestModel
+class  UpdateDataProcessingAgreementRequestModel
     : public ModelBase
 {
 public:
-    DataConsentRequestModel();
-    virtual ~DataConsentRequestModel();
+    UpdateDataProcessingAgreementRequestModel();
+    virtual ~UpdateDataProcessingAgreementRequestModel();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,58 +50,47 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestModel members
+    /// UpdateDataProcessingAgreementRequestModel members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getConsentTemplateId() const;
-    bool consentTemplateIdIsSet() const;
-    void unsetConsentTemplateId();
+    utility::string_t getVersion() const;
+    bool versionIsSet() const;
+    void unsetVersion();
 
-    void setConsentTemplateId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::datetime getStartDateTime() const;
-    bool startDateTimeIsSet() const;
-    void unsetStartDateTime();
-
-    void setStartDateTime(const utility::datetime& value);
+    void setVersion(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::datetime getExpiryDateTime() const;
-    bool expiryDateTimeIsSet() const;
-    void unsetExpiryDateTime();
+    utility::string_t getBody() const;
+    bool bodyIsSet() const;
+    void unsetBody();
 
-    void setExpiryDateTime(const utility::datetime& value);
+    void setBody(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<Receiver> getReceiver() const;
-    bool receiverIsSet() const;
-    void unsetReceiver();
+    utility::string_t getAttachmentUrl() const;
+    bool attachmentUrlIsSet() const;
+    void unsetAttachmentUrl();
 
-    void setReceiver(const std::shared_ptr<Receiver>& value);
+    void setAttachmentUrl(const utility::string_t& value);
 
 
 protected:
-    utility::string_t m_ConsentTemplateId;
-    bool m_ConsentTemplateIdIsSet;
-    utility::datetime m_StartDateTime;
-    bool m_StartDateTimeIsSet;
-    utility::datetime m_ExpiryDateTime;
-    bool m_ExpiryDateTimeIsSet;
-    std::shared_ptr<Receiver> m_Receiver;
-    bool m_ReceiverIsSet;
+    utility::string_t m_Version;
+    bool m_VersionIsSet;
+    utility::string_t m_Body;
+    bool m_BodyIsSet;
+    utility::string_t m_AttachmentUrl;
+    bool m_AttachmentUrlIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_UpdateDataProcessingAgreementRequestModel_H_ */

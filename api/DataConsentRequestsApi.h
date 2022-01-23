@@ -23,7 +23,6 @@
 
 #include "ApiClient.h"
 
-#include "model/DataConsent.h"
 #include "model/DataConsentDetailsDto.h"
 #include "model/DataConsentRequestModel.h"
 #include "model/DataConsentStatus.h"
@@ -48,13 +47,13 @@ public:
     virtual ~DataConsentRequestsApi();
 
     /// <summary>
-    /// Cancel a Consent Request by ID.
+    /// Revoke / Cancel the ConsentRequest based on Id
     /// </summary>
     /// <remarks>
-    /// .
+    /// 
     /// </remarks>
-    /// <param name="requestId">consent request id.</param>
-    pplx::task<void> cancelConsentRequest(
+    /// <param name="requestId"></param>
+    pplx::task<bool> cancelConsentRequest(
         utility::string_t requestId
     ) const;
     /// <summary>
@@ -64,7 +63,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="dataConsentRequestModel">MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)</param>
-    pplx::task<std::shared_ptr<DataConsent>> createRequest(
+    pplx::task<bool> createRequest(
         boost::optional<std::shared_ptr<DataConsentRequestModel>> dataConsentRequestModel
     ) const;
     /// <summary>
@@ -73,8 +72,12 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
+    /// <param name="pageNo"> (optional, default to 0)</param>
+    /// <param name="pageSize"> (optional, default to 0)</param>
     /// <param name="status"> (optional, default to new DataConsentStatus())</param>
     pplx::task<std::shared_ptr<Object>> getAllConsentRequests(
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize,
         boost::optional<std::shared_ptr<DataConsentStatus>> status
     ) const;
     /// <summary>

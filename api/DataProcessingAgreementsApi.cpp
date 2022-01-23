@@ -34,7 +34,7 @@ DataProcessingAgreementsApi::~DataProcessingAgreementsApi()
 {
 }
 
-pplx::task<std::shared_ptr<DataProcessingAgreementPaginatedList>> DataProcessingAgreementsApi::v1DataAgreementsGet(boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
+pplx::task<std::shared_ptr<DataProcessingAgreementDtoPaginatedList>> DataProcessingAgreementsApi::v1DataAgreementsGet(boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
 {
 
 
@@ -48,7 +48,6 @@ pplx::task<std::shared_ptr<DataProcessingAgreementPaginatedList>> DataProcessing
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -144,7 +143,7 @@ pplx::task<std::shared_ptr<DataProcessingAgreementPaginatedList>> DataProcessing
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<DataProcessingAgreementPaginatedList> localVarResult(new DataProcessingAgreementPaginatedList());
+        std::shared_ptr<DataProcessingAgreementDtoPaginatedList> localVarResult(new DataProcessingAgreementDtoPaginatedList());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -180,7 +179,6 @@ pplx::task<void> DataProcessingAgreementsApi::v1DataAgreementsIdDelete(utility::
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -271,7 +269,7 @@ pplx::task<void> DataProcessingAgreementsApi::v1DataAgreementsIdDelete(utility::
         return void();
     });
 }
-pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi::v1DataAgreementsIdGet(utility::string_t id) const
+pplx::task<std::shared_ptr<DataProcessingAgreementDto>> DataProcessingAgreementsApi::v1DataAgreementsIdGet(utility::string_t id) const
 {
 
 
@@ -286,7 +284,6 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -374,7 +371,7 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<DataProcessingAgreement> localVarResult(new DataProcessingAgreement());
+        std::shared_ptr<DataProcessingAgreementDto> localVarResult(new DataProcessingAgreementDto());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -395,7 +392,7 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi::v1DataAgreementsIdPut(utility::string_t id, boost::optional<std::shared_ptr<DataProcessingAgreement>> dataProcessingAgreement) const
+pplx::task<std::shared_ptr<DataProcessingAgreementDto>> DataProcessingAgreementsApi::v1DataAgreementsIdPut(utility::string_t id, boost::optional<std::shared_ptr<UpdateDataProcessingAgreementRequestModel>> updateDataProcessingAgreementRequestModel) const
 {
 
 
@@ -410,7 +407,6 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -438,7 +434,6 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
 
     std::unordered_set<utility::string_t> localVarConsumeHttpContentTypes;
     localVarConsumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarConsumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
 
     std::shared_ptr<IHttpBody> localVarHttpBody;
@@ -450,8 +445,8 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
         localVarRequestHttpContentType = utility::conversions::to_string_t("application/json");
         web::json::value localVarJson;
 
-        if (dataProcessingAgreement)
-            localVarJson = ModelBase::toJson(*dataProcessingAgreement);
+        if (updateDataProcessingAgreementRequestModel)
+            localVarJson = ModelBase::toJson(*updateDataProcessingAgreementRequestModel);
 
         localVarHttpBody = std::shared_ptr<IHttpBody>( new JsonBody( localVarJson ) );
     }
@@ -461,9 +456,9 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
         localVarRequestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
         std::shared_ptr<MultipartFormData> localVarMultipart(new MultipartFormData);
 
-        if(dataProcessingAgreement && (*dataProcessingAgreement).get())
+        if(updateDataProcessingAgreementRequestModel && (*updateDataProcessingAgreementRequestModel).get())
         {
-            (*dataProcessingAgreement)->toMultipart(localVarMultipart, utility::conversions::to_string_t("dataProcessingAgreement"));
+            (*updateDataProcessingAgreementRequestModel)->toMultipart(localVarMultipart, utility::conversions::to_string_t("updateDataProcessingAgreementRequestModel"));
         }
         
 
@@ -516,7 +511,7 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<DataProcessingAgreement> localVarResult(new DataProcessingAgreement());
+        std::shared_ptr<DataProcessingAgreementDto> localVarResult(new DataProcessingAgreementDto());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -552,7 +547,6 @@ pplx::task<void> DataProcessingAgreementsApi::v1DataAgreementsIdTerminatePut(uti
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -643,7 +637,7 @@ pplx::task<void> DataProcessingAgreementsApi::v1DataAgreementsIdTerminatePut(uti
         return void();
     });
 }
-pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi::v1DataAgreementsPost(boost::optional<std::shared_ptr<DataProcessingAgreement>> dataProcessingAgreement) const
+pplx::task<std::shared_ptr<DataProcessingAgreementDto>> DataProcessingAgreementsApi::v1DataAgreementsPost(boost::optional<std::shared_ptr<CreateDataProcessingAgreementRequestModel>> createDataProcessingAgreementRequestModel) const
 {
 
 
@@ -657,7 +651,6 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
     localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -685,7 +678,6 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
 
     std::unordered_set<utility::string_t> localVarConsumeHttpContentTypes;
     localVarConsumeHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
-    localVarConsumeHttpContentTypes.insert( utility::conversions::to_string_t("application/xml") );
 
 
     std::shared_ptr<IHttpBody> localVarHttpBody;
@@ -697,8 +689,8 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
         localVarRequestHttpContentType = utility::conversions::to_string_t("application/json");
         web::json::value localVarJson;
 
-        if (dataProcessingAgreement)
-            localVarJson = ModelBase::toJson(*dataProcessingAgreement);
+        if (createDataProcessingAgreementRequestModel)
+            localVarJson = ModelBase::toJson(*createDataProcessingAgreementRequestModel);
 
         localVarHttpBody = std::shared_ptr<IHttpBody>( new JsonBody( localVarJson ) );
     }
@@ -708,9 +700,9 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
         localVarRequestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
         std::shared_ptr<MultipartFormData> localVarMultipart(new MultipartFormData);
 
-        if(dataProcessingAgreement && (*dataProcessingAgreement).get())
+        if(createDataProcessingAgreementRequestModel && (*createDataProcessingAgreementRequestModel).get())
         {
-            (*dataProcessingAgreement)->toMultipart(localVarMultipart, utility::conversions::to_string_t("dataProcessingAgreement"));
+            (*createDataProcessingAgreementRequestModel)->toMultipart(localVarMultipart, utility::conversions::to_string_t("createDataProcessingAgreementRequestModel"));
         }
         
 
@@ -763,7 +755,7 @@ pplx::task<std::shared_ptr<DataProcessingAgreement>> DataProcessingAgreementsApi
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<DataProcessingAgreement> localVarResult(new DataProcessingAgreement());
+        std::shared_ptr<DataProcessingAgreementDto> localVarResult(new DataProcessingAgreementDto());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

@@ -11,19 +11,18 @@
  */
 
 /*
- * DataConsentRequestModel.h
+ * Life.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
+#ifndef MYDATAMYCONSENT_MODELS_Life_H_
+#define MYDATAMYCONSENT_MODELS_Life_H_
 
 
 #include "ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
-#include "model/Receiver.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -32,12 +31,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestModel
+class  Life
     : public ModelBase
 {
 public:
-    DataConsentRequestModel();
-    virtual ~DataConsentRequestModel();
+    Life();
+    virtual ~Life();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,58 +50,36 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestModel members
+    /// Life members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getConsentTemplateId() const;
-    bool consentTemplateIdIsSet() const;
-    void unsetConsentTemplateId();
+    utility::string_t getUnit() const;
+    bool unitIsSet() const;
+    void unsetUnit();
 
-    void setConsentTemplateId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::datetime getStartDateTime() const;
-    bool startDateTimeIsSet() const;
-    void unsetStartDateTime();
-
-    void setStartDateTime(const utility::datetime& value);
+    void setUnit(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::datetime getExpiryDateTime() const;
-    bool expiryDateTimeIsSet() const;
-    void unsetExpiryDateTime();
+    utility::string_t getValue() const;
+    bool valueIsSet() const;
+    void unsetValue();
 
-    void setExpiryDateTime(const utility::datetime& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<Receiver> getReceiver() const;
-    bool receiverIsSet() const;
-    void unsetReceiver();
-
-    void setReceiver(const std::shared_ptr<Receiver>& value);
+    void setValue(const utility::string_t& value);
 
 
 protected:
-    utility::string_t m_ConsentTemplateId;
-    bool m_ConsentTemplateIdIsSet;
-    utility::datetime m_StartDateTime;
-    bool m_StartDateTimeIsSet;
-    utility::datetime m_ExpiryDateTime;
-    bool m_ExpiryDateTimeIsSet;
-    std::shared_ptr<Receiver> m_Receiver;
-    bool m_ReceiverIsSet;
+    utility::string_t m_Unit;
+    bool m_UnitIsSet;
+    utility::string_t m_Value;
+    bool m_ValueIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_Life_H_ */

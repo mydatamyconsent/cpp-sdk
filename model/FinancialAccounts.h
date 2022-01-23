@@ -11,19 +11,20 @@
  */
 
 /*
- * DataConsentRequestModel.h
+ * FinancialAccounts.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
+#ifndef MYDATAMYCONSENT_MODELS_FinancialAccounts_H_
+#define MYDATAMYCONSENT_MODELS_FinancialAccounts_H_
 
 
 #include "ModelBase.h"
 
+#include "model/FinancialAccountDetailsRequired.h"
 #include <cpprest/details/basic_types.h>
-#include "model/Receiver.h"
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -32,12 +33,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestModel
+class  FinancialAccounts
     : public ModelBase
 {
 public:
-    DataConsentRequestModel();
-    virtual ~DataConsentRequestModel();
+    FinancialAccounts();
+    virtual ~FinancialAccounts();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,58 +52,58 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestModel members
+    /// FinancialAccounts members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getConsentTemplateId() const;
-    bool consentTemplateIdIsSet() const;
-    void unsetConsentTemplateId();
+    utility::string_t getDrn() const;
+    bool drnIsSet() const;
+    void unsetDrn();
 
-    void setConsentTemplateId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::datetime getStartDateTime() const;
-    bool startDateTimeIsSet() const;
-    void unsetStartDateTime();
-
-    void setStartDateTime(const utility::datetime& value);
+    void setDrn(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::datetime getExpiryDateTime() const;
-    bool expiryDateTimeIsSet() const;
-    void unsetExpiryDateTime();
+    std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& getFinancialAccountDetailsRequired();
+    bool financialAccountDetailsRequiredIsSet() const;
+    void unsetFinancialAccountDetailsRequired();
 
-    void setExpiryDateTime(const utility::datetime& value);
+    void setFinancialAccountDetailsRequired(const std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& value);
 
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<Receiver> getReceiver() const;
-    bool receiverIsSet() const;
-    void unsetReceiver();
+    utility::datetime getStartDate() const;
+    bool startDateIsSet() const;
+    void unsetStartDate();
 
-    void setReceiver(const std::shared_ptr<Receiver>& value);
+    void setStartDate(const utility::datetime& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getEndDate() const;
+    bool endDateIsSet() const;
+    void unsetEndDate();
+
+    void setEndDate(const utility::datetime& value);
 
 
 protected:
-    utility::string_t m_ConsentTemplateId;
-    bool m_ConsentTemplateIdIsSet;
-    utility::datetime m_StartDateTime;
-    bool m_StartDateTimeIsSet;
-    utility::datetime m_ExpiryDateTime;
-    bool m_ExpiryDateTimeIsSet;
-    std::shared_ptr<Receiver> m_Receiver;
-    bool m_ReceiverIsSet;
+    utility::string_t m_Drn;
+    bool m_DrnIsSet;
+    std::vector<std::shared_ptr<FinancialAccountDetailsRequired>> m_FinancialAccountDetailsRequired;
+    bool m_FinancialAccountDetailsRequiredIsSet;
+    utility::datetime m_StartDate;
+    bool m_StartDateIsSet;
+    utility::datetime m_EndDate;
+    bool m_EndDateIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_FinancialAccounts_H_ */

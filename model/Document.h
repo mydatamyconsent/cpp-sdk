@@ -11,19 +11,20 @@
  */
 
 /*
- * DataConsentRequestModel.h
+ * Document.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
+#ifndef MYDATAMYCONSENT_MODELS_Document_H_
+#define MYDATAMYCONSENT_MODELS_Document_H_
 
 
 #include "ModelBase.h"
 
+#include "model/DocumentsRequired.h"
 #include <cpprest/details/basic_types.h>
-#include "model/Receiver.h"
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -32,12 +33,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestModel
+class  Document
     : public ModelBase
 {
 public:
-    DataConsentRequestModel();
-    virtual ~DataConsentRequestModel();
+    Document();
+    virtual ~Document();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,58 +52,58 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestModel members
+    /// Document members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getConsentTemplateId() const;
-    bool consentTemplateIdIsSet() const;
-    void unsetConsentTemplateId();
+    utility::string_t getDocumentField() const;
+    bool documentFieldIsSet() const;
+    void unsetDocumentField();
 
-    void setConsentTemplateId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::datetime getStartDateTime() const;
-    bool startDateTimeIsSet() const;
-    void unsetStartDateTime();
-
-    void setStartDateTime(const utility::datetime& value);
+    void setDocumentField(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::datetime getExpiryDateTime() const;
-    bool expiryDateTimeIsSet() const;
-    void unsetExpiryDateTime();
+    utility::string_t getCustomKey() const;
+    bool customKeyIsSet() const;
+    void unsetCustomKey();
 
-    void setExpiryDateTime(const utility::datetime& value);
+    void setCustomKey(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<Receiver> getReceiver() const;
-    bool receiverIsSet() const;
-    void unsetReceiver();
+    std::vector<utility::string_t>& getDrn();
+    bool drnIsSet() const;
+    void unsetDrn();
 
-    void setReceiver(const std::shared_ptr<Receiver>& value);
+    void setDrn(const std::vector<utility::string_t>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<DocumentsRequired> getRequirement() const;
+    bool requirementIsSet() const;
+    void unsetRequirement();
+
+    void setRequirement(const std::shared_ptr<DocumentsRequired>& value);
 
 
 protected:
-    utility::string_t m_ConsentTemplateId;
-    bool m_ConsentTemplateIdIsSet;
-    utility::datetime m_StartDateTime;
-    bool m_StartDateTimeIsSet;
-    utility::datetime m_ExpiryDateTime;
-    bool m_ExpiryDateTimeIsSet;
-    std::shared_ptr<Receiver> m_Receiver;
-    bool m_ReceiverIsSet;
+    utility::string_t m_DocumentField;
+    bool m_DocumentFieldIsSet;
+    utility::string_t m_CustomKey;
+    bool m_CustomKeyIsSet;
+    std::vector<utility::string_t> m_Drn;
+    bool m_DrnIsSet;
+    std::shared_ptr<DocumentsRequired> m_Requirement;
+    bool m_RequirementIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_Document_H_ */
