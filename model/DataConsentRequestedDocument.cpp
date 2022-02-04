@@ -22,14 +22,10 @@ namespace models {
 
 DataConsentRequestedDocument::DataConsentRequestedDocument()
 {
+    m_CustomKey = utility::conversions::to_string_t("");
+    m_CustomKeyIsSet = false;
     m_Drn = utility::conversions::to_string_t("");
     m_DrnIsSet = false;
-    m_FromDatetime = utility::datetime();
-    m_FromDatetimeIsSet = false;
-    m_ToDatetime = utility::datetime();
-    m_ToDatetimeIsSet = false;
-    m_ProviderId = utility::conversions::to_string_t("");
-    m_ProviderIdIsSet = false;
     m_DocumentTypeId = utility::conversions::to_string_t("");
     m_DocumentTypeIdIsSet = false;
     m_DocumentIdentifier = utility::conversions::to_string_t("");
@@ -50,21 +46,13 @@ web::json::value DataConsentRequestedDocument::toJson() const
 
     web::json::value val = web::json::value::object();
     
+    if(m_CustomKeyIsSet)
+    {
+        val[utility::conversions::to_string_t(U("customKey"))] = ModelBase::toJson(m_CustomKey);
+    }
     if(m_DrnIsSet)
     {
         val[utility::conversions::to_string_t(U("drn"))] = ModelBase::toJson(m_Drn);
-    }
-    if(m_FromDatetimeIsSet)
-    {
-        val[utility::conversions::to_string_t(U("fromDatetime"))] = ModelBase::toJson(m_FromDatetime);
-    }
-    if(m_ToDatetimeIsSet)
-    {
-        val[utility::conversions::to_string_t(U("toDatetime"))] = ModelBase::toJson(m_ToDatetime);
-    }
-    if(m_ProviderIdIsSet)
-    {
-        val[utility::conversions::to_string_t(U("providerId"))] = ModelBase::toJson(m_ProviderId);
     }
     if(m_DocumentTypeIdIsSet)
     {
@@ -82,6 +70,16 @@ bool DataConsentRequestedDocument::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
+    if(val.has_field(utility::conversions::to_string_t(U("customKey"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("customKey")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_customKey;
+            ok &= ModelBase::fromJson(fieldValue, refVal_customKey);
+            setCustomKey(refVal_customKey);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("drn"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("drn")));
@@ -90,36 +88,6 @@ bool DataConsentRequestedDocument::fromJson(const web::json::value& val)
             utility::string_t refVal_drn;
             ok &= ModelBase::fromJson(fieldValue, refVal_drn);
             setDrn(refVal_drn);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("fromDatetime"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("fromDatetime")));
-        if(!fieldValue.is_null())
-        {
-            utility::datetime refVal_fromDatetime;
-            ok &= ModelBase::fromJson(fieldValue, refVal_fromDatetime);
-            setFromDatetime(refVal_fromDatetime);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("toDatetime"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("toDatetime")));
-        if(!fieldValue.is_null())
-        {
-            utility::datetime refVal_toDatetime;
-            ok &= ModelBase::fromJson(fieldValue, refVal_toDatetime);
-            setToDatetime(refVal_toDatetime);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("providerId"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("providerId")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_providerId;
-            ok &= ModelBase::fromJson(fieldValue, refVal_providerId);
-            setProviderId(refVal_providerId);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("documentTypeId"))))
@@ -152,21 +120,13 @@ void DataConsentRequestedDocument::toMultipart(std::shared_ptr<MultipartFormData
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
+    if(m_CustomKeyIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("customKey")), m_CustomKey));
+    }
     if(m_DrnIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("drn")), m_Drn));
-    }
-    if(m_FromDatetimeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("fromDatetime")), m_FromDatetime));
-    }
-    if(m_ToDatetimeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("toDatetime")), m_ToDatetime));
-    }
-    if(m_ProviderIdIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("providerId")), m_ProviderId));
     }
     if(m_DocumentTypeIdIsSet)
     {
@@ -187,29 +147,17 @@ bool DataConsentRequestedDocument::fromMultiPart(std::shared_ptr<MultipartFormDa
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
+    if(multipart->hasContent(utility::conversions::to_string_t(U("customKey"))))
+    {
+        utility::string_t refVal_customKey;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("customKey"))), refVal_customKey );
+        setCustomKey(refVal_customKey);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("drn"))))
     {
         utility::string_t refVal_drn;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("drn"))), refVal_drn );
         setDrn(refVal_drn);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("fromDatetime"))))
-    {
-        utility::datetime refVal_fromDatetime;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("fromDatetime"))), refVal_fromDatetime );
-        setFromDatetime(refVal_fromDatetime);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("toDatetime"))))
-    {
-        utility::datetime refVal_toDatetime;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("toDatetime"))), refVal_toDatetime );
-        setToDatetime(refVal_toDatetime);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("providerId"))))
-    {
-        utility::string_t refVal_providerId;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("providerId"))), refVal_providerId );
-        setProviderId(refVal_providerId);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("documentTypeId"))))
     {
@@ -226,6 +174,26 @@ bool DataConsentRequestedDocument::fromMultiPart(std::shared_ptr<MultipartFormDa
     return ok;
 }
 
+utility::string_t DataConsentRequestedDocument::getCustomKey() const
+{
+    return m_CustomKey;
+}
+
+void DataConsentRequestedDocument::setCustomKey(const utility::string_t& value)
+{
+    m_CustomKey = value;
+    m_CustomKeyIsSet = true;
+}
+
+bool DataConsentRequestedDocument::customKeyIsSet() const
+{
+    return m_CustomKeyIsSet;
+}
+
+void DataConsentRequestedDocument::unsetCustomKey()
+{
+    m_CustomKeyIsSet = false;
+}
 utility::string_t DataConsentRequestedDocument::getDrn() const
 {
     return m_Drn;
@@ -245,66 +213,6 @@ bool DataConsentRequestedDocument::drnIsSet() const
 void DataConsentRequestedDocument::unsetDrn()
 {
     m_DrnIsSet = false;
-}
-utility::datetime DataConsentRequestedDocument::getFromDatetime() const
-{
-    return m_FromDatetime;
-}
-
-void DataConsentRequestedDocument::setFromDatetime(const utility::datetime& value)
-{
-    m_FromDatetime = value;
-    m_FromDatetimeIsSet = true;
-}
-
-bool DataConsentRequestedDocument::fromDatetimeIsSet() const
-{
-    return m_FromDatetimeIsSet;
-}
-
-void DataConsentRequestedDocument::unsetFromDatetime()
-{
-    m_FromDatetimeIsSet = false;
-}
-utility::datetime DataConsentRequestedDocument::getToDatetime() const
-{
-    return m_ToDatetime;
-}
-
-void DataConsentRequestedDocument::setToDatetime(const utility::datetime& value)
-{
-    m_ToDatetime = value;
-    m_ToDatetimeIsSet = true;
-}
-
-bool DataConsentRequestedDocument::toDatetimeIsSet() const
-{
-    return m_ToDatetimeIsSet;
-}
-
-void DataConsentRequestedDocument::unsetToDatetime()
-{
-    m_ToDatetimeIsSet = false;
-}
-utility::string_t DataConsentRequestedDocument::getProviderId() const
-{
-    return m_ProviderId;
-}
-
-void DataConsentRequestedDocument::setProviderId(const utility::string_t& value)
-{
-    m_ProviderId = value;
-    m_ProviderIdIsSet = true;
-}
-
-bool DataConsentRequestedDocument::providerIdIsSet() const
-{
-    return m_ProviderIdIsSet;
-}
-
-void DataConsentRequestedDocument::unsetProviderId()
-{
-    m_ProviderIdIsSet = false;
 }
 utility::string_t DataConsentRequestedDocument::getDocumentTypeId() const
 {

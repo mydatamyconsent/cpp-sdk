@@ -22,10 +22,7 @@
 
 #include "ModelBase.h"
 
-#include "model/FinancialAccountTypes.h"
-#include "model/DataConsentRfaFilter.h"
 #include <cpprest/details/basic_types.h>
-#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -58,6 +55,15 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    utility::string_t getCustomKey() const;
+    bool customKeyIsSet() const;
+    void unsetCustomKey();
+
+    void setCustomKey(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
     utility::string_t getDrn() const;
     bool drnIsSet() const;
     void unsetDrn();
@@ -67,38 +73,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::datetime getFromDatetime() const;
-    bool fromDatetimeIsSet() const;
-    void unsetFromDatetime();
+    utility::string_t getAccountTypeId() const;
+    bool accountTypeIdIsSet() const;
+    void unsetAccountTypeId();
 
-    void setFromDatetime(const utility::datetime& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::datetime getToDatetime() const;
-    bool toDatetimeIsSet() const;
-    void unsetToDatetime();
-
-    void setToDatetime(const utility::datetime& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getProviderId() const;
-    bool providerIdIsSet() const;
-    void unsetProviderId();
-
-    void setProviderId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<FinancialAccountTypes> getAccountType() const;
-    bool accountTypeIsSet() const;
-    void unsetAccountType();
-
-    void setAccountType(const std::shared_ptr<FinancialAccountTypes>& value);
+    void setAccountTypeId(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -109,31 +88,16 @@ public:
 
     void setAccountIdentifier(const utility::string_t& value);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    std::vector<std::shared_ptr<DataConsentRfaFilter>>& getFilters();
-    bool filtersIsSet() const;
-    void unsetFilters();
-
-    void setFilters(const std::vector<std::shared_ptr<DataConsentRfaFilter>>& value);
-
 
 protected:
+    utility::string_t m_CustomKey;
+    bool m_CustomKeyIsSet;
     utility::string_t m_Drn;
     bool m_DrnIsSet;
-    utility::datetime m_FromDatetime;
-    bool m_FromDatetimeIsSet;
-    utility::datetime m_ToDatetime;
-    bool m_ToDatetimeIsSet;
-    utility::string_t m_ProviderId;
-    bool m_ProviderIdIsSet;
-    std::shared_ptr<FinancialAccountTypes> m_AccountType;
-    bool m_AccountTypeIsSet;
+    utility::string_t m_AccountTypeId;
+    bool m_AccountTypeIdIsSet;
     utility::string_t m_AccountIdentifier;
     bool m_AccountIdentifierIsSet;
-    std::vector<std::shared_ptr<DataConsentRfaFilter>> m_Filters;
-    bool m_FiltersIsSet;
 };
 
 

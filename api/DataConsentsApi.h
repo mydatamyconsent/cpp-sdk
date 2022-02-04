@@ -23,9 +23,21 @@
 
 #include "ApiClient.h"
 
+#include "model/DataConsentDetailsDto.h"
+#include "model/DataConsentDocumentsDto.h"
+#include "model/DataConsentFinancialsDto.h"
 #include "model/DataConsentStatus.h"
-#include "Object.h"
+#include "model/FinancialAccount.h"
+#include "model/OrganizationDataConsentInfoDtoPaginatedList.h"
+#include "model/OrganizationDocumentDetailsDto.h"
+#include "model/OrganizationDocumentDownloadDto.h"
+#include "model/OrganizationFinancialAccountDto.h"
+#include "model/OrganizationFinancialTransactionsDtoPaginatedList.h"
 #include "model/ProblemDetails.h"
+#include "model/UserAccountFinancialTransactionsDtoPaginatedList.h"
+#include "model/UserDataConsentInfoDtoPaginatedList.h"
+#include "model/UserDocumentDetailsDto.h"
+#include "model/UserDocumentDownloadDto.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -45,31 +57,19 @@ public:
     virtual ~DataConsentsApi();
 
     /// <summary>
-    /// Get consented financial account details.
+    /// Get individual consented financial account details based on account id.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="consentId"></param>
     /// <param name="accountId"></param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdAccountsAccountIdGet(
+    pplx::task<std::shared_ptr<FinancialAccount>> v1ConsentsIndividualsConsentIdAccountsAccountIdGet(
         utility::string_t consentId,
         utility::string_t accountId
     ) const;
     /// <summary>
-    /// Get consented financial account insights.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="consentId"></param>
-    /// <param name="accountId"></param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdAccountsAccountIdInsightsGet(
-        utility::string_t consentId,
-        utility::string_t accountId
-    ) const;
-    /// <summary>
-    /// Get consented financial account transactions.
+    /// Get consented financial account transactions of an individual based on accountId.
     /// </summary>
     /// <remarks>
     /// 
@@ -77,91 +77,193 @@ public:
     /// <param name="consentId"></param>
     /// <param name="accountId"></param>
     /// <param name="filters"> (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
+    /// <param name="pageNo"> (optional, default to 0)</param>
+    /// <param name="pageSize"> (optional, default to 0)</param>
     /// <param name="fromDate"> (optional, default to utility::datetime())</param>
     /// <param name="toDate"> (optional, default to utility::datetime())</param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdAccountsAccountIdTransactionsGet(
+    pplx::task<std::shared_ptr<UserAccountFinancialTransactionsDtoPaginatedList>> v1ConsentsIndividualsConsentIdAccountsAccountIdTransactionsGet(
         utility::string_t consentId,
         utility::string_t accountId,
         boost::optional<utility::string_t> filters,
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize,
         boost::optional<utility::datetime> fromDate,
         boost::optional<utility::datetime> toDate
     ) const;
     /// <summary>
-    /// Get all accounts in a consent.
+    /// Get all individual financial accounts in a consent.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="consentId"></param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdAccountsGet(
+    pplx::task<std::shared_ptr<DataConsentFinancialsDto>> v1ConsentsIndividualsConsentIdAccountsGet(
         utility::string_t consentId
     ) const;
     /// <summary>
-    /// Get analysis of a consented document.
+    /// Download a individuals consented document.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId">consentId.</param>
+    /// <param name="documentId">documentId.</param>
+    pplx::task<std::shared_ptr<UserDocumentDownloadDto>> v1ConsentsIndividualsConsentIdDocumentsDocumentIdDownloadGet(
+        utility::string_t consentId,
+        utility::string_t documentId
+    ) const;
+    /// <summary>
+    /// Get individuals consent document based on document id.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="consentId"></param>
     /// <param name="documentId">Document Id.</param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdDocumentsDocumentIdAnalysisGet(
+    pplx::task<std::shared_ptr<UserDocumentDetailsDto>> v1ConsentsIndividualsConsentIdDocumentsDocumentIdGet(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;
     /// <summary>
-    /// Download a consented document.
+    /// Get the individual documents based on ConsentId.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="consentId"></param>
-    /// <param name="documentId">Document Id.</param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdDocumentsDocumentIdDownloadGet(
-        utility::string_t consentId,
-        utility::string_t documentId
-    ) const;
-    /// <summary>
-    /// Get consented document details.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="consentId"></param>
-    /// <param name="documentId">Document Id.</param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdDocumentsDocumentIdGet(
-        utility::string_t consentId,
-        utility::string_t documentId
-    ) const;
-    /// <summary>
-    /// Get all documents in a consent.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="consentId"></param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdDocumentsGet(
+    pplx::task<std::shared_ptr<DataConsentDocumentsDto>> v1ConsentsIndividualsConsentIdDocumentsGet(
         utility::string_t consentId
     ) const;
     /// <summary>
-    /// Get consent details by consent id.
+    /// Get individuals consent details by consent id.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="consentId"></param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsConsentIdGet(
+    pplx::task<std::shared_ptr<DataConsentDetailsDto>> v1ConsentsIndividualsConsentIdGet(
         utility::string_t consentId
     ) const;
     /// <summary>
-    /// Get all consents filtered by status and time.
+    /// Get the list of Consents Sent to Individuals.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="status">MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional, default to new DataConsentStatus())</param>
-    /// <param name="startDate">System.DateTime. (optional, default to utility::datetime())</param>
-    /// <param name="endDate">till dateSystem.DateTime. (optional, default to utility::datetime())</param>
-    pplx::task<std::shared_ptr<Object>> v1ConsentsGet(
+    /// <param name="pageNo"> (optional, default to 0)</param>
+    /// <param name="pageSize"> (optional, default to 0)</param>
+    /// <param name="status"> (optional, default to new DataConsentStatus())</param>
+    /// <param name="startDate"> (optional, default to utility::datetime())</param>
+    /// <param name="endDate"> (optional, default to utility::datetime())</param>
+    pplx::task<std::shared_ptr<UserDataConsentInfoDtoPaginatedList>> v1ConsentsIndividualsGet(
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize,
+        boost::optional<std::shared_ptr<DataConsentStatus>> status,
+        boost::optional<utility::datetime> startDate,
+        boost::optional<utility::datetime> endDate
+    ) const;
+    /// <summary>
+    /// Get orgnization consented financial account details based on account id.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    /// <param name="accountId"></param>
+    pplx::task<std::shared_ptr<OrganizationFinancialAccountDto>> v1ConsentsOrganizationsConsentIdAccountsAccountIdGet(
+        utility::string_t consentId,
+        utility::string_t accountId
+    ) const;
+    /// <summary>
+    /// Get consented financial account transactions of an organization based on accountId.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    /// <param name="accountId"></param>
+    /// <param name="filters"> (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
+    /// <param name="pageNo"> (optional, default to 0)</param>
+    /// <param name="pageSize"> (optional, default to 0)</param>
+    /// <param name="fromDate"> (optional, default to utility::datetime())</param>
+    /// <param name="toDate"> (optional, default to utility::datetime())</param>
+    pplx::task<std::shared_ptr<OrganizationFinancialTransactionsDtoPaginatedList>> v1ConsentsOrganizationsConsentIdAccountsAccountIdTransactionsGet(
+        utility::string_t consentId,
+        utility::string_t accountId,
+        boost::optional<utility::string_t> filters,
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize,
+        boost::optional<utility::datetime> fromDate,
+        boost::optional<utility::datetime> toDate
+    ) const;
+    /// <summary>
+    /// Get all organizational financial accounts in a consent.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    pplx::task<std::shared_ptr<DataConsentFinancialsDto>> v1ConsentsOrganizationsConsentIdAccountsGet(
+        utility::string_t consentId
+    ) const;
+    /// <summary>
+    /// Download organizations consented document.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    /// <param name="documentId"></param>
+    pplx::task<std::shared_ptr<OrganizationDocumentDownloadDto>> v1ConsentsOrganizationsConsentIdDocumentsDocumentIdDownloadGet(
+        utility::string_t consentId,
+        utility::string_t documentId
+    ) const;
+    /// <summary>
+    /// Get organizations consent document based on document id.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    /// <param name="documentId"></param>
+    pplx::task<std::shared_ptr<OrganizationDocumentDetailsDto>> v1ConsentsOrganizationsConsentIdDocumentsDocumentIdGet(
+        utility::string_t consentId,
+        utility::string_t documentId
+    ) const;
+    /// <summary>
+    /// Get the organizations documents based on ConsentId.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    pplx::task<std::shared_ptr<DataConsentDocumentsDto>> v1ConsentsOrganizationsConsentIdDocumentsGet(
+        utility::string_t consentId
+    ) const;
+    /// <summary>
+    /// Get organizations consent details by consent id.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    pplx::task<std::shared_ptr<DataConsentDetailsDto>> v1ConsentsOrganizationsConsentIdGet(
+        utility::string_t consentId
+    ) const;
+    /// <summary>
+    /// Get the list of data consents sent for organizations.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="pageNo"> (optional, default to 0)</param>
+    /// <param name="pageSize"> (optional, default to 0)</param>
+    /// <param name="status"> (optional, default to new DataConsentStatus())</param>
+    /// <param name="startDate"> (optional, default to utility::datetime())</param>
+    /// <param name="endDate"> (optional, default to utility::datetime())</param>
+    pplx::task<std::shared_ptr<OrganizationDataConsentInfoDtoPaginatedList>> v1ConsentsOrganizationsGet(
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize,
         boost::optional<std::shared_ptr<DataConsentStatus>> status,
         boost::optional<utility::datetime> startDate,
         boost::optional<utility::datetime> endDate

@@ -11,13 +11,13 @@
  */
 
 /*
- * DataConsentRequestedDocument.h
+ * Activity.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
+#ifndef MYDATAMYCONSENT_MODELS_Activity_H_
+#define MYDATAMYCONSENT_MODELS_Activity_H_
 
 
 #include "ModelBase.h"
@@ -31,12 +31,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestedDocument
+class  Activity
     : public ModelBase
 {
 public:
-    DataConsentRequestedDocument();
-    virtual ~DataConsentRequestedDocument();
+    Activity();
+    virtual ~Activity();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +50,58 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestedDocument members
+    /// Activity members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getCustomKey() const;
-    bool customKeyIsSet() const;
-    void unsetCustomKey();
+    utility::string_t getActorName() const;
+    bool actorNameIsSet() const;
+    void unsetActorName();
 
-    void setCustomKey(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDrn() const;
-    bool drnIsSet() const;
-    void unsetDrn();
-
-    void setDrn(const utility::string_t& value);
+    void setActorName(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentTypeId() const;
-    bool documentTypeIdIsSet() const;
-    void unsetDocumentTypeId();
+    utility::string_t getDescription() const;
+    bool descriptionIsSet() const;
+    void unsetDescription();
 
-    void setDocumentTypeId(const utility::string_t& value);
+    void setDescription(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentIdentifier() const;
-    bool documentIdentifierIsSet() const;
-    void unsetDocumentIdentifier();
+    utility::string_t getActorProfileUrl() const;
+    bool actorProfileUrlIsSet() const;
+    void unsetActorProfileUrl();
 
-    void setDocumentIdentifier(const utility::string_t& value);
+    void setActorProfileUrl(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getDateTimeUtc() const;
+    bool dateTimeUtcIsSet() const;
+    void unsetDateTimeUtc();
+
+    void setDateTimeUtc(const utility::datetime& value);
 
 
 protected:
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
-    utility::string_t m_Drn;
-    bool m_DrnIsSet;
-    utility::string_t m_DocumentTypeId;
-    bool m_DocumentTypeIdIsSet;
-    utility::string_t m_DocumentIdentifier;
-    bool m_DocumentIdentifierIsSet;
+    utility::string_t m_ActorName;
+    bool m_ActorNameIsSet;
+    utility::string_t m_Description;
+    bool m_DescriptionIsSet;
+    utility::string_t m_ActorProfileUrl;
+    bool m_ActorProfileUrlIsSet;
+    utility::datetime m_DateTimeUtc;
+    bool m_DateTimeUtcIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_Activity_H_ */

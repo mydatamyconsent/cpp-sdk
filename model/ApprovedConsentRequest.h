@@ -11,13 +11,13 @@
  */
 
 /*
- * DataConsentRequestedDocument.h
+ * ApprovedConsentRequest.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
+#ifndef MYDATAMYCONSENT_MODELS_ApprovedConsentRequest_H_
+#define MYDATAMYCONSENT_MODELS_ApprovedConsentRequest_H_
 
 
 #include "ModelBase.h"
@@ -31,12 +31,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestedDocument
+class  ApprovedConsentRequest
     : public ModelBase
 {
 public:
-    DataConsentRequestedDocument();
-    virtual ~DataConsentRequestedDocument();
+    ApprovedConsentRequest();
+    virtual ~ApprovedConsentRequest();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +50,25 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestedDocument members
+    /// ApprovedConsentRequest members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getCustomKey() const;
-    bool customKeyIsSet() const;
-    void unsetCustomKey();
+    utility::string_t getLogoUrl() const;
+    bool logoUrlIsSet() const;
+    void unsetLogoUrl();
 
-    void setCustomKey(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDrn() const;
-    bool drnIsSet() const;
-    void unsetDrn();
-
-    void setDrn(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDocumentTypeId() const;
-    bool documentTypeIdIsSet() const;
-    void unsetDocumentTypeId();
-
-    void setDocumentTypeId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDocumentIdentifier() const;
-    bool documentIdentifierIsSet() const;
-    void unsetDocumentIdentifier();
-
-    void setDocumentIdentifier(const utility::string_t& value);
+    void setLogoUrl(const utility::string_t& value);
 
 
 protected:
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
-    utility::string_t m_Drn;
-    bool m_DrnIsSet;
-    utility::string_t m_DocumentTypeId;
-    bool m_DocumentTypeIdIsSet;
-    utility::string_t m_DocumentIdentifier;
-    bool m_DocumentIdentifierIsSet;
+    utility::string_t m_LogoUrl;
+    bool m_LogoUrlIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_ApprovedConsentRequest_H_ */

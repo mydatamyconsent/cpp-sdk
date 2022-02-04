@@ -11,18 +11,21 @@
  */
 
 /*
- * DataConsentRequestedDocument.h
+ * DataConsentDocumentsDto.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
+#ifndef MYDATAMYCONSENT_MODELS_DataConsentDocumentsDto_H_
+#define MYDATAMYCONSENT_MODELS_DataConsentDocumentsDto_H_
 
 
 #include "ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
+#include "model/DataConsentRequestedDocument.h"
+#include "model/Document.h"
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -31,12 +34,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestedDocument
+class  DataConsentDocumentsDto
     : public ModelBase
 {
 public:
-    DataConsentRequestedDocument();
-    virtual ~DataConsentRequestedDocument();
+    DataConsentDocumentsDto();
+    virtual ~DataConsentDocumentsDto();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +53,47 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestedDocument members
+    /// DataConsentDocumentsDto members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getCustomKey() const;
-    bool customKeyIsSet() const;
-    void unsetCustomKey();
+    utility::string_t getId() const;
+    bool idIsSet() const;
+    void unsetId();
 
-    void setCustomKey(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDrn() const;
-    bool drnIsSet() const;
-    void unsetDrn();
-
-    void setDrn(const utility::string_t& value);
+    void setId(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentTypeId() const;
-    bool documentTypeIdIsSet() const;
-    void unsetDocumentTypeId();
+    std::vector<std::shared_ptr<Document>>& getDocuments();
+    bool documentsIsSet() const;
+    void unsetDocuments();
 
-    void setDocumentTypeId(const utility::string_t& value);
+    void setDocuments(const std::vector<std::shared_ptr<Document>>& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentIdentifier() const;
-    bool documentIdentifierIsSet() const;
-    void unsetDocumentIdentifier();
+    std::vector<std::shared_ptr<DataConsentRequestedDocument>>& getApprovedDocuments();
+    bool approvedDocumentsIsSet() const;
+    void unsetApprovedDocuments();
 
-    void setDocumentIdentifier(const utility::string_t& value);
+    void setApprovedDocuments(const std::vector<std::shared_ptr<DataConsentRequestedDocument>>& value);
 
 
 protected:
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
-    utility::string_t m_Drn;
-    bool m_DrnIsSet;
-    utility::string_t m_DocumentTypeId;
-    bool m_DocumentTypeIdIsSet;
-    utility::string_t m_DocumentIdentifier;
-    bool m_DocumentIdentifierIsSet;
+    utility::string_t m_Id;
+    bool m_IdIsSet;
+    std::vector<std::shared_ptr<Document>> m_Documents;
+    bool m_DocumentsIsSet;
+    std::vector<std::shared_ptr<DataConsentRequestedDocument>> m_ApprovedDocuments;
+    bool m_ApprovedDocumentsIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DataConsentDocumentsDto_H_ */

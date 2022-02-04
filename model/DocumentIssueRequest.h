@@ -111,11 +111,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getBase64PDFDocument() const;
-    bool base64PDFDocumentIsSet() const;
-    void unsetBase64PDFDocument();
+    utility::string_t getBase64PdfDocument() const;
+    bool base64PdfDocumentIsSet() const;
+    void unsetBase64PdfDocument();
 
-    void setBase64PDFDocument(const utility::string_t& value);
+    void setBase64PdfDocument(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -140,8 +140,8 @@ protected:
     bool m_ReceiverIsSet;
     utility::string_t m_ExpiresAtUtc;
     bool m_ExpiresAtUtcIsSet;
-    utility::string_t m_Base64PDFDocument;
-    bool m_Base64PDFDocumentIsSet;
+    utility::string_t m_Base64PdfDocument;
+    bool m_Base64PdfDocumentIsSet;
     std::shared_ptr<AnyType> m_Metadata;
     bool m_MetadataIsSet;
 };

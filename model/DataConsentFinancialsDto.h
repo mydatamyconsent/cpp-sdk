@@ -11,18 +11,21 @@
  */
 
 /*
- * DataConsentRequestedDocument.h
+ * DataConsentFinancialsDto.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
+#ifndef MYDATAMYCONSENT_MODELS_DataConsentFinancialsDto_H_
+#define MYDATAMYCONSENT_MODELS_DataConsentFinancialsDto_H_
 
 
 #include "ModelBase.h"
 
+#include "model/DataConsentRequestedFinancialAccount.h"
+#include "model/Financial.h"
 #include <cpprest/details/basic_types.h>
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -31,12 +34,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestedDocument
+class  DataConsentFinancialsDto
     : public ModelBase
 {
 public:
-    DataConsentRequestedDocument();
-    virtual ~DataConsentRequestedDocument();
+    DataConsentFinancialsDto();
+    virtual ~DataConsentFinancialsDto();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +53,47 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestedDocument members
+    /// DataConsentFinancialsDto members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getCustomKey() const;
-    bool customKeyIsSet() const;
-    void unsetCustomKey();
+    utility::string_t getId() const;
+    bool idIsSet() const;
+    void unsetId();
 
-    void setCustomKey(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDrn() const;
-    bool drnIsSet() const;
-    void unsetDrn();
-
-    void setDrn(const utility::string_t& value);
+    void setId(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentTypeId() const;
-    bool documentTypeIdIsSet() const;
-    void unsetDocumentTypeId();
+    std::vector<std::shared_ptr<Financial>>& getFinancials();
+    bool financialsIsSet() const;
+    void unsetFinancials();
 
-    void setDocumentTypeId(const utility::string_t& value);
+    void setFinancials(const std::vector<std::shared_ptr<Financial>>& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentIdentifier() const;
-    bool documentIdentifierIsSet() const;
-    void unsetDocumentIdentifier();
+    std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>>& getApprovedFinancials();
+    bool approvedFinancialsIsSet() const;
+    void unsetApprovedFinancials();
 
-    void setDocumentIdentifier(const utility::string_t& value);
+    void setApprovedFinancials(const std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>>& value);
 
 
 protected:
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
-    utility::string_t m_Drn;
-    bool m_DrnIsSet;
-    utility::string_t m_DocumentTypeId;
-    bool m_DocumentTypeIdIsSet;
-    utility::string_t m_DocumentIdentifier;
-    bool m_DocumentIdentifierIsSet;
+    utility::string_t m_Id;
+    bool m_IdIsSet;
+    std::vector<std::shared_ptr<Financial>> m_Financials;
+    bool m_FinancialsIsSet;
+    std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>> m_ApprovedFinancials;
+    bool m_ApprovedFinancialsIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DataConsentFinancialsDto_H_ */

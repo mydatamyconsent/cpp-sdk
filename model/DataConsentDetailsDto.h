@@ -24,7 +24,11 @@
 
 #include "model/DataConsentRequesterDto.h"
 #include "model/GetConsentTemplateDetailsDto.h"
+#include "model/DataConsentRequestedFinancialAccount.h"
+#include "model/DataConsentIdentifier.h"
 #include <cpprest/details/basic_types.h>
+#include "model/DataConsentRequestedDocument.h"
+#include <vector>
 #include "model/DataConsentStatus.h"
 
 namespace mydatamyconsent {
@@ -127,6 +131,33 @@ public:
 
     void setConsentDetails(const std::shared_ptr<GetConsentTemplateDetailsDto>& value);
 
+    /// <summary>
+    /// 
+    /// </summary>
+    std::vector<std::shared_ptr<DataConsentIdentifier>>& getIdentifiers();
+    bool identifiersIsSet() const;
+    void unsetIdentifiers();
+
+    void setIdentifiers(const std::vector<std::shared_ptr<DataConsentIdentifier>>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::vector<std::shared_ptr<DataConsentRequestedDocument>>& getApprovedDocuments();
+    bool approvedDocumentsIsSet() const;
+    void unsetApprovedDocuments();
+
+    void setApprovedDocuments(const std::vector<std::shared_ptr<DataConsentRequestedDocument>>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>>& getApprovedFinancials();
+    bool approvedFinancialsIsSet() const;
+    void unsetApprovedFinancials();
+
+    void setApprovedFinancials(const std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>>& value);
+
 
 protected:
     utility::string_t m_Id;
@@ -145,6 +176,12 @@ protected:
     bool m_RequesterIsSet;
     std::shared_ptr<GetConsentTemplateDetailsDto> m_ConsentDetails;
     bool m_ConsentDetailsIsSet;
+    std::vector<std::shared_ptr<DataConsentIdentifier>> m_Identifiers;
+    bool m_IdentifiersIsSet;
+    std::vector<std::shared_ptr<DataConsentRequestedDocument>> m_ApprovedDocuments;
+    bool m_ApprovedDocumentsIsSet;
+    std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>> m_ApprovedFinancials;
+    bool m_ApprovedFinancialsIsSet;
 };
 
 

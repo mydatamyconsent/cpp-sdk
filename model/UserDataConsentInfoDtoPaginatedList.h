@@ -11,18 +11,19 @@
  */
 
 /*
- * DataConsentRequestedDocument.h
+ * UserDataConsentInfoDtoPaginatedList.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
+#ifndef MYDATAMYCONSENT_MODELS_UserDataConsentInfoDtoPaginatedList_H_
+#define MYDATAMYCONSENT_MODELS_UserDataConsentInfoDtoPaginatedList_H_
 
 
 #include "ModelBase.h"
 
-#include <cpprest/details/basic_types.h>
+#include "model/UserDataConsentInfoDto.h"
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -31,12 +32,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestedDocument
+class  UserDataConsentInfoDtoPaginatedList
     : public ModelBase
 {
 public:
-    DataConsentRequestedDocument();
-    virtual ~DataConsentRequestedDocument();
+    UserDataConsentInfoDtoPaginatedList();
+    virtual ~UserDataConsentInfoDtoPaginatedList();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +51,69 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestedDocument members
+    /// UserDataConsentInfoDtoPaginatedList members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getCustomKey() const;
-    bool customKeyIsSet() const;
-    void unsetCustomKey();
+    int32_t getPageIndex() const;
+    bool pageIndexIsSet() const;
+    void unsetPageIndex();
 
-    void setCustomKey(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDrn() const;
-    bool drnIsSet() const;
-    void unsetDrn();
-
-    void setDrn(const utility::string_t& value);
+    void setPageIndex(int32_t value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentTypeId() const;
-    bool documentTypeIdIsSet() const;
-    void unsetDocumentTypeId();
+    int32_t getPageSize() const;
+    bool pageSizeIsSet() const;
+    void unsetPageSize();
 
-    void setDocumentTypeId(const utility::string_t& value);
+    void setPageSize(int32_t value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentIdentifier() const;
-    bool documentIdentifierIsSet() const;
-    void unsetDocumentIdentifier();
+    int32_t getTotalPages() const;
+    bool totalPagesIsSet() const;
+    void unsetTotalPages();
 
-    void setDocumentIdentifier(const utility::string_t& value);
+    void setTotalPages(int32_t value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    int64_t getTotalItems() const;
+    bool totalItemsIsSet() const;
+    void unsetTotalItems();
+
+    void setTotalItems(int64_t value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::vector<std::shared_ptr<UserDataConsentInfoDto>>& getItems();
+    bool itemsIsSet() const;
+    void unsetItems();
+
+    void setItems(const std::vector<std::shared_ptr<UserDataConsentInfoDto>>& value);
 
 
 protected:
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
-    utility::string_t m_Drn;
-    bool m_DrnIsSet;
-    utility::string_t m_DocumentTypeId;
-    bool m_DocumentTypeIdIsSet;
-    utility::string_t m_DocumentIdentifier;
-    bool m_DocumentIdentifierIsSet;
+    int32_t m_PageIndex;
+    bool m_PageIndexIsSet;
+    int32_t m_PageSize;
+    bool m_PageSizeIsSet;
+    int32_t m_TotalPages;
+    bool m_TotalPagesIsSet;
+    int64_t m_TotalItems;
+    bool m_TotalItemsIsSet;
+    std::vector<std::shared_ptr<UserDataConsentInfoDto>> m_Items;
+    bool m_ItemsIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_UserDataConsentInfoDtoPaginatedList_H_ */

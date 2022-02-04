@@ -47,7 +47,7 @@ public:
     virtual ~DataConsentRequestsApi();
 
     /// <summary>
-    /// Revoke / Cancel the ConsentRequest based on Id
+    /// Revoke / Cancel the ConsentRequest based on Id.
     /// </summary>
     /// <remarks>
     /// 
@@ -67,7 +67,7 @@ public:
         boost::optional<std::shared_ptr<DataConsentRequestModel>> dataConsentRequestModel
     ) const;
     /// <summary>
-    /// Get all Consent Requests.
+    /// Get all Consent Requests sent to Individuals.
     /// </summary>
     /// <remarks>
     /// 
@@ -75,7 +75,21 @@ public:
     /// <param name="pageNo"> (optional, default to 0)</param>
     /// <param name="pageSize"> (optional, default to 0)</param>
     /// <param name="status"> (optional, default to new DataConsentStatus())</param>
-    pplx::task<std::shared_ptr<Object>> getAllConsentRequests(
+    pplx::task<std::shared_ptr<Object>> getAllConsentRequestsToIndividuals(
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize,
+        boost::optional<std::shared_ptr<DataConsentStatus>> status
+    ) const;
+    /// <summary>
+    /// Get All Consent Requests sent to Organizations
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="pageNo"> (optional, default to 0)</param>
+    /// <param name="pageSize"> (optional, default to 0)</param>
+    /// <param name="status"> (optional, default to new DataConsentStatus())</param>
+    pplx::task<std::shared_ptr<Object>> getAllConsentRequestsToOrganizations(
         boost::optional<int32_t> pageNo,
         boost::optional<int32_t> pageSize,
         boost::optional<std::shared_ptr<DataConsentStatus>> status
@@ -87,7 +101,17 @@ public:
     /// 
     /// </remarks>
     /// <param name="requestId"></param>
-    pplx::task<std::shared_ptr<DataConsentDetailsDto>> getConsentRequestById(
+    pplx::task<std::shared_ptr<DataConsentDetailsDto>> getIndividualConsentRequestById(
+        utility::string_t requestId
+    ) const;
+    /// <summary>
+    /// Get a OrganizationConsent Request by Id
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="requestId"></param>
+    pplx::task<std::shared_ptr<DataConsentDetailsDto>> getOrganizationConsentRequestById(
         utility::string_t requestId
     ) const;
 

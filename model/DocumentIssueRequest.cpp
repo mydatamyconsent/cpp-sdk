@@ -33,8 +33,8 @@ DocumentIssueRequest::DocumentIssueRequest()
     m_ReceiverIsSet = false;
     m_ExpiresAtUtc = utility::conversions::to_string_t("");
     m_ExpiresAtUtcIsSet = false;
-    m_Base64PDFDocument = utility::conversions::to_string_t("");
-    m_Base64PDFDocumentIsSet = false;
+    m_Base64PdfDocument = utility::conversions::to_string_t("");
+    m_Base64PdfDocumentIsSet = false;
     m_MetadataIsSet = false;
 }
 
@@ -76,9 +76,9 @@ web::json::value DocumentIssueRequest::toJson() const
     {
         val[utility::conversions::to_string_t(U("expiresAtUtc"))] = ModelBase::toJson(m_ExpiresAtUtc);
     }
-    if(m_Base64PDFDocumentIsSet)
+    if(m_Base64PdfDocumentIsSet)
     {
-        val[utility::conversions::to_string_t(U("base64PDFDocument"))] = ModelBase::toJson(m_Base64PDFDocument);
+        val[utility::conversions::to_string_t(U("base64PdfDocument"))] = ModelBase::toJson(m_Base64PdfDocument);
     }
     if(m_MetadataIsSet)
     {
@@ -152,14 +152,14 @@ bool DocumentIssueRequest::fromJson(const web::json::value& val)
             setExpiresAtUtc(refVal_expiresAtUtc);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("base64PDFDocument"))))
+    if(val.has_field(utility::conversions::to_string_t(U("base64PdfDocument"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("base64PDFDocument")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("base64PdfDocument")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_base64PDFDocument;
-            ok &= ModelBase::fromJson(fieldValue, refVal_base64PDFDocument);
-            setBase64PDFDocument(refVal_base64PDFDocument);
+            utility::string_t refVal_base64PdfDocument;
+            ok &= ModelBase::fromJson(fieldValue, refVal_base64PdfDocument);
+            setBase64PdfDocument(refVal_base64PdfDocument);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("metadata"))))
@@ -206,9 +206,9 @@ void DocumentIssueRequest::toMultipart(std::shared_ptr<MultipartFormData> multip
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("expiresAtUtc")), m_ExpiresAtUtc));
     }
-    if(m_Base64PDFDocumentIsSet)
+    if(m_Base64PdfDocumentIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("base64PDFDocument")), m_Base64PDFDocument));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("base64PdfDocument")), m_Base64PdfDocument));
     }
     if(m_MetadataIsSet)
     {
@@ -261,11 +261,11 @@ bool DocumentIssueRequest::fromMultiPart(std::shared_ptr<MultipartFormData> mult
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("expiresAtUtc"))), refVal_expiresAtUtc );
         setExpiresAtUtc(refVal_expiresAtUtc);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("base64PDFDocument"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("base64PdfDocument"))))
     {
-        utility::string_t refVal_base64PDFDocument;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("base64PDFDocument"))), refVal_base64PDFDocument );
-        setBase64PDFDocument(refVal_base64PDFDocument);
+        utility::string_t refVal_base64PdfDocument;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("base64PdfDocument"))), refVal_base64PdfDocument );
+        setBase64PdfDocument(refVal_base64PdfDocument);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("metadata"))))
     {
@@ -396,25 +396,25 @@ void DocumentIssueRequest::unsetExpiresAtUtc()
 {
     m_ExpiresAtUtcIsSet = false;
 }
-utility::string_t DocumentIssueRequest::getBase64PDFDocument() const
+utility::string_t DocumentIssueRequest::getBase64PdfDocument() const
 {
-    return m_Base64PDFDocument;
+    return m_Base64PdfDocument;
 }
 
-void DocumentIssueRequest::setBase64PDFDocument(const utility::string_t& value)
+void DocumentIssueRequest::setBase64PdfDocument(const utility::string_t& value)
 {
-    m_Base64PDFDocument = value;
-    m_Base64PDFDocumentIsSet = true;
+    m_Base64PdfDocument = value;
+    m_Base64PdfDocumentIsSet = true;
 }
 
-bool DocumentIssueRequest::base64PDFDocumentIsSet() const
+bool DocumentIssueRequest::base64PdfDocumentIsSet() const
 {
-    return m_Base64PDFDocumentIsSet;
+    return m_Base64PdfDocumentIsSet;
 }
 
-void DocumentIssueRequest::unsetBase64PDFDocument()
+void DocumentIssueRequest::unsetBase64PdfDocument()
 {
-    m_Base64PDFDocumentIsSet = false;
+    m_Base64PdfDocumentIsSet = false;
 }
 std::shared_ptr<AnyType> DocumentIssueRequest::getMetadata() const
 {

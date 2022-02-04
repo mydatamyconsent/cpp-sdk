@@ -11,13 +11,13 @@
  */
 
 /*
- * DataConsentRequestedDocument.h
+ * UserDocumentDownloadDto.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_
+#ifndef MYDATAMYCONSENT_MODELS_UserDocumentDownloadDto_H_
+#define MYDATAMYCONSENT_MODELS_UserDocumentDownloadDto_H_
 
 
 #include "ModelBase.h"
@@ -31,12 +31,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DataConsentRequestedDocument
+class  UserDocumentDownloadDto
     : public ModelBase
 {
 public:
-    DataConsentRequestedDocument();
-    virtual ~DataConsentRequestedDocument();
+    UserDocumentDownloadDto();
+    virtual ~UserDocumentDownloadDto();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +50,47 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestedDocument members
+    /// UserDocumentDownloadDto members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getCustomKey() const;
-    bool customKeyIsSet() const;
-    void unsetCustomKey();
+    utility::string_t getId() const;
+    bool idIsSet() const;
+    void unsetId();
 
-    void setCustomKey(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDrn() const;
-    bool drnIsSet() const;
-    void unsetDrn();
-
-    void setDrn(const utility::string_t& value);
+    void setId(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentTypeId() const;
-    bool documentTypeIdIsSet() const;
-    void unsetDocumentTypeId();
+    utility::string_t getStorageUrl() const;
+    bool storageUrlIsSet() const;
+    void unsetStorageUrl();
 
-    void setDocumentTypeId(const utility::string_t& value);
+    void setStorageUrl(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentIdentifier() const;
-    bool documentIdentifierIsSet() const;
-    void unsetDocumentIdentifier();
+    utility::string_t getOwnerId() const;
+    bool ownerIdIsSet() const;
+    void unsetOwnerId();
 
-    void setDocumentIdentifier(const utility::string_t& value);
+    void setOwnerId(const utility::string_t& value);
 
 
 protected:
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
-    utility::string_t m_Drn;
-    bool m_DrnIsSet;
-    utility::string_t m_DocumentTypeId;
-    bool m_DocumentTypeIdIsSet;
-    utility::string_t m_DocumentIdentifier;
-    bool m_DocumentIdentifierIsSet;
+    utility::string_t m_Id;
+    bool m_IdIsSet;
+    utility::string_t m_StorageUrl;
+    bool m_StorageUrlIsSet;
+    utility::string_t m_OwnerId;
+    bool m_OwnerIdIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestedDocument_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_UserDocumentDownloadDto_H_ */
