@@ -22,10 +22,10 @@ namespace models {
 
 Document::Document()
 {
-    m_DocumentField = utility::conversions::to_string_t("");
-    m_DocumentFieldIsSet = false;
-    m_CustomKey = utility::conversions::to_string_t("");
-    m_CustomKeyIsSet = false;
+    m_FieldTitle = utility::conversions::to_string_t("");
+    m_FieldTitleIsSet = false;
+    m_FieldSlug = utility::conversions::to_string_t("");
+    m_FieldSlugIsSet = false;
     m_DrnIsSet = false;
     m_RequirementIsSet = false;
 }
@@ -44,13 +44,13 @@ web::json::value Document::toJson() const
 
     web::json::value val = web::json::value::object();
     
-    if(m_DocumentFieldIsSet)
+    if(m_FieldTitleIsSet)
     {
-        val[utility::conversions::to_string_t(U("documentField"))] = ModelBase::toJson(m_DocumentField);
+        val[utility::conversions::to_string_t(U("fieldTitle"))] = ModelBase::toJson(m_FieldTitle);
     }
-    if(m_CustomKeyIsSet)
+    if(m_FieldSlugIsSet)
     {
-        val[utility::conversions::to_string_t(U("customKey"))] = ModelBase::toJson(m_CustomKey);
+        val[utility::conversions::to_string_t(U("fieldSlug"))] = ModelBase::toJson(m_FieldSlug);
     }
     if(m_DrnIsSet)
     {
@@ -68,24 +68,24 @@ bool Document::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("documentField"))))
+    if(val.has_field(utility::conversions::to_string_t(U("fieldTitle"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("documentField")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("fieldTitle")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_documentField;
-            ok &= ModelBase::fromJson(fieldValue, refVal_documentField);
-            setDocumentField(refVal_documentField);
+            utility::string_t refVal_fieldTitle;
+            ok &= ModelBase::fromJson(fieldValue, refVal_fieldTitle);
+            setFieldTitle(refVal_fieldTitle);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("customKey"))))
+    if(val.has_field(utility::conversions::to_string_t(U("fieldSlug"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("customKey")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("fieldSlug")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_customKey;
-            ok &= ModelBase::fromJson(fieldValue, refVal_customKey);
-            setCustomKey(refVal_customKey);
+            utility::string_t refVal_fieldSlug;
+            ok &= ModelBase::fromJson(fieldValue, refVal_fieldSlug);
+            setFieldSlug(refVal_fieldSlug);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("drn"))))
@@ -118,13 +118,13 @@ void Document::toMultipart(std::shared_ptr<MultipartFormData> multipart, const u
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
-    if(m_DocumentFieldIsSet)
+    if(m_FieldTitleIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documentField")), m_DocumentField));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("fieldTitle")), m_FieldTitle));
     }
-    if(m_CustomKeyIsSet)
+    if(m_FieldSlugIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("customKey")), m_CustomKey));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("fieldSlug")), m_FieldSlug));
     }
     if(m_DrnIsSet)
     {
@@ -145,17 +145,17 @@ bool Document::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(U("documentField"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("fieldTitle"))))
     {
-        utility::string_t refVal_documentField;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documentField"))), refVal_documentField );
-        setDocumentField(refVal_documentField);
+        utility::string_t refVal_fieldTitle;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("fieldTitle"))), refVal_fieldTitle );
+        setFieldTitle(refVal_fieldTitle);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("customKey"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("fieldSlug"))))
     {
-        utility::string_t refVal_customKey;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("customKey"))), refVal_customKey );
-        setCustomKey(refVal_customKey);
+        utility::string_t refVal_fieldSlug;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("fieldSlug"))), refVal_fieldSlug );
+        setFieldSlug(refVal_fieldSlug);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("drn"))))
     {
@@ -172,45 +172,45 @@ bool Document::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const
     return ok;
 }
 
-utility::string_t Document::getDocumentField() const
+utility::string_t Document::getFieldTitle() const
 {
-    return m_DocumentField;
+    return m_FieldTitle;
 }
 
-void Document::setDocumentField(const utility::string_t& value)
+void Document::setFieldTitle(const utility::string_t& value)
 {
-    m_DocumentField = value;
-    m_DocumentFieldIsSet = true;
+    m_FieldTitle = value;
+    m_FieldTitleIsSet = true;
 }
 
-bool Document::documentFieldIsSet() const
+bool Document::fieldTitleIsSet() const
 {
-    return m_DocumentFieldIsSet;
+    return m_FieldTitleIsSet;
 }
 
-void Document::unsetDocumentField()
+void Document::unsetFieldTitle()
 {
-    m_DocumentFieldIsSet = false;
+    m_FieldTitleIsSet = false;
 }
-utility::string_t Document::getCustomKey() const
+utility::string_t Document::getFieldSlug() const
 {
-    return m_CustomKey;
-}
-
-void Document::setCustomKey(const utility::string_t& value)
-{
-    m_CustomKey = value;
-    m_CustomKeyIsSet = true;
+    return m_FieldSlug;
 }
 
-bool Document::customKeyIsSet() const
+void Document::setFieldSlug(const utility::string_t& value)
 {
-    return m_CustomKeyIsSet;
+    m_FieldSlug = value;
+    m_FieldSlugIsSet = true;
 }
 
-void Document::unsetCustomKey()
+bool Document::fieldSlugIsSet() const
 {
-    m_CustomKeyIsSet = false;
+    return m_FieldSlugIsSet;
+}
+
+void Document::unsetFieldSlug()
+{
+    m_FieldSlugIsSet = false;
 }
 std::vector<utility::string_t>& Document::getDrn()
 {

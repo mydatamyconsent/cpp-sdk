@@ -57,20 +57,20 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentField() const;
-    bool documentFieldIsSet() const;
-    void unsetDocumentField();
+    utility::string_t getFieldTitle() const;
+    bool fieldTitleIsSet() const;
+    void unsetFieldTitle();
 
-    void setDocumentField(const utility::string_t& value);
+    void setFieldTitle(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getCustomKey() const;
-    bool customKeyIsSet() const;
-    void unsetCustomKey();
+    utility::string_t getFieldSlug() const;
+    bool fieldSlugIsSet() const;
+    void unsetFieldSlug();
 
-    void setCustomKey(const utility::string_t& value);
+    void setFieldSlug(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -92,10 +92,10 @@ public:
 
 
 protected:
-    utility::string_t m_DocumentField;
-    bool m_DocumentFieldIsSet;
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
+    utility::string_t m_FieldTitle;
+    bool m_FieldTitleIsSet;
+    utility::string_t m_FieldSlug;
+    bool m_FieldSlugIsSet;
     std::vector<utility::string_t> m_Drn;
     bool m_DrnIsSet;
     std::shared_ptr<DocumentsRequired> m_Requirement;

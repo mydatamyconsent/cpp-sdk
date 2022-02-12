@@ -22,8 +22,8 @@ namespace models {
 
 IdentitySupportedFields::IdentitySupportedFields()
 {
-    m_Icon = utility::conversions::to_string_t("");
-    m_IconIsSet = false;
+    m_IconCodePoint = 0;
+    m_IconCodePointIsSet = false;
     m_Title = utility::conversions::to_string_t("");
     m_TitleIsSet = false;
     m_Description = utility::conversions::to_string_t("");
@@ -48,9 +48,9 @@ web::json::value IdentitySupportedFields::toJson() const
 
     web::json::value val = web::json::value::object();
     
-    if(m_IconIsSet)
+    if(m_IconCodePointIsSet)
     {
-        val[utility::conversions::to_string_t(U("icon"))] = ModelBase::toJson(m_Icon);
+        val[utility::conversions::to_string_t(U("iconCodePoint"))] = ModelBase::toJson(m_IconCodePoint);
     }
     if(m_TitleIsSet)
     {
@@ -76,14 +76,14 @@ bool IdentitySupportedFields::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("icon"))))
+    if(val.has_field(utility::conversions::to_string_t(U("iconCodePoint"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("icon")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("iconCodePoint")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_icon;
-            ok &= ModelBase::fromJson(fieldValue, refVal_icon);
-            setIcon(refVal_icon);
+            int32_t refVal_iconCodePoint;
+            ok &= ModelBase::fromJson(fieldValue, refVal_iconCodePoint);
+            setIconCodePoint(refVal_iconCodePoint);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("title"))))
@@ -136,9 +136,9 @@ void IdentitySupportedFields::toMultipart(std::shared_ptr<MultipartFormData> mul
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
-    if(m_IconIsSet)
+    if(m_IconCodePointIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("icon")), m_Icon));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("iconCodePoint")), m_IconCodePoint));
     }
     if(m_TitleIsSet)
     {
@@ -167,11 +167,11 @@ bool IdentitySupportedFields::fromMultiPart(std::shared_ptr<MultipartFormData> m
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(U("icon"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("iconCodePoint"))))
     {
-        utility::string_t refVal_icon;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("icon"))), refVal_icon );
-        setIcon(refVal_icon);
+        int32_t refVal_iconCodePoint;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("iconCodePoint"))), refVal_iconCodePoint );
+        setIconCodePoint(refVal_iconCodePoint);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("title"))))
     {
@@ -200,25 +200,25 @@ bool IdentitySupportedFields::fromMultiPart(std::shared_ptr<MultipartFormData> m
     return ok;
 }
 
-utility::string_t IdentitySupportedFields::getIcon() const
+int32_t IdentitySupportedFields::getIconCodePoint() const
 {
-    return m_Icon;
+    return m_IconCodePoint;
 }
 
-void IdentitySupportedFields::setIcon(const utility::string_t& value)
+void IdentitySupportedFields::setIconCodePoint(int32_t value)
 {
-    m_Icon = value;
-    m_IconIsSet = true;
+    m_IconCodePoint = value;
+    m_IconCodePointIsSet = true;
 }
 
-bool IdentitySupportedFields::iconIsSet() const
+bool IdentitySupportedFields::iconCodePointIsSet() const
 {
-    return m_IconIsSet;
+    return m_IconCodePointIsSet;
 }
 
-void IdentitySupportedFields::unsetIcon()
+void IdentitySupportedFields::unsetIconCodePoint()
 {
-    m_IconIsSet = false;
+    m_IconCodePointIsSet = false;
 }
 utility::string_t IdentitySupportedFields::getTitle() const
 {
