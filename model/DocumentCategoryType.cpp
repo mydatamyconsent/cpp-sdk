@@ -25,20 +25,16 @@ using EnumUnderlyingType = utility::string_t;
 
 DocumentCategoryType::eDocumentCategoryType toEnum(const EnumUnderlyingType& val)
 {
+    if (val == utility::conversions::to_string_t(U("Personal")))
+        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_PERSONAL;
+    if (val == utility::conversions::to_string_t(U("Education")))
+        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_EDUCATION;
     if (val == utility::conversions::to_string_t(U("Health")))
         return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_HEALTH;
     if (val == utility::conversions::to_string_t(U("Finance")))
         return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_FINANCE;
-    if (val == utility::conversions::to_string_t(U("Education")))
-        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_EDUCATION;
-    if (val == utility::conversions::to_string_t(U("Bills")))
-        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_BILLS;
-    if (val == utility::conversions::to_string_t(U("Tax")))
-        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_TAX;
     if (val == utility::conversions::to_string_t(U("Certificates")))
         return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_CERTIFICATES;
-    if (val == utility::conversions::to_string_t(U("Invoices")))
-        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_INVOICES;
     return {};
 }
 
@@ -46,20 +42,16 @@ EnumUnderlyingType fromEnum(DocumentCategoryType::eDocumentCategoryType e)
 {
     switch (e)
     {
+    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_PERSONAL:
+        return U("Personal");
+    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_EDUCATION:
+        return U("Education");
     case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_HEALTH:
         return U("Health");
     case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_FINANCE:
         return U("Finance");
-    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_EDUCATION:
-        return U("Education");
-    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_BILLS:
-        return U("Bills");
-    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_TAX:
-        return U("Tax");
     case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_CERTIFICATES:
         return U("Certificates");
-    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_INVOICES:
-        return U("Invoices");
     default:
         break;
     }

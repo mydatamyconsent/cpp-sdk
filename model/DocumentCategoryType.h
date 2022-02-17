@@ -46,13 +46,11 @@ public:
 
     enum class eDocumentCategoryType
     {
+        DocumentCategoryType_PERSONAL,
+        DocumentCategoryType_EDUCATION,
         DocumentCategoryType_HEALTH,
         DocumentCategoryType_FINANCE,
-        DocumentCategoryType_EDUCATION,
-        DocumentCategoryType_BILLS,
-        DocumentCategoryType_TAX,
         DocumentCategoryType_CERTIFICATES,
-        DocumentCategoryType_INVOICES,
     };
 
     eDocumentCategoryType getValue() const;
