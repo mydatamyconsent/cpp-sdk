@@ -49,6 +49,8 @@ model/DataConsentFinancialsDto.cpp
 model/DataConsentFinancialsDto.h
 model/DataConsentIdentifier.cpp
 model/DataConsentIdentifier.h
+model/DataConsentRequest.cpp
+model/DataConsentRequest.h
 model/DataConsentRequestModel.cpp
 model/DataConsentRequestModel.h
 model/DataConsentRequestedDocument.cpp

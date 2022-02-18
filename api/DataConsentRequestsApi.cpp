@@ -157,7 +157,7 @@ pplx::task<bool> DataConsentRequestsApi::cancelConsentRequest(utility::string_t 
         return localVarResult;
     });
 }
-pplx::task<bool> DataConsentRequestsApi::createRequest(boost::optional<std::shared_ptr<DataConsentRequestModel>> dataConsentRequestModel) const
+pplx::task<std::shared_ptr<DataConsentRequest>> DataConsentRequestsApi::createRequest(boost::optional<std::shared_ptr<DataConsentRequestModel>> dataConsentRequestModel) const
 {
 
 
@@ -275,7 +275,7 @@ pplx::task<bool> DataConsentRequestsApi::createRequest(boost::optional<std::shar
     })
     .then([=](utility::string_t localVarResponse)
     {
-        bool localVarResult(false);
+        std::shared_ptr<DataConsentRequest> localVarResult(new DataConsentRequest());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

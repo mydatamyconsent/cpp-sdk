@@ -65,24 +65,6 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::datetime getStartDateTime() const;
-    bool startDateTimeIsSet() const;
-    void unsetStartDateTime();
-
-    void setStartDateTime(const utility::datetime& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::datetime getExpiryDateTime() const;
-    bool expiryDateTimeIsSet() const;
-    void unsetExpiryDateTime();
-
-    void setExpiryDateTime(const utility::datetime& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
     std::shared_ptr<Receiver> getReceiver() const;
     bool receiverIsSet() const;
     void unsetReceiver();
@@ -93,10 +75,6 @@ public:
 protected:
     utility::string_t m_ConsentTemplateId;
     bool m_ConsentTemplateIdIsSet;
-    utility::datetime m_StartDateTime;
-    bool m_StartDateTimeIsSet;
-    utility::datetime m_ExpiryDateTime;
-    bool m_ExpiryDateTimeIsSet;
     std::shared_ptr<Receiver> m_Receiver;
     bool m_ReceiverIsSet;
 };

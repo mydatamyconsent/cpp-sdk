@@ -24,6 +24,7 @@
 #include "ApiClient.h"
 
 #include "model/DataConsentDetailsDto.h"
+#include "model/DataConsentRequest.h"
 #include "model/DataConsentRequestModel.h"
 #include "model/DataConsentStatus.h"
 #include "Object.h"
@@ -63,7 +64,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="dataConsentRequestModel">MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)</param>
-    pplx::task<bool> createRequest(
+    pplx::task<std::shared_ptr<DataConsentRequest>> createRequest(
         boost::optional<std::shared_ptr<DataConsentRequestModel>> dataConsentRequestModel
     ) const;
     /// <summary>

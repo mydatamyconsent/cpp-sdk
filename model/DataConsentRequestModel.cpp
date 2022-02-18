@@ -24,10 +24,6 @@ DataConsentRequestModel::DataConsentRequestModel()
 {
     m_ConsentTemplateId = utility::conversions::to_string_t("");
     m_ConsentTemplateIdIsSet = false;
-    m_StartDateTime = utility::datetime();
-    m_StartDateTimeIsSet = false;
-    m_ExpiryDateTime = utility::datetime();
-    m_ExpiryDateTimeIsSet = false;
     m_ReceiverIsSet = false;
 }
 
@@ -49,14 +45,6 @@ web::json::value DataConsentRequestModel::toJson() const
     {
         val[utility::conversions::to_string_t(U("consentTemplateId"))] = ModelBase::toJson(m_ConsentTemplateId);
     }
-    if(m_StartDateTimeIsSet)
-    {
-        val[utility::conversions::to_string_t(U("startDateTime"))] = ModelBase::toJson(m_StartDateTime);
-    }
-    if(m_ExpiryDateTimeIsSet)
-    {
-        val[utility::conversions::to_string_t(U("expiryDateTime"))] = ModelBase::toJson(m_ExpiryDateTime);
-    }
     if(m_ReceiverIsSet)
     {
         val[utility::conversions::to_string_t(U("receiver"))] = ModelBase::toJson(m_Receiver);
@@ -77,26 +65,6 @@ bool DataConsentRequestModel::fromJson(const web::json::value& val)
             utility::string_t refVal_consentTemplateId;
             ok &= ModelBase::fromJson(fieldValue, refVal_consentTemplateId);
             setConsentTemplateId(refVal_consentTemplateId);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("startDateTime"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("startDateTime")));
-        if(!fieldValue.is_null())
-        {
-            utility::datetime refVal_startDateTime;
-            ok &= ModelBase::fromJson(fieldValue, refVal_startDateTime);
-            setStartDateTime(refVal_startDateTime);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("expiryDateTime"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("expiryDateTime")));
-        if(!fieldValue.is_null())
-        {
-            utility::datetime refVal_expiryDateTime;
-            ok &= ModelBase::fromJson(fieldValue, refVal_expiryDateTime);
-            setExpiryDateTime(refVal_expiryDateTime);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("receiver"))))
@@ -123,14 +91,6 @@ void DataConsentRequestModel::toMultipart(std::shared_ptr<MultipartFormData> mul
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("consentTemplateId")), m_ConsentTemplateId));
     }
-    if(m_StartDateTimeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("startDateTime")), m_StartDateTime));
-    }
-    if(m_ExpiryDateTimeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("expiryDateTime")), m_ExpiryDateTime));
-    }
     if(m_ReceiverIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("receiver")), m_Receiver));
@@ -151,18 +111,6 @@ bool DataConsentRequestModel::fromMultiPart(std::shared_ptr<MultipartFormData> m
         utility::string_t refVal_consentTemplateId;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("consentTemplateId"))), refVal_consentTemplateId );
         setConsentTemplateId(refVal_consentTemplateId);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("startDateTime"))))
-    {
-        utility::datetime refVal_startDateTime;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("startDateTime"))), refVal_startDateTime );
-        setStartDateTime(refVal_startDateTime);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("expiryDateTime"))))
-    {
-        utility::datetime refVal_expiryDateTime;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("expiryDateTime"))), refVal_expiryDateTime );
-        setExpiryDateTime(refVal_expiryDateTime);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("receiver"))))
     {
@@ -192,46 +140,6 @@ bool DataConsentRequestModel::consentTemplateIdIsSet() const
 void DataConsentRequestModel::unsetConsentTemplateId()
 {
     m_ConsentTemplateIdIsSet = false;
-}
-utility::datetime DataConsentRequestModel::getStartDateTime() const
-{
-    return m_StartDateTime;
-}
-
-void DataConsentRequestModel::setStartDateTime(const utility::datetime& value)
-{
-    m_StartDateTime = value;
-    m_StartDateTimeIsSet = true;
-}
-
-bool DataConsentRequestModel::startDateTimeIsSet() const
-{
-    return m_StartDateTimeIsSet;
-}
-
-void DataConsentRequestModel::unsetStartDateTime()
-{
-    m_StartDateTimeIsSet = false;
-}
-utility::datetime DataConsentRequestModel::getExpiryDateTime() const
-{
-    return m_ExpiryDateTime;
-}
-
-void DataConsentRequestModel::setExpiryDateTime(const utility::datetime& value)
-{
-    m_ExpiryDateTime = value;
-    m_ExpiryDateTimeIsSet = true;
-}
-
-bool DataConsentRequestModel::expiryDateTimeIsSet() const
-{
-    return m_ExpiryDateTimeIsSet;
-}
-
-void DataConsentRequestModel::unsetExpiryDateTime()
-{
-    m_ExpiryDateTimeIsSet = false;
 }
 std::shared_ptr<Receiver> DataConsentRequestModel::getReceiver() const
 {
