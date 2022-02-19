@@ -57,7 +57,7 @@ public:
     /// </summary>
     utility::string_t getCustomKey() const;
     bool customKeyIsSet() const;
-    void unsetCustomKey();
+    void unsetCustom_key();
 
     void setCustomKey(const utility::string_t& value);
 
@@ -90,8 +90,8 @@ public:
 
 
 protected:
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
+    utility::string_t m_Custom_key;
+    bool m_Custom_keyIsSet;
     utility::string_t m_Drn;
     bool m_DrnIsSet;
     utility::string_t m_AccountTypeId;

@@ -24,8 +24,8 @@ DocumentIssueRequest::DocumentIssueRequest()
 {
     m_DocumentTypeId = utility::conversions::to_string_t("");
     m_DocumentTypeIdIsSet = false;
-    m_Identifier = utility::conversions::to_string_t("");
-    m_IdentifierIsSet = false;
+    m_DocumentIdentifier = utility::conversions::to_string_t("");
+    m_DocumentIdentifierIsSet = false;
     m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
     m_Description = utility::conversions::to_string_t("");
@@ -56,9 +56,9 @@ web::json::value DocumentIssueRequest::toJson() const
     {
         val[utility::conversions::to_string_t(U("documentTypeId"))] = ModelBase::toJson(m_DocumentTypeId);
     }
-    if(m_IdentifierIsSet)
+    if(m_DocumentIdentifierIsSet)
     {
-        val[utility::conversions::to_string_t(U("identifier"))] = ModelBase::toJson(m_Identifier);
+        val[utility::conversions::to_string_t(U("documentIdentifier"))] = ModelBase::toJson(m_DocumentIdentifier);
     }
     if(m_NameIsSet)
     {
@@ -102,14 +102,14 @@ bool DocumentIssueRequest::fromJson(const web::json::value& val)
             setDocumentTypeId(refVal_documentTypeId);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("identifier"))))
+    if(val.has_field(utility::conversions::to_string_t(U("documentIdentifier"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("identifier")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("documentIdentifier")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_identifier;
-            ok &= ModelBase::fromJson(fieldValue, refVal_identifier);
-            setIdentifier(refVal_identifier);
+            utility::string_t refVal_documentIdentifier;
+            ok &= ModelBase::fromJson(fieldValue, refVal_documentIdentifier);
+            setDocumentIdentifier(refVal_documentIdentifier);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("name"))))
@@ -186,9 +186,9 @@ void DocumentIssueRequest::toMultipart(std::shared_ptr<MultipartFormData> multip
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documentTypeId")), m_DocumentTypeId));
     }
-    if(m_IdentifierIsSet)
+    if(m_DocumentIdentifierIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("identifier")), m_Identifier));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documentIdentifier")), m_DocumentIdentifier));
     }
     if(m_NameIsSet)
     {
@@ -231,11 +231,11 @@ bool DocumentIssueRequest::fromMultiPart(std::shared_ptr<MultipartFormData> mult
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documentTypeId"))), refVal_documentTypeId );
         setDocumentTypeId(refVal_documentTypeId);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("identifier"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("documentIdentifier"))))
     {
-        utility::string_t refVal_identifier;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("identifier"))), refVal_identifier );
-        setIdentifier(refVal_identifier);
+        utility::string_t refVal_documentIdentifier;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documentIdentifier"))), refVal_documentIdentifier );
+        setDocumentIdentifier(refVal_documentIdentifier);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("name"))))
     {
@@ -296,25 +296,25 @@ void DocumentIssueRequest::unsetDocumentTypeId()
 {
     m_DocumentTypeIdIsSet = false;
 }
-utility::string_t DocumentIssueRequest::getIdentifier() const
+utility::string_t DocumentIssueRequest::getDocumentIdentifier() const
 {
-    return m_Identifier;
+    return m_DocumentIdentifier;
 }
 
-void DocumentIssueRequest::setIdentifier(const utility::string_t& value)
+void DocumentIssueRequest::setDocumentIdentifier(const utility::string_t& value)
 {
-    m_Identifier = value;
-    m_IdentifierIsSet = true;
+    m_DocumentIdentifier = value;
+    m_DocumentIdentifierIsSet = true;
 }
 
-bool DocumentIssueRequest::identifierIsSet() const
+bool DocumentIssueRequest::documentIdentifierIsSet() const
 {
-    return m_IdentifierIsSet;
+    return m_DocumentIdentifierIsSet;
 }
 
-void DocumentIssueRequest::unsetIdentifier()
+void DocumentIssueRequest::unsetDocumentIdentifier()
 {
-    m_IdentifierIsSet = false;
+    m_DocumentIdentifierIsSet = false;
 }
 utility::string_t DocumentIssueRequest::getName() const
 {

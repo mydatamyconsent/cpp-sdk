@@ -66,11 +66,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getIdentifier() const;
-    bool identifierIsSet() const;
-    void unsetIdentifier();
+    utility::string_t getDocumentIdentifier() const;
+    bool documentIdentifierIsSet() const;
+    void unsetDocumentIdentifier();
 
-    void setIdentifier(const utility::string_t& value);
+    void setDocumentIdentifier(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -130,8 +130,8 @@ public:
 protected:
     utility::string_t m_DocumentTypeId;
     bool m_DocumentTypeIdIsSet;
-    utility::string_t m_Identifier;
-    bool m_IdentifierIsSet;
+    utility::string_t m_DocumentIdentifier;
+    bool m_DocumentIdentifierIsSet;
     utility::string_t m_Name;
     bool m_NameIsSet;
     utility::string_t m_Description;

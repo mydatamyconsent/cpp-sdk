@@ -66,18 +66,18 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& getFinancialAccountDetailsRequired();
-    bool financialAccountDetailsRequiredIsSet() const;
-    void unsetFinancialAccountDetailsRequired();
+    std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& getRequiredDetails();
+    bool requiredDetailsIsSet() const;
+    void unsetRequired_details();
 
-    void setFinancialAccountDetailsRequired(const std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& value);
+    void setRequiredDetails(const std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& value);
 
     /// <summary>
     /// 
     /// </summary>
     utility::datetime getStartDate() const;
     bool startDateIsSet() const;
-    void unsetStartDate();
+    void unsetStart_date();
 
     void setStartDate(const utility::datetime& value);
 
@@ -86,7 +86,7 @@ public:
     /// </summary>
     utility::datetime getEndDate() const;
     bool endDateIsSet() const;
-    void unsetEndDate();
+    void unsetEnd_date();
 
     void setEndDate(const utility::datetime& value);
 
@@ -94,12 +94,12 @@ public:
 protected:
     utility::string_t m_Drn;
     bool m_DrnIsSet;
-    std::vector<std::shared_ptr<FinancialAccountDetailsRequired>> m_FinancialAccountDetailsRequired;
-    bool m_FinancialAccountDetailsRequiredIsSet;
-    utility::datetime m_StartDate;
-    bool m_StartDateIsSet;
-    utility::datetime m_EndDate;
-    bool m_EndDateIsSet;
+    std::vector<std::shared_ptr<FinancialAccountDetailsRequired>> m_Required_details;
+    bool m_Required_detailsIsSet;
+    utility::datetime m_Start_date;
+    bool m_Start_dateIsSet;
+    utility::datetime m_End_date;
+    bool m_End_dateIsSet;
 };
 
 

@@ -55,11 +55,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    int32_t getIconCodePoint() const;
-    bool iconCodePointIsSet() const;
-    void unsetIconCodePoint();
+    int32_t getIcon() const;
+    bool iconIsSet() const;
+    void unsetIcon();
 
-    void setIconCodePoint(int32_t value);
+    void setIcon(int32_t value);
 
     /// <summary>
     /// 
@@ -99,8 +99,8 @@ public:
 
 
 protected:
-    int32_t m_IconCodePoint;
-    bool m_IconCodePointIsSet;
+    int32_t m_Icon;
+    bool m_IconIsSet;
     utility::string_t m_Title;
     bool m_TitleIsSet;
     utility::string_t m_Description;

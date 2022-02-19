@@ -22,8 +22,8 @@ namespace models {
 
 DataConsentRequestedFinancialAccount::DataConsentRequestedFinancialAccount()
 {
-    m_CustomKey = utility::conversions::to_string_t("");
-    m_CustomKeyIsSet = false;
+    m_Custom_key = utility::conversions::to_string_t("");
+    m_Custom_keyIsSet = false;
     m_Drn = utility::conversions::to_string_t("");
     m_DrnIsSet = false;
     m_AccountTypeId = utility::conversions::to_string_t("");
@@ -46,9 +46,9 @@ web::json::value DataConsentRequestedFinancialAccount::toJson() const
 
     web::json::value val = web::json::value::object();
     
-    if(m_CustomKeyIsSet)
+    if(m_Custom_keyIsSet)
     {
-        val[utility::conversions::to_string_t(U("customKey"))] = ModelBase::toJson(m_CustomKey);
+        val[utility::conversions::to_string_t(U("custom_key"))] = ModelBase::toJson(m_Custom_key);
     }
     if(m_DrnIsSet)
     {
@@ -70,14 +70,14 @@ bool DataConsentRequestedFinancialAccount::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("customKey"))))
+    if(val.has_field(utility::conversions::to_string_t(U("custom_key"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("customKey")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("custom_key")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_customKey;
-            ok &= ModelBase::fromJson(fieldValue, refVal_customKey);
-            setCustomKey(refVal_customKey);
+            utility::string_t refVal_custom_key;
+            ok &= ModelBase::fromJson(fieldValue, refVal_custom_key);
+            setCustomKey(refVal_custom_key);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("drn"))))
@@ -120,9 +120,9 @@ void DataConsentRequestedFinancialAccount::toMultipart(std::shared_ptr<Multipart
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
-    if(m_CustomKeyIsSet)
+    if(m_Custom_keyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("customKey")), m_CustomKey));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("custom_key")), m_Custom_key));
     }
     if(m_DrnIsSet)
     {
@@ -147,11 +147,11 @@ bool DataConsentRequestedFinancialAccount::fromMultiPart(std::shared_ptr<Multipa
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(U("customKey"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("custom_key"))))
     {
-        utility::string_t refVal_customKey;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("customKey"))), refVal_customKey );
-        setCustomKey(refVal_customKey);
+        utility::string_t refVal_custom_key;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("custom_key"))), refVal_custom_key );
+        setCustomKey(refVal_custom_key);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("drn"))))
     {
@@ -176,23 +176,23 @@ bool DataConsentRequestedFinancialAccount::fromMultiPart(std::shared_ptr<Multipa
 
 utility::string_t DataConsentRequestedFinancialAccount::getCustomKey() const
 {
-    return m_CustomKey;
+    return m_Custom_key;
 }
 
 void DataConsentRequestedFinancialAccount::setCustomKey(const utility::string_t& value)
 {
-    m_CustomKey = value;
-    m_CustomKeyIsSet = true;
+    m_Custom_key = value;
+    m_Custom_keyIsSet = true;
 }
 
 bool DataConsentRequestedFinancialAccount::customKeyIsSet() const
 {
-    return m_CustomKeyIsSet;
+    return m_Custom_keyIsSet;
 }
 
-void DataConsentRequestedFinancialAccount::unsetCustomKey()
+void DataConsentRequestedFinancialAccount::unsetCustom_key()
 {
-    m_CustomKeyIsSet = false;
+    m_Custom_keyIsSet = false;
 }
 utility::string_t DataConsentRequestedFinancialAccount::getDrn() const
 {

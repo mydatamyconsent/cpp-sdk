@@ -58,18 +58,18 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getAccountField() const;
-    bool accountFieldIsSet() const;
-    void unsetAccountField();
+    utility::string_t getFieldName() const;
+    bool fieldNameIsSet() const;
+    void unsetField_name();
 
-    void setAccountField(const utility::string_t& value);
+    void setFieldName(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
     utility::string_t getCustomKey() const;
     bool customKeyIsSet() const;
-    void unsetCustomKey();
+    void unsetCustom_key();
 
     void setCustomKey(const utility::string_t& value);
 
@@ -93,10 +93,10 @@ public:
 
 
 protected:
-    utility::string_t m_AccountField;
-    bool m_AccountFieldIsSet;
-    utility::string_t m_CustomKey;
-    bool m_CustomKeyIsSet;
+    utility::string_t m_Field_name;
+    bool m_Field_nameIsSet;
+    utility::string_t m_Custom_key;
+    bool m_Custom_keyIsSet;
     std::vector<std::shared_ptr<FinancialAccounts>> m_Accounts;
     bool m_AccountsIsSet;
     std::shared_ptr<DocumentsRequired> m_Requirement;

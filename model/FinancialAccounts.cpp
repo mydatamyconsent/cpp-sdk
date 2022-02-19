@@ -24,11 +24,11 @@ FinancialAccounts::FinancialAccounts()
 {
     m_Drn = utility::conversions::to_string_t("");
     m_DrnIsSet = false;
-    m_FinancialAccountDetailsRequiredIsSet = false;
-    m_StartDate = utility::datetime();
-    m_StartDateIsSet = false;
-    m_EndDate = utility::datetime();
-    m_EndDateIsSet = false;
+    m_Required_detailsIsSet = false;
+    m_Start_date = utility::datetime();
+    m_Start_dateIsSet = false;
+    m_End_date = utility::datetime();
+    m_End_dateIsSet = false;
 }
 
 FinancialAccounts::~FinancialAccounts()
@@ -49,17 +49,17 @@ web::json::value FinancialAccounts::toJson() const
     {
         val[utility::conversions::to_string_t(U("drn"))] = ModelBase::toJson(m_Drn);
     }
-    if(m_FinancialAccountDetailsRequiredIsSet)
+    if(m_Required_detailsIsSet)
     {
-        val[utility::conversions::to_string_t(U("financialAccountDetailsRequired"))] = ModelBase::toJson(m_FinancialAccountDetailsRequired);
+        val[utility::conversions::to_string_t(U("required_details"))] = ModelBase::toJson(m_Required_details);
     }
-    if(m_StartDateIsSet)
+    if(m_Start_dateIsSet)
     {
-        val[utility::conversions::to_string_t(U("startDate"))] = ModelBase::toJson(m_StartDate);
+        val[utility::conversions::to_string_t(U("start_date"))] = ModelBase::toJson(m_Start_date);
     }
-    if(m_EndDateIsSet)
+    if(m_End_dateIsSet)
     {
-        val[utility::conversions::to_string_t(U("endDate"))] = ModelBase::toJson(m_EndDate);
+        val[utility::conversions::to_string_t(U("end_date"))] = ModelBase::toJson(m_End_date);
     }
 
     return val;
@@ -79,34 +79,34 @@ bool FinancialAccounts::fromJson(const web::json::value& val)
             setDrn(refVal_drn);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("financialAccountDetailsRequired"))))
+    if(val.has_field(utility::conversions::to_string_t(U("required_details"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("financialAccountDetailsRequired")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("required_details")));
         if(!fieldValue.is_null())
         {
-            std::vector<std::shared_ptr<FinancialAccountDetailsRequired>> refVal_financialAccountDetailsRequired;
-            ok &= ModelBase::fromJson(fieldValue, refVal_financialAccountDetailsRequired);
-            setFinancialAccountDetailsRequired(refVal_financialAccountDetailsRequired);
+            std::vector<std::shared_ptr<FinancialAccountDetailsRequired>> refVal_required_details;
+            ok &= ModelBase::fromJson(fieldValue, refVal_required_details);
+            setRequiredDetails(refVal_required_details);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("startDate"))))
+    if(val.has_field(utility::conversions::to_string_t(U("start_date"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("startDate")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("start_date")));
         if(!fieldValue.is_null())
         {
-            utility::datetime refVal_startDate;
-            ok &= ModelBase::fromJson(fieldValue, refVal_startDate);
-            setStartDate(refVal_startDate);
+            utility::datetime refVal_start_date;
+            ok &= ModelBase::fromJson(fieldValue, refVal_start_date);
+            setStartDate(refVal_start_date);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("endDate"))))
+    if(val.has_field(utility::conversions::to_string_t(U("end_date"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("endDate")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("end_date")));
         if(!fieldValue.is_null())
         {
-            utility::datetime refVal_endDate;
-            ok &= ModelBase::fromJson(fieldValue, refVal_endDate);
-            setEndDate(refVal_endDate);
+            utility::datetime refVal_end_date;
+            ok &= ModelBase::fromJson(fieldValue, refVal_end_date);
+            setEndDate(refVal_end_date);
         }
     }
     return ok;
@@ -123,17 +123,17 @@ void FinancialAccounts::toMultipart(std::shared_ptr<MultipartFormData> multipart
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("drn")), m_Drn));
     }
-    if(m_FinancialAccountDetailsRequiredIsSet)
+    if(m_Required_detailsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("financialAccountDetailsRequired")), m_FinancialAccountDetailsRequired));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("required_details")), m_Required_details));
     }
-    if(m_StartDateIsSet)
+    if(m_Start_dateIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("startDate")), m_StartDate));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("start_date")), m_Start_date));
     }
-    if(m_EndDateIsSet)
+    if(m_End_dateIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("endDate")), m_EndDate));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("end_date")), m_End_date));
     }
 }
 
@@ -152,23 +152,23 @@ bool FinancialAccounts::fromMultiPart(std::shared_ptr<MultipartFormData> multipa
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("drn"))), refVal_drn );
         setDrn(refVal_drn);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("financialAccountDetailsRequired"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("required_details"))))
     {
-        std::vector<std::shared_ptr<FinancialAccountDetailsRequired>> refVal_financialAccountDetailsRequired;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("financialAccountDetailsRequired"))), refVal_financialAccountDetailsRequired );
-        setFinancialAccountDetailsRequired(refVal_financialAccountDetailsRequired);
+        std::vector<std::shared_ptr<FinancialAccountDetailsRequired>> refVal_required_details;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("required_details"))), refVal_required_details );
+        setRequiredDetails(refVal_required_details);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("startDate"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("start_date"))))
     {
-        utility::datetime refVal_startDate;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("startDate"))), refVal_startDate );
-        setStartDate(refVal_startDate);
+        utility::datetime refVal_start_date;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("start_date"))), refVal_start_date );
+        setStartDate(refVal_start_date);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("endDate"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("end_date"))))
     {
-        utility::datetime refVal_endDate;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("endDate"))), refVal_endDate );
-        setEndDate(refVal_endDate);
+        utility::datetime refVal_end_date;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("end_date"))), refVal_end_date );
+        setEndDate(refVal_end_date);
     }
     return ok;
 }
@@ -193,65 +193,65 @@ void FinancialAccounts::unsetDrn()
 {
     m_DrnIsSet = false;
 }
-std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& FinancialAccounts::getFinancialAccountDetailsRequired()
+std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& FinancialAccounts::getRequiredDetails()
 {
-    return m_FinancialAccountDetailsRequired;
+    return m_Required_details;
 }
 
-void FinancialAccounts::setFinancialAccountDetailsRequired(const std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& value)
+void FinancialAccounts::setRequiredDetails(const std::vector<std::shared_ptr<FinancialAccountDetailsRequired>>& value)
 {
-    m_FinancialAccountDetailsRequired = value;
-    m_FinancialAccountDetailsRequiredIsSet = true;
+    m_Required_details = value;
+    m_Required_detailsIsSet = true;
 }
 
-bool FinancialAccounts::financialAccountDetailsRequiredIsSet() const
+bool FinancialAccounts::requiredDetailsIsSet() const
 {
-    return m_FinancialAccountDetailsRequiredIsSet;
+    return m_Required_detailsIsSet;
 }
 
-void FinancialAccounts::unsetFinancialAccountDetailsRequired()
+void FinancialAccounts::unsetRequired_details()
 {
-    m_FinancialAccountDetailsRequiredIsSet = false;
+    m_Required_detailsIsSet = false;
 }
 utility::datetime FinancialAccounts::getStartDate() const
 {
-    return m_StartDate;
+    return m_Start_date;
 }
 
 void FinancialAccounts::setStartDate(const utility::datetime& value)
 {
-    m_StartDate = value;
-    m_StartDateIsSet = true;
+    m_Start_date = value;
+    m_Start_dateIsSet = true;
 }
 
 bool FinancialAccounts::startDateIsSet() const
 {
-    return m_StartDateIsSet;
+    return m_Start_dateIsSet;
 }
 
-void FinancialAccounts::unsetStartDate()
+void FinancialAccounts::unsetStart_date()
 {
-    m_StartDateIsSet = false;
+    m_Start_dateIsSet = false;
 }
 utility::datetime FinancialAccounts::getEndDate() const
 {
-    return m_EndDate;
+    return m_End_date;
 }
 
 void FinancialAccounts::setEndDate(const utility::datetime& value)
 {
-    m_EndDate = value;
-    m_EndDateIsSet = true;
+    m_End_date = value;
+    m_End_dateIsSet = true;
 }
 
 bool FinancialAccounts::endDateIsSet() const
 {
-    return m_EndDateIsSet;
+    return m_End_dateIsSet;
 }
 
-void FinancialAccounts::unsetEndDate()
+void FinancialAccounts::unsetEnd_date()
 {
-    m_EndDateIsSet = false;
+    m_End_dateIsSet = false;
 }
 }
 }

@@ -22,10 +22,10 @@ namespace models {
 
 Financial::Financial()
 {
-    m_AccountField = utility::conversions::to_string_t("");
-    m_AccountFieldIsSet = false;
-    m_CustomKey = utility::conversions::to_string_t("");
-    m_CustomKeyIsSet = false;
+    m_Field_name = utility::conversions::to_string_t("");
+    m_Field_nameIsSet = false;
+    m_Custom_key = utility::conversions::to_string_t("");
+    m_Custom_keyIsSet = false;
     m_AccountsIsSet = false;
     m_RequirementIsSet = false;
 }
@@ -44,13 +44,13 @@ web::json::value Financial::toJson() const
 
     web::json::value val = web::json::value::object();
     
-    if(m_AccountFieldIsSet)
+    if(m_Field_nameIsSet)
     {
-        val[utility::conversions::to_string_t(U("accountField"))] = ModelBase::toJson(m_AccountField);
+        val[utility::conversions::to_string_t(U("field_name"))] = ModelBase::toJson(m_Field_name);
     }
-    if(m_CustomKeyIsSet)
+    if(m_Custom_keyIsSet)
     {
-        val[utility::conversions::to_string_t(U("customKey"))] = ModelBase::toJson(m_CustomKey);
+        val[utility::conversions::to_string_t(U("custom_key"))] = ModelBase::toJson(m_Custom_key);
     }
     if(m_AccountsIsSet)
     {
@@ -68,24 +68,24 @@ bool Financial::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("accountField"))))
+    if(val.has_field(utility::conversions::to_string_t(U("field_name"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("accountField")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("field_name")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_accountField;
-            ok &= ModelBase::fromJson(fieldValue, refVal_accountField);
-            setAccountField(refVal_accountField);
+            utility::string_t refVal_field_name;
+            ok &= ModelBase::fromJson(fieldValue, refVal_field_name);
+            setFieldName(refVal_field_name);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("customKey"))))
+    if(val.has_field(utility::conversions::to_string_t(U("custom_key"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("customKey")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("custom_key")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_customKey;
-            ok &= ModelBase::fromJson(fieldValue, refVal_customKey);
-            setCustomKey(refVal_customKey);
+            utility::string_t refVal_custom_key;
+            ok &= ModelBase::fromJson(fieldValue, refVal_custom_key);
+            setCustomKey(refVal_custom_key);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("accounts"))))
@@ -118,13 +118,13 @@ void Financial::toMultipart(std::shared_ptr<MultipartFormData> multipart, const 
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
-    if(m_AccountFieldIsSet)
+    if(m_Field_nameIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("accountField")), m_AccountField));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("field_name")), m_Field_name));
     }
-    if(m_CustomKeyIsSet)
+    if(m_Custom_keyIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("customKey")), m_CustomKey));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("custom_key")), m_Custom_key));
     }
     if(m_AccountsIsSet)
     {
@@ -145,17 +145,17 @@ bool Financial::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, cons
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(U("accountField"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("field_name"))))
     {
-        utility::string_t refVal_accountField;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("accountField"))), refVal_accountField );
-        setAccountField(refVal_accountField);
+        utility::string_t refVal_field_name;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("field_name"))), refVal_field_name );
+        setFieldName(refVal_field_name);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("customKey"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("custom_key"))))
     {
-        utility::string_t refVal_customKey;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("customKey"))), refVal_customKey );
-        setCustomKey(refVal_customKey);
+        utility::string_t refVal_custom_key;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("custom_key"))), refVal_custom_key );
+        setCustomKey(refVal_custom_key);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("accounts"))))
     {
@@ -172,45 +172,45 @@ bool Financial::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, cons
     return ok;
 }
 
-utility::string_t Financial::getAccountField() const
+utility::string_t Financial::getFieldName() const
 {
-    return m_AccountField;
+    return m_Field_name;
 }
 
-void Financial::setAccountField(const utility::string_t& value)
+void Financial::setFieldName(const utility::string_t& value)
 {
-    m_AccountField = value;
-    m_AccountFieldIsSet = true;
+    m_Field_name = value;
+    m_Field_nameIsSet = true;
 }
 
-bool Financial::accountFieldIsSet() const
+bool Financial::fieldNameIsSet() const
 {
-    return m_AccountFieldIsSet;
+    return m_Field_nameIsSet;
 }
 
-void Financial::unsetAccountField()
+void Financial::unsetField_name()
 {
-    m_AccountFieldIsSet = false;
+    m_Field_nameIsSet = false;
 }
 utility::string_t Financial::getCustomKey() const
 {
-    return m_CustomKey;
+    return m_Custom_key;
 }
 
 void Financial::setCustomKey(const utility::string_t& value)
 {
-    m_CustomKey = value;
-    m_CustomKeyIsSet = true;
+    m_Custom_key = value;
+    m_Custom_keyIsSet = true;
 }
 
 bool Financial::customKeyIsSet() const
 {
-    return m_CustomKeyIsSet;
+    return m_Custom_keyIsSet;
 }
 
-void Financial::unsetCustomKey()
+void Financial::unsetCustom_key()
 {
-    m_CustomKeyIsSet = false;
+    m_Custom_keyIsSet = false;
 }
 std::vector<std::shared_ptr<FinancialAccounts>>& Financial::getAccounts()
 {

@@ -59,7 +59,7 @@ public:
     /// </summary>
     utility::string_t getFieldTitle() const;
     bool fieldTitleIsSet() const;
-    void unsetFieldTitle();
+    void unsetField_title();
 
     void setFieldTitle(const utility::string_t& value);
 
@@ -68,7 +68,7 @@ public:
     /// </summary>
     utility::string_t getFieldSlug() const;
     bool fieldSlugIsSet() const;
-    void unsetFieldSlug();
+    void unsetField_slug();
 
     void setFieldSlug(const utility::string_t& value);
 
@@ -92,10 +92,10 @@ public:
 
 
 protected:
-    utility::string_t m_FieldTitle;
-    bool m_FieldTitleIsSet;
-    utility::string_t m_FieldSlug;
-    bool m_FieldSlugIsSet;
+    utility::string_t m_Field_title;
+    bool m_Field_titleIsSet;
+    utility::string_t m_Field_slug;
+    bool m_Field_slugIsSet;
     std::vector<utility::string_t> m_Drn;
     bool m_DrnIsSet;
     std::shared_ptr<DocumentsRequired> m_Requirement;
