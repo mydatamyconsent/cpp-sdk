@@ -12,7 +12,7 @@
 
 
 
-#include "DataConsentRequestModel.h"
+#include "CreateOrganizationDataConsentRequest.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -20,23 +20,23 @@ namespace models {
 
 
 
-DataConsentRequestModel::DataConsentRequestModel()
+CreateOrganizationDataConsentRequest::CreateOrganizationDataConsentRequest()
 {
     m_ConsentTemplateId = utility::conversions::to_string_t("");
     m_ConsentTemplateIdIsSet = false;
     m_ReceiverIsSet = false;
 }
 
-DataConsentRequestModel::~DataConsentRequestModel()
+CreateOrganizationDataConsentRequest::~CreateOrganizationDataConsentRequest()
 {
 }
 
-void DataConsentRequestModel::validate()
+void CreateOrganizationDataConsentRequest::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value DataConsentRequestModel::toJson() const
+web::json::value CreateOrganizationDataConsentRequest::toJson() const
 {
 
     web::json::value val = web::json::value::object();
@@ -53,7 +53,7 @@ web::json::value DataConsentRequestModel::toJson() const
     return val;
 }
 
-bool DataConsentRequestModel::fromJson(const web::json::value& val)
+bool CreateOrganizationDataConsentRequest::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
@@ -80,7 +80,7 @@ bool DataConsentRequestModel::fromJson(const web::json::value& val)
     return ok;
 }
 
-void DataConsentRequestModel::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void CreateOrganizationDataConsentRequest::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
@@ -97,7 +97,7 @@ void DataConsentRequestModel::toMultipart(std::shared_ptr<MultipartFormData> mul
     }
 }
 
-bool DataConsentRequestModel::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool CreateOrganizationDataConsentRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -121,43 +121,43 @@ bool DataConsentRequestModel::fromMultiPart(std::shared_ptr<MultipartFormData> m
     return ok;
 }
 
-utility::string_t DataConsentRequestModel::getConsentTemplateId() const
+utility::string_t CreateOrganizationDataConsentRequest::getConsentTemplateId() const
 {
     return m_ConsentTemplateId;
 }
 
-void DataConsentRequestModel::setConsentTemplateId(const utility::string_t& value)
+void CreateOrganizationDataConsentRequest::setConsentTemplateId(const utility::string_t& value)
 {
     m_ConsentTemplateId = value;
     m_ConsentTemplateIdIsSet = true;
 }
 
-bool DataConsentRequestModel::consentTemplateIdIsSet() const
+bool CreateOrganizationDataConsentRequest::consentTemplateIdIsSet() const
 {
     return m_ConsentTemplateIdIsSet;
 }
 
-void DataConsentRequestModel::unsetConsentTemplateId()
+void CreateOrganizationDataConsentRequest::unsetConsentTemplateId()
 {
     m_ConsentTemplateIdIsSet = false;
 }
-std::shared_ptr<Receiver> DataConsentRequestModel::getReceiver() const
+std::shared_ptr<Receiver> CreateOrganizationDataConsentRequest::getReceiver() const
 {
     return m_Receiver;
 }
 
-void DataConsentRequestModel::setReceiver(const std::shared_ptr<Receiver>& value)
+void CreateOrganizationDataConsentRequest::setReceiver(const std::shared_ptr<Receiver>& value)
 {
     m_Receiver = value;
     m_ReceiverIsSet = true;
 }
 
-bool DataConsentRequestModel::receiverIsSet() const
+bool CreateOrganizationDataConsentRequest::receiverIsSet() const
 {
     return m_ReceiverIsSet;
 }
 
-void DataConsentRequestModel::unsetReceiver()
+void CreateOrganizationDataConsentRequest::unsetReceiver()
 {
     m_ReceiverIsSet = false;
 }

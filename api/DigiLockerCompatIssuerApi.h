@@ -44,13 +44,13 @@ public:
     virtual ~DigiLockerCompatIssuerApi();
 
     /// <summary>
-    /// Digilocker Compatible endpoint to Issue Documents.
+    /// Digilocker Compatible endpoint to issue document.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="pushUriRequest"> (optional)</param>
-    pplx::task<std::shared_ptr<PushUriResponse>> issuerIssuedoc1XmlPost(
+    /// <param name="pushUriRequest">Push uri request MyDataMyConsent.Models.DigiLocker.PushUriRequest. (optional)</param>
+    pplx::task<std::shared_ptr<PushUriResponse>> digilockerCompatIssueDocument(
         boost::optional<std::shared_ptr<PushUriRequest>> pushUriRequest
     ) const;
 

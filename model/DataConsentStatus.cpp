@@ -35,6 +35,8 @@ DataConsentStatus::eDataConsentStatus toEnum(const EnumUnderlyingType& val)
         return DataConsentStatus::eDataConsentStatus::DataConsentStatus_REVOKED;
     if (val == utility::conversions::to_string_t(U("Expired")))
         return DataConsentStatus::eDataConsentStatus::DataConsentStatus_EXPIRED;
+    if (val == utility::conversions::to_string_t(U("Canceled")))
+        return DataConsentStatus::eDataConsentStatus::DataConsentStatus_CANCELED;
     return {};
 }
 
@@ -52,6 +54,8 @@ EnumUnderlyingType fromEnum(DataConsentStatus::eDataConsentStatus e)
         return U("Revoked");
     case DataConsentStatus::eDataConsentStatus::DataConsentStatus_EXPIRED:
         return U("Expired");
+    case DataConsentStatus::eDataConsentStatus::DataConsentStatus_CANCELED:
+        return U("Canceled");
     default:
         break;
     }

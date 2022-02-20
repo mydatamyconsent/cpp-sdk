@@ -44,23 +44,13 @@ public:
     virtual ~DocumentsApi();
 
     /// <summary>
-    /// Issue a new document.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="documentIssueRequest"> (optional)</param>
-    pplx::task<bool> issueDocument(
-        boost::optional<std::shared_ptr<DocumentIssueRequest>> documentIssueRequest
-    ) const;
-    /// <summary>
     /// Get issued document.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="documentId">Document id.</param>
-    pplx::task<void> v1DocumentsIssuedDocumentIdGet(
+    pplx::task<void> getIssuedDocumentById(
         utility::string_t documentId
     ) const;
     /// <summary>
@@ -74,7 +64,7 @@ public:
     /// <param name="toDateTime"> (optional, default to utility::datetime())</param>
     /// <param name="pageSize"> (optional, default to 0)</param>
     /// <param name="pageNo"> (optional, default to 0)</param>
-    pplx::task<void> v1DocumentsIssuedGet(
+    pplx::task<void> getIssuedDocuments(
         boost::optional<utility::string_t> documentTypeId,
         boost::optional<utility::datetime> fromDateTime,
         boost::optional<utility::datetime> toDateTime,
@@ -89,9 +79,19 @@ public:
     /// </remarks>
     /// <param name="pageSize"> (optional, default to 0)</param>
     /// <param name="pageNo"> (optional, default to 0)</param>
-    pplx::task<void> v1DocumentsTypesGet(
+    pplx::task<void> getRegisteredDocumentTypes(
         boost::optional<int32_t> pageSize,
         boost::optional<int32_t> pageNo
+    ) const;
+    /// <summary>
+    /// Issue a new document.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="documentIssueRequest">Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest.</param>
+    pplx::task<bool> issueDocument(
+        std::shared_ptr<DocumentIssueRequest> documentIssueRequest
     ) const;
 
 protected:

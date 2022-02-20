@@ -102,11 +102,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getExpiresAtUtc() const;
+    utility::datetime getExpiresAtUtc() const;
     bool expiresAtUtcIsSet() const;
     void unsetExpiresAtUtc();
 
-    void setExpiresAtUtc(const utility::string_t& value);
+    void setExpiresAtUtc(const utility::datetime& value);
 
     /// <summary>
     /// 
@@ -138,7 +138,7 @@ protected:
     bool m_DescriptionIsSet;
     std::shared_ptr<Receiver> m_Receiver;
     bool m_ReceiverIsSet;
-    utility::string_t m_ExpiresAtUtc;
+    utility::datetime m_ExpiresAtUtc;
     bool m_ExpiresAtUtcIsSet;
     utility::string_t m_Base64PdfDocument;
     bool m_Base64PdfDocumentIsSet;

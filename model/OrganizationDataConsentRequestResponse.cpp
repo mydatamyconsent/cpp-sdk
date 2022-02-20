@@ -12,7 +12,7 @@
 
 
 
-#include "DataConsentRequest.h"
+#include "OrganizationDataConsentRequestResponse.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -20,7 +20,7 @@ namespace models {
 
 
 
-DataConsentRequest::DataConsentRequest()
+OrganizationDataConsentRequestResponse::OrganizationDataConsentRequestResponse()
 {
     m_Id = utility::conversions::to_string_t("");
     m_IdIsSet = false;
@@ -28,22 +28,23 @@ DataConsentRequest::DataConsentRequest()
     m_TemplateIdIsSet = false;
     m_RequestedAtUtc = utility::datetime();
     m_RequestedAtUtcIsSet = false;
-    m_RequestExpiredAtUtc = utility::datetime();
-    m_RequestExpiredAtUtcIsSet = false;
+    m_RequestExpiresAtUtc = utility::datetime();
+    m_RequestExpiresAtUtcIsSet = false;
+    m_StatusIsSet = false;
     m_TransactionId = utility::conversions::to_string_t("");
     m_TransactionIdIsSet = false;
 }
 
-DataConsentRequest::~DataConsentRequest()
+OrganizationDataConsentRequestResponse::~OrganizationDataConsentRequestResponse()
 {
 }
 
-void DataConsentRequest::validate()
+void OrganizationDataConsentRequestResponse::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value DataConsentRequest::toJson() const
+web::json::value OrganizationDataConsentRequestResponse::toJson() const
 {
 
     web::json::value val = web::json::value::object();
@@ -60,9 +61,13 @@ web::json::value DataConsentRequest::toJson() const
     {
         val[utility::conversions::to_string_t(U("requestedAtUtc"))] = ModelBase::toJson(m_RequestedAtUtc);
     }
-    if(m_RequestExpiredAtUtcIsSet)
+    if(m_RequestExpiresAtUtcIsSet)
     {
-        val[utility::conversions::to_string_t(U("requestExpiredAtUtc"))] = ModelBase::toJson(m_RequestExpiredAtUtc);
+        val[utility::conversions::to_string_t(U("requestExpiresAtUtc"))] = ModelBase::toJson(m_RequestExpiresAtUtc);
+    }
+    if(m_StatusIsSet)
+    {
+        val[utility::conversions::to_string_t(U("status"))] = ModelBase::toJson(m_Status);
     }
     if(m_TransactionIdIsSet)
     {
@@ -72,7 +77,7 @@ web::json::value DataConsentRequest::toJson() const
     return val;
 }
 
-bool DataConsentRequest::fromJson(const web::json::value& val)
+bool OrganizationDataConsentRequestResponse::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
@@ -106,14 +111,24 @@ bool DataConsentRequest::fromJson(const web::json::value& val)
             setRequestedAtUtc(refVal_requestedAtUtc);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("requestExpiredAtUtc"))))
+    if(val.has_field(utility::conversions::to_string_t(U("requestExpiresAtUtc"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requestExpiredAtUtc")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requestExpiresAtUtc")));
         if(!fieldValue.is_null())
         {
-            utility::datetime refVal_requestExpiredAtUtc;
-            ok &= ModelBase::fromJson(fieldValue, refVal_requestExpiredAtUtc);
-            setRequestExpiredAtUtc(refVal_requestExpiredAtUtc);
+            utility::datetime refVal_requestExpiresAtUtc;
+            ok &= ModelBase::fromJson(fieldValue, refVal_requestExpiresAtUtc);
+            setRequestExpiresAtUtc(refVal_requestExpiresAtUtc);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("status"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("status")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<DataConsentStatus> refVal_status;
+            ok &= ModelBase::fromJson(fieldValue, refVal_status);
+            setStatus(refVal_status);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("transactionId"))))
@@ -129,7 +144,7 @@ bool DataConsentRequest::fromJson(const web::json::value& val)
     return ok;
 }
 
-void DataConsentRequest::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void OrganizationDataConsentRequestResponse::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
@@ -148,9 +163,13 @@ void DataConsentRequest::toMultipart(std::shared_ptr<MultipartFormData> multipar
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requestedAtUtc")), m_RequestedAtUtc));
     }
-    if(m_RequestExpiredAtUtcIsSet)
+    if(m_RequestExpiresAtUtcIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requestExpiredAtUtc")), m_RequestExpiredAtUtc));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requestExpiresAtUtc")), m_RequestExpiresAtUtc));
+    }
+    if(m_StatusIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("status")), m_Status));
     }
     if(m_TransactionIdIsSet)
     {
@@ -158,7 +177,7 @@ void DataConsentRequest::toMultipart(std::shared_ptr<MultipartFormData> multipar
     }
 }
 
-bool DataConsentRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool OrganizationDataConsentRequestResponse::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -185,11 +204,17 @@ bool DataConsentRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requestedAtUtc"))), refVal_requestedAtUtc );
         setRequestedAtUtc(refVal_requestedAtUtc);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("requestExpiredAtUtc"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("requestExpiresAtUtc"))))
     {
-        utility::datetime refVal_requestExpiredAtUtc;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requestExpiredAtUtc"))), refVal_requestExpiredAtUtc );
-        setRequestExpiredAtUtc(refVal_requestExpiredAtUtc);
+        utility::datetime refVal_requestExpiresAtUtc;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requestExpiresAtUtc"))), refVal_requestExpiresAtUtc );
+        setRequestExpiresAtUtc(refVal_requestExpiresAtUtc);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("status"))))
+    {
+        std::shared_ptr<DataConsentStatus> refVal_status;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("status"))), refVal_status );
+        setStatus(refVal_status);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("transactionId"))))
     {
@@ -200,103 +225,123 @@ bool DataConsentRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multip
     return ok;
 }
 
-utility::string_t DataConsentRequest::getId() const
+utility::string_t OrganizationDataConsentRequestResponse::getId() const
 {
     return m_Id;
 }
 
-void DataConsentRequest::setId(const utility::string_t& value)
+void OrganizationDataConsentRequestResponse::setId(const utility::string_t& value)
 {
     m_Id = value;
     m_IdIsSet = true;
 }
 
-bool DataConsentRequest::idIsSet() const
+bool OrganizationDataConsentRequestResponse::idIsSet() const
 {
     return m_IdIsSet;
 }
 
-void DataConsentRequest::unsetId()
+void OrganizationDataConsentRequestResponse::unsetId()
 {
     m_IdIsSet = false;
 }
-utility::string_t DataConsentRequest::getTemplateId() const
+utility::string_t OrganizationDataConsentRequestResponse::getTemplateId() const
 {
     return m_TemplateId;
 }
 
-void DataConsentRequest::setTemplateId(const utility::string_t& value)
+void OrganizationDataConsentRequestResponse::setTemplateId(const utility::string_t& value)
 {
     m_TemplateId = value;
     m_TemplateIdIsSet = true;
 }
 
-bool DataConsentRequest::templateIdIsSet() const
+bool OrganizationDataConsentRequestResponse::templateIdIsSet() const
 {
     return m_TemplateIdIsSet;
 }
 
-void DataConsentRequest::unsetTemplateId()
+void OrganizationDataConsentRequestResponse::unsetTemplateId()
 {
     m_TemplateIdIsSet = false;
 }
-utility::datetime DataConsentRequest::getRequestedAtUtc() const
+utility::datetime OrganizationDataConsentRequestResponse::getRequestedAtUtc() const
 {
     return m_RequestedAtUtc;
 }
 
-void DataConsentRequest::setRequestedAtUtc(const utility::datetime& value)
+void OrganizationDataConsentRequestResponse::setRequestedAtUtc(const utility::datetime& value)
 {
     m_RequestedAtUtc = value;
     m_RequestedAtUtcIsSet = true;
 }
 
-bool DataConsentRequest::requestedAtUtcIsSet() const
+bool OrganizationDataConsentRequestResponse::requestedAtUtcIsSet() const
 {
     return m_RequestedAtUtcIsSet;
 }
 
-void DataConsentRequest::unsetRequestedAtUtc()
+void OrganizationDataConsentRequestResponse::unsetRequestedAtUtc()
 {
     m_RequestedAtUtcIsSet = false;
 }
-utility::datetime DataConsentRequest::getRequestExpiredAtUtc() const
+utility::datetime OrganizationDataConsentRequestResponse::getRequestExpiresAtUtc() const
 {
-    return m_RequestExpiredAtUtc;
+    return m_RequestExpiresAtUtc;
 }
 
-void DataConsentRequest::setRequestExpiredAtUtc(const utility::datetime& value)
+void OrganizationDataConsentRequestResponse::setRequestExpiresAtUtc(const utility::datetime& value)
 {
-    m_RequestExpiredAtUtc = value;
-    m_RequestExpiredAtUtcIsSet = true;
+    m_RequestExpiresAtUtc = value;
+    m_RequestExpiresAtUtcIsSet = true;
 }
 
-bool DataConsentRequest::requestExpiredAtUtcIsSet() const
+bool OrganizationDataConsentRequestResponse::requestExpiresAtUtcIsSet() const
 {
-    return m_RequestExpiredAtUtcIsSet;
+    return m_RequestExpiresAtUtcIsSet;
 }
 
-void DataConsentRequest::unsetRequestExpiredAtUtc()
+void OrganizationDataConsentRequestResponse::unsetRequestExpiresAtUtc()
 {
-    m_RequestExpiredAtUtcIsSet = false;
+    m_RequestExpiresAtUtcIsSet = false;
 }
-utility::string_t DataConsentRequest::getTransactionId() const
+std::shared_ptr<DataConsentStatus> OrganizationDataConsentRequestResponse::getStatus() const
+{
+    return m_Status;
+}
+
+void OrganizationDataConsentRequestResponse::setStatus(const std::shared_ptr<DataConsentStatus>& value)
+{
+    m_Status = value;
+    m_StatusIsSet = true;
+}
+
+bool OrganizationDataConsentRequestResponse::statusIsSet() const
+{
+    return m_StatusIsSet;
+}
+
+void OrganizationDataConsentRequestResponse::unsetStatus()
+{
+    m_StatusIsSet = false;
+}
+utility::string_t OrganizationDataConsentRequestResponse::getTransactionId() const
 {
     return m_TransactionId;
 }
 
-void DataConsentRequest::setTransactionId(const utility::string_t& value)
+void OrganizationDataConsentRequestResponse::setTransactionId(const utility::string_t& value)
 {
     m_TransactionId = value;
     m_TransactionIdIsSet = true;
 }
 
-bool DataConsentRequest::transactionIdIsSet() const
+bool OrganizationDataConsentRequestResponse::transactionIdIsSet() const
 {
     return m_TransactionIdIsSet;
 }
 
-void DataConsentRequest::unsetTransactionId()
+void OrganizationDataConsentRequestResponse::unsetTransactionId()
 {
     m_TransactionIdIsSet = false;
 }

@@ -31,7 +31,7 @@ DocumentIssueRequest::DocumentIssueRequest()
     m_Description = utility::conversions::to_string_t("");
     m_DescriptionIsSet = false;
     m_ReceiverIsSet = false;
-    m_ExpiresAtUtc = utility::conversions::to_string_t("");
+    m_ExpiresAtUtc = utility::datetime();
     m_ExpiresAtUtcIsSet = false;
     m_Base64PdfDocument = utility::conversions::to_string_t("");
     m_Base64PdfDocumentIsSet = false;
@@ -147,7 +147,7 @@ bool DocumentIssueRequest::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("expiresAtUtc")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_expiresAtUtc;
+            utility::datetime refVal_expiresAtUtc;
             ok &= ModelBase::fromJson(fieldValue, refVal_expiresAtUtc);
             setExpiresAtUtc(refVal_expiresAtUtc);
         }
@@ -257,7 +257,7 @@ bool DocumentIssueRequest::fromMultiPart(std::shared_ptr<MultipartFormData> mult
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("expiresAtUtc"))))
     {
-        utility::string_t refVal_expiresAtUtc;
+        utility::datetime refVal_expiresAtUtc;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("expiresAtUtc"))), refVal_expiresAtUtc );
         setExpiresAtUtc(refVal_expiresAtUtc);
     }
@@ -376,12 +376,12 @@ void DocumentIssueRequest::unsetReceiver()
 {
     m_ReceiverIsSet = false;
 }
-utility::string_t DocumentIssueRequest::getExpiresAtUtc() const
+utility::datetime DocumentIssueRequest::getExpiresAtUtc() const
 {
     return m_ExpiresAtUtc;
 }
 
-void DocumentIssueRequest::setExpiresAtUtc(const utility::string_t& value)
+void DocumentIssueRequest::setExpiresAtUtc(const utility::datetime& value)
 {
     m_ExpiresAtUtc = value;
     m_ExpiresAtUtcIsSet = true;

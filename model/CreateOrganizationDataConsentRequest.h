@@ -11,13 +11,13 @@
  */
 
 /*
- * DataConsentRequestModel.h
+ * CreateOrganizationDataConsentRequest.h
  *
- * 
+ * Organization Data Consent Request.
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_
+#ifndef MYDATAMYCONSENT_MODELS_CreateOrganizationDataConsentRequest_H_
+#define MYDATAMYCONSENT_MODELS_CreateOrganizationDataConsentRequest_H_
 
 
 #include "ModelBase.h"
@@ -30,14 +30,14 @@ namespace models {
 
 
 /// <summary>
-/// 
+/// Organization Data Consent Request.
 /// </summary>
-class  DataConsentRequestModel
+class  CreateOrganizationDataConsentRequest
     : public ModelBase
 {
 public:
-    DataConsentRequestModel();
-    virtual ~DataConsentRequestModel();
+    CreateOrganizationDataConsentRequest();
+    virtual ~CreateOrganizationDataConsentRequest();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,7 +51,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestModel members
+    /// CreateOrganizationDataConsentRequest members
 
     /// <summary>
     /// 
@@ -83,4 +83,4 @@ protected:
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestModel_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_CreateOrganizationDataConsentRequest_H_ */

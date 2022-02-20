@@ -47,16 +47,14 @@ public:
     virtual ~DataProcessingAgreementsApi();
 
     /// <summary>
-    /// Get all data processing agreements.
+    /// Create a data processing agreement.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="pageNo">Page number. (optional, default to 0)</param>
-    /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementDtoPaginatedList>> v1DataAgreementsGet(
-        boost::optional<int32_t> pageNo,
-        boost::optional<int32_t> pageSize
+    /// <param name="createDataProcessingAgreementRequestModel">Create data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.CreateDataProcessingAgreementRequestModel. (optional)</param>
+    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> createDataProcessingAgreement(
+        boost::optional<std::shared_ptr<CreateDataProcessingAgreementRequestModel>> createDataProcessingAgreementRequestModel
     ) const;
     /// <summary>
     /// Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
@@ -64,18 +62,40 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<void> v1DataAgreementsIdDelete(
+    /// <param name="id">Agreement id.</param>
+    pplx::task<void> deleteDataProcessingAgreementById(
         utility::string_t id
     ) const;
     /// <summary>
-    /// Get data processing agreement by Id.
+    /// Get data processing agreement by id.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> v1DataAgreementsIdGet(
+    /// <param name="id">Agreement id.</param>
+    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> getDataProcessingAgreementById(
+        utility::string_t id
+    ) const;
+    /// <summary>
+    /// Get all data processing agreements.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="pageNo">Page number. (optional, default to 0)</param>
+    /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
+    pplx::task<std::shared_ptr<DataProcessingAgreementDtoPaginatedList>> getDataProcessingAgreements(
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize
+    ) const;
+    /// <summary>
+    /// Terminate a data processing agreement.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="id">Agreement id.</param>
+    pplx::task<void> terminateDataProcessingAgreementById(
         utility::string_t id
     ) const;
     /// <summary>
@@ -84,31 +104,11 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="id"></param>
-    /// <param name="updateDataProcessingAgreementRequestModel"> (optional)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> v1DataAgreementsIdPut(
+    /// <param name="id">Agreement id.</param>
+    /// <param name="updateDataProcessingAgreementRequestModel">Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel. (optional)</param>
+    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> updateDataProcessingAgreement(
         utility::string_t id,
         boost::optional<std::shared_ptr<UpdateDataProcessingAgreementRequestModel>> updateDataProcessingAgreementRequestModel
-    ) const;
-    /// <summary>
-    /// Terminate a data processing agreement.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="id"></param>
-    pplx::task<void> v1DataAgreementsIdTerminatePut(
-        utility::string_t id
-    ) const;
-    /// <summary>
-    /// Create a data processing agreement.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="createDataProcessingAgreementRequestModel"> (optional)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> v1DataAgreementsPost(
-        boost::optional<std::shared_ptr<CreateDataProcessingAgreementRequestModel>> createDataProcessingAgreementRequestModel
     ) const;
 
 protected:

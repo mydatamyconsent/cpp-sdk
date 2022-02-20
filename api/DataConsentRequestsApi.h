@@ -23,12 +23,15 @@
 
 #include "ApiClient.h"
 
+#include "model/CreateIndividualDataConsentRequest.h"
+#include "model/CreateOrganizationDataConsentRequest.h"
 #include "model/DataConsentDetailsDto.h"
-#include "model/DataConsentRequest.h"
-#include "model/DataConsentRequestModel.h"
 #include "model/DataConsentStatus.h"
-#include "Object.h"
+#include "model/IndividualDataConsentRequestResponse.h"
+#include "model/OrganizationDataConsentInfoDtoPaginatedList.h"
+#include "model/OrganizationDataConsentRequestResponse.h"
 #include "model/ProblemDetails.h"
+#include "model/UserDataConsentInfoDtoPaginatedList.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -48,24 +51,44 @@ public:
     virtual ~DataConsentRequestsApi();
 
     /// <summary>
-    /// Revoke / Cancel the ConsentRequest based on Id.
+    /// Cancel the individual data consent request based on Id.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="requestId"></param>
-    pplx::task<bool> cancelConsentRequest(
+    /// <param name="requestId">Individual consent request id.</param>
+    pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> cancelIndividualDataConsentRequest(
         utility::string_t requestId
     ) const;
     /// <summary>
-    /// Create a consent request.
+    /// Cancel the Organization data consent request based on Id.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="dataConsentRequestModel">MyDataMyConsent.Models.Consents.DataConsentRequestModel. (optional)</param>
-    pplx::task<std::shared_ptr<DataConsentRequest>> createRequest(
-        boost::optional<std::shared_ptr<DataConsentRequestModel>> dataConsentRequestModel
+    /// <param name="requestId">Organization consent request id.</param>
+    pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> cancelOrganizationDataConsentRequest(
+        utility::string_t requestId
+    ) const;
+    /// <summary>
+    /// Create a individual data consent request.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="createIndividualDataConsentRequest">M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateIndividualDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateIndividualDataConsentRequest).</param>
+    pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> createIndividualDataConsentRequest(
+        std::shared_ptr<CreateIndividualDataConsentRequest> createIndividualDataConsentRequest
+    ) const;
+    /// <summary>
+    /// Create a organization data consent request.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="createOrganizationDataConsentRequest">M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest).</param>
+    pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> createOrganizationDataConsentRequest(
+        std::shared_ptr<CreateOrganizationDataConsentRequest> createOrganizationDataConsentRequest
     ) const;
     /// <summary>
     /// Get all Consent Requests sent to Individuals.
@@ -73,27 +96,35 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="pageNo"> (optional, default to 0)</param>
-    /// <param name="pageSize"> (optional, default to 0)</param>
-    /// <param name="status"> (optional, default to new DataConsentStatus())</param>
-    pplx::task<std::shared_ptr<Object>> getAllConsentRequestsToIndividuals(
+    /// <param name="status">Data consent status. (optional, default to new DataConsentStatus())</param>
+    /// <param name="startDateTime">Start date time. (optional, default to utility::datetime())</param>
+    /// <param name="endDateTime">End date time. (optional, default to utility::datetime())</param>
+    /// <param name="pageNo">Page no. (optional, default to 0)</param>
+    /// <param name="pageSize">Page size. (optional, default to 0)</param>
+    pplx::task<std::shared_ptr<UserDataConsentInfoDtoPaginatedList>> getAllConsentRequestsToIndividuals(
+        boost::optional<std::shared_ptr<DataConsentStatus>> status,
+        boost::optional<utility::datetime> startDateTime,
+        boost::optional<utility::datetime> endDateTime,
         boost::optional<int32_t> pageNo,
-        boost::optional<int32_t> pageSize,
-        boost::optional<std::shared_ptr<DataConsentStatus>> status
+        boost::optional<int32_t> pageSize
     ) const;
     /// <summary>
-    /// Get All Consent Requests sent to Organizations
+    /// Get All Consent Requests sent to Organizations.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="pageNo"> (optional, default to 0)</param>
-    /// <param name="pageSize"> (optional, default to 0)</param>
-    /// <param name="status"> (optional, default to new DataConsentStatus())</param>
-    pplx::task<std::shared_ptr<Object>> getAllConsentRequestsToOrganizations(
+    /// <param name="status">Data consent status. (optional, default to new DataConsentStatus())</param>
+    /// <param name="startDateTime">Start date time. (optional, default to utility::datetime())</param>
+    /// <param name="endDateTime">End date time. (optional, default to utility::datetime())</param>
+    /// <param name="pageNo">Page no. (optional, default to 0)</param>
+    /// <param name="pageSize">Page size. (optional, default to 0)</param>
+    pplx::task<std::shared_ptr<OrganizationDataConsentInfoDtoPaginatedList>> getAllConsentRequestsToOrganizations(
+        boost::optional<std::shared_ptr<DataConsentStatus>> status,
+        boost::optional<utility::datetime> startDateTime,
+        boost::optional<utility::datetime> endDateTime,
         boost::optional<int32_t> pageNo,
-        boost::optional<int32_t> pageSize,
-        boost::optional<std::shared_ptr<DataConsentStatus>> status
+        boost::optional<int32_t> pageSize
     ) const;
     /// <summary>
     /// Get a Consent Request by ID.
@@ -101,17 +132,17 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="requestId"></param>
+    /// <param name="requestId">Individual consent request id.</param>
     pplx::task<std::shared_ptr<DataConsentDetailsDto>> getIndividualConsentRequestById(
         utility::string_t requestId
     ) const;
     /// <summary>
-    /// Get a OrganizationConsent Request by Id
+    /// Get a OrganizationConsent Request by Id.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="requestId"></param>
+    /// <param name="requestId">Organization consent request id.</param>
     pplx::task<std::shared_ptr<DataConsentDetailsDto>> getOrganizationConsentRequestById(
         utility::string_t requestId
     ) const;

@@ -34,7 +34,7 @@ DigiLockerCompatIssuerApi::~DigiLockerCompatIssuerApi()
 {
 }
 
-pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::issuerIssuedoc1XmlPost(boost::optional<std::shared_ptr<PushUriRequest>> pushUriRequest) const
+pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::digilockerCompatIssueDocument(boost::optional<std::shared_ptr<PushUriRequest>> pushUriRequest) const
 {
 
 
@@ -68,7 +68,7 @@ pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::issuerIs
     }
     else
     {
-        throw ApiException(400, utility::conversions::to_string_t("DigiLockerCompatIssuerApi->issuerIssuedoc1XmlPost does not produce any supported media type"));
+        throw ApiException(400, utility::conversions::to_string_t("DigiLockerCompatIssuerApi->digilockerCompatIssueDocument does not produce any supported media type"));
     }
 
     localVarHeaderParams[utility::conversions::to_string_t("Accept")] = localVarResponseHttpContentType;
@@ -112,7 +112,7 @@ pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::issuerIs
     }
     else
     {
-        throw ApiException(415, utility::conversions::to_string_t("DigiLockerCompatIssuerApi->issuerIssuedoc1XmlPost does not consume any supported media type"));
+        throw ApiException(415, utility::conversions::to_string_t("DigiLockerCompatIssuerApi->digilockerCompatIssueDocument does not consume any supported media type"));
     }
 
 
@@ -132,7 +132,7 @@ pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::issuerIs
         if (localVarResponse.status_code() >= 400)
         {
             throw ApiException(localVarResponse.status_code()
-                , utility::conversions::to_string_t("error calling issuerIssuedoc1XmlPost: ") + localVarResponse.reason_phrase()
+                , utility::conversions::to_string_t("error calling digilockerCompatIssueDocument: ") + localVarResponse.reason_phrase()
                 , std::make_shared<std::stringstream>(localVarResponse.extract_utf8string(true).get()));
         }
 
@@ -143,7 +143,7 @@ pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::issuerIs
             if( localVarContentType.find(localVarResponseHttpContentType) == std::string::npos )
             {
                 throw ApiException(500
-                    , utility::conversions::to_string_t("error calling issuerIssuedoc1XmlPost: unexpected response type: ") + localVarContentType
+                    , utility::conversions::to_string_t("error calling digilockerCompatIssueDocument: unexpected response type: ") + localVarContentType
                     , std::make_shared<std::stringstream>(localVarResponse.extract_utf8string(true).get()));
             }
         }
@@ -167,7 +167,7 @@ pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::issuerIs
         else
         {
             throw ApiException(500
-                , utility::conversions::to_string_t("error calling issuerIssuedoc1XmlPost: unsupported response type"));
+                , utility::conversions::to_string_t("error calling digilockerCompatIssueDocument: unsupported response type"));
         }
 
         return localVarResult;

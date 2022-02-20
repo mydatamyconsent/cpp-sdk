@@ -11,27 +11,33 @@
  */
 
 /*
- * DataConsentStatus.h
+ * CreateIndividualDataConsentRequest.h
  *
- * 
+ * Individual Data Consent Request.
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentStatus_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentStatus_H_
+#ifndef MYDATAMYCONSENT_MODELS_CreateIndividualDataConsentRequest_H_
+#define MYDATAMYCONSENT_MODELS_CreateIndividualDataConsentRequest_H_
 
 
 #include "ModelBase.h"
 
+#include <cpprest/details/basic_types.h>
+#include "model/Receiver.h"
 
 namespace mydatamyconsent {
 namespace models {
 
-class  DataConsentStatus
+
+/// <summary>
+/// Individual Data Consent Request.
+/// </summary>
+class  CreateIndividualDataConsentRequest
     : public ModelBase
 {
 public:
-    DataConsentStatus();
-    virtual ~DataConsentStatus();
+    CreateIndividualDataConsentRequest();
+    virtual ~CreateIndividualDataConsentRequest();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -44,24 +50,37 @@ public:
     void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const override;
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
-    enum class eDataConsentStatus
-    {
-        DataConsentStatus_PENDING,
-        DataConsentStatus_APPROVED,
-        DataConsentStatus_REJECTED,
-        DataConsentStatus_REVOKED,
-        DataConsentStatus_EXPIRED,
-        DataConsentStatus_CANCELED,
-    };
+    /////////////////////////////////////////////
+    /// CreateIndividualDataConsentRequest members
 
-    eDataConsentStatus getValue() const;
-    void setValue(eDataConsentStatus const value);
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getConsentTemplateId() const;
+    bool consentTemplateIdIsSet() const;
+    void unsetConsentTemplateId();
 
-    protected:
-        eDataConsentStatus m_value;
+    void setConsentTemplateId(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<Receiver> getReceiver() const;
+    bool receiverIsSet() const;
+    void unsetReceiver();
+
+    void setReceiver(const std::shared_ptr<Receiver>& value);
+
+
+protected:
+    utility::string_t m_ConsentTemplateId;
+    bool m_ConsentTemplateIdIsSet;
+    std::shared_ptr<Receiver> m_Receiver;
+    bool m_ReceiverIsSet;
 };
 
+
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentStatus_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_CreateIndividualDataConsentRequest_H_ */

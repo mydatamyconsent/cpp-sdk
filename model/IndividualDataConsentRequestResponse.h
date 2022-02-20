@@ -11,32 +11,33 @@
  */
 
 /*
- * DataConsentRequest.h
+ * IndividualDataConsentRequestResponse.h
  *
- * 
+ * Individual Data Consent Request Response.
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequest_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequest_H_
+#ifndef MYDATAMYCONSENT_MODELS_IndividualDataConsentRequestResponse_H_
+#define MYDATAMYCONSENT_MODELS_IndividualDataConsentRequestResponse_H_
 
 
 #include "ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
+#include "model/DataConsentStatus.h"
 
 namespace mydatamyconsent {
 namespace models {
 
 
 /// <summary>
-/// 
+/// Individual Data Consent Request Response.
 /// </summary>
-class  DataConsentRequest
+class  IndividualDataConsentRequestResponse
     : public ModelBase
 {
 public:
-    DataConsentRequest();
-    virtual ~DataConsentRequest();
+    IndividualDataConsentRequestResponse();
+    virtual ~IndividualDataConsentRequestResponse();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,7 +51,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequest members
+    /// IndividualDataConsentRequestResponse members
 
     /// <summary>
     /// 
@@ -82,11 +83,20 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::datetime getRequestExpiredAtUtc() const;
-    bool requestExpiredAtUtcIsSet() const;
-    void unsetRequestExpiredAtUtc();
+    utility::datetime getRequestExpiresAtUtc() const;
+    bool requestExpiresAtUtcIsSet() const;
+    void unsetRequestExpiresAtUtc();
 
-    void setRequestExpiredAtUtc(const utility::datetime& value);
+    void setRequestExpiresAtUtc(const utility::datetime& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<DataConsentStatus> getStatus() const;
+    bool statusIsSet() const;
+    void unsetStatus();
+
+    void setStatus(const std::shared_ptr<DataConsentStatus>& value);
 
     /// <summary>
     /// 
@@ -105,8 +115,10 @@ protected:
     bool m_TemplateIdIsSet;
     utility::datetime m_RequestedAtUtc;
     bool m_RequestedAtUtcIsSet;
-    utility::datetime m_RequestExpiredAtUtc;
-    bool m_RequestExpiredAtUtcIsSet;
+    utility::datetime m_RequestExpiresAtUtc;
+    bool m_RequestExpiresAtUtcIsSet;
+    std::shared_ptr<DataConsentStatus> m_Status;
+    bool m_StatusIsSet;
     utility::string_t m_TransactionId;
     bool m_TransactionIdIsSet;
 };
@@ -115,4 +127,4 @@ protected:
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequest_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_IndividualDataConsentRequestResponse_H_ */

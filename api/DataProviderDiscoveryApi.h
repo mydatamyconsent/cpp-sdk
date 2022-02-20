@@ -44,10 +44,20 @@ public:
     virtual ~DataProviderDiscoveryApi();
 
     /// <summary>
+    /// Get a Data Provider details based on provider id.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="providerId">Provider id.</param>
+    pplx::task<std::shared_ptr<DataProvider>> getDataProviderById(
+        utility::string_t providerId
+    ) const;
+    /// <summary>
     /// Discover all data providers in My Data My Consent by country and filters.
     /// </summary>
     /// <remarks>
-    /// .
+    /// 
     /// </remarks>
     /// <param name="accountType">Account type. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
     /// <param name="documentType">Document type. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
@@ -55,23 +65,13 @@ public:
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Page size. (optional, default to 0)</param>
     /// <param name="country">ISO2 Country code. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
-    pplx::task<std::shared_ptr<DataProviderPaginatedList>> v1DataProvidersGet(
+    pplx::task<std::shared_ptr<DataProviderPaginatedList>> getDataProviders(
         boost::optional<utility::string_t> accountType,
         boost::optional<utility::string_t> documentType,
         boost::optional<utility::string_t> organizationCategory,
         boost::optional<int32_t> pageNo,
         boost::optional<int32_t> pageSize,
         boost::optional<utility::string_t> country
-    ) const;
-    /// <summary>
-    /// Get a Data Provider details.
-    /// </summary>
-    /// <remarks>
-    /// .
-    /// </remarks>
-    /// <param name="providerId">Provider Id.</param>
-    pplx::task<std::shared_ptr<DataProvider>> v1DataProvidersProviderIdGet(
-        utility::string_t providerId
     ) const;
 
 protected:
