@@ -24,6 +24,9 @@
 #include "ApiClient.h"
 
 #include "model/DocumentIssueRequest.h"
+#include "model/DocumentTypeDetailsDtoPaginatedList.h"
+#include "model/IssuedDocument.h"
+#include "model/IssuedDocumentPaginatedList.h"
 #include "model/ProblemDetails.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
@@ -50,7 +53,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="documentId">Document id.</param>
-    pplx::task<void> getIssuedDocumentById(
+    pplx::task<std::shared_ptr<IssuedDocument>> getIssuedDocumentById(
         utility::string_t documentId
     ) const;
     /// <summary>
@@ -64,7 +67,7 @@ public:
     /// <param name="toDateTime"> (optional, default to utility::datetime())</param>
     /// <param name="pageSize"> (optional, default to 0)</param>
     /// <param name="pageNo"> (optional, default to 0)</param>
-    pplx::task<void> getIssuedDocuments(
+    pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> getIssuedDocuments(
         boost::optional<utility::string_t> documentTypeId,
         boost::optional<utility::datetime> fromDateTime,
         boost::optional<utility::datetime> toDateTime,
@@ -77,11 +80,11 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="pageSize"> (optional, default to 0)</param>
-    /// <param name="pageNo"> (optional, default to 0)</param>
-    pplx::task<void> getRegisteredDocumentTypes(
-        boost::optional<int32_t> pageSize,
-        boost::optional<int32_t> pageNo
+    /// <param name="pageNo">Page number. (optional, default to 0)</param>
+    /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
+    pplx::task<std::shared_ptr<DocumentTypeDetailsDtoPaginatedList>> getRegisteredDocumentTypes(
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize
     ) const;
     /// <summary>
     /// Issue a new document.
@@ -90,7 +93,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="documentIssueRequest">Document issue request MyDataMyConsent.Models.Documents.DocumentIssueRequest.</param>
-    pplx::task<bool> issueDocument(
+    pplx::task<std::shared_ptr<IssuedDocument>> issueDocument(
         std::shared_ptr<DocumentIssueRequest> documentIssueRequest
     ) const;
 

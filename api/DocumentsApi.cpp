@@ -34,7 +34,7 @@ DocumentsApi::~DocumentsApi()
 {
 }
 
-pplx::task<void> DocumentsApi::getIssuedDocumentById(utility::string_t documentId) const
+pplx::task<std::shared_ptr<IssuedDocument>> DocumentsApi::getIssuedDocumentById(utility::string_t documentId) const
 {
 
 
@@ -48,6 +48,7 @@ pplx::task<void> DocumentsApi::getIssuedDocumentById(utility::string_t documentI
     std::map<utility::string_t, std::shared_ptr<HttpContent>> localVarFileParams;
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
+    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -135,10 +136,28 @@ pplx::task<void> DocumentsApi::getIssuedDocumentById(utility::string_t documentI
     })
     .then([=](utility::string_t localVarResponse)
     {
-        return void();
+        std::shared_ptr<IssuedDocument> localVarResult(new IssuedDocument());
+
+        if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value localVarJson = web::json::value::parse(localVarResponse);
+
+            ModelBase::fromJson(localVarJson, localVarResult);
+        }
+        // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling getIssuedDocumentById: unsupported response type"));
+        }
+
+        return localVarResult;
     });
 }
-pplx::task<void> DocumentsApi::getIssuedDocuments(boost::optional<utility::string_t> documentTypeId, boost::optional<utility::datetime> fromDateTime, boost::optional<utility::datetime> toDateTime, boost::optional<int32_t> pageSize, boost::optional<int32_t> pageNo) const
+pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> DocumentsApi::getIssuedDocuments(boost::optional<utility::string_t> documentTypeId, boost::optional<utility::datetime> fromDateTime, boost::optional<utility::datetime> toDateTime, boost::optional<int32_t> pageSize, boost::optional<int32_t> pageNo) const
 {
 
 
@@ -151,6 +170,7 @@ pplx::task<void> DocumentsApi::getIssuedDocuments(boost::optional<utility::strin
     std::map<utility::string_t, std::shared_ptr<HttpContent>> localVarFileParams;
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
+    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -258,10 +278,28 @@ pplx::task<void> DocumentsApi::getIssuedDocuments(boost::optional<utility::strin
     })
     .then([=](utility::string_t localVarResponse)
     {
-        return void();
+        std::shared_ptr<IssuedDocumentPaginatedList> localVarResult(new IssuedDocumentPaginatedList());
+
+        if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value localVarJson = web::json::value::parse(localVarResponse);
+
+            ModelBase::fromJson(localVarJson, localVarResult);
+        }
+        // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling getIssuedDocuments: unsupported response type"));
+        }
+
+        return localVarResult;
     });
 }
-pplx::task<void> DocumentsApi::getRegisteredDocumentTypes(boost::optional<int32_t> pageSize, boost::optional<int32_t> pageNo) const
+pplx::task<std::shared_ptr<DocumentTypeDetailsDtoPaginatedList>> DocumentsApi::getRegisteredDocumentTypes(boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
 {
 
 
@@ -274,6 +312,7 @@ pplx::task<void> DocumentsApi::getRegisteredDocumentTypes(boost::optional<int32_
     std::map<utility::string_t, std::shared_ptr<HttpContent>> localVarFileParams;
 
     std::unordered_set<utility::string_t> localVarResponseHttpContentTypes;
+    localVarResponseHttpContentTypes.insert( utility::conversions::to_string_t("application/json") );
 
     utility::string_t localVarResponseHttpContentType;
 
@@ -301,13 +340,13 @@ pplx::task<void> DocumentsApi::getRegisteredDocumentTypes(boost::optional<int32_
 
     std::unordered_set<utility::string_t> localVarConsumeHttpContentTypes;
 
-    if (pageSize)
-    {
-        localVarQueryParams[utility::conversions::to_string_t("pageSize")] = ApiClient::parameterToString(*pageSize);
-    }
     if (pageNo)
     {
         localVarQueryParams[utility::conversions::to_string_t("pageNo")] = ApiClient::parameterToString(*pageNo);
+    }
+    if (pageSize)
+    {
+        localVarQueryParams[utility::conversions::to_string_t("pageSize")] = ApiClient::parameterToString(*pageSize);
     }
 
     std::shared_ptr<IHttpBody> localVarHttpBody;
@@ -369,10 +408,28 @@ pplx::task<void> DocumentsApi::getRegisteredDocumentTypes(boost::optional<int32_
     })
     .then([=](utility::string_t localVarResponse)
     {
-        return void();
+        std::shared_ptr<DocumentTypeDetailsDtoPaginatedList> localVarResult(new DocumentTypeDetailsDtoPaginatedList());
+
+        if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
+        {
+            web::json::value localVarJson = web::json::value::parse(localVarResponse);
+
+            ModelBase::fromJson(localVarJson, localVarResult);
+        }
+        // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
+        // {
+        // TODO multipart response parsing
+        // }
+        else
+        {
+            throw ApiException(500
+                , utility::conversions::to_string_t("error calling getRegisteredDocumentTypes: unsupported response type"));
+        }
+
+        return localVarResult;
     });
 }
-pplx::task<bool> DocumentsApi::issueDocument(std::shared_ptr<DocumentIssueRequest> documentIssueRequest) const
+pplx::task<std::shared_ptr<IssuedDocument>> DocumentsApi::issueDocument(std::shared_ptr<DocumentIssueRequest> documentIssueRequest) const
 {
 
     // verify the required parameter 'documentIssueRequest' is set
@@ -496,7 +553,7 @@ pplx::task<bool> DocumentsApi::issueDocument(std::shared_ptr<DocumentIssueReques
     })
     .then([=](utility::string_t localVarResponse)
     {
-        bool localVarResult(false);
+        std::shared_ptr<IssuedDocument> localVarResult(new IssuedDocument());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

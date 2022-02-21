@@ -28,6 +28,8 @@ DataConsentRequesterDto::DataConsentRequesterDto()
     m_LogoUrlIsSet = false;
     m_Description = utility::conversions::to_string_t("");
     m_DescriptionIsSet = false;
+    m_Location = utility::conversions::to_string_t("");
+    m_LocationIsSet = false;
     m_Website = utility::conversions::to_string_t("");
     m_WebsiteIsSet = false;
     m_SupportEmail = utility::conversions::to_string_t("");
@@ -61,6 +63,10 @@ web::json::value DataConsentRequesterDto::toJson() const
     if(m_DescriptionIsSet)
     {
         val[utility::conversions::to_string_t(U("description"))] = ModelBase::toJson(m_Description);
+    }
+    if(m_LocationIsSet)
+    {
+        val[utility::conversions::to_string_t(U("location"))] = ModelBase::toJson(m_Location);
     }
     if(m_WebsiteIsSet)
     {
@@ -110,6 +116,16 @@ bool DataConsentRequesterDto::fromJson(const web::json::value& val)
             utility::string_t refVal_description;
             ok &= ModelBase::fromJson(fieldValue, refVal_description);
             setDescription(refVal_description);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("location"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("location")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_location;
+            ok &= ModelBase::fromJson(fieldValue, refVal_location);
+            setLocation(refVal_location);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("website"))))
@@ -164,6 +180,10 @@ void DataConsentRequesterDto::toMultipart(std::shared_ptr<MultipartFormData> mul
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("description")), m_Description));
     }
+    if(m_LocationIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("location")), m_Location));
+    }
     if(m_WebsiteIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("website")), m_Website));
@@ -204,6 +224,12 @@ bool DataConsentRequesterDto::fromMultiPart(std::shared_ptr<MultipartFormData> m
         utility::string_t refVal_description;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("description"))), refVal_description );
         setDescription(refVal_description);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("location"))))
+    {
+        utility::string_t refVal_location;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("location"))), refVal_location );
+        setLocation(refVal_location);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("website"))))
     {
@@ -285,6 +311,26 @@ bool DataConsentRequesterDto::descriptionIsSet() const
 void DataConsentRequesterDto::unsetDescription()
 {
     m_DescriptionIsSet = false;
+}
+utility::string_t DataConsentRequesterDto::getLocation() const
+{
+    return m_Location;
+}
+
+void DataConsentRequesterDto::setLocation(const utility::string_t& value)
+{
+    m_Location = value;
+    m_LocationIsSet = true;
+}
+
+bool DataConsentRequesterDto::locationIsSet() const
+{
+    return m_LocationIsSet;
+}
+
+void DataConsentRequesterDto::unsetLocation()
+{
+    m_LocationIsSet = false;
 }
 utility::string_t DataConsentRequesterDto::getWebsite() const
 {

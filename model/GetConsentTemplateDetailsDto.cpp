@@ -41,10 +41,17 @@ GetConsentTemplateDetailsDto::GetConsentTemplateDetailsDto()
     m_Status = utility::conversions::to_string_t("");
     m_StatusIsSet = false;
     m_TemplateTypeIsSet = false;
+    m_DataLifeIsSet = false;
+    m_RequestLifeIsSet = false;
     m_FrequencyIsSet = false;
     m_IdentityIsSet = false;
     m_DocumentsIsSet = false;
     m_FinancialsIsSet = false;
+    m_HealthRecordsIsSet = false;
+    m_ApprovedBy = utility::conversions::to_string_t("");
+    m_ApprovedByIsSet = false;
+    m_ApprovedAtUtc = utility::datetime();
+    m_ApprovedAtUtcIsSet = false;
 }
 
 GetConsentTemplateDetailsDto::~GetConsentTemplateDetailsDto()
@@ -105,6 +112,14 @@ web::json::value GetConsentTemplateDetailsDto::toJson() const
     {
         val[utility::conversions::to_string_t(U("templateType"))] = ModelBase::toJson(m_TemplateType);
     }
+    if(m_DataLifeIsSet)
+    {
+        val[utility::conversions::to_string_t(U("dataLife"))] = ModelBase::toJson(m_DataLife);
+    }
+    if(m_RequestLifeIsSet)
+    {
+        val[utility::conversions::to_string_t(U("requestLife"))] = ModelBase::toJson(m_RequestLife);
+    }
     if(m_FrequencyIsSet)
     {
         val[utility::conversions::to_string_t(U("frequency"))] = ModelBase::toJson(m_Frequency);
@@ -120,6 +135,18 @@ web::json::value GetConsentTemplateDetailsDto::toJson() const
     if(m_FinancialsIsSet)
     {
         val[utility::conversions::to_string_t(U("financials"))] = ModelBase::toJson(m_Financials);
+    }
+    if(m_HealthRecordsIsSet)
+    {
+        val[utility::conversions::to_string_t(U("healthRecords"))] = ModelBase::toJson(m_HealthRecords);
+    }
+    if(m_ApprovedByIsSet)
+    {
+        val[utility::conversions::to_string_t(U("approvedBy"))] = ModelBase::toJson(m_ApprovedBy);
+    }
+    if(m_ApprovedAtUtcIsSet)
+    {
+        val[utility::conversions::to_string_t(U("approvedAtUtc"))] = ModelBase::toJson(m_ApprovedAtUtc);
     }
 
     return val;
@@ -239,6 +266,26 @@ bool GetConsentTemplateDetailsDto::fromJson(const web::json::value& val)
             setTemplateType(refVal_templateType);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("dataLife"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("dataLife")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Life> refVal_dataLife;
+            ok &= ModelBase::fromJson(fieldValue, refVal_dataLife);
+            setDataLife(refVal_dataLife);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("requestLife"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requestLife")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Life> refVal_requestLife;
+            ok &= ModelBase::fromJson(fieldValue, refVal_requestLife);
+            setRequestLife(refVal_requestLife);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("frequency"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("frequency")));
@@ -277,6 +324,36 @@ bool GetConsentTemplateDetailsDto::fromJson(const web::json::value& val)
             std::vector<std::shared_ptr<Financial>> refVal_financials;
             ok &= ModelBase::fromJson(fieldValue, refVal_financials);
             setFinancials(refVal_financials);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("healthRecords"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("healthRecords")));
+        if(!fieldValue.is_null())
+        {
+            std::vector<std::shared_ptr<Object>> refVal_healthRecords;
+            ok &= ModelBase::fromJson(fieldValue, refVal_healthRecords);
+            setHealthRecords(refVal_healthRecords);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("approvedBy"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("approvedBy")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_approvedBy;
+            ok &= ModelBase::fromJson(fieldValue, refVal_approvedBy);
+            setApprovedBy(refVal_approvedBy);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("approvedAtUtc"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("approvedAtUtc")));
+        if(!fieldValue.is_null())
+        {
+            utility::datetime refVal_approvedAtUtc;
+            ok &= ModelBase::fromJson(fieldValue, refVal_approvedAtUtc);
+            setApprovedAtUtc(refVal_approvedAtUtc);
         }
     }
     return ok;
@@ -333,6 +410,14 @@ void GetConsentTemplateDetailsDto::toMultipart(std::shared_ptr<MultipartFormData
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("templateType")), m_TemplateType));
     }
+    if(m_DataLifeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("dataLife")), m_DataLife));
+    }
+    if(m_RequestLifeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requestLife")), m_RequestLife));
+    }
     if(m_FrequencyIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("frequency")), m_Frequency));
@@ -348,6 +433,18 @@ void GetConsentTemplateDetailsDto::toMultipart(std::shared_ptr<MultipartFormData
     if(m_FinancialsIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("financials")), m_Financials));
+    }
+    if(m_HealthRecordsIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("healthRecords")), m_HealthRecords));
+    }
+    if(m_ApprovedByIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("approvedBy")), m_ApprovedBy));
+    }
+    if(m_ApprovedAtUtcIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("approvedAtUtc")), m_ApprovedAtUtc));
     }
 }
 
@@ -426,6 +523,18 @@ bool GetConsentTemplateDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormDa
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("templateType"))), refVal_templateType );
         setTemplateType(refVal_templateType);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("dataLife"))))
+    {
+        std::shared_ptr<Life> refVal_dataLife;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("dataLife"))), refVal_dataLife );
+        setDataLife(refVal_dataLife);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("requestLife"))))
+    {
+        std::shared_ptr<Life> refVal_requestLife;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requestLife"))), refVal_requestLife );
+        setRequestLife(refVal_requestLife);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("frequency"))))
     {
         std::shared_ptr<Life> refVal_frequency;
@@ -449,6 +558,24 @@ bool GetConsentTemplateDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormDa
         std::vector<std::shared_ptr<Financial>> refVal_financials;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("financials"))), refVal_financials );
         setFinancials(refVal_financials);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("healthRecords"))))
+    {
+        std::vector<std::shared_ptr<Object>> refVal_healthRecords;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("healthRecords"))), refVal_healthRecords );
+        setHealthRecords(refVal_healthRecords);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("approvedBy"))))
+    {
+        utility::string_t refVal_approvedBy;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("approvedBy"))), refVal_approvedBy );
+        setApprovedBy(refVal_approvedBy);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("approvedAtUtc"))))
+    {
+        utility::datetime refVal_approvedAtUtc;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("approvedAtUtc"))), refVal_approvedAtUtc );
+        setApprovedAtUtc(refVal_approvedAtUtc);
     }
     return ok;
 }
@@ -673,6 +800,46 @@ void GetConsentTemplateDetailsDto::unsetTemplateType()
 {
     m_TemplateTypeIsSet = false;
 }
+std::shared_ptr<Life> GetConsentTemplateDetailsDto::getDataLife() const
+{
+    return m_DataLife;
+}
+
+void GetConsentTemplateDetailsDto::setDataLife(const std::shared_ptr<Life>& value)
+{
+    m_DataLife = value;
+    m_DataLifeIsSet = true;
+}
+
+bool GetConsentTemplateDetailsDto::dataLifeIsSet() const
+{
+    return m_DataLifeIsSet;
+}
+
+void GetConsentTemplateDetailsDto::unsetDataLife()
+{
+    m_DataLifeIsSet = false;
+}
+std::shared_ptr<Life> GetConsentTemplateDetailsDto::getRequestLife() const
+{
+    return m_RequestLife;
+}
+
+void GetConsentTemplateDetailsDto::setRequestLife(const std::shared_ptr<Life>& value)
+{
+    m_RequestLife = value;
+    m_RequestLifeIsSet = true;
+}
+
+bool GetConsentTemplateDetailsDto::requestLifeIsSet() const
+{
+    return m_RequestLifeIsSet;
+}
+
+void GetConsentTemplateDetailsDto::unsetRequestLife()
+{
+    m_RequestLifeIsSet = false;
+}
 std::shared_ptr<Life> GetConsentTemplateDetailsDto::getFrequency() const
 {
     return m_Frequency;
@@ -752,6 +919,66 @@ bool GetConsentTemplateDetailsDto::financialsIsSet() const
 void GetConsentTemplateDetailsDto::unsetFinancials()
 {
     m_FinancialsIsSet = false;
+}
+std::vector<std::shared_ptr<Object>>& GetConsentTemplateDetailsDto::getHealthRecords()
+{
+    return m_HealthRecords;
+}
+
+void GetConsentTemplateDetailsDto::setHealthRecords(const std::vector<std::shared_ptr<Object>>& value)
+{
+    m_HealthRecords = value;
+    m_HealthRecordsIsSet = true;
+}
+
+bool GetConsentTemplateDetailsDto::healthRecordsIsSet() const
+{
+    return m_HealthRecordsIsSet;
+}
+
+void GetConsentTemplateDetailsDto::unsetHealthRecords()
+{
+    m_HealthRecordsIsSet = false;
+}
+utility::string_t GetConsentTemplateDetailsDto::getApprovedBy() const
+{
+    return m_ApprovedBy;
+}
+
+void GetConsentTemplateDetailsDto::setApprovedBy(const utility::string_t& value)
+{
+    m_ApprovedBy = value;
+    m_ApprovedByIsSet = true;
+}
+
+bool GetConsentTemplateDetailsDto::approvedByIsSet() const
+{
+    return m_ApprovedByIsSet;
+}
+
+void GetConsentTemplateDetailsDto::unsetApprovedBy()
+{
+    m_ApprovedByIsSet = false;
+}
+utility::datetime GetConsentTemplateDetailsDto::getApprovedAtUtc() const
+{
+    return m_ApprovedAtUtc;
+}
+
+void GetConsentTemplateDetailsDto::setApprovedAtUtc(const utility::datetime& value)
+{
+    m_ApprovedAtUtc = value;
+    m_ApprovedAtUtcIsSet = true;
+}
+
+bool GetConsentTemplateDetailsDto::approvedAtUtcIsSet() const
+{
+    return m_ApprovedAtUtcIsSet;
+}
+
+void GetConsentTemplateDetailsDto::unsetApprovedAtUtc()
+{
+    m_ApprovedAtUtcIsSet = false;
 }
 }
 }

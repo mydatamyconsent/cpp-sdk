@@ -27,6 +27,7 @@
 #include "model/Financial.h"
 #include "model/IdentitySupportedFields.h"
 #include <cpprest/details/basic_types.h>
+#include "Object.h"
 #include "model/Document.h"
 #include <vector>
 #include "model/FetchTypes.h"
@@ -162,6 +163,24 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    std::shared_ptr<Life> getDataLife() const;
+    bool dataLifeIsSet() const;
+    void unsetDataLife();
+
+    void setDataLife(const std::shared_ptr<Life>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<Life> getRequestLife() const;
+    bool requestLifeIsSet() const;
+    void unsetRequestLife();
+
+    void setRequestLife(const std::shared_ptr<Life>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
     std::shared_ptr<Life> getFrequency() const;
     bool frequencyIsSet() const;
     void unsetFrequency();
@@ -195,6 +214,33 @@ public:
 
     void setFinancials(const std::vector<std::shared_ptr<Financial>>& value);
 
+    /// <summary>
+    /// 
+    /// </summary>
+    std::vector<std::shared_ptr<Object>>& getHealthRecords();
+    bool healthRecordsIsSet() const;
+    void unsetHealthRecords();
+
+    void setHealthRecords(const std::vector<std::shared_ptr<Object>>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getApprovedBy() const;
+    bool approvedByIsSet() const;
+    void unsetApprovedBy();
+
+    void setApprovedBy(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getApprovedAtUtc() const;
+    bool approvedAtUtcIsSet() const;
+    void unsetApprovedAtUtc();
+
+    void setApprovedAtUtc(const utility::datetime& value);
+
 
 protected:
     utility::string_t m_Id;
@@ -219,6 +265,10 @@ protected:
     bool m_StatusIsSet;
     std::shared_ptr<ConsentTemplateTypes> m_TemplateType;
     bool m_TemplateTypeIsSet;
+    std::shared_ptr<Life> m_DataLife;
+    bool m_DataLifeIsSet;
+    std::shared_ptr<Life> m_RequestLife;
+    bool m_RequestLifeIsSet;
     std::shared_ptr<Life> m_Frequency;
     bool m_FrequencyIsSet;
     std::vector<std::shared_ptr<IdentitySupportedFields>> m_Identity;
@@ -227,6 +277,12 @@ protected:
     bool m_DocumentsIsSet;
     std::vector<std::shared_ptr<Financial>> m_Financials;
     bool m_FinancialsIsSet;
+    std::vector<std::shared_ptr<Object>> m_HealthRecords;
+    bool m_HealthRecordsIsSet;
+    utility::string_t m_ApprovedBy;
+    bool m_ApprovedByIsSet;
+    utility::datetime m_ApprovedAtUtc;
+    bool m_ApprovedAtUtcIsSet;
 };
 
 

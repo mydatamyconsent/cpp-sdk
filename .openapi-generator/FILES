@@ -79,6 +79,12 @@ model/DocumentCategoryType.cpp
 model/DocumentCategoryType.h
 model/DocumentIssueRequest.cpp
 model/DocumentIssueRequest.h
+model/DocumentSubCategoryType.cpp
+model/DocumentSubCategoryType.h
+model/DocumentTypeDetailsDto.cpp
+model/DocumentTypeDetailsDto.h
+model/DocumentTypeDetailsDtoPaginatedList.cpp
+model/DocumentTypeDetailsDtoPaginatedList.h
 model/DocumentsRequired.cpp
 model/DocumentsRequired.h
 model/FetchTypes.cpp
@@ -105,6 +111,10 @@ model/IdentitySupportedFields.cpp
 model/IdentitySupportedFields.h
 model/IndividualDataConsentRequestResponse.cpp
 model/IndividualDataConsentRequestResponse.h
+model/IssuedDocument.cpp
+model/IssuedDocument.h
+model/IssuedDocumentPaginatedList.cpp
+model/IssuedDocumentPaginatedList.h
 model/Life.cpp
 model/Life.h
 model/OrganizationDataConsentInfoDto.cpp
@@ -135,6 +145,8 @@ model/ReceiverType.cpp
 model/ReceiverType.h
 model/SharedWith.cpp
 model/SharedWith.h
+model/SupportedEntityType.cpp
+model/SupportedEntityType.h
 model/UpdateDataProcessingAgreementRequestModel.cpp
 model/UpdateDataProcessingAgreementRequestModel.h
 model/UriDetails.cpp

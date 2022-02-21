@@ -25,6 +25,7 @@
 
 #include "model/DataProvider.h"
 #include "model/DataProviderPaginatedList.h"
+#include "model/ProblemDetails.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -63,7 +64,7 @@ public:
     /// <param name="documentType">Document type. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
     /// <param name="organizationCategory">Organization category. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
-    /// <param name="pageSize">Page size. (optional, default to 0)</param>
+    /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
     /// <param name="country">ISO2 Country code. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
     pplx::task<std::shared_ptr<DataProviderPaginatedList>> getDataProviders(
         boost::optional<utility::string_t> accountType,

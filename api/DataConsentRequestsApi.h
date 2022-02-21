@@ -99,8 +99,8 @@ public:
     /// <param name="status">Data consent status. (optional, default to new DataConsentStatus())</param>
     /// <param name="startDateTime">Start date time. (optional, default to utility::datetime())</param>
     /// <param name="endDateTime">End date time. (optional, default to utility::datetime())</param>
-    /// <param name="pageNo">Page no. (optional, default to 0)</param>
-    /// <param name="pageSize">Page size. (optional, default to 0)</param>
+    /// <param name="pageNo">Page number. (optional, default to 0)</param>
+    /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
     pplx::task<std::shared_ptr<UserDataConsentInfoDtoPaginatedList>> getAllConsentRequestsToIndividuals(
         boost::optional<std::shared_ptr<DataConsentStatus>> status,
         boost::optional<utility::datetime> startDateTime,
@@ -117,8 +117,8 @@ public:
     /// <param name="status">Data consent status. (optional, default to new DataConsentStatus())</param>
     /// <param name="startDateTime">Start date time. (optional, default to utility::datetime())</param>
     /// <param name="endDateTime">End date time. (optional, default to utility::datetime())</param>
-    /// <param name="pageNo">Page no. (optional, default to 0)</param>
-    /// <param name="pageSize">Page size. (optional, default to 0)</param>
+    /// <param name="pageNo">Page number. (optional, default to 0)</param>
+    /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
     pplx::task<std::shared_ptr<OrganizationDataConsentInfoDtoPaginatedList>> getAllConsentRequestsToOrganizations(
         boost::optional<std::shared_ptr<DataConsentStatus>> status,
         boost::optional<utility::datetime> startDateTime,

@@ -82,6 +82,15 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    utility::string_t getLocation() const;
+    bool locationIsSet() const;
+    void unsetLocation();
+
+    void setLocation(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
     utility::string_t getWebsite() const;
     bool websiteIsSet() const;
     void unsetWebsite();
@@ -114,6 +123,8 @@ protected:
     bool m_LogoUrlIsSet;
     utility::string_t m_Description;
     bool m_DescriptionIsSet;
+    utility::string_t m_Location;
+    bool m_LocationIsSet;
     utility::string_t m_Website;
     bool m_WebsiteIsSet;
     utility::string_t m_SupportEmail;
