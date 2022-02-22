@@ -19,6 +19,7 @@
           "validatable": false,
           "developerEmail": "developers@mydatamyconsent.com",
           "developerName": "Balamurali Pandranki",
+          "basePath": "https://api.mydatamyconsent.com",
           "developerOrganization": "DataConsent, Inc.",
           "developerOrganizationUrl": "https://mydatamyconsent.com",
           "artifactDescription": "My Data My Consent Rest API C++ SDK",
