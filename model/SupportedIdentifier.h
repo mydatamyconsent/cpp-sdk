@@ -11,13 +11,13 @@
  */
 
 /*
- * ProblemDetails.h
+ * SupportedIdentifier.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_ProblemDetails_H_
-#define MYDATAMYCONSENT_MODELS_ProblemDetails_H_
+#ifndef MYDATAMYCONSENT_MODELS_SupportedIdentifier_H_
+#define MYDATAMYCONSENT_MODELS_SupportedIdentifier_H_
 
 
 #include "ModelBase.h"
@@ -31,12 +31,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  ProblemDetails
+class  SupportedIdentifier
     : public ModelBase
 {
 public:
-    ProblemDetails();
-    virtual ~ProblemDetails();
+    SupportedIdentifier();
+    virtual ~SupportedIdentifier();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +50,58 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// ProblemDetails members
+    /// SupportedIdentifier members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getType() const;
-    bool typeIsSet() const;
-    void unsetType();
+    utility::string_t getKey() const;
+    bool keyIsSet() const;
+    void unsetKey();
 
-    void setType(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getTitle() const;
-    bool titleIsSet() const;
-    void unsetTitle();
-
-    void setTitle(const utility::string_t& value);
+    void setKey(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    int32_t getStatus() const;
-    bool statusIsSet() const;
-    void unsetStatus();
+    utility::string_t getName() const;
+    bool nameIsSet() const;
+    void unsetName();
 
-    void setStatus(int32_t value);
+    void setName(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDetail() const;
-    bool detailIsSet() const;
-    void unsetDetail();
+    utility::string_t getDescription() const;
+    bool descriptionIsSet() const;
+    void unsetDescription();
 
-    void setDetail(const utility::string_t& value);
+    void setDescription(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getExampleValue() const;
+    bool exampleValueIsSet() const;
+    void unsetExampleValue();
+
+    void setExampleValue(const utility::string_t& value);
 
 
 protected:
-    utility::string_t m_Type;
-    bool m_TypeIsSet;
-    utility::string_t m_Title;
-    bool m_TitleIsSet;
-    int32_t m_Status;
-    bool m_StatusIsSet;
-    utility::string_t m_Detail;
-    bool m_DetailIsSet;
+    utility::string_t m_Key;
+    bool m_KeyIsSet;
+    utility::string_t m_Name;
+    bool m_NameIsSet;
+    utility::string_t m_Description;
+    bool m_DescriptionIsSet;
+    utility::string_t m_ExampleValue;
+    bool m_ExampleValueIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_ProblemDetails_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_SupportedIdentifier_H_ */

@@ -11,35 +11,33 @@
  */
 
 /*
- * DocumentIssueRequest.h
+ * DocumentIssueRequestDetails.h
  *
- * Document Issue Request.
+ * Document issue request details.
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DocumentIssueRequest_H_
-#define MYDATAMYCONSENT_MODELS_DocumentIssueRequest_H_
+#ifndef MYDATAMYCONSENT_MODELS_DocumentIssueRequestDetails_H_
+#define MYDATAMYCONSENT_MODELS_DocumentIssueRequestDetails_H_
 
 
 #include "ModelBase.h"
 
+#include "model/AnyType.h"
 #include <cpprest/details/basic_types.h>
-#include "model/DocumentReceiver.h"
-#include <map>
-#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
 
 
 /// <summary>
-/// Document Issue Request.
+/// Document issue request details.
 /// </summary>
-class  DocumentIssueRequest
+class  DocumentIssueRequestDetails
     : public ModelBase
 {
 public:
-    DocumentIssueRequest();
-    virtual ~DocumentIssueRequest();
+    DocumentIssueRequestDetails();
+    virtual ~DocumentIssueRequestDetails();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -53,7 +51,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DocumentIssueRequest members
+    /// DocumentIssueRequestDetails members
 
     /// <summary>
     /// 
@@ -63,6 +61,15 @@ public:
     void unsetDocumentTypeId();
 
     void setDocumentTypeId(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getDocumentTypeName() const;
+    bool documentTypeNameIsSet() const;
+    void unsetDocumentTypeName();
+
+    void setDocumentTypeName(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -85,11 +92,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<DocumentReceiver> getReceiver() const;
+    std::shared_ptr<AnyType> getReceiver() const;
     bool receiverIsSet() const;
     void unsetReceiver();
 
-    void setReceiver(const std::shared_ptr<DocumentReceiver>& value);
+    void setReceiver(const std::shared_ptr<AnyType>& value);
 
     /// <summary>
     /// 
@@ -103,30 +110,43 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::map<utility::string_t, utility::string_t>& getMetadata();
+    std::shared_ptr<AnyType> getMetadata() const;
     bool metadataIsSet() const;
     void unsetMetadata();
 
-    void setMetadata(const std::map<utility::string_t, utility::string_t>& value);
+    void setMetadata(const std::shared_ptr<AnyType>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getCreatedAtUtc() const;
+    bool createdAtUtcIsSet() const;
+    void unsetCreatedAtUtc();
+
+    void setCreatedAtUtc(const utility::datetime& value);
 
 
 protected:
     utility::string_t m_DocumentTypeId;
     bool m_DocumentTypeIdIsSet;
+    utility::string_t m_DocumentTypeName;
+    bool m_DocumentTypeNameIsSet;
     utility::string_t m_DocumentIdentifier;
     bool m_DocumentIdentifierIsSet;
     utility::string_t m_Description;
     bool m_DescriptionIsSet;
-    std::shared_ptr<DocumentReceiver> m_Receiver;
+    std::shared_ptr<AnyType> m_Receiver;
     bool m_ReceiverIsSet;
     utility::datetime m_ExpiresAtUtc;
     bool m_ExpiresAtUtcIsSet;
-    std::map<utility::string_t, utility::string_t> m_Metadata;
+    std::shared_ptr<AnyType> m_Metadata;
     bool m_MetadataIsSet;
+    utility::datetime m_CreatedAtUtc;
+    bool m_CreatedAtUtcIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DocumentIssueRequest_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DocumentIssueRequestDetails_H_ */

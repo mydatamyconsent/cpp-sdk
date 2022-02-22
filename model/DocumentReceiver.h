@@ -11,18 +11,20 @@
  */
 
 /*
- * ProblemDetails.h
+ * DocumentReceiver.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_ProblemDetails_H_
-#define MYDATAMYCONSENT_MODELS_ProblemDetails_H_
+#ifndef MYDATAMYCONSENT_MODELS_DocumentReceiver_H_
+#define MYDATAMYCONSENT_MODELS_DocumentReceiver_H_
 
 
 #include "ModelBase.h"
 
-#include <cpprest/details/basic_types.h>
+#include "model/IdentificationStrategy.h"
+#include "model/StringStringKeyValuePair.h"
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -31,12 +33,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  ProblemDetails
+class  DocumentReceiver
     : public ModelBase
 {
 public:
-    ProblemDetails();
-    virtual ~ProblemDetails();
+    DocumentReceiver();
+    virtual ~DocumentReceiver();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +52,36 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// ProblemDetails members
+    /// DocumentReceiver members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getType() const;
-    bool typeIsSet() const;
-    void unsetType();
+    std::vector<std::shared_ptr<StringStringKeyValuePair>>& getIdentifiers();
+    bool identifiersIsSet() const;
+    void unsetIdentifiers();
 
-    void setType(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getTitle() const;
-    bool titleIsSet() const;
-    void unsetTitle();
-
-    void setTitle(const utility::string_t& value);
+    void setIdentifiers(const std::vector<std::shared_ptr<StringStringKeyValuePair>>& value);
 
     /// <summary>
     /// 
     /// </summary>
-    int32_t getStatus() const;
-    bool statusIsSet() const;
-    void unsetStatus();
+    std::shared_ptr<IdentificationStrategy> getIdentificationStrategy() const;
+    bool identificationStrategyIsSet() const;
+    void unsetIdentificationStrategy();
 
-    void setStatus(int32_t value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDetail() const;
-    bool detailIsSet() const;
-    void unsetDetail();
-
-    void setDetail(const utility::string_t& value);
+    void setIdentificationStrategy(const std::shared_ptr<IdentificationStrategy>& value);
 
 
 protected:
-    utility::string_t m_Type;
-    bool m_TypeIsSet;
-    utility::string_t m_Title;
-    bool m_TitleIsSet;
-    int32_t m_Status;
-    bool m_StatusIsSet;
-    utility::string_t m_Detail;
-    bool m_DetailIsSet;
+    std::vector<std::shared_ptr<StringStringKeyValuePair>> m_Identifiers;
+    bool m_IdentifiersIsSet;
+    std::shared_ptr<IdentificationStrategy> m_IdentificationStrategy;
+    bool m_IdentificationStrategyIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_ProblemDetails_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DocumentReceiver_H_ */

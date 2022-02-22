@@ -29,6 +29,8 @@ api/DigiLockerCompatIssuerApi.cpp
 api/DigiLockerCompatIssuerApi.h
 api/DocumentsApi.cpp
 api/DocumentsApi.h
+api/SupportedIdentifiersApi.cpp
+api/SupportedIdentifiersApi.h
 model/Activity.cpp
 model/Activity.h
 model/ApprovedConsentRequest.cpp
@@ -79,6 +81,10 @@ model/DocumentCategoryType.cpp
 model/DocumentCategoryType.h
 model/DocumentIssueRequest.cpp
 model/DocumentIssueRequest.h
+model/DocumentIssueRequestDetails.cpp
+model/DocumentIssueRequestDetails.h
+model/DocumentReceiver.cpp
+model/DocumentReceiver.h
 model/DocumentSubCategoryType.cpp
 model/DocumentSubCategoryType.h
 model/DocumentType.cpp
@@ -145,8 +151,14 @@ model/ReceiverType.cpp
 model/ReceiverType.h
 model/SharedWith.cpp
 model/SharedWith.h
+model/StringStringKeyValuePair.cpp
+model/StringStringKeyValuePair.h
 model/SupportedEntityType.cpp
 model/SupportedEntityType.h
+model/SupportedIdentifier.cpp
+model/SupportedIdentifier.h
+model/SupportedIdentifiersByCountry.cpp
+model/SupportedIdentifiersByCountry.h
 model/UpdateDataProcessingAgreementRequestModel.cpp
 model/UpdateDataProcessingAgreementRequestModel.h
 model/UriDetails.cpp

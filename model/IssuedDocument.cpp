@@ -22,8 +22,8 @@ namespace models {
 
 IssuedDocument::IssuedDocument()
 {
-    m_DocumentId = utility::conversions::to_string_t("");
-    m_DocumentIdIsSet = false;
+    m_Id = utility::conversions::to_string_t("");
+    m_IdIsSet = false;
     m_Identifier = utility::conversions::to_string_t("");
     m_IdentifierIsSet = false;
     m_DocumentType = utility::conversions::to_string_t("");
@@ -48,9 +48,9 @@ web::json::value IssuedDocument::toJson() const
 
     web::json::value val = web::json::value::object();
     
-    if(m_DocumentIdIsSet)
+    if(m_IdIsSet)
     {
-        val[utility::conversions::to_string_t(U("documentId"))] = ModelBase::toJson(m_DocumentId);
+        val[utility::conversions::to_string_t(U("id"))] = ModelBase::toJson(m_Id);
     }
     if(m_IdentifierIsSet)
     {
@@ -76,14 +76,14 @@ bool IssuedDocument::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("documentId"))))
+    if(val.has_field(utility::conversions::to_string_t(U("id"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("documentId")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("id")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_documentId;
-            ok &= ModelBase::fromJson(fieldValue, refVal_documentId);
-            setDocumentId(refVal_documentId);
+            utility::string_t refVal_id;
+            ok &= ModelBase::fromJson(fieldValue, refVal_id);
+            setId(refVal_id);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("identifier"))))
@@ -136,9 +136,9 @@ void IssuedDocument::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
-    if(m_DocumentIdIsSet)
+    if(m_IdIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documentId")), m_DocumentId));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("id")), m_Id));
     }
     if(m_IdentifierIsSet)
     {
@@ -167,11 +167,11 @@ bool IssuedDocument::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(U("documentId"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("id"))))
     {
-        utility::string_t refVal_documentId;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documentId"))), refVal_documentId );
-        setDocumentId(refVal_documentId);
+        utility::string_t refVal_id;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("id"))), refVal_id );
+        setId(refVal_id);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("identifier"))))
     {
@@ -200,25 +200,25 @@ bool IssuedDocument::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
     return ok;
 }
 
-utility::string_t IssuedDocument::getDocumentId() const
+utility::string_t IssuedDocument::getId() const
 {
-    return m_DocumentId;
+    return m_Id;
 }
 
-void IssuedDocument::setDocumentId(const utility::string_t& value)
+void IssuedDocument::setId(const utility::string_t& value)
 {
-    m_DocumentId = value;
-    m_DocumentIdIsSet = true;
+    m_Id = value;
+    m_IdIsSet = true;
 }
 
-bool IssuedDocument::documentIdIsSet() const
+bool IssuedDocument::idIsSet() const
 {
-    return m_DocumentIdIsSet;
+    return m_IdIsSet;
 }
 
-void IssuedDocument::unsetDocumentId()
+void IssuedDocument::unsetId()
 {
-    m_DocumentIdIsSet = false;
+    m_IdIsSet = false;
 }
 utility::string_t IssuedDocument::getIdentifier() const
 {

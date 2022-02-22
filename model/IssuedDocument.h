@@ -13,7 +13,7 @@
 /*
  * IssuedDocument.h
  *
- * 
+ * Issued Document Identifier.
  */
 
 #ifndef MYDATAMYCONSENT_MODELS_IssuedDocument_H_
@@ -29,7 +29,7 @@ namespace models {
 
 
 /// <summary>
-/// 
+/// Issued Document Identifier.
 /// </summary>
 class  IssuedDocument
     : public ModelBase
@@ -53,16 +53,16 @@ public:
     /// IssuedDocument members
 
     /// <summary>
-    /// 
+    /// Document Identifier.
     /// </summary>
-    utility::string_t getDocumentId() const;
-    bool documentIdIsSet() const;
-    void unsetDocumentId();
+    utility::string_t getId() const;
+    bool idIsSet() const;
+    void unsetId();
 
-    void setDocumentId(const utility::string_t& value);
+    void setId(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document Identifier. eg: GJ05FG67866586.
     /// </summary>
     utility::string_t getIdentifier() const;
     bool identifierIsSet() const;
@@ -71,7 +71,7 @@ public:
     void setIdentifier(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document type name. eg: Driving License.
     /// </summary>
     utility::string_t getDocumentType() const;
     bool documentTypeIsSet() const;
@@ -99,8 +99,8 @@ public:
 
 
 protected:
-    utility::string_t m_DocumentId;
-    bool m_DocumentIdIsSet;
+    utility::string_t m_Id;
+    bool m_IdIsSet;
     utility::string_t m_Identifier;
     bool m_IdentifierIsSet;
     utility::string_t m_DocumentType;

@@ -11,13 +11,13 @@
  */
 
 /*
- * ProblemDetails.h
+ * StringStringKeyValuePair.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_ProblemDetails_H_
-#define MYDATAMYCONSENT_MODELS_ProblemDetails_H_
+#ifndef MYDATAMYCONSENT_MODELS_StringStringKeyValuePair_H_
+#define MYDATAMYCONSENT_MODELS_StringStringKeyValuePair_H_
 
 
 #include "ModelBase.h"
@@ -31,12 +31,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  ProblemDetails
+class  StringStringKeyValuePair
     : public ModelBase
 {
 public:
-    ProblemDetails();
-    virtual ~ProblemDetails();
+    StringStringKeyValuePair();
+    virtual ~StringStringKeyValuePair();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,58 +50,36 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// ProblemDetails members
+    /// StringStringKeyValuePair members
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getType() const;
-    bool typeIsSet() const;
-    void unsetType();
+    utility::string_t getKey() const;
+    bool keyIsSet() const;
+    void unsetKey();
 
-    void setType(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getTitle() const;
-    bool titleIsSet() const;
-    void unsetTitle();
-
-    void setTitle(const utility::string_t& value);
+    void setKey(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    int32_t getStatus() const;
-    bool statusIsSet() const;
-    void unsetStatus();
+    utility::string_t getValue() const;
+    bool valueIsSet() const;
+    void unsetValue();
 
-    void setStatus(int32_t value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDetail() const;
-    bool detailIsSet() const;
-    void unsetDetail();
-
-    void setDetail(const utility::string_t& value);
+    void setValue(const utility::string_t& value);
 
 
 protected:
-    utility::string_t m_Type;
-    bool m_TypeIsSet;
-    utility::string_t m_Title;
-    bool m_TitleIsSet;
-    int32_t m_Status;
-    bool m_StatusIsSet;
-    utility::string_t m_Detail;
-    bool m_DetailIsSet;
+    utility::string_t m_Key;
+    bool m_KeyIsSet;
+    utility::string_t m_Value;
+    bool m_ValueIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_ProblemDetails_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_StringStringKeyValuePair_H_ */

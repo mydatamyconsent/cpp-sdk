@@ -30,8 +30,6 @@ ProblemDetails::ProblemDetails()
     m_StatusIsSet = false;
     m_Detail = utility::conversions::to_string_t("");
     m_DetailIsSet = false;
-    m_Instance = utility::conversions::to_string_t("");
-    m_InstanceIsSet = false;
 }
 
 ProblemDetails::~ProblemDetails()
@@ -63,10 +61,6 @@ web::json::value ProblemDetails::toJson() const
     if(m_DetailIsSet)
     {
         val[utility::conversions::to_string_t(U("detail"))] = ModelBase::toJson(m_Detail);
-    }
-    if(m_InstanceIsSet)
-    {
-        val[utility::conversions::to_string_t(U("instance"))] = ModelBase::toJson(m_Instance);
     }
 
     return val;
@@ -116,16 +110,6 @@ bool ProblemDetails::fromJson(const web::json::value& val)
             setDetail(refVal_detail);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("instance"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("instance")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_instance;
-            ok &= ModelBase::fromJson(fieldValue, refVal_instance);
-            setInstance(refVal_instance);
-        }
-    }
     return ok;
 }
 
@@ -151,10 +135,6 @@ void ProblemDetails::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     if(m_DetailIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("detail")), m_Detail));
-    }
-    if(m_InstanceIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("instance")), m_Instance));
     }
 }
 
@@ -190,12 +170,6 @@ bool ProblemDetails::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         utility::string_t refVal_detail;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("detail"))), refVal_detail );
         setDetail(refVal_detail);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("instance"))))
-    {
-        utility::string_t refVal_instance;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("instance"))), refVal_instance );
-        setInstance(refVal_instance);
     }
     return ok;
 }
@@ -279,26 +253,6 @@ bool ProblemDetails::detailIsSet() const
 void ProblemDetails::unsetDetail()
 {
     m_DetailIsSet = false;
-}
-utility::string_t ProblemDetails::getInstance() const
-{
-    return m_Instance;
-}
-
-void ProblemDetails::setInstance(const utility::string_t& value)
-{
-    m_Instance = value;
-    m_InstanceIsSet = true;
-}
-
-bool ProblemDetails::instanceIsSet() const
-{
-    return m_InstanceIsSet;
-}
-
-void ProblemDetails::unsetInstance()
-{
-    m_InstanceIsSet = false;
 }
 }
 }
