@@ -12,7 +12,7 @@
 
 
 
-#include "DocumentTypeDetailsDtoPaginatedList.h"
+#include "DocumentTypePaginatedList.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -20,7 +20,7 @@ namespace models {
 
 
 
-DocumentTypeDetailsDtoPaginatedList::DocumentTypeDetailsDtoPaginatedList()
+DocumentTypePaginatedList::DocumentTypePaginatedList()
 {
     m_PageIndex = 0;
     m_PageIndexIsSet = false;
@@ -33,16 +33,16 @@ DocumentTypeDetailsDtoPaginatedList::DocumentTypeDetailsDtoPaginatedList()
     m_ItemsIsSet = false;
 }
 
-DocumentTypeDetailsDtoPaginatedList::~DocumentTypeDetailsDtoPaginatedList()
+DocumentTypePaginatedList::~DocumentTypePaginatedList()
 {
 }
 
-void DocumentTypeDetailsDtoPaginatedList::validate()
+void DocumentTypePaginatedList::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value DocumentTypeDetailsDtoPaginatedList::toJson() const
+web::json::value DocumentTypePaginatedList::toJson() const
 {
 
     web::json::value val = web::json::value::object();
@@ -71,7 +71,7 @@ web::json::value DocumentTypeDetailsDtoPaginatedList::toJson() const
     return val;
 }
 
-bool DocumentTypeDetailsDtoPaginatedList::fromJson(const web::json::value& val)
+bool DocumentTypePaginatedList::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
@@ -120,7 +120,7 @@ bool DocumentTypeDetailsDtoPaginatedList::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("items")));
         if(!fieldValue.is_null())
         {
-            std::vector<std::shared_ptr<DocumentTypeDetailsDto>> refVal_items;
+            std::vector<std::shared_ptr<DocumentType>> refVal_items;
             ok &= ModelBase::fromJson(fieldValue, refVal_items);
             setItems(refVal_items);
         }
@@ -128,7 +128,7 @@ bool DocumentTypeDetailsDtoPaginatedList::fromJson(const web::json::value& val)
     return ok;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DocumentTypePaginatedList::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
@@ -157,7 +157,7 @@ void DocumentTypeDetailsDtoPaginatedList::toMultipart(std::shared_ptr<MultipartF
     }
 }
 
-bool DocumentTypeDetailsDtoPaginatedList::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool DocumentTypePaginatedList::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -192,110 +192,110 @@ bool DocumentTypeDetailsDtoPaginatedList::fromMultiPart(std::shared_ptr<Multipar
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("items"))))
     {
-        std::vector<std::shared_ptr<DocumentTypeDetailsDto>> refVal_items;
+        std::vector<std::shared_ptr<DocumentType>> refVal_items;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("items"))), refVal_items );
         setItems(refVal_items);
     }
     return ok;
 }
 
-int32_t DocumentTypeDetailsDtoPaginatedList::getPageIndex() const
+int32_t DocumentTypePaginatedList::getPageIndex() const
 {
     return m_PageIndex;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::setPageIndex(int32_t value)
+void DocumentTypePaginatedList::setPageIndex(int32_t value)
 {
     m_PageIndex = value;
     m_PageIndexIsSet = true;
 }
 
-bool DocumentTypeDetailsDtoPaginatedList::pageIndexIsSet() const
+bool DocumentTypePaginatedList::pageIndexIsSet() const
 {
     return m_PageIndexIsSet;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::unsetPageIndex()
+void DocumentTypePaginatedList::unsetPageIndex()
 {
     m_PageIndexIsSet = false;
 }
-int32_t DocumentTypeDetailsDtoPaginatedList::getPageSize() const
+int32_t DocumentTypePaginatedList::getPageSize() const
 {
     return m_PageSize;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::setPageSize(int32_t value)
+void DocumentTypePaginatedList::setPageSize(int32_t value)
 {
     m_PageSize = value;
     m_PageSizeIsSet = true;
 }
 
-bool DocumentTypeDetailsDtoPaginatedList::pageSizeIsSet() const
+bool DocumentTypePaginatedList::pageSizeIsSet() const
 {
     return m_PageSizeIsSet;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::unsetPageSize()
+void DocumentTypePaginatedList::unsetPageSize()
 {
     m_PageSizeIsSet = false;
 }
-int32_t DocumentTypeDetailsDtoPaginatedList::getTotalPages() const
+int32_t DocumentTypePaginatedList::getTotalPages() const
 {
     return m_TotalPages;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::setTotalPages(int32_t value)
+void DocumentTypePaginatedList::setTotalPages(int32_t value)
 {
     m_TotalPages = value;
     m_TotalPagesIsSet = true;
 }
 
-bool DocumentTypeDetailsDtoPaginatedList::totalPagesIsSet() const
+bool DocumentTypePaginatedList::totalPagesIsSet() const
 {
     return m_TotalPagesIsSet;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::unsetTotalPages()
+void DocumentTypePaginatedList::unsetTotalPages()
 {
     m_TotalPagesIsSet = false;
 }
-int64_t DocumentTypeDetailsDtoPaginatedList::getTotalItems() const
+int64_t DocumentTypePaginatedList::getTotalItems() const
 {
     return m_TotalItems;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::setTotalItems(int64_t value)
+void DocumentTypePaginatedList::setTotalItems(int64_t value)
 {
     m_TotalItems = value;
     m_TotalItemsIsSet = true;
 }
 
-bool DocumentTypeDetailsDtoPaginatedList::totalItemsIsSet() const
+bool DocumentTypePaginatedList::totalItemsIsSet() const
 {
     return m_TotalItemsIsSet;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::unsetTotalItems()
+void DocumentTypePaginatedList::unsetTotalItems()
 {
     m_TotalItemsIsSet = false;
 }
-std::vector<std::shared_ptr<DocumentTypeDetailsDto>>& DocumentTypeDetailsDtoPaginatedList::getItems()
+std::vector<std::shared_ptr<DocumentType>>& DocumentTypePaginatedList::getItems()
 {
     return m_Items;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::setItems(const std::vector<std::shared_ptr<DocumentTypeDetailsDto>>& value)
+void DocumentTypePaginatedList::setItems(const std::vector<std::shared_ptr<DocumentType>>& value)
 {
     m_Items = value;
     m_ItemsIsSet = true;
 }
 
-bool DocumentTypeDetailsDtoPaginatedList::itemsIsSet() const
+bool DocumentTypePaginatedList::itemsIsSet() const
 {
     return m_ItemsIsSet;
 }
 
-void DocumentTypeDetailsDtoPaginatedList::unsetItems()
+void DocumentTypePaginatedList::unsetItems()
 {
     m_ItemsIsSet = false;
 }

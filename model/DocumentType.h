@@ -11,13 +11,13 @@
  */
 
 /*
- * DocumentTypeDetailsDto.h
+ * DocumentType.h
  *
- * 
+ * Issuable Document Type details.
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DocumentTypeDetailsDto_H_
-#define MYDATAMYCONSENT_MODELS_DocumentTypeDetailsDto_H_
+#ifndef MYDATAMYCONSENT_MODELS_DocumentType_H_
+#define MYDATAMYCONSENT_MODELS_DocumentType_H_
 
 
 #include "ModelBase.h"
@@ -25,6 +25,7 @@
 #include "model/DocumentCategoryType.h"
 #include "model/SupportedEntityType.h"
 #include <cpprest/details/basic_types.h>
+#include <vector>
 #include "model/DocumentSubCategoryType.h"
 
 namespace mydatamyconsent {
@@ -32,14 +33,14 @@ namespace models {
 
 
 /// <summary>
-/// 
+/// Issuable Document Type details.
 /// </summary>
-class  DocumentTypeDetailsDto
+class  DocumentType
     : public ModelBase
 {
 public:
-    DocumentTypeDetailsDto();
-    virtual ~DocumentTypeDetailsDto();
+    DocumentType();
+    virtual ~DocumentType();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -53,25 +54,16 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DocumentTypeDetailsDto members
+    /// DocumentType members
 
     /// <summary>
-    /// 
+    /// Document Type Identifier.
     /// </summary>
     utility::string_t getId() const;
     bool idIsSet() const;
     void unsetId();
 
     void setId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getOrganizationId() const;
-    bool organizationIdIsSet() const;
-    void unsetOrganizationId();
-
-    void setOrganizationId(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -92,16 +84,7 @@ public:
     void setSubCategoryType(const std::shared_ptr<DocumentSubCategoryType>& value);
 
     /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getDocumentTypeCategoryId() const;
-    bool documentTypeCategoryIdIsSet() const;
-    void unsetDocumentTypeCategoryId();
-
-    void setDocumentTypeCategoryId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
+    /// Document Type Name. eg: Driving License.
     /// </summary>
     utility::string_t getName() const;
     bool nameIsSet() const;
@@ -110,7 +93,7 @@ public:
     void setName(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document Type Unique Slug. eg: \&quot;in.gov.gj.transport.dl\&quot;.
     /// </summary>
     utility::string_t getSlug() const;
     bool slugIsSet() const;
@@ -119,7 +102,7 @@ public:
     void setSlug(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document Type description. eg: Gujarat State Driving License.
     /// </summary>
     utility::string_t getDescription() const;
     bool descriptionIsSet() const;
@@ -128,7 +111,7 @@ public:
     void setDescription(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Logo URL of document type.
     /// </summary>
     utility::string_t getLogoUrl() const;
     bool logoUrlIsSet() const;
@@ -137,52 +120,34 @@ public:
     void setLogoUrl(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document search repository service name.
     /// </summary>
-    utility::string_t getCountryIso2() const;
-    bool countryIso2IsSet() const;
-    void unsetCountryIso2();
+    utility::string_t getSearchServiceName() const;
+    bool searchServiceNameIsSet() const;
+    void unsetSearchServiceName();
 
-    void setCountryIso2(const utility::string_t& value);
+    void setSearchServiceName(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document repository service name.
     /// </summary>
-    utility::string_t getCountryId() const;
-    bool countryIdIsSet() const;
-    void unsetCountryId();
+    utility::string_t getRepositoryServiceName() const;
+    bool repositoryServiceNameIsSet() const;
+    void unsetRepositoryServiceName();
 
-    void setCountryId(const utility::string_t& value);
+    void setRepositoryServiceName(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Supported entity types. eg: Individual, Organization.
     /// </summary>
-    utility::string_t getSearchServiceId() const;
-    bool searchServiceIdIsSet() const;
-    void unsetSearchServiceId();
+    std::vector<std::shared_ptr<SupportedEntityType>>& getSupportedEntityTypes();
+    bool supportedEntityTypesIsSet() const;
+    void unsetSupportedEntityTypes();
 
-    void setSearchServiceId(const utility::string_t& value);
+    void setSupportedEntityTypes(const std::vector<std::shared_ptr<SupportedEntityType>>& value);
 
     /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getRepositoryServiceId() const;
-    bool repositoryServiceIdIsSet() const;
-    void unsetRepositoryServiceId();
-
-    void setRepositoryServiceId(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<SupportedEntityType> getSupportedEntityType() const;
-    bool supportedEntityTypeIsSet() const;
-    void unsetSupportedEntityType();
-
-    void setSupportedEntityType(const std::shared_ptr<SupportedEntityType>& value);
-
-    /// <summary>
-    /// 
+    /// Name of the document type creator.
     /// </summary>
     utility::string_t getAddedBy() const;
     bool addedByIsSet() const;
@@ -191,7 +156,7 @@ public:
     void setAddedBy(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Payable amount if document is chargeable. eg: 10.25.
     /// </summary>
     double getPayableAmount() const;
     bool payableAmountIsSet() const;
@@ -200,7 +165,16 @@ public:
     void setPayableAmount(double value);
 
     /// <summary>
-    /// 
+    /// Payable amount currency. eg: INR, USD etc.,.
+    /// </summary>
+    utility::string_t getPayableAmountCurrency() const;
+    bool payableAmountCurrencyIsSet() const;
+    void unsetPayableAmountCurrency();
+
+    void setPayableAmountCurrency(const utility::string_t& value);
+
+    /// <summary>
+    /// DateTime of approval in UTC timezone.
     /// </summary>
     utility::datetime getApprovedAtUtc() const;
     bool approvedAtUtcIsSet() const;
@@ -208,18 +182,23 @@ public:
 
     void setApprovedAtUtc(const utility::datetime& value);
 
+    /// <summary>
+    /// Document type approval status.
+    /// </summary>
+    bool isApproved() const;
+    bool approvedIsSet() const;
+    void unsetApproved();
+
+    void setApproved(bool value);
+
 
 protected:
     utility::string_t m_Id;
     bool m_IdIsSet;
-    utility::string_t m_OrganizationId;
-    bool m_OrganizationIdIsSet;
     std::shared_ptr<DocumentCategoryType> m_CategoryType;
     bool m_CategoryTypeIsSet;
     std::shared_ptr<DocumentSubCategoryType> m_SubCategoryType;
     bool m_SubCategoryTypeIsSet;
-    utility::string_t m_DocumentTypeCategoryId;
-    bool m_DocumentTypeCategoryIdIsSet;
     utility::string_t m_Name;
     bool m_NameIsSet;
     utility::string_t m_Slug;
@@ -228,26 +207,26 @@ protected:
     bool m_DescriptionIsSet;
     utility::string_t m_LogoUrl;
     bool m_LogoUrlIsSet;
-    utility::string_t m_CountryIso2;
-    bool m_CountryIso2IsSet;
-    utility::string_t m_CountryId;
-    bool m_CountryIdIsSet;
-    utility::string_t m_SearchServiceId;
-    bool m_SearchServiceIdIsSet;
-    utility::string_t m_RepositoryServiceId;
-    bool m_RepositoryServiceIdIsSet;
-    std::shared_ptr<SupportedEntityType> m_SupportedEntityType;
-    bool m_SupportedEntityTypeIsSet;
+    utility::string_t m_SearchServiceName;
+    bool m_SearchServiceNameIsSet;
+    utility::string_t m_RepositoryServiceName;
+    bool m_RepositoryServiceNameIsSet;
+    std::vector<std::shared_ptr<SupportedEntityType>> m_SupportedEntityTypes;
+    bool m_SupportedEntityTypesIsSet;
     utility::string_t m_AddedBy;
     bool m_AddedByIsSet;
     double m_PayableAmount;
     bool m_PayableAmountIsSet;
+    utility::string_t m_PayableAmountCurrency;
+    bool m_PayableAmountCurrencyIsSet;
     utility::datetime m_ApprovedAtUtc;
     bool m_ApprovedAtUtcIsSet;
+    bool m_Approved;
+    bool m_ApprovedIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DocumentTypeDetailsDto_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DocumentType_H_ */

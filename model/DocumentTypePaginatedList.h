@@ -11,19 +11,19 @@
  */
 
 /*
- * DocumentTypeDetailsDtoPaginatedList.h
+ * DocumentTypePaginatedList.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DocumentTypeDetailsDtoPaginatedList_H_
-#define MYDATAMYCONSENT_MODELS_DocumentTypeDetailsDtoPaginatedList_H_
+#ifndef MYDATAMYCONSENT_MODELS_DocumentTypePaginatedList_H_
+#define MYDATAMYCONSENT_MODELS_DocumentTypePaginatedList_H_
 
 
 #include "ModelBase.h"
 
-#include "model/DocumentTypeDetailsDto.h"
 #include <vector>
+#include "model/DocumentType.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -32,12 +32,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  DocumentTypeDetailsDtoPaginatedList
+class  DocumentTypePaginatedList
     : public ModelBase
 {
 public:
-    DocumentTypeDetailsDtoPaginatedList();
-    virtual ~DocumentTypeDetailsDtoPaginatedList();
+    DocumentTypePaginatedList();
+    virtual ~DocumentTypePaginatedList();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,7 +51,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DocumentTypeDetailsDtoPaginatedList members
+    /// DocumentTypePaginatedList members
 
     /// <summary>
     /// 
@@ -92,11 +92,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<DocumentTypeDetailsDto>>& getItems();
+    std::vector<std::shared_ptr<DocumentType>>& getItems();
     bool itemsIsSet() const;
     void unsetItems();
 
-    void setItems(const std::vector<std::shared_ptr<DocumentTypeDetailsDto>>& value);
+    void setItems(const std::vector<std::shared_ptr<DocumentType>>& value);
 
 
 protected:
@@ -108,7 +108,7 @@ protected:
     bool m_TotalPagesIsSet;
     int64_t m_TotalItems;
     bool m_TotalItemsIsSet;
-    std::vector<std::shared_ptr<DocumentTypeDetailsDto>> m_Items;
+    std::vector<std::shared_ptr<DocumentType>> m_Items;
     bool m_ItemsIsSet;
 };
 
@@ -116,4 +116,4 @@ protected:
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DocumentTypeDetailsDtoPaginatedList_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DocumentTypePaginatedList_H_ */

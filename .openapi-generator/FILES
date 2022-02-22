@@ -81,10 +81,10 @@ model/DocumentIssueRequest.cpp
 model/DocumentIssueRequest.h
 model/DocumentSubCategoryType.cpp
 model/DocumentSubCategoryType.h
-model/DocumentTypeDetailsDto.cpp
-model/DocumentTypeDetailsDto.h
-model/DocumentTypeDetailsDtoPaginatedList.cpp
-model/DocumentTypeDetailsDtoPaginatedList.h
+model/DocumentType.cpp
+model/DocumentType.h
+model/DocumentTypePaginatedList.cpp
+model/DocumentTypePaginatedList.h
 model/DocumentsRequired.cpp
 model/DocumentsRequired.h
 model/FetchTypes.cpp

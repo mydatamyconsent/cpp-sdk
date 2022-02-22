@@ -24,7 +24,7 @@
 #include "ApiClient.h"
 
 #include "model/DocumentIssueRequest.h"
-#include "model/DocumentTypeDetailsDtoPaginatedList.h"
+#include "model/DocumentTypePaginatedList.h"
 #include "model/IssuedDocument.h"
 #include "model/IssuedDocumentPaginatedList.h"
 #include "model/ProblemDetails.h"
@@ -82,7 +82,7 @@ public:
     /// </remarks>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<DocumentTypeDetailsDtoPaginatedList>> getRegisteredDocumentTypes(
+    pplx::task<std::shared_ptr<DocumentTypePaginatedList>> getRegisteredDocumentTypes(
         boost::optional<int32_t> pageNo,
         boost::optional<int32_t> pageSize
     ) const;

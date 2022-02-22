@@ -299,7 +299,7 @@ pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> DocumentsApi::getIssued
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<DocumentTypeDetailsDtoPaginatedList>> DocumentsApi::getRegisteredDocumentTypes(boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
+pplx::task<std::shared_ptr<DocumentTypePaginatedList>> DocumentsApi::getRegisteredDocumentTypes(boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
 {
 
 
@@ -408,7 +408,7 @@ pplx::task<std::shared_ptr<DocumentTypeDetailsDtoPaginatedList>> DocumentsApi::g
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<DocumentTypeDetailsDtoPaginatedList> localVarResult(new DocumentTypeDetailsDtoPaginatedList());
+        std::shared_ptr<DocumentTypePaginatedList> localVarResult(new DocumentTypePaginatedList());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
