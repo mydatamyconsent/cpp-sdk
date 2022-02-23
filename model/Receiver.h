@@ -13,7 +13,7 @@
 /*
  * Receiver.h
  *
- * 
+ * Consent request receiver details
  */
 
 #ifndef MYDATAMYCONSENT_MODELS_Receiver_H_
@@ -32,7 +32,7 @@ namespace models {
 
 
 /// <summary>
-/// 
+/// Consent request receiver details
 /// </summary>
 class  Receiver
     : public ModelBase
@@ -65,7 +65,7 @@ public:
     void setType(const std::shared_ptr<ReceiverType>& value);
 
     /// <summary>
-    /// 
+    /// Consent request receiver identifiers
     /// </summary>
     std::vector<std::shared_ptr<IdentifierStringKeyValuePair>>& getIdentifiers();
     bool identifiersIsSet() const;

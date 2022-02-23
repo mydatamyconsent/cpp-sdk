@@ -101,16 +101,6 @@ public:
         utility::string_t consentId
     ) const;
     /// <summary>
-    /// Get all organizational consented financial accounts.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="consentId">Consent id.</param>
-    pplx::task<std::shared_ptr<DataConsentFinancialsDto>> getAllOrganizationConsentedAccounts(
-        utility::string_t consentId
-    ) const;
-    /// <summary>
     /// Get the organization documents based on ConsentId.
     /// </summary>
     /// <remarks>
@@ -128,6 +118,16 @@ public:
     /// </remarks>
     /// <param name="consentId">Consent id.</param>
     pplx::task<std::shared_ptr<DataConsentDetailsDto>> getConsentDetailsById(
+        utility::string_t consentId
+    ) const;
+    /// <summary>
+    /// Get all organizational consented financial accounts.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId">Consent id.</param>
+    pplx::task<std::shared_ptr<DataConsentFinancialsDto>> getConsentFinancialAccounts(
         utility::string_t consentId
     ) const;
     /// <summary>
@@ -189,24 +189,6 @@ public:
         boost::optional<int32_t> pageSize
     ) const;
     /// <summary>
-    /// Get the list of Consents Sent to Individuals.
-    /// </summary>
-    /// <remarks>
-    /// 
-    /// </remarks>
-    /// <param name="status">Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional, default to new DataConsentStatus())</param>
-    /// <param name="from">From date time in utc timezone. (optional, default to utility::datetime())</param>
-    /// <param name="to">Til date time in utc timezone. (optional, default to utility::datetime())</param>
-    /// <param name="pageNo">Page number. (optional, default to 0)</param>
-    /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<UserDataConsentInfoDtoPaginatedList>> getConsents(
-        boost::optional<std::shared_ptr<DataConsentStatus>> status,
-        boost::optional<utility::datetime> from,
-        boost::optional<utility::datetime> to,
-        boost::optional<int32_t> pageNo,
-        boost::optional<int32_t> pageSize
-    ) const;
-    /// <summary>
     /// Get the list of data consents sent for organizations.
     /// </summary>
     /// <remarks>
@@ -218,6 +200,24 @@ public:
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
     pplx::task<std::shared_ptr<OrganizationDataConsentInfoDtoPaginatedList>> getConsentsForOrganizations(
+        boost::optional<std::shared_ptr<DataConsentStatus>> status,
+        boost::optional<utility::datetime> from,
+        boost::optional<utility::datetime> to,
+        boost::optional<int32_t> pageNo,
+        boost::optional<int32_t> pageSize
+    ) const;
+    /// <summary>
+    /// Get the list of Consents Sent to Individuals.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="status">Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional, default to new DataConsentStatus())</param>
+    /// <param name="from">From date time in utc timezone. (optional, default to utility::datetime())</param>
+    /// <param name="to">Til date time in utc timezone. (optional, default to utility::datetime())</param>
+    /// <param name="pageNo">Page number. (optional, default to 0)</param>
+    /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
+    pplx::task<std::shared_ptr<UserDataConsentInfoDtoPaginatedList>> getConsentsSentToIndividuals(
         boost::optional<std::shared_ptr<DataConsentStatus>> status,
         boost::optional<utility::datetime> from,
         boost::optional<utility::datetime> to,

@@ -54,7 +54,7 @@ public:
     /// IndividualDataConsentRequestResponse members
 
     /// <summary>
-    /// 
+    /// Consent request id
     /// </summary>
     utility::string_t getId() const;
     bool idIsSet() const;
@@ -63,7 +63,7 @@ public:
     void setId(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Consent request template id
     /// </summary>
     utility::string_t getTemplateId() const;
     bool templateIdIsSet() const;
@@ -72,7 +72,7 @@ public:
     void setTemplateId(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Requested date time in utc zone
     /// </summary>
     utility::datetime getRequestedAtUtc() const;
     bool requestedAtUtcIsSet() const;
@@ -81,7 +81,7 @@ public:
     void setRequestedAtUtc(const utility::datetime& value);
 
     /// <summary>
-    /// 
+    /// Request expires date time in utc zone
     /// </summary>
     utility::datetime getRequestExpiresAtUtc() const;
     bool requestExpiresAtUtcIsSet() const;
@@ -99,7 +99,7 @@ public:
     void setStatus(const std::shared_ptr<DataConsentStatus>& value);
 
     /// <summary>
-    /// 
+    /// Requested transaction id
     /// </summary>
     utility::string_t getTransactionId() const;
     bool transactionIdIsSet() const;

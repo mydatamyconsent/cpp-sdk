@@ -54,7 +54,7 @@ public:
     /// CreateIndividualDataConsentRequest members
 
     /// <summary>
-    /// 
+    /// Consent template id
     /// </summary>
     utility::string_t getConsentTemplateId() const;
     bool consentTemplateIdIsSet() const;
