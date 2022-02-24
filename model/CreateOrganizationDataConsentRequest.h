@@ -13,7 +13,7 @@
 /*
  * CreateOrganizationDataConsentRequest.h
  *
- * Organization Data Consent Request.
+ * Create organization data consent request
  */
 
 #ifndef MYDATAMYCONSENT_MODELS_CreateOrganizationDataConsentRequest_H_
@@ -30,7 +30,7 @@ namespace models {
 
 
 /// <summary>
-/// Organization Data Consent Request.
+/// Create organization data consent request
 /// </summary>
 class  CreateOrganizationDataConsentRequest
     : public ModelBase

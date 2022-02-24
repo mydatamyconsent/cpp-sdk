@@ -13,7 +13,7 @@
 /*
  * IndividualDataConsentRequestResponse.h
  *
- * Individual Data Consent Request Response.
+ * IndividualDataConsentRequestResponse
  */
 
 #ifndef MYDATAMYCONSENT_MODELS_IndividualDataConsentRequestResponse_H_
@@ -30,7 +30,7 @@ namespace models {
 
 
 /// <summary>
-/// Individual Data Consent Request Response.
+/// IndividualDataConsentRequestResponse
 /// </summary>
 class  IndividualDataConsentRequestResponse
     : public ModelBase

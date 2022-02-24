@@ -34,7 +34,7 @@ SupportedIdentifiersApi::~SupportedIdentifiersApi()
 {
 }
 
-pplx::task<std::shared_ptr<SupportedIdentifiersByCountry>> SupportedIdentifiersApi::getAllSupportedIdentifiers(utility::string_t countryIso2Code) const
+pplx::task<std::shared_ptr<SupportedIdentifier>> SupportedIdentifiersApi::getAllSupportedIdentifiers(utility::string_t countryIso2Code) const
 {
 
 
@@ -136,7 +136,7 @@ pplx::task<std::shared_ptr<SupportedIdentifiersByCountry>> SupportedIdentifiersA
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<SupportedIdentifiersByCountry> localVarResult(new SupportedIdentifiersByCountry());
+        std::shared_ptr<SupportedIdentifier> localVarResult(new SupportedIdentifier());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

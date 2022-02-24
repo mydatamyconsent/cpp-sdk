@@ -19,56 +19,17 @@ namespace models {
 
 
 
-namespace
-{
-using EnumUnderlyingType = utility::string_t;
-
-Identifier::eIdentifier toEnum(const EnumUnderlyingType& val)
-{
-    if (val == utility::conversions::to_string_t(U("Email")))
-        return Identifier::eIdentifier::Identifier_EMAIL;
-    if (val == utility::conversions::to_string_t(U("PermanentAccountNumber")))
-        return Identifier::eIdentifier::Identifier_PERMANENTACCOUNTNUMBER;
-    if (val == utility::conversions::to_string_t(U("AadhaarNumber")))
-        return Identifier::eIdentifier::Identifier_AADHAARNUMBER;
-    if (val == utility::conversions::to_string_t(U("MobileNumber")))
-        return Identifier::eIdentifier::Identifier_MOBILENUMBER;
-    if (val == utility::conversions::to_string_t(U("CorporateIdentificationNumber")))
-        return Identifier::eIdentifier::Identifier_CORPORATEIDENTIFICATIONNUMBER;
-    if (val == utility::conversions::to_string_t(U("TaxDeductionAccountNumber")))
-        return Identifier::eIdentifier::Identifier_TAXDEDUCTIONACCOUNTNUMBER;
-    if (val == utility::conversions::to_string_t(U("GoodsAndServicesTaxIdentificationNumber")))
-        return Identifier::eIdentifier::Identifier_GOODSANDSERVICESTAXIDENTIFICATIONNUMBER;
-    return {};
-}
-
-EnumUnderlyingType fromEnum(Identifier::eIdentifier e)
-{
-    switch (e)
-    {
-    case Identifier::eIdentifier::Identifier_EMAIL:
-        return U("Email");
-    case Identifier::eIdentifier::Identifier_PERMANENTACCOUNTNUMBER:
-        return U("PermanentAccountNumber");
-    case Identifier::eIdentifier::Identifier_AADHAARNUMBER:
-        return U("AadhaarNumber");
-    case Identifier::eIdentifier::Identifier_MOBILENUMBER:
-        return U("MobileNumber");
-    case Identifier::eIdentifier::Identifier_CORPORATEIDENTIFICATIONNUMBER:
-        return U("CorporateIdentificationNumber");
-    case Identifier::eIdentifier::Identifier_TAXDEDUCTIONACCOUNTNUMBER:
-        return U("TaxDeductionAccountNumber");
-    case Identifier::eIdentifier::Identifier_GOODSANDSERVICESTAXIDENTIFICATIONNUMBER:
-        return U("GoodsAndServicesTaxIdentificationNumber");
-    default:
-        break;
-    }
-    return {};
-}
-}
 
 Identifier::Identifier()
 {
+    m_Key = utility::conversions::to_string_t("");
+    m_KeyIsSet = false;
+    m_Name = utility::conversions::to_string_t("");
+    m_NameIsSet = false;
+    m_Description = utility::conversions::to_string_t("");
+    m_DescriptionIsSet = false;
+    m_ExampleValue = utility::conversions::to_string_t("");
+    m_ExampleValueIsSet = false;
 }
 
 Identifier::~Identifier()
@@ -82,59 +43,217 @@ void Identifier::validate()
 
 web::json::value Identifier::toJson() const
 {
-    auto val = fromEnum(m_value);
-    return web::json::value(val);
+
+    web::json::value val = web::json::value::object();
+    
+    if(m_KeyIsSet)
+    {
+        val[utility::conversions::to_string_t(U("key"))] = ModelBase::toJson(m_Key);
+    }
+    if(m_NameIsSet)
+    {
+        val[utility::conversions::to_string_t(U("name"))] = ModelBase::toJson(m_Name);
+    }
+    if(m_DescriptionIsSet)
+    {
+        val[utility::conversions::to_string_t(U("description"))] = ModelBase::toJson(m_Description);
+    }
+    if(m_ExampleValueIsSet)
+    {
+        val[utility::conversions::to_string_t(U("exampleValue"))] = ModelBase::toJson(m_ExampleValue);
+    }
+
+    return val;
 }
 
 bool Identifier::fromJson(const web::json::value& val)
 {
-    m_value = toEnum(val.as_string());
-    return true;
+    bool ok = true;
+    
+    if(val.has_field(utility::conversions::to_string_t(U("key"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("key")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_key;
+            ok &= ModelBase::fromJson(fieldValue, refVal_key);
+            setKey(refVal_key);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("name"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("name")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_name;
+            ok &= ModelBase::fromJson(fieldValue, refVal_name);
+            setName(refVal_name);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("description"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("description")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_description;
+            ok &= ModelBase::fromJson(fieldValue, refVal_description);
+            setDescription(refVal_description);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("exampleValue"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("exampleValue")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_exampleValue;
+            ok &= ModelBase::fromJson(fieldValue, refVal_exampleValue);
+            setExampleValue(refVal_exampleValue);
+        }
+    }
+    return ok;
 }
 
 void Identifier::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
-    if (!namePrefix.empty() && namePrefix.back() != U('.'))
+    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
     {
-        namePrefix.push_back(U('.'));
+        namePrefix += utility::conversions::to_string_t(U("."));
     }
-
-    auto e = fromEnum(m_value);
-    multipart->add(ModelBase::toHttpContent(namePrefix, e));
+    if(m_KeyIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("key")), m_Key));
+    }
+    if(m_NameIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("name")), m_Name));
+    }
+    if(m_DescriptionIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("description")), m_Description));
+    }
+    if(m_ExampleValueIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("exampleValue")), m_ExampleValue));
+    }
 }
 
 bool Identifier::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
-    if (!namePrefix.empty() && namePrefix.back() != U('.'))
+    if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
     {
-        namePrefix.push_back(U('.'));
+        namePrefix += utility::conversions::to_string_t(U("."));
     }
+
+    if(multipart->hasContent(utility::conversions::to_string_t(U("key"))))
     {
-        EnumUnderlyingType e;
-        ok = ModelBase::fromHttpContent(multipart->getContent(namePrefix), e);
-        if (ok)
-        {
-            auto v = toEnum(e);
-            setValue(v);
-        }
+        utility::string_t refVal_key;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("key"))), refVal_key );
+        setKey(refVal_key);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("name"))))
+    {
+        utility::string_t refVal_name;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("name"))), refVal_name );
+        setName(refVal_name);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("description"))))
+    {
+        utility::string_t refVal_description;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("description"))), refVal_description );
+        setDescription(refVal_description);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("exampleValue"))))
+    {
+        utility::string_t refVal_exampleValue;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("exampleValue"))), refVal_exampleValue );
+        setExampleValue(refVal_exampleValue);
     }
     return ok;
 }
 
-Identifier::eIdentifier Identifier::getValue() const
+utility::string_t Identifier::getKey() const
 {
-   return m_value;
+    return m_Key;
 }
 
-void Identifier::setValue(Identifier::eIdentifier const value)
+void Identifier::setKey(const utility::string_t& value)
 {
-   m_value = value;
+    m_Key = value;
+    m_KeyIsSet = true;
 }
 
+bool Identifier::keyIsSet() const
+{
+    return m_KeyIsSet;
+}
 
+void Identifier::unsetKey()
+{
+    m_KeyIsSet = false;
+}
+utility::string_t Identifier::getName() const
+{
+    return m_Name;
+}
+
+void Identifier::setName(const utility::string_t& value)
+{
+    m_Name = value;
+    m_NameIsSet = true;
+}
+
+bool Identifier::nameIsSet() const
+{
+    return m_NameIsSet;
+}
+
+void Identifier::unsetName()
+{
+    m_NameIsSet = false;
+}
+utility::string_t Identifier::getDescription() const
+{
+    return m_Description;
+}
+
+void Identifier::setDescription(const utility::string_t& value)
+{
+    m_Description = value;
+    m_DescriptionIsSet = true;
+}
+
+bool Identifier::descriptionIsSet() const
+{
+    return m_DescriptionIsSet;
+}
+
+void Identifier::unsetDescription()
+{
+    m_DescriptionIsSet = false;
+}
+utility::string_t Identifier::getExampleValue() const
+{
+    return m_ExampleValue;
+}
+
+void Identifier::setExampleValue(const utility::string_t& value)
+{
+    m_ExampleValue = value;
+    m_ExampleValueIsSet = true;
+}
+
+bool Identifier::exampleValueIsSet() const
+{
+    return m_ExampleValueIsSet;
+}
+
+void Identifier::unsetExampleValue()
+{
+    m_ExampleValueIsSet = false;
+}
 }
 }
 

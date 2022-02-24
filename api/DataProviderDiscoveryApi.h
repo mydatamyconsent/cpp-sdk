@@ -25,7 +25,7 @@
 
 #include "model/DataProvider.h"
 #include "model/DataProviderPaginatedList.h"
-#include "model/ProblemDetails.h"
+#include "Object.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 

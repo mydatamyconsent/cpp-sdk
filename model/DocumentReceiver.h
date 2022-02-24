@@ -24,6 +24,7 @@
 
 #include "model/IdentificationStrategy.h"
 #include "model/StringStringKeyValuePair.h"
+#include <cpprest/details/basic_types.h>
 #include <vector>
 
 namespace mydatamyconsent {
@@ -57,6 +58,15 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    utility::string_t getCountryIso2Code() const;
+    bool countryIso2CodeIsSet() const;
+    void unsetCountryIso2Code();
+
+    void setCountryIso2Code(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
     std::vector<std::shared_ptr<StringStringKeyValuePair>>& getIdentifiers();
     bool identifiersIsSet() const;
     void unsetIdentifiers();
@@ -74,6 +84,8 @@ public:
 
 
 protected:
+    utility::string_t m_CountryIso2Code;
+    bool m_CountryIso2CodeIsSet;
     std::vector<std::shared_ptr<StringStringKeyValuePair>> m_Identifiers;
     bool m_IdentifiersIsSet;
     std::shared_ptr<IdentificationStrategy> m_IdentificationStrategy;

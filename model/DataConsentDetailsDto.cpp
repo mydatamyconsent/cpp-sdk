@@ -24,6 +24,17 @@ DataConsentDetailsDto::DataConsentDetailsDto()
 {
     m_Id = utility::conversions::to_string_t("");
     m_IdIsSet = false;
+    m_Title = utility::conversions::to_string_t("");
+    m_TitleIsSet = false;
+    m_Description = utility::conversions::to_string_t("");
+    m_DescriptionIsSet = false;
+    m_DataLifeIsSet = false;
+    m_RequesterName = utility::conversions::to_string_t("");
+    m_RequesterNameIsSet = false;
+    m_RequesterLogo = utility::conversions::to_string_t("");
+    m_RequesterLogoIsSet = false;
+    m_Location = utility::conversions::to_string_t("");
+    m_LocationIsSet = false;
     m_StatusIsSet = false;
     m_ApprovedAtUtc = utility::datetime();
     m_ApprovedAtUtcIsSet = false;
@@ -33,11 +44,13 @@ DataConsentDetailsDto::DataConsentDetailsDto()
     m_ExpiresAtUtcIsSet = false;
     m_RequestedAtUtc = utility::datetime();
     m_RequestedAtUtcIsSet = false;
-    m_RequesterIsSet = false;
-    m_ConsentDetailsIsSet = false;
     m_IdentifiersIsSet = false;
-    m_ApprovedDocumentsIsSet = false;
-    m_ApprovedFinancialsIsSet = false;
+    m_Documents = utility::conversions::to_string_t("");
+    m_DocumentsIsSet = false;
+    m_Financials = utility::conversions::to_string_t("");
+    m_FinancialsIsSet = false;
+    m_HealthRecords = utility::conversions::to_string_t("");
+    m_HealthRecordsIsSet = false;
 }
 
 DataConsentDetailsDto::~DataConsentDetailsDto()
@@ -57,6 +70,30 @@ web::json::value DataConsentDetailsDto::toJson() const
     if(m_IdIsSet)
     {
         val[utility::conversions::to_string_t(U("id"))] = ModelBase::toJson(m_Id);
+    }
+    if(m_TitleIsSet)
+    {
+        val[utility::conversions::to_string_t(U("title"))] = ModelBase::toJson(m_Title);
+    }
+    if(m_DescriptionIsSet)
+    {
+        val[utility::conversions::to_string_t(U("description"))] = ModelBase::toJson(m_Description);
+    }
+    if(m_DataLifeIsSet)
+    {
+        val[utility::conversions::to_string_t(U("dataLife"))] = ModelBase::toJson(m_DataLife);
+    }
+    if(m_RequesterNameIsSet)
+    {
+        val[utility::conversions::to_string_t(U("requesterName"))] = ModelBase::toJson(m_RequesterName);
+    }
+    if(m_RequesterLogoIsSet)
+    {
+        val[utility::conversions::to_string_t(U("requesterLogo"))] = ModelBase::toJson(m_RequesterLogo);
+    }
+    if(m_LocationIsSet)
+    {
+        val[utility::conversions::to_string_t(U("location"))] = ModelBase::toJson(m_Location);
     }
     if(m_StatusIsSet)
     {
@@ -78,25 +115,21 @@ web::json::value DataConsentDetailsDto::toJson() const
     {
         val[utility::conversions::to_string_t(U("requestedAtUtc"))] = ModelBase::toJson(m_RequestedAtUtc);
     }
-    if(m_RequesterIsSet)
-    {
-        val[utility::conversions::to_string_t(U("requester"))] = ModelBase::toJson(m_Requester);
-    }
-    if(m_ConsentDetailsIsSet)
-    {
-        val[utility::conversions::to_string_t(U("consentDetails"))] = ModelBase::toJson(m_ConsentDetails);
-    }
     if(m_IdentifiersIsSet)
     {
         val[utility::conversions::to_string_t(U("identifiers"))] = ModelBase::toJson(m_Identifiers);
     }
-    if(m_ApprovedDocumentsIsSet)
+    if(m_DocumentsIsSet)
     {
-        val[utility::conversions::to_string_t(U("approvedDocuments"))] = ModelBase::toJson(m_ApprovedDocuments);
+        val[utility::conversions::to_string_t(U("documents"))] = ModelBase::toJson(m_Documents);
     }
-    if(m_ApprovedFinancialsIsSet)
+    if(m_FinancialsIsSet)
     {
-        val[utility::conversions::to_string_t(U("approvedFinancials"))] = ModelBase::toJson(m_ApprovedFinancials);
+        val[utility::conversions::to_string_t(U("financials"))] = ModelBase::toJson(m_Financials);
+    }
+    if(m_HealthRecordsIsSet)
+    {
+        val[utility::conversions::to_string_t(U("healthRecords"))] = ModelBase::toJson(m_HealthRecords);
     }
 
     return val;
@@ -114,6 +147,66 @@ bool DataConsentDetailsDto::fromJson(const web::json::value& val)
             utility::string_t refVal_id;
             ok &= ModelBase::fromJson(fieldValue, refVal_id);
             setId(refVal_id);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("title"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("title")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_title;
+            ok &= ModelBase::fromJson(fieldValue, refVal_title);
+            setTitle(refVal_title);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("description"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("description")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_description;
+            ok &= ModelBase::fromJson(fieldValue, refVal_description);
+            setDescription(refVal_description);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("dataLife"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("dataLife")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<Life> refVal_dataLife;
+            ok &= ModelBase::fromJson(fieldValue, refVal_dataLife);
+            setDataLife(refVal_dataLife);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("requesterName"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requesterName")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_requesterName;
+            ok &= ModelBase::fromJson(fieldValue, refVal_requesterName);
+            setRequesterName(refVal_requesterName);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("requesterLogo"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requesterLogo")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_requesterLogo;
+            ok &= ModelBase::fromJson(fieldValue, refVal_requesterLogo);
+            setRequesterLogo(refVal_requesterLogo);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("location"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("location")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_location;
+            ok &= ModelBase::fromJson(fieldValue, refVal_location);
+            setLocation(refVal_location);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("status"))))
@@ -166,54 +259,44 @@ bool DataConsentDetailsDto::fromJson(const web::json::value& val)
             setRequestedAtUtc(refVal_requestedAtUtc);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("requester"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requester")));
-        if(!fieldValue.is_null())
-        {
-            std::shared_ptr<DataConsentRequesterDto> refVal_requester;
-            ok &= ModelBase::fromJson(fieldValue, refVal_requester);
-            setRequester(refVal_requester);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("consentDetails"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("consentDetails")));
-        if(!fieldValue.is_null())
-        {
-            std::shared_ptr<GetConsentTemplateDetailsDto> refVal_consentDetails;
-            ok &= ModelBase::fromJson(fieldValue, refVal_consentDetails);
-            setConsentDetails(refVal_consentDetails);
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(U("identifiers"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("identifiers")));
         if(!fieldValue.is_null())
         {
-            std::vector<std::shared_ptr<DataConsentIdentifier>> refVal_identifiers;
+            std::shared_ptr<JsonSchema> refVal_identifiers;
             ok &= ModelBase::fromJson(fieldValue, refVal_identifiers);
             setIdentifiers(refVal_identifiers);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("approvedDocuments"))))
+    if(val.has_field(utility::conversions::to_string_t(U("documents"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("approvedDocuments")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("documents")));
         if(!fieldValue.is_null())
         {
-            std::vector<std::shared_ptr<DataConsentRequestedDocument>> refVal_approvedDocuments;
-            ok &= ModelBase::fromJson(fieldValue, refVal_approvedDocuments);
-            setApprovedDocuments(refVal_approvedDocuments);
+            utility::string_t refVal_documents;
+            ok &= ModelBase::fromJson(fieldValue, refVal_documents);
+            setDocuments(refVal_documents);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("approvedFinancials"))))
+    if(val.has_field(utility::conversions::to_string_t(U("financials"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("approvedFinancials")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("financials")));
         if(!fieldValue.is_null())
         {
-            std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>> refVal_approvedFinancials;
-            ok &= ModelBase::fromJson(fieldValue, refVal_approvedFinancials);
-            setApprovedFinancials(refVal_approvedFinancials);
+            utility::string_t refVal_financials;
+            ok &= ModelBase::fromJson(fieldValue, refVal_financials);
+            setFinancials(refVal_financials);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("healthRecords"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("healthRecords")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_healthRecords;
+            ok &= ModelBase::fromJson(fieldValue, refVal_healthRecords);
+            setHealthRecords(refVal_healthRecords);
         }
     }
     return ok;
@@ -229,6 +312,30 @@ void DataConsentDetailsDto::toMultipart(std::shared_ptr<MultipartFormData> multi
     if(m_IdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("id")), m_Id));
+    }
+    if(m_TitleIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("title")), m_Title));
+    }
+    if(m_DescriptionIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("description")), m_Description));
+    }
+    if(m_DataLifeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("dataLife")), m_DataLife));
+    }
+    if(m_RequesterNameIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requesterName")), m_RequesterName));
+    }
+    if(m_RequesterLogoIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requesterLogo")), m_RequesterLogo));
+    }
+    if(m_LocationIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("location")), m_Location));
     }
     if(m_StatusIsSet)
     {
@@ -250,25 +357,21 @@ void DataConsentDetailsDto::toMultipart(std::shared_ptr<MultipartFormData> multi
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requestedAtUtc")), m_RequestedAtUtc));
     }
-    if(m_RequesterIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requester")), m_Requester));
-    }
-    if(m_ConsentDetailsIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("consentDetails")), m_ConsentDetails));
-    }
     if(m_IdentifiersIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("identifiers")), m_Identifiers));
     }
-    if(m_ApprovedDocumentsIsSet)
+    if(m_DocumentsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("approvedDocuments")), m_ApprovedDocuments));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documents")), m_Documents));
     }
-    if(m_ApprovedFinancialsIsSet)
+    if(m_FinancialsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("approvedFinancials")), m_ApprovedFinancials));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("financials")), m_Financials));
+    }
+    if(m_HealthRecordsIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("healthRecords")), m_HealthRecords));
     }
 }
 
@@ -286,6 +389,42 @@ bool DataConsentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         utility::string_t refVal_id;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("id"))), refVal_id );
         setId(refVal_id);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("title"))))
+    {
+        utility::string_t refVal_title;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("title"))), refVal_title );
+        setTitle(refVal_title);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("description"))))
+    {
+        utility::string_t refVal_description;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("description"))), refVal_description );
+        setDescription(refVal_description);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("dataLife"))))
+    {
+        std::shared_ptr<Life> refVal_dataLife;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("dataLife"))), refVal_dataLife );
+        setDataLife(refVal_dataLife);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("requesterName"))))
+    {
+        utility::string_t refVal_requesterName;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requesterName"))), refVal_requesterName );
+        setRequesterName(refVal_requesterName);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("requesterLogo"))))
+    {
+        utility::string_t refVal_requesterLogo;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requesterLogo"))), refVal_requesterLogo );
+        setRequesterLogo(refVal_requesterLogo);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("location"))))
+    {
+        utility::string_t refVal_location;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("location"))), refVal_location );
+        setLocation(refVal_location);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("status"))))
     {
@@ -317,35 +456,29 @@ bool DataConsentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requestedAtUtc"))), refVal_requestedAtUtc );
         setRequestedAtUtc(refVal_requestedAtUtc);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("requester"))))
-    {
-        std::shared_ptr<DataConsentRequesterDto> refVal_requester;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requester"))), refVal_requester );
-        setRequester(refVal_requester);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("consentDetails"))))
-    {
-        std::shared_ptr<GetConsentTemplateDetailsDto> refVal_consentDetails;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("consentDetails"))), refVal_consentDetails );
-        setConsentDetails(refVal_consentDetails);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("identifiers"))))
     {
-        std::vector<std::shared_ptr<DataConsentIdentifier>> refVal_identifiers;
+        std::shared_ptr<JsonSchema> refVal_identifiers;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("identifiers"))), refVal_identifiers );
         setIdentifiers(refVal_identifiers);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("approvedDocuments"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("documents"))))
     {
-        std::vector<std::shared_ptr<DataConsentRequestedDocument>> refVal_approvedDocuments;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("approvedDocuments"))), refVal_approvedDocuments );
-        setApprovedDocuments(refVal_approvedDocuments);
+        utility::string_t refVal_documents;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documents"))), refVal_documents );
+        setDocuments(refVal_documents);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("approvedFinancials"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("financials"))))
     {
-        std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>> refVal_approvedFinancials;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("approvedFinancials"))), refVal_approvedFinancials );
-        setApprovedFinancials(refVal_approvedFinancials);
+        utility::string_t refVal_financials;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("financials"))), refVal_financials );
+        setFinancials(refVal_financials);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("healthRecords"))))
+    {
+        utility::string_t refVal_healthRecords;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("healthRecords"))), refVal_healthRecords );
+        setHealthRecords(refVal_healthRecords);
     }
     return ok;
 }
@@ -369,6 +502,126 @@ bool DataConsentDetailsDto::idIsSet() const
 void DataConsentDetailsDto::unsetId()
 {
     m_IdIsSet = false;
+}
+utility::string_t DataConsentDetailsDto::getTitle() const
+{
+    return m_Title;
+}
+
+void DataConsentDetailsDto::setTitle(const utility::string_t& value)
+{
+    m_Title = value;
+    m_TitleIsSet = true;
+}
+
+bool DataConsentDetailsDto::titleIsSet() const
+{
+    return m_TitleIsSet;
+}
+
+void DataConsentDetailsDto::unsetTitle()
+{
+    m_TitleIsSet = false;
+}
+utility::string_t DataConsentDetailsDto::getDescription() const
+{
+    return m_Description;
+}
+
+void DataConsentDetailsDto::setDescription(const utility::string_t& value)
+{
+    m_Description = value;
+    m_DescriptionIsSet = true;
+}
+
+bool DataConsentDetailsDto::descriptionIsSet() const
+{
+    return m_DescriptionIsSet;
+}
+
+void DataConsentDetailsDto::unsetDescription()
+{
+    m_DescriptionIsSet = false;
+}
+std::shared_ptr<Life> DataConsentDetailsDto::getDataLife() const
+{
+    return m_DataLife;
+}
+
+void DataConsentDetailsDto::setDataLife(const std::shared_ptr<Life>& value)
+{
+    m_DataLife = value;
+    m_DataLifeIsSet = true;
+}
+
+bool DataConsentDetailsDto::dataLifeIsSet() const
+{
+    return m_DataLifeIsSet;
+}
+
+void DataConsentDetailsDto::unsetDataLife()
+{
+    m_DataLifeIsSet = false;
+}
+utility::string_t DataConsentDetailsDto::getRequesterName() const
+{
+    return m_RequesterName;
+}
+
+void DataConsentDetailsDto::setRequesterName(const utility::string_t& value)
+{
+    m_RequesterName = value;
+    m_RequesterNameIsSet = true;
+}
+
+bool DataConsentDetailsDto::requesterNameIsSet() const
+{
+    return m_RequesterNameIsSet;
+}
+
+void DataConsentDetailsDto::unsetRequesterName()
+{
+    m_RequesterNameIsSet = false;
+}
+utility::string_t DataConsentDetailsDto::getRequesterLogo() const
+{
+    return m_RequesterLogo;
+}
+
+void DataConsentDetailsDto::setRequesterLogo(const utility::string_t& value)
+{
+    m_RequesterLogo = value;
+    m_RequesterLogoIsSet = true;
+}
+
+bool DataConsentDetailsDto::requesterLogoIsSet() const
+{
+    return m_RequesterLogoIsSet;
+}
+
+void DataConsentDetailsDto::unsetRequesterLogo()
+{
+    m_RequesterLogoIsSet = false;
+}
+utility::string_t DataConsentDetailsDto::getLocation() const
+{
+    return m_Location;
+}
+
+void DataConsentDetailsDto::setLocation(const utility::string_t& value)
+{
+    m_Location = value;
+    m_LocationIsSet = true;
+}
+
+bool DataConsentDetailsDto::locationIsSet() const
+{
+    return m_LocationIsSet;
+}
+
+void DataConsentDetailsDto::unsetLocation()
+{
+    m_LocationIsSet = false;
 }
 std::shared_ptr<DataConsentStatus> DataConsentDetailsDto::getStatus() const
 {
@@ -470,52 +723,12 @@ void DataConsentDetailsDto::unsetRequestedAtUtc()
 {
     m_RequestedAtUtcIsSet = false;
 }
-std::shared_ptr<DataConsentRequesterDto> DataConsentDetailsDto::getRequester() const
-{
-    return m_Requester;
-}
-
-void DataConsentDetailsDto::setRequester(const std::shared_ptr<DataConsentRequesterDto>& value)
-{
-    m_Requester = value;
-    m_RequesterIsSet = true;
-}
-
-bool DataConsentDetailsDto::requesterIsSet() const
-{
-    return m_RequesterIsSet;
-}
-
-void DataConsentDetailsDto::unsetRequester()
-{
-    m_RequesterIsSet = false;
-}
-std::shared_ptr<GetConsentTemplateDetailsDto> DataConsentDetailsDto::getConsentDetails() const
-{
-    return m_ConsentDetails;
-}
-
-void DataConsentDetailsDto::setConsentDetails(const std::shared_ptr<GetConsentTemplateDetailsDto>& value)
-{
-    m_ConsentDetails = value;
-    m_ConsentDetailsIsSet = true;
-}
-
-bool DataConsentDetailsDto::consentDetailsIsSet() const
-{
-    return m_ConsentDetailsIsSet;
-}
-
-void DataConsentDetailsDto::unsetConsentDetails()
-{
-    m_ConsentDetailsIsSet = false;
-}
-std::vector<std::shared_ptr<DataConsentIdentifier>>& DataConsentDetailsDto::getIdentifiers()
+std::shared_ptr<JsonSchema> DataConsentDetailsDto::getIdentifiers() const
 {
     return m_Identifiers;
 }
 
-void DataConsentDetailsDto::setIdentifiers(const std::vector<std::shared_ptr<DataConsentIdentifier>>& value)
+void DataConsentDetailsDto::setIdentifiers(const std::shared_ptr<JsonSchema>& value)
 {
     m_Identifiers = value;
     m_IdentifiersIsSet = true;
@@ -530,45 +743,65 @@ void DataConsentDetailsDto::unsetIdentifiers()
 {
     m_IdentifiersIsSet = false;
 }
-std::vector<std::shared_ptr<DataConsentRequestedDocument>>& DataConsentDetailsDto::getApprovedDocuments()
+utility::string_t DataConsentDetailsDto::getDocuments() const
 {
-    return m_ApprovedDocuments;
+    return m_Documents;
 }
 
-void DataConsentDetailsDto::setApprovedDocuments(const std::vector<std::shared_ptr<DataConsentRequestedDocument>>& value)
+void DataConsentDetailsDto::setDocuments(const utility::string_t& value)
 {
-    m_ApprovedDocuments = value;
-    m_ApprovedDocumentsIsSet = true;
+    m_Documents = value;
+    m_DocumentsIsSet = true;
 }
 
-bool DataConsentDetailsDto::approvedDocumentsIsSet() const
+bool DataConsentDetailsDto::documentsIsSet() const
 {
-    return m_ApprovedDocumentsIsSet;
+    return m_DocumentsIsSet;
 }
 
-void DataConsentDetailsDto::unsetApprovedDocuments()
+void DataConsentDetailsDto::unsetDocuments()
 {
-    m_ApprovedDocumentsIsSet = false;
+    m_DocumentsIsSet = false;
 }
-std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>>& DataConsentDetailsDto::getApprovedFinancials()
+utility::string_t DataConsentDetailsDto::getFinancials() const
 {
-    return m_ApprovedFinancials;
-}
-
-void DataConsentDetailsDto::setApprovedFinancials(const std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>>& value)
-{
-    m_ApprovedFinancials = value;
-    m_ApprovedFinancialsIsSet = true;
+    return m_Financials;
 }
 
-bool DataConsentDetailsDto::approvedFinancialsIsSet() const
+void DataConsentDetailsDto::setFinancials(const utility::string_t& value)
 {
-    return m_ApprovedFinancialsIsSet;
+    m_Financials = value;
+    m_FinancialsIsSet = true;
 }
 
-void DataConsentDetailsDto::unsetApprovedFinancials()
+bool DataConsentDetailsDto::financialsIsSet() const
 {
-    m_ApprovedFinancialsIsSet = false;
+    return m_FinancialsIsSet;
+}
+
+void DataConsentDetailsDto::unsetFinancials()
+{
+    m_FinancialsIsSet = false;
+}
+utility::string_t DataConsentDetailsDto::getHealthRecords() const
+{
+    return m_HealthRecords;
+}
+
+void DataConsentDetailsDto::setHealthRecords(const utility::string_t& value)
+{
+    m_HealthRecords = value;
+    m_HealthRecordsIsSet = true;
+}
+
+bool DataConsentDetailsDto::healthRecordsIsSet() const
+{
+    return m_HealthRecordsIsSet;
+}
+
+void DataConsentDetailsDto::unsetHealthRecords()
+{
+    m_HealthRecordsIsSet = false;
 }
 }
 }

@@ -23,8 +23,8 @@
 
 #include "ApiClient.h"
 
-#include "model/ProblemDetails.h"
-#include "model/SupportedIdentifiersByCountry.h"
+#include "Object.h"
+#include "model/SupportedIdentifier.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -47,10 +47,10 @@ public:
     /// Get all supported identifiers by country.
     /// </summary>
     /// <remarks>
-    /// 
+    /// Get all supported identifiers by country.
     /// </remarks>
     /// <param name="countryIso2Code">Country ISO 2 code.</param>
-    pplx::task<std::shared_ptr<SupportedIdentifiersByCountry>> getAllSupportedIdentifiers(
+    pplx::task<std::shared_ptr<SupportedIdentifier>> getAllSupportedIdentifiers(
         utility::string_t countryIso2Code
     ) const;
 

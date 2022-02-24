@@ -22,7 +22,9 @@
 
 #include "ModelBase.h"
 
+#include "model/Identifier.h"
 #include <cpprest/details/basic_types.h>
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -55,11 +57,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getKey() const;
-    bool keyIsSet() const;
-    void unsetKey();
+    utility::string_t getIso2() const;
+    bool iso2IsSet() const;
+    void unsetIso2();
 
-    void setKey(const utility::string_t& value);
+    void setIso2(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -73,31 +75,31 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDescription() const;
-    bool descriptionIsSet() const;
-    void unsetDescription();
+    std::vector<std::shared_ptr<Identifier>>& getIndividualIdentifiers();
+    bool individualIdentifiersIsSet() const;
+    void unsetIndividualIdentifiers();
 
-    void setDescription(const utility::string_t& value);
+    void setIndividualIdentifiers(const std::vector<std::shared_ptr<Identifier>>& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getExampleValue() const;
-    bool exampleValueIsSet() const;
-    void unsetExampleValue();
+    std::vector<std::shared_ptr<Identifier>>& getOrganizationIdentifiers();
+    bool organizationIdentifiersIsSet() const;
+    void unsetOrganizationIdentifiers();
 
-    void setExampleValue(const utility::string_t& value);
+    void setOrganizationIdentifiers(const std::vector<std::shared_ptr<Identifier>>& value);
 
 
 protected:
-    utility::string_t m_Key;
-    bool m_KeyIsSet;
+    utility::string_t m_Iso2;
+    bool m_Iso2IsSet;
     utility::string_t m_Name;
     bool m_NameIsSet;
-    utility::string_t m_Description;
-    bool m_DescriptionIsSet;
-    utility::string_t m_ExampleValue;
-    bool m_ExampleValueIsSet;
+    std::vector<std::shared_ptr<Identifier>> m_IndividualIdentifiers;
+    bool m_IndividualIdentifiersIsSet;
+    std::vector<std::shared_ptr<Identifier>> m_OrganizationIdentifiers;
+    bool m_OrganizationIdentifiersIsSet;
 };
 
 

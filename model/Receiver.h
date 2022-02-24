@@ -23,7 +23,7 @@
 #include "ModelBase.h"
 
 #include "model/IdentificationStrategy.h"
-#include "model/IdentifierStringKeyValuePair.h"
+#include "model/StringStringKeyValuePair.h"
 #include "model/ReceiverType.h"
 #include <vector>
 
@@ -67,11 +67,11 @@ public:
     /// <summary>
     /// Consent request receiver identifiers
     /// </summary>
-    std::vector<std::shared_ptr<IdentifierStringKeyValuePair>>& getIdentifiers();
+    std::vector<std::shared_ptr<StringStringKeyValuePair>>& getIdentifiers();
     bool identifiersIsSet() const;
     void unsetIdentifiers();
 
-    void setIdentifiers(const std::vector<std::shared_ptr<IdentifierStringKeyValuePair>>& value);
+    void setIdentifiers(const std::vector<std::shared_ptr<StringStringKeyValuePair>>& value);
 
     /// <summary>
     /// 
@@ -86,7 +86,7 @@ public:
 protected:
     std::shared_ptr<ReceiverType> m_Type;
     bool m_TypeIsSet;
-    std::vector<std::shared_ptr<IdentifierStringKeyValuePair>> m_Identifiers;
+    std::vector<std::shared_ptr<StringStringKeyValuePair>> m_Identifiers;
     bool m_IdentifiersIsSet;
     std::shared_ptr<IdentificationStrategy> m_IdentificationStrategy;
     bool m_IdentificationStrategyIsSet;

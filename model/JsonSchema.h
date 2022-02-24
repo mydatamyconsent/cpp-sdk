@@ -11,18 +11,21 @@
  */
 
 /*
- * IdentitySupportedFields.h
+ * JsonSchema.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_IdentitySupportedFields_H_
-#define MYDATAMYCONSENT_MODELS_IdentitySupportedFields_H_
+#ifndef MYDATAMYCONSENT_MODELS_JsonSchema_H_
+#define MYDATAMYCONSENT_MODELS_JsonSchema_H_
 
 
 #include "ModelBase.h"
 
-#include <cpprest/details/basic_types.h>
+#include "model/AnyType.h"
+#include "Object.h"
+#include <map>
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -31,12 +34,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  IdentitySupportedFields
+class  JsonSchema
     : public ModelBase
 {
 public:
-    IdentitySupportedFields();
-    virtual ~IdentitySupportedFields();
+    JsonSchema();
+    virtual ~JsonSchema();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,69 +53,47 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// IdentitySupportedFields members
+    /// JsonSchema members
 
     /// <summary>
     /// 
     /// </summary>
-    int32_t getIcon() const;
-    bool iconIsSet() const;
-    void unsetIcon();
+    std::vector<std::shared_ptr<Object>>& getKeywords();
+    bool keywordsIsSet() const;
+    void unsetKeywords();
 
-    void setIcon(int32_t value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getTitle() const;
-    bool titleIsSet() const;
-    void unsetTitle();
-
-    void setTitle(const utility::string_t& value);
+    void setKeywords(const std::vector<std::shared_ptr<Object>>& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDescription() const;
-    bool descriptionIsSet() const;
-    void unsetDescription();
+    std::map<utility::string_t, std::shared_ptr<AnyType>>& getOtherData();
+    bool otherDataIsSet() const;
+    void unsetOtherData();
 
-    void setDescription(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getKey() const;
-    bool keyIsSet() const;
-    void unsetKey();
-
-    void setKey(const utility::string_t& value);
+    void setOtherData(const std::map<utility::string_t, std::shared_ptr<AnyType>>& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDataType() const;
-    bool dataTypeIsSet() const;
-    void unsetDataType();
+    bool isBoolValue() const;
+    bool boolValueIsSet() const;
+    void unsetBoolValue();
 
-    void setDataType(const utility::string_t& value);
+    void setBoolValue(bool value);
 
 
 protected:
-    int32_t m_Icon;
-    bool m_IconIsSet;
-    utility::string_t m_Title;
-    bool m_TitleIsSet;
-    utility::string_t m_Description;
-    bool m_DescriptionIsSet;
-    utility::string_t m_Key;
-    bool m_KeyIsSet;
-    utility::string_t m_DataType;
-    bool m_DataTypeIsSet;
+    std::vector<std::shared_ptr<Object>> m_Keywords;
+    bool m_KeywordsIsSet;
+    std::map<utility::string_t, std::shared_ptr<AnyType>> m_OtherData;
+    bool m_OtherDataIsSet;
+    bool m_BoolValue;
+    bool m_BoolValueIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_IdentitySupportedFields_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_JsonSchema_H_ */

@@ -13,7 +13,7 @@
 /*
  * CreateIndividualDataConsentRequest.h
  *
- * Individual Data Consent Request.
+ * Create individual data consent request
  */
 
 #ifndef MYDATAMYCONSENT_MODELS_CreateIndividualDataConsentRequest_H_
@@ -30,7 +30,7 @@ namespace models {
 
 
 /// <summary>
-/// Individual Data Consent Request.
+/// Create individual data consent request
 /// </summary>
 class  CreateIndividualDataConsentRequest
     : public ModelBase

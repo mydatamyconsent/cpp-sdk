@@ -76,7 +76,7 @@ bool Receiver::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("identifiers")));
         if(!fieldValue.is_null())
         {
-            std::vector<std::shared_ptr<IdentifierStringKeyValuePair>> refVal_identifiers;
+            std::vector<std::shared_ptr<StringStringKeyValuePair>> refVal_identifiers;
             ok &= ModelBase::fromJson(fieldValue, refVal_identifiers);
             setIdentifiers(refVal_identifiers);
         }
@@ -132,7 +132,7 @@ bool Receiver::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("identifiers"))))
     {
-        std::vector<std::shared_ptr<IdentifierStringKeyValuePair>> refVal_identifiers;
+        std::vector<std::shared_ptr<StringStringKeyValuePair>> refVal_identifiers;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("identifiers"))), refVal_identifiers );
         setIdentifiers(refVal_identifiers);
     }
@@ -165,12 +165,12 @@ void Receiver::unsetType()
 {
     m_TypeIsSet = false;
 }
-std::vector<std::shared_ptr<IdentifierStringKeyValuePair>>& Receiver::getIdentifiers()
+std::vector<std::shared_ptr<StringStringKeyValuePair>>& Receiver::getIdentifiers()
 {
     return m_Identifiers;
 }
 
-void Receiver::setIdentifiers(const std::vector<std::shared_ptr<IdentifierStringKeyValuePair>>& value)
+void Receiver::setIdentifiers(const std::vector<std::shared_ptr<StringStringKeyValuePair>>& value)
 {
     m_Identifiers = value;
     m_IdentifiersIsSet = true;

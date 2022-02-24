@@ -22,14 +22,12 @@ namespace models {
 
 SupportedIdentifier::SupportedIdentifier()
 {
-    m_Key = utility::conversions::to_string_t("");
-    m_KeyIsSet = false;
+    m_Iso2 = utility::conversions::to_string_t("");
+    m_Iso2IsSet = false;
     m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
-    m_Description = utility::conversions::to_string_t("");
-    m_DescriptionIsSet = false;
-    m_ExampleValue = utility::conversions::to_string_t("");
-    m_ExampleValueIsSet = false;
+    m_IndividualIdentifiersIsSet = false;
+    m_OrganizationIdentifiersIsSet = false;
 }
 
 SupportedIdentifier::~SupportedIdentifier()
@@ -46,21 +44,21 @@ web::json::value SupportedIdentifier::toJson() const
 
     web::json::value val = web::json::value::object();
     
-    if(m_KeyIsSet)
+    if(m_Iso2IsSet)
     {
-        val[utility::conversions::to_string_t(U("key"))] = ModelBase::toJson(m_Key);
+        val[utility::conversions::to_string_t(U("iso2"))] = ModelBase::toJson(m_Iso2);
     }
     if(m_NameIsSet)
     {
         val[utility::conversions::to_string_t(U("name"))] = ModelBase::toJson(m_Name);
     }
-    if(m_DescriptionIsSet)
+    if(m_IndividualIdentifiersIsSet)
     {
-        val[utility::conversions::to_string_t(U("description"))] = ModelBase::toJson(m_Description);
+        val[utility::conversions::to_string_t(U("individualIdentifiers"))] = ModelBase::toJson(m_IndividualIdentifiers);
     }
-    if(m_ExampleValueIsSet)
+    if(m_OrganizationIdentifiersIsSet)
     {
-        val[utility::conversions::to_string_t(U("exampleValue"))] = ModelBase::toJson(m_ExampleValue);
+        val[utility::conversions::to_string_t(U("organizationIdentifiers"))] = ModelBase::toJson(m_OrganizationIdentifiers);
     }
 
     return val;
@@ -70,14 +68,14 @@ bool SupportedIdentifier::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("key"))))
+    if(val.has_field(utility::conversions::to_string_t(U("iso2"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("key")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("iso2")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_key;
-            ok &= ModelBase::fromJson(fieldValue, refVal_key);
-            setKey(refVal_key);
+            utility::string_t refVal_iso2;
+            ok &= ModelBase::fromJson(fieldValue, refVal_iso2);
+            setIso2(refVal_iso2);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("name"))))
@@ -90,24 +88,24 @@ bool SupportedIdentifier::fromJson(const web::json::value& val)
             setName(refVal_name);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("description"))))
+    if(val.has_field(utility::conversions::to_string_t(U("individualIdentifiers"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("description")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("individualIdentifiers")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_description;
-            ok &= ModelBase::fromJson(fieldValue, refVal_description);
-            setDescription(refVal_description);
+            std::vector<std::shared_ptr<Identifier>> refVal_individualIdentifiers;
+            ok &= ModelBase::fromJson(fieldValue, refVal_individualIdentifiers);
+            setIndividualIdentifiers(refVal_individualIdentifiers);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("exampleValue"))))
+    if(val.has_field(utility::conversions::to_string_t(U("organizationIdentifiers"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("exampleValue")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("organizationIdentifiers")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_exampleValue;
-            ok &= ModelBase::fromJson(fieldValue, refVal_exampleValue);
-            setExampleValue(refVal_exampleValue);
+            std::vector<std::shared_ptr<Identifier>> refVal_organizationIdentifiers;
+            ok &= ModelBase::fromJson(fieldValue, refVal_organizationIdentifiers);
+            setOrganizationIdentifiers(refVal_organizationIdentifiers);
         }
     }
     return ok;
@@ -120,21 +118,21 @@ void SupportedIdentifier::toMultipart(std::shared_ptr<MultipartFormData> multipa
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
-    if(m_KeyIsSet)
+    if(m_Iso2IsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("key")), m_Key));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("iso2")), m_Iso2));
     }
     if(m_NameIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("name")), m_Name));
     }
-    if(m_DescriptionIsSet)
+    if(m_IndividualIdentifiersIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("description")), m_Description));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("individualIdentifiers")), m_IndividualIdentifiers));
     }
-    if(m_ExampleValueIsSet)
+    if(m_OrganizationIdentifiersIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("exampleValue")), m_ExampleValue));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("organizationIdentifiers")), m_OrganizationIdentifiers));
     }
 }
 
@@ -147,11 +145,11 @@ bool SupportedIdentifier::fromMultiPart(std::shared_ptr<MultipartFormData> multi
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(U("key"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("iso2"))))
     {
-        utility::string_t refVal_key;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("key"))), refVal_key );
-        setKey(refVal_key);
+        utility::string_t refVal_iso2;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("iso2"))), refVal_iso2 );
+        setIso2(refVal_iso2);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("name"))))
     {
@@ -159,40 +157,40 @@ bool SupportedIdentifier::fromMultiPart(std::shared_ptr<MultipartFormData> multi
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("name"))), refVal_name );
         setName(refVal_name);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("description"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("individualIdentifiers"))))
     {
-        utility::string_t refVal_description;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("description"))), refVal_description );
-        setDescription(refVal_description);
+        std::vector<std::shared_ptr<Identifier>> refVal_individualIdentifiers;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("individualIdentifiers"))), refVal_individualIdentifiers );
+        setIndividualIdentifiers(refVal_individualIdentifiers);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("exampleValue"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("organizationIdentifiers"))))
     {
-        utility::string_t refVal_exampleValue;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("exampleValue"))), refVal_exampleValue );
-        setExampleValue(refVal_exampleValue);
+        std::vector<std::shared_ptr<Identifier>> refVal_organizationIdentifiers;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("organizationIdentifiers"))), refVal_organizationIdentifiers );
+        setOrganizationIdentifiers(refVal_organizationIdentifiers);
     }
     return ok;
 }
 
-utility::string_t SupportedIdentifier::getKey() const
+utility::string_t SupportedIdentifier::getIso2() const
 {
-    return m_Key;
+    return m_Iso2;
 }
 
-void SupportedIdentifier::setKey(const utility::string_t& value)
+void SupportedIdentifier::setIso2(const utility::string_t& value)
 {
-    m_Key = value;
-    m_KeyIsSet = true;
+    m_Iso2 = value;
+    m_Iso2IsSet = true;
 }
 
-bool SupportedIdentifier::keyIsSet() const
+bool SupportedIdentifier::iso2IsSet() const
 {
-    return m_KeyIsSet;
+    return m_Iso2IsSet;
 }
 
-void SupportedIdentifier::unsetKey()
+void SupportedIdentifier::unsetIso2()
 {
-    m_KeyIsSet = false;
+    m_Iso2IsSet = false;
 }
 utility::string_t SupportedIdentifier::getName() const
 {
@@ -214,45 +212,45 @@ void SupportedIdentifier::unsetName()
 {
     m_NameIsSet = false;
 }
-utility::string_t SupportedIdentifier::getDescription() const
+std::vector<std::shared_ptr<Identifier>>& SupportedIdentifier::getIndividualIdentifiers()
 {
-    return m_Description;
+    return m_IndividualIdentifiers;
 }
 
-void SupportedIdentifier::setDescription(const utility::string_t& value)
+void SupportedIdentifier::setIndividualIdentifiers(const std::vector<std::shared_ptr<Identifier>>& value)
 {
-    m_Description = value;
-    m_DescriptionIsSet = true;
+    m_IndividualIdentifiers = value;
+    m_IndividualIdentifiersIsSet = true;
 }
 
-bool SupportedIdentifier::descriptionIsSet() const
+bool SupportedIdentifier::individualIdentifiersIsSet() const
 {
-    return m_DescriptionIsSet;
+    return m_IndividualIdentifiersIsSet;
 }
 
-void SupportedIdentifier::unsetDescription()
+void SupportedIdentifier::unsetIndividualIdentifiers()
 {
-    m_DescriptionIsSet = false;
+    m_IndividualIdentifiersIsSet = false;
 }
-utility::string_t SupportedIdentifier::getExampleValue() const
+std::vector<std::shared_ptr<Identifier>>& SupportedIdentifier::getOrganizationIdentifiers()
 {
-    return m_ExampleValue;
-}
-
-void SupportedIdentifier::setExampleValue(const utility::string_t& value)
-{
-    m_ExampleValue = value;
-    m_ExampleValueIsSet = true;
+    return m_OrganizationIdentifiers;
 }
 
-bool SupportedIdentifier::exampleValueIsSet() const
+void SupportedIdentifier::setOrganizationIdentifiers(const std::vector<std::shared_ptr<Identifier>>& value)
 {
-    return m_ExampleValueIsSet;
+    m_OrganizationIdentifiers = value;
+    m_OrganizationIdentifiersIsSet = true;
 }
 
-void SupportedIdentifier::unsetExampleValue()
+bool SupportedIdentifier::organizationIdentifiersIsSet() const
 {
-    m_ExampleValueIsSet = false;
+    return m_OrganizationIdentifiersIsSet;
+}
+
+void SupportedIdentifier::unsetOrganizationIdentifiers()
+{
+    m_OrganizationIdentifiersIsSet = false;
 }
 }
 }

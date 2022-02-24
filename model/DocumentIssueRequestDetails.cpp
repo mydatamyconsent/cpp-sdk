@@ -22,12 +22,15 @@ namespace models {
 
 DocumentIssueRequestDetails::DocumentIssueRequestDetails()
 {
+    m_Id = utility::conversions::to_string_t("");
+    m_IdIsSet = false;
     m_DocumentTypeId = utility::conversions::to_string_t("");
     m_DocumentTypeIdIsSet = false;
     m_DocumentTypeName = utility::conversions::to_string_t("");
     m_DocumentTypeNameIsSet = false;
     m_DocumentIdentifier = utility::conversions::to_string_t("");
     m_DocumentIdentifierIsSet = false;
+    m_StatusIsSet = false;
     m_Description = utility::conversions::to_string_t("");
     m_DescriptionIsSet = false;
     m_ReceiverIsSet = false;
@@ -52,6 +55,10 @@ web::json::value DocumentIssueRequestDetails::toJson() const
 
     web::json::value val = web::json::value::object();
     
+    if(m_IdIsSet)
+    {
+        val[utility::conversions::to_string_t(U("id"))] = ModelBase::toJson(m_Id);
+    }
     if(m_DocumentTypeIdIsSet)
     {
         val[utility::conversions::to_string_t(U("documentTypeId"))] = ModelBase::toJson(m_DocumentTypeId);
@@ -63,6 +70,10 @@ web::json::value DocumentIssueRequestDetails::toJson() const
     if(m_DocumentIdentifierIsSet)
     {
         val[utility::conversions::to_string_t(U("documentIdentifier"))] = ModelBase::toJson(m_DocumentIdentifier);
+    }
+    if(m_StatusIsSet)
+    {
+        val[utility::conversions::to_string_t(U("status"))] = ModelBase::toJson(m_Status);
     }
     if(m_DescriptionIsSet)
     {
@@ -92,6 +103,16 @@ bool DocumentIssueRequestDetails::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
+    if(val.has_field(utility::conversions::to_string_t(U("id"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("id")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_id;
+            ok &= ModelBase::fromJson(fieldValue, refVal_id);
+            setId(refVal_id);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("documentTypeId"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("documentTypeId")));
@@ -120,6 +141,16 @@ bool DocumentIssueRequestDetails::fromJson(const web::json::value& val)
             utility::string_t refVal_documentIdentifier;
             ok &= ModelBase::fromJson(fieldValue, refVal_documentIdentifier);
             setDocumentIdentifier(refVal_documentIdentifier);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("status"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("status")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<DocumentIssueRequestStatus> refVal_status;
+            ok &= ModelBase::fromJson(fieldValue, refVal_status);
+            setStatus(refVal_status);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("description"))))
@@ -182,6 +213,10 @@ void DocumentIssueRequestDetails::toMultipart(std::shared_ptr<MultipartFormData>
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
+    if(m_IdIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("id")), m_Id));
+    }
     if(m_DocumentTypeIdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documentTypeId")), m_DocumentTypeId));
@@ -193,6 +228,10 @@ void DocumentIssueRequestDetails::toMultipart(std::shared_ptr<MultipartFormData>
     if(m_DocumentIdentifierIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documentIdentifier")), m_DocumentIdentifier));
+    }
+    if(m_StatusIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("status")), m_Status));
     }
     if(m_DescriptionIsSet)
     {
@@ -225,6 +264,12 @@ bool DocumentIssueRequestDetails::fromMultiPart(std::shared_ptr<MultipartFormDat
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
+    if(multipart->hasContent(utility::conversions::to_string_t(U("id"))))
+    {
+        utility::string_t refVal_id;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("id"))), refVal_id );
+        setId(refVal_id);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("documentTypeId"))))
     {
         utility::string_t refVal_documentTypeId;
@@ -242,6 +287,12 @@ bool DocumentIssueRequestDetails::fromMultiPart(std::shared_ptr<MultipartFormDat
         utility::string_t refVal_documentIdentifier;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documentIdentifier"))), refVal_documentIdentifier );
         setDocumentIdentifier(refVal_documentIdentifier);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("status"))))
+    {
+        std::shared_ptr<DocumentIssueRequestStatus> refVal_status;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("status"))), refVal_status );
+        setStatus(refVal_status);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("description"))))
     {
@@ -276,6 +327,26 @@ bool DocumentIssueRequestDetails::fromMultiPart(std::shared_ptr<MultipartFormDat
     return ok;
 }
 
+utility::string_t DocumentIssueRequestDetails::getId() const
+{
+    return m_Id;
+}
+
+void DocumentIssueRequestDetails::setId(const utility::string_t& value)
+{
+    m_Id = value;
+    m_IdIsSet = true;
+}
+
+bool DocumentIssueRequestDetails::idIsSet() const
+{
+    return m_IdIsSet;
+}
+
+void DocumentIssueRequestDetails::unsetId()
+{
+    m_IdIsSet = false;
+}
 utility::string_t DocumentIssueRequestDetails::getDocumentTypeId() const
 {
     return m_DocumentTypeId;
@@ -335,6 +406,26 @@ bool DocumentIssueRequestDetails::documentIdentifierIsSet() const
 void DocumentIssueRequestDetails::unsetDocumentIdentifier()
 {
     m_DocumentIdentifierIsSet = false;
+}
+std::shared_ptr<DocumentIssueRequestStatus> DocumentIssueRequestDetails::getStatus() const
+{
+    return m_Status;
+}
+
+void DocumentIssueRequestDetails::setStatus(const std::shared_ptr<DocumentIssueRequestStatus>& value)
+{
+    m_Status = value;
+    m_StatusIsSet = true;
+}
+
+bool DocumentIssueRequestDetails::statusIsSet() const
+{
+    return m_StatusIsSet;
+}
+
+void DocumentIssueRequestDetails::unsetStatus()
+{
+    m_StatusIsSet = false;
 }
 utility::string_t DocumentIssueRequestDetails::getDescription() const
 {

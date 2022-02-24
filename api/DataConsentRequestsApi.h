@@ -28,9 +28,9 @@
 #include "model/DataConsentDetailsDto.h"
 #include "model/DataConsentStatus.h"
 #include "model/IndividualDataConsentRequestResponse.h"
+#include "Object.h"
 #include "model/OrganizationDataConsentInfoDtoPaginatedList.h"
 #include "model/OrganizationDataConsentRequestResponse.h"
-#include "model/ProblemDetails.h"
 #include "model/UserDataConsentInfoDtoPaginatedList.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
@@ -74,9 +74,9 @@ public:
     /// Create a individual data consent request.
     /// </summary>
     /// <remarks>
-    /// 
+    /// Create a individual data consent request.
     /// </remarks>
-    /// <param name="createIndividualDataConsentRequest">M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateIndividualDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateIndividualDataConsentRequest).</param>
+    /// <param name="createIndividualDataConsentRequest">The Individual data consent request payload</param>
     pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> createIndividualDataConsentRequest(
         std::shared_ptr<CreateIndividualDataConsentRequest> createIndividualDataConsentRequest
     ) const;
@@ -84,7 +84,7 @@ public:
     /// Create a organization data consent request.
     /// </summary>
     /// <remarks>
-    /// 
+    /// Create a organization data consent request.
     /// </remarks>
     /// <param name="createOrganizationDataConsentRequest">M:MyDataMyConsent.DeveloperApi.Controllers.DataConsentRequestsController.CreateOrganizationDataConsentRequest(MyDataMyConsent.DeveloperApi.Models.CreateOrganizationDataConsentRequest).</param>
     pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> createOrganizationDataConsentRequest(

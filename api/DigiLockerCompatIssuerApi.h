@@ -23,6 +23,7 @@
 
 #include "ApiClient.h"
 
+#include "Object.h"
 #include "model/ProblemDetails.h"
 #include "model/PushUriRequest.h"
 #include "model/PushUriResponse.h"

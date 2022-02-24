@@ -22,6 +22,8 @@ namespace models {
 
 DocumentReceiver::DocumentReceiver()
 {
+    m_CountryIso2Code = utility::conversions::to_string_t("");
+    m_CountryIso2CodeIsSet = false;
     m_IdentifiersIsSet = false;
     m_IdentificationStrategyIsSet = false;
 }
@@ -40,6 +42,10 @@ web::json::value DocumentReceiver::toJson() const
 
     web::json::value val = web::json::value::object();
     
+    if(m_CountryIso2CodeIsSet)
+    {
+        val[utility::conversions::to_string_t(U("countryIso2Code"))] = ModelBase::toJson(m_CountryIso2Code);
+    }
     if(m_IdentifiersIsSet)
     {
         val[utility::conversions::to_string_t(U("identifiers"))] = ModelBase::toJson(m_Identifiers);
@@ -56,6 +62,16 @@ bool DocumentReceiver::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
+    if(val.has_field(utility::conversions::to_string_t(U("countryIso2Code"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("countryIso2Code")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_countryIso2Code;
+            ok &= ModelBase::fromJson(fieldValue, refVal_countryIso2Code);
+            setCountryIso2Code(refVal_countryIso2Code);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("identifiers"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("identifiers")));
@@ -86,6 +102,10 @@ void DocumentReceiver::toMultipart(std::shared_ptr<MultipartFormData> multipart,
     {
         namePrefix += utility::conversions::to_string_t(U("."));
     }
+    if(m_CountryIso2CodeIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("countryIso2Code")), m_CountryIso2Code));
+    }
     if(m_IdentifiersIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("identifiers")), m_Identifiers));
@@ -105,6 +125,12 @@ bool DocumentReceiver::fromMultiPart(std::shared_ptr<MultipartFormData> multipar
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
+    if(multipart->hasContent(utility::conversions::to_string_t(U("countryIso2Code"))))
+    {
+        utility::string_t refVal_countryIso2Code;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("countryIso2Code"))), refVal_countryIso2Code );
+        setCountryIso2Code(refVal_countryIso2Code);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("identifiers"))))
     {
         std::vector<std::shared_ptr<StringStringKeyValuePair>> refVal_identifiers;
@@ -120,6 +146,26 @@ bool DocumentReceiver::fromMultiPart(std::shared_ptr<MultipartFormData> multipar
     return ok;
 }
 
+utility::string_t DocumentReceiver::getCountryIso2Code() const
+{
+    return m_CountryIso2Code;
+}
+
+void DocumentReceiver::setCountryIso2Code(const utility::string_t& value)
+{
+    m_CountryIso2Code = value;
+    m_CountryIso2CodeIsSet = true;
+}
+
+bool DocumentReceiver::countryIso2CodeIsSet() const
+{
+    return m_CountryIso2CodeIsSet;
+}
+
+void DocumentReceiver::unsetCountryIso2Code()
+{
+    m_CountryIso2CodeIsSet = false;
+}
 std::vector<std::shared_ptr<StringStringKeyValuePair>>& DocumentReceiver::getIdentifiers()
 {
     return m_Identifiers;

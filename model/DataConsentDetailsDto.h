@@ -22,14 +22,10 @@
 
 #include "ModelBase.h"
 
-#include "model/DataConsentRequesterDto.h"
-#include "model/GetConsentTemplateDetailsDto.h"
-#include "model/DataConsentRequestedFinancialAccount.h"
-#include "model/DataConsentIdentifier.h"
+#include "model/JsonSchema.h"
 #include <cpprest/details/basic_types.h>
-#include "model/DataConsentRequestedDocument.h"
-#include <vector>
 #include "model/DataConsentStatus.h"
+#include "model/Life.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -67,6 +63,60 @@ public:
     void unsetId();
 
     void setId(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getTitle() const;
+    bool titleIsSet() const;
+    void unsetTitle();
+
+    void setTitle(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getDescription() const;
+    bool descriptionIsSet() const;
+    void unsetDescription();
+
+    void setDescription(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<Life> getDataLife() const;
+    bool dataLifeIsSet() const;
+    void unsetDataLife();
+
+    void setDataLife(const std::shared_ptr<Life>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getRequesterName() const;
+    bool requesterNameIsSet() const;
+    void unsetRequesterName();
+
+    void setRequesterName(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getRequesterLogo() const;
+    bool requesterLogoIsSet() const;
+    void unsetRequesterLogo();
+
+    void setRequesterLogo(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getLocation() const;
+    bool locationIsSet() const;
+    void unsetLocation();
+
+    void setLocation(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -116,52 +166,55 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<DataConsentRequesterDto> getRequester() const;
-    bool requesterIsSet() const;
-    void unsetRequester();
-
-    void setRequester(const std::shared_ptr<DataConsentRequesterDto>& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<GetConsentTemplateDetailsDto> getConsentDetails() const;
-    bool consentDetailsIsSet() const;
-    void unsetConsentDetails();
-
-    void setConsentDetails(const std::shared_ptr<GetConsentTemplateDetailsDto>& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::vector<std::shared_ptr<DataConsentIdentifier>>& getIdentifiers();
+    std::shared_ptr<JsonSchema> getIdentifiers() const;
     bool identifiersIsSet() const;
     void unsetIdentifiers();
 
-    void setIdentifiers(const std::vector<std::shared_ptr<DataConsentIdentifier>>& value);
+    void setIdentifiers(const std::shared_ptr<JsonSchema>& value);
 
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<DataConsentRequestedDocument>>& getApprovedDocuments();
-    bool approvedDocumentsIsSet() const;
-    void unsetApprovedDocuments();
+    utility::string_t getDocuments() const;
+    bool documentsIsSet() const;
+    void unsetDocuments();
 
-    void setApprovedDocuments(const std::vector<std::shared_ptr<DataConsentRequestedDocument>>& value);
+    void setDocuments(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>>& getApprovedFinancials();
-    bool approvedFinancialsIsSet() const;
-    void unsetApprovedFinancials();
+    utility::string_t getFinancials() const;
+    bool financialsIsSet() const;
+    void unsetFinancials();
 
-    void setApprovedFinancials(const std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>>& value);
+    void setFinancials(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getHealthRecords() const;
+    bool healthRecordsIsSet() const;
+    void unsetHealthRecords();
+
+    void setHealthRecords(const utility::string_t& value);
 
 
 protected:
     utility::string_t m_Id;
     bool m_IdIsSet;
+    utility::string_t m_Title;
+    bool m_TitleIsSet;
+    utility::string_t m_Description;
+    bool m_DescriptionIsSet;
+    std::shared_ptr<Life> m_DataLife;
+    bool m_DataLifeIsSet;
+    utility::string_t m_RequesterName;
+    bool m_RequesterNameIsSet;
+    utility::string_t m_RequesterLogo;
+    bool m_RequesterLogoIsSet;
+    utility::string_t m_Location;
+    bool m_LocationIsSet;
     std::shared_ptr<DataConsentStatus> m_Status;
     bool m_StatusIsSet;
     utility::datetime m_ApprovedAtUtc;
@@ -172,16 +225,14 @@ protected:
     bool m_ExpiresAtUtcIsSet;
     utility::datetime m_RequestedAtUtc;
     bool m_RequestedAtUtcIsSet;
-    std::shared_ptr<DataConsentRequesterDto> m_Requester;
-    bool m_RequesterIsSet;
-    std::shared_ptr<GetConsentTemplateDetailsDto> m_ConsentDetails;
-    bool m_ConsentDetailsIsSet;
-    std::vector<std::shared_ptr<DataConsentIdentifier>> m_Identifiers;
+    std::shared_ptr<JsonSchema> m_Identifiers;
     bool m_IdentifiersIsSet;
-    std::vector<std::shared_ptr<DataConsentRequestedDocument>> m_ApprovedDocuments;
-    bool m_ApprovedDocumentsIsSet;
-    std::vector<std::shared_ptr<DataConsentRequestedFinancialAccount>> m_ApprovedFinancials;
-    bool m_ApprovedFinancialsIsSet;
+    utility::string_t m_Documents;
+    bool m_DocumentsIsSet;
+    utility::string_t m_Financials;
+    bool m_FinancialsIsSet;
+    utility::string_t m_HealthRecords;
+    bool m_HealthRecordsIsSet;
 };
 
 

@@ -13,7 +13,7 @@
 /*
  * OrganizationDataConsentRequestResponse.h
  *
- * Organization Data Consent Request Response.
+ * OrganizationDataConsentRequestResponse
  */
 
 #ifndef MYDATAMYCONSENT_MODELS_OrganizationDataConsentRequestResponse_H_
@@ -30,7 +30,7 @@ namespace models {
 
 
 /// <summary>
-/// Organization Data Consent Request Response.
+/// OrganizationDataConsentRequestResponse
 /// </summary>
 class  OrganizationDataConsentRequestResponse
     : public ModelBase

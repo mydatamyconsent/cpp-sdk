@@ -22,10 +22,15 @@
 
 #include "ModelBase.h"
 
+#include <cpprest/details/basic_types.h>
 
 namespace mydatamyconsent {
 namespace models {
 
+
+/// <summary>
+/// 
+/// </summary>
 class  Identifier
     : public ModelBase
 {
@@ -44,23 +49,57 @@ public:
     void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const override;
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
-    enum class eIdentifier
-    {
-        Identifier_EMAIL,
-        Identifier_PERMANENTACCOUNTNUMBER,
-        Identifier_AADHAARNUMBER,
-        Identifier_MOBILENUMBER,
-        Identifier_CORPORATEIDENTIFICATIONNUMBER,
-        Identifier_TAXDEDUCTIONACCOUNTNUMBER,
-        Identifier_GOODSANDSERVICESTAXIDENTIFICATIONNUMBER,
-    };
+    /////////////////////////////////////////////
+    /// Identifier members
 
-    eIdentifier getValue() const;
-    void setValue(eIdentifier const value);
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getKey() const;
+    bool keyIsSet() const;
+    void unsetKey();
 
-    protected:
-        eIdentifier m_value;
+    void setKey(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getName() const;
+    bool nameIsSet() const;
+    void unsetName();
+
+    void setName(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getDescription() const;
+    bool descriptionIsSet() const;
+    void unsetDescription();
+
+    void setDescription(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::string_t getExampleValue() const;
+    bool exampleValueIsSet() const;
+    void unsetExampleValue();
+
+    void setExampleValue(const utility::string_t& value);
+
+
+protected:
+    utility::string_t m_Key;
+    bool m_KeyIsSet;
+    utility::string_t m_Name;
+    bool m_NameIsSet;
+    utility::string_t m_Description;
+    bool m_DescriptionIsSet;
+    utility::string_t m_ExampleValue;
+    bool m_ExampleValueIsSet;
 };
+
 
 }
 }

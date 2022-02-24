@@ -24,6 +24,7 @@
 
 #include "model/AnyType.h"
 #include <cpprest/details/basic_types.h>
+#include "model/DocumentIssueRequestStatus.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -54,6 +55,15 @@ public:
     /// DocumentIssueRequestDetails members
 
     /// <summary>
+    /// Request Id.
+    /// </summary>
+    utility::string_t getId() const;
+    bool idIsSet() const;
+    void unsetId();
+
+    void setId(const utility::string_t& value);
+
+    /// <summary>
     /// 
     /// </summary>
     utility::string_t getDocumentTypeId() const;
@@ -79,6 +89,15 @@ public:
     void unsetDocumentIdentifier();
 
     void setDocumentIdentifier(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<DocumentIssueRequestStatus> getStatus() const;
+    bool statusIsSet() const;
+    void unsetStatus();
+
+    void setStatus(const std::shared_ptr<DocumentIssueRequestStatus>& value);
 
     /// <summary>
     /// 
@@ -127,12 +146,16 @@ public:
 
 
 protected:
+    utility::string_t m_Id;
+    bool m_IdIsSet;
     utility::string_t m_DocumentTypeId;
     bool m_DocumentTypeIdIsSet;
     utility::string_t m_DocumentTypeName;
     bool m_DocumentTypeNameIsSet;
     utility::string_t m_DocumentIdentifier;
     bool m_DocumentIdentifierIsSet;
+    std::shared_ptr<DocumentIssueRequestStatus> m_Status;
+    bool m_StatusIsSet;
     utility::string_t m_Description;
     bool m_DescriptionIsSet;
     std::shared_ptr<AnyType> m_Receiver;

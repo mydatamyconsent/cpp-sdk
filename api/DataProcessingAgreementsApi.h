@@ -26,7 +26,7 @@
 #include "model/CreateDataProcessingAgreementRequestModel.h"
 #include "model/DataProcessingAgreementDto.h"
 #include "model/DataProcessingAgreementDtoPaginatedList.h"
-#include "model/ProblemDetails.h"
+#include "Object.h"
 #include "model/UpdateDataProcessingAgreementRequestModel.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>

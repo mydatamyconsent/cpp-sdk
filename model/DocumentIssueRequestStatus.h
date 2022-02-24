@@ -11,13 +11,13 @@
  */
 
 /*
- * ConsentTemplateTypes.h
+ * DocumentIssueRequestStatus.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_ConsentTemplateTypes_H_
-#define MYDATAMYCONSENT_MODELS_ConsentTemplateTypes_H_
+#ifndef MYDATAMYCONSENT_MODELS_DocumentIssueRequestStatus_H_
+#define MYDATAMYCONSENT_MODELS_DocumentIssueRequestStatus_H_
 
 
 #include "ModelBase.h"
@@ -26,12 +26,12 @@
 namespace mydatamyconsent {
 namespace models {
 
-class  ConsentTemplateTypes
+class  DocumentIssueRequestStatus
     : public ModelBase
 {
 public:
-    ConsentTemplateTypes();
-    virtual ~ConsentTemplateTypes();
+    DocumentIssueRequestStatus();
+    virtual ~DocumentIssueRequestStatus();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -44,20 +44,22 @@ public:
     void toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) const override;
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
-    enum class eConsentTemplateTypes
+    enum class eDocumentIssueRequestStatus
     {
-        ConsentTemplateTypes_INDIVIDUAL,
-        ConsentTemplateTypes_ORGANIZATION,
+        DocumentIssueRequestStatus_CREATED,
+        DocumentIssueRequestStatus_ISSUED,
+        DocumentIssueRequestStatus_ACCEPTED,
+        DocumentIssueRequestStatus_REJECTED,
     };
 
-    eConsentTemplateTypes getValue() const;
-    void setValue(eConsentTemplateTypes const value);
+    eDocumentIssueRequestStatus getValue() const;
+    void setValue(eDocumentIssueRequestStatus const value);
 
     protected:
-        eConsentTemplateTypes m_value;
+        eDocumentIssueRequestStatus m_value;
 };
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_ConsentTemplateTypes_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DocumentIssueRequestStatus_H_ */

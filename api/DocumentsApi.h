@@ -29,6 +29,7 @@
 #include "HttpContent.h"
 #include "model/IssuedDocument.h"
 #include "model/IssuedDocumentPaginatedList.h"
+#include "Object.h"
 #include "model/ProblemDetails.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
