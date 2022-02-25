@@ -67,11 +67,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentIdentifier() const;
-    bool documentIdentifierIsSet() const;
-    void unsetDocumentIdentifier();
+    utility::string_t getIdentifier() const;
+    bool identifierIsSet() const;
+    void unsetIdentifier();
 
-    void setDocumentIdentifier(const utility::string_t& value);
+    void setIdentifier(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -90,6 +90,24 @@ public:
     void unsetReceiver();
 
     void setReceiver(const std::shared_ptr<DocumentReceiver>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getIssuedAtUtc() const;
+    bool issuedAtUtcIsSet() const;
+    void unsetIssuedAtUtc();
+
+    void setIssuedAtUtc(const utility::datetime& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getValidFromUtc() const;
+    bool validFromUtcIsSet() const;
+    void unsetValidFromUtc();
+
+    void setValidFromUtc(const utility::datetime& value);
 
     /// <summary>
     /// 
@@ -113,12 +131,16 @@ public:
 protected:
     utility::string_t m_DocumentTypeId;
     bool m_DocumentTypeIdIsSet;
-    utility::string_t m_DocumentIdentifier;
-    bool m_DocumentIdentifierIsSet;
+    utility::string_t m_Identifier;
+    bool m_IdentifierIsSet;
     utility::string_t m_Description;
     bool m_DescriptionIsSet;
     std::shared_ptr<DocumentReceiver> m_Receiver;
     bool m_ReceiverIsSet;
+    utility::datetime m_IssuedAtUtc;
+    bool m_IssuedAtUtcIsSet;
+    utility::datetime m_ValidFromUtc;
+    bool m_ValidFromUtcIsSet;
     utility::datetime m_ExpiresAtUtc;
     bool m_ExpiresAtUtcIsSet;
     std::map<utility::string_t, utility::string_t> m_Metadata;

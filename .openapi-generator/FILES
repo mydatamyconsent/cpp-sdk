@@ -37,6 +37,8 @@ model/ApprovedConsentRequest.cpp
 model/ApprovedConsentRequest.h
 model/BankAccountType.cpp
 model/BankAccountType.h
+model/ConsentRequestReceiver.cpp
+model/ConsentRequestReceiver.h
 model/CreateDataProcessingAgreementRequestModel.cpp
 model/CreateDataProcessingAgreementRequestModel.h
 model/CreateIndividualDataConsentRequest.cpp
@@ -133,10 +135,6 @@ model/PushUriRequest.cpp
 model/PushUriRequest.h
 model/PushUriResponse.cpp
 model/PushUriResponse.h
-model/Receiver.cpp
-model/Receiver.h
-model/ReceiverType.cpp
-model/ReceiverType.h
 model/SharedWith.cpp
 model/SharedWith.h
 model/StringStringKeyValuePair.cpp

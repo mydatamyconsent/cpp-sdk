@@ -12,7 +12,7 @@
 
 
 
-#include "Receiver.h"
+#include "ConsentRequestReceiver.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -20,31 +20,26 @@ namespace models {
 
 
 
-Receiver::Receiver()
+ConsentRequestReceiver::ConsentRequestReceiver()
 {
-    m_TypeIsSet = false;
     m_IdentifiersIsSet = false;
     m_IdentificationStrategyIsSet = false;
 }
 
-Receiver::~Receiver()
+ConsentRequestReceiver::~ConsentRequestReceiver()
 {
 }
 
-void Receiver::validate()
+void ConsentRequestReceiver::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value Receiver::toJson() const
+web::json::value ConsentRequestReceiver::toJson() const
 {
 
     web::json::value val = web::json::value::object();
     
-    if(m_TypeIsSet)
-    {
-        val[utility::conversions::to_string_t(U("type"))] = ModelBase::toJson(m_Type);
-    }
     if(m_IdentifiersIsSet)
     {
         val[utility::conversions::to_string_t(U("identifiers"))] = ModelBase::toJson(m_Identifiers);
@@ -57,20 +52,10 @@ web::json::value Receiver::toJson() const
     return val;
 }
 
-bool Receiver::fromJson(const web::json::value& val)
+bool ConsentRequestReceiver::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("type"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("type")));
-        if(!fieldValue.is_null())
-        {
-            std::shared_ptr<ReceiverType> refVal_type;
-            ok &= ModelBase::fromJson(fieldValue, refVal_type);
-            setType(refVal_type);
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(U("identifiers"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("identifiers")));
@@ -94,16 +79,12 @@ bool Receiver::fromJson(const web::json::value& val)
     return ok;
 }
 
-void Receiver::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void ConsentRequestReceiver::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
     {
         namePrefix += utility::conversions::to_string_t(U("."));
-    }
-    if(m_TypeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("type")), m_Type));
     }
     if(m_IdentifiersIsSet)
     {
@@ -115,7 +96,7 @@ void Receiver::toMultipart(std::shared_ptr<MultipartFormData> multipart, const u
     }
 }
 
-bool Receiver::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool ConsentRequestReceiver::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -124,12 +105,6 @@ bool Receiver::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(U("type"))))
-    {
-        std::shared_ptr<ReceiverType> refVal_type;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("type"))), refVal_type );
-        setType(refVal_type);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("identifiers"))))
     {
         std::vector<std::shared_ptr<StringStringKeyValuePair>> refVal_identifiers;
@@ -145,63 +120,43 @@ bool Receiver::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const
     return ok;
 }
 
-std::shared_ptr<ReceiverType> Receiver::getType() const
-{
-    return m_Type;
-}
-
-void Receiver::setType(const std::shared_ptr<ReceiverType>& value)
-{
-    m_Type = value;
-    m_TypeIsSet = true;
-}
-
-bool Receiver::typeIsSet() const
-{
-    return m_TypeIsSet;
-}
-
-void Receiver::unsetType()
-{
-    m_TypeIsSet = false;
-}
-std::vector<std::shared_ptr<StringStringKeyValuePair>>& Receiver::getIdentifiers()
+std::vector<std::shared_ptr<StringStringKeyValuePair>>& ConsentRequestReceiver::getIdentifiers()
 {
     return m_Identifiers;
 }
 
-void Receiver::setIdentifiers(const std::vector<std::shared_ptr<StringStringKeyValuePair>>& value)
+void ConsentRequestReceiver::setIdentifiers(const std::vector<std::shared_ptr<StringStringKeyValuePair>>& value)
 {
     m_Identifiers = value;
     m_IdentifiersIsSet = true;
 }
 
-bool Receiver::identifiersIsSet() const
+bool ConsentRequestReceiver::identifiersIsSet() const
 {
     return m_IdentifiersIsSet;
 }
 
-void Receiver::unsetIdentifiers()
+void ConsentRequestReceiver::unsetIdentifiers()
 {
     m_IdentifiersIsSet = false;
 }
-std::shared_ptr<IdentificationStrategy> Receiver::getIdentificationStrategy() const
+std::shared_ptr<IdentificationStrategy> ConsentRequestReceiver::getIdentificationStrategy() const
 {
     return m_IdentificationStrategy;
 }
 
-void Receiver::setIdentificationStrategy(const std::shared_ptr<IdentificationStrategy>& value)
+void ConsentRequestReceiver::setIdentificationStrategy(const std::shared_ptr<IdentificationStrategy>& value)
 {
     m_IdentificationStrategy = value;
     m_IdentificationStrategyIsSet = true;
 }
 
-bool Receiver::identificationStrategyIsSet() const
+bool ConsentRequestReceiver::identificationStrategyIsSet() const
 {
     return m_IdentificationStrategyIsSet;
 }
 
-void Receiver::unsetIdentificationStrategy()
+void ConsentRequestReceiver::unsetIdentificationStrategy()
 {
     m_IdentificationStrategyIsSet = false;
 }

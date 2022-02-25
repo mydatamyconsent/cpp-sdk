@@ -23,7 +23,7 @@
 #include "ModelBase.h"
 
 #include <cpprest/details/basic_types.h>
-#include "model/Receiver.h"
+#include "model/ConsentRequestReceiver.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -65,17 +65,17 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<Receiver> getReceiver() const;
+    std::shared_ptr<ConsentRequestReceiver> getReceiver() const;
     bool receiverIsSet() const;
     void unsetReceiver();
 
-    void setReceiver(const std::shared_ptr<Receiver>& value);
+    void setReceiver(const std::shared_ptr<ConsentRequestReceiver>& value);
 
 
 protected:
     utility::string_t m_ConsentTemplateId;
     bool m_ConsentTemplateIdIsSet;
-    std::shared_ptr<Receiver> m_Receiver;
+    std::shared_ptr<ConsentRequestReceiver> m_Receiver;
     bool m_ReceiverIsSet;
 };
 

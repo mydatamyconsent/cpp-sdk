@@ -72,7 +72,7 @@ bool CreateOrganizationDataConsentRequest::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("receiver")));
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<Receiver> refVal_receiver;
+            std::shared_ptr<ConsentRequestReceiver> refVal_receiver;
             ok &= ModelBase::fromJson(fieldValue, refVal_receiver);
             setReceiver(refVal_receiver);
         }
@@ -114,7 +114,7 @@ bool CreateOrganizationDataConsentRequest::fromMultiPart(std::shared_ptr<Multipa
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("receiver"))))
     {
-        std::shared_ptr<Receiver> refVal_receiver;
+        std::shared_ptr<ConsentRequestReceiver> refVal_receiver;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("receiver"))), refVal_receiver );
         setReceiver(refVal_receiver);
     }
@@ -141,12 +141,12 @@ void CreateOrganizationDataConsentRequest::unsetConsentTemplateId()
 {
     m_ConsentTemplateIdIsSet = false;
 }
-std::shared_ptr<Receiver> CreateOrganizationDataConsentRequest::getReceiver() const
+std::shared_ptr<ConsentRequestReceiver> CreateOrganizationDataConsentRequest::getReceiver() const
 {
     return m_Receiver;
 }
 
-void CreateOrganizationDataConsentRequest::setReceiver(const std::shared_ptr<Receiver>& value)
+void CreateOrganizationDataConsentRequest::setReceiver(const std::shared_ptr<ConsentRequestReceiver>& value)
 {
     m_Receiver = value;
     m_ReceiverIsSet = true;

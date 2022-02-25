@@ -24,11 +24,15 @@ DocumentIssueRequest::DocumentIssueRequest()
 {
     m_DocumentTypeId = utility::conversions::to_string_t("");
     m_DocumentTypeIdIsSet = false;
-    m_DocumentIdentifier = utility::conversions::to_string_t("");
-    m_DocumentIdentifierIsSet = false;
+    m_Identifier = utility::conversions::to_string_t("");
+    m_IdentifierIsSet = false;
     m_Description = utility::conversions::to_string_t("");
     m_DescriptionIsSet = false;
     m_ReceiverIsSet = false;
+    m_IssuedAtUtc = utility::datetime();
+    m_IssuedAtUtcIsSet = false;
+    m_ValidFromUtc = utility::datetime();
+    m_ValidFromUtcIsSet = false;
     m_ExpiresAtUtc = utility::datetime();
     m_ExpiresAtUtcIsSet = false;
     m_MetadataIsSet = false;
@@ -52,9 +56,9 @@ web::json::value DocumentIssueRequest::toJson() const
     {
         val[utility::conversions::to_string_t(U("documentTypeId"))] = ModelBase::toJson(m_DocumentTypeId);
     }
-    if(m_DocumentIdentifierIsSet)
+    if(m_IdentifierIsSet)
     {
-        val[utility::conversions::to_string_t(U("documentIdentifier"))] = ModelBase::toJson(m_DocumentIdentifier);
+        val[utility::conversions::to_string_t(U("identifier"))] = ModelBase::toJson(m_Identifier);
     }
     if(m_DescriptionIsSet)
     {
@@ -63,6 +67,14 @@ web::json::value DocumentIssueRequest::toJson() const
     if(m_ReceiverIsSet)
     {
         val[utility::conversions::to_string_t(U("receiver"))] = ModelBase::toJson(m_Receiver);
+    }
+    if(m_IssuedAtUtcIsSet)
+    {
+        val[utility::conversions::to_string_t(U("issuedAtUtc"))] = ModelBase::toJson(m_IssuedAtUtc);
+    }
+    if(m_ValidFromUtcIsSet)
+    {
+        val[utility::conversions::to_string_t(U("validFromUtc"))] = ModelBase::toJson(m_ValidFromUtc);
     }
     if(m_ExpiresAtUtcIsSet)
     {
@@ -90,14 +102,14 @@ bool DocumentIssueRequest::fromJson(const web::json::value& val)
             setDocumentTypeId(refVal_documentTypeId);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("documentIdentifier"))))
+    if(val.has_field(utility::conversions::to_string_t(U("identifier"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("documentIdentifier")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("identifier")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_documentIdentifier;
-            ok &= ModelBase::fromJson(fieldValue, refVal_documentIdentifier);
-            setDocumentIdentifier(refVal_documentIdentifier);
+            utility::string_t refVal_identifier;
+            ok &= ModelBase::fromJson(fieldValue, refVal_identifier);
+            setIdentifier(refVal_identifier);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("description"))))
@@ -118,6 +130,26 @@ bool DocumentIssueRequest::fromJson(const web::json::value& val)
             std::shared_ptr<DocumentReceiver> refVal_receiver;
             ok &= ModelBase::fromJson(fieldValue, refVal_receiver);
             setReceiver(refVal_receiver);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("issuedAtUtc"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("issuedAtUtc")));
+        if(!fieldValue.is_null())
+        {
+            utility::datetime refVal_issuedAtUtc;
+            ok &= ModelBase::fromJson(fieldValue, refVal_issuedAtUtc);
+            setIssuedAtUtc(refVal_issuedAtUtc);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("validFromUtc"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("validFromUtc")));
+        if(!fieldValue.is_null())
+        {
+            utility::datetime refVal_validFromUtc;
+            ok &= ModelBase::fromJson(fieldValue, refVal_validFromUtc);
+            setValidFromUtc(refVal_validFromUtc);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("expiresAtUtc"))))
@@ -154,9 +186,9 @@ void DocumentIssueRequest::toMultipart(std::shared_ptr<MultipartFormData> multip
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documentTypeId")), m_DocumentTypeId));
     }
-    if(m_DocumentIdentifierIsSet)
+    if(m_IdentifierIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("documentIdentifier")), m_DocumentIdentifier));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("identifier")), m_Identifier));
     }
     if(m_DescriptionIsSet)
     {
@@ -165,6 +197,14 @@ void DocumentIssueRequest::toMultipart(std::shared_ptr<MultipartFormData> multip
     if(m_ReceiverIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("receiver")), m_Receiver));
+    }
+    if(m_IssuedAtUtcIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("issuedAtUtc")), m_IssuedAtUtc));
+    }
+    if(m_ValidFromUtcIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("validFromUtc")), m_ValidFromUtc));
     }
     if(m_ExpiresAtUtcIsSet)
     {
@@ -191,11 +231,11 @@ bool DocumentIssueRequest::fromMultiPart(std::shared_ptr<MultipartFormData> mult
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documentTypeId"))), refVal_documentTypeId );
         setDocumentTypeId(refVal_documentTypeId);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("documentIdentifier"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("identifier"))))
     {
-        utility::string_t refVal_documentIdentifier;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documentIdentifier"))), refVal_documentIdentifier );
-        setDocumentIdentifier(refVal_documentIdentifier);
+        utility::string_t refVal_identifier;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("identifier"))), refVal_identifier );
+        setIdentifier(refVal_identifier);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("description"))))
     {
@@ -208,6 +248,18 @@ bool DocumentIssueRequest::fromMultiPart(std::shared_ptr<MultipartFormData> mult
         std::shared_ptr<DocumentReceiver> refVal_receiver;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("receiver"))), refVal_receiver );
         setReceiver(refVal_receiver);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("issuedAtUtc"))))
+    {
+        utility::datetime refVal_issuedAtUtc;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("issuedAtUtc"))), refVal_issuedAtUtc );
+        setIssuedAtUtc(refVal_issuedAtUtc);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("validFromUtc"))))
+    {
+        utility::datetime refVal_validFromUtc;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("validFromUtc"))), refVal_validFromUtc );
+        setValidFromUtc(refVal_validFromUtc);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("expiresAtUtc"))))
     {
@@ -244,25 +296,25 @@ void DocumentIssueRequest::unsetDocumentTypeId()
 {
     m_DocumentTypeIdIsSet = false;
 }
-utility::string_t DocumentIssueRequest::getDocumentIdentifier() const
+utility::string_t DocumentIssueRequest::getIdentifier() const
 {
-    return m_DocumentIdentifier;
+    return m_Identifier;
 }
 
-void DocumentIssueRequest::setDocumentIdentifier(const utility::string_t& value)
+void DocumentIssueRequest::setIdentifier(const utility::string_t& value)
 {
-    m_DocumentIdentifier = value;
-    m_DocumentIdentifierIsSet = true;
+    m_Identifier = value;
+    m_IdentifierIsSet = true;
 }
 
-bool DocumentIssueRequest::documentIdentifierIsSet() const
+bool DocumentIssueRequest::identifierIsSet() const
 {
-    return m_DocumentIdentifierIsSet;
+    return m_IdentifierIsSet;
 }
 
-void DocumentIssueRequest::unsetDocumentIdentifier()
+void DocumentIssueRequest::unsetIdentifier()
 {
-    m_DocumentIdentifierIsSet = false;
+    m_IdentifierIsSet = false;
 }
 utility::string_t DocumentIssueRequest::getDescription() const
 {
@@ -303,6 +355,46 @@ bool DocumentIssueRequest::receiverIsSet() const
 void DocumentIssueRequest::unsetReceiver()
 {
     m_ReceiverIsSet = false;
+}
+utility::datetime DocumentIssueRequest::getIssuedAtUtc() const
+{
+    return m_IssuedAtUtc;
+}
+
+void DocumentIssueRequest::setIssuedAtUtc(const utility::datetime& value)
+{
+    m_IssuedAtUtc = value;
+    m_IssuedAtUtcIsSet = true;
+}
+
+bool DocumentIssueRequest::issuedAtUtcIsSet() const
+{
+    return m_IssuedAtUtcIsSet;
+}
+
+void DocumentIssueRequest::unsetIssuedAtUtc()
+{
+    m_IssuedAtUtcIsSet = false;
+}
+utility::datetime DocumentIssueRequest::getValidFromUtc() const
+{
+    return m_ValidFromUtc;
+}
+
+void DocumentIssueRequest::setValidFromUtc(const utility::datetime& value)
+{
+    m_ValidFromUtc = value;
+    m_ValidFromUtcIsSet = true;
+}
+
+bool DocumentIssueRequest::validFromUtcIsSet() const
+{
+    return m_ValidFromUtcIsSet;
+}
+
+void DocumentIssueRequest::unsetValidFromUtc()
+{
+    m_ValidFromUtcIsSet = false;
 }
 utility::datetime DocumentIssueRequest::getExpiresAtUtc() const
 {

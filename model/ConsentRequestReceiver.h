@@ -11,20 +11,19 @@
  */
 
 /*
- * Receiver.h
+ * ConsentRequestReceiver.h
  *
  * Consent request receiver details
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_Receiver_H_
-#define MYDATAMYCONSENT_MODELS_Receiver_H_
+#ifndef MYDATAMYCONSENT_MODELS_ConsentRequestReceiver_H_
+#define MYDATAMYCONSENT_MODELS_ConsentRequestReceiver_H_
 
 
 #include "ModelBase.h"
 
 #include "model/IdentificationStrategy.h"
 #include "model/StringStringKeyValuePair.h"
-#include "model/ReceiverType.h"
 #include <vector>
 
 namespace mydatamyconsent {
@@ -34,12 +33,12 @@ namespace models {
 /// <summary>
 /// Consent request receiver details
 /// </summary>
-class  Receiver
+class  ConsentRequestReceiver
     : public ModelBase
 {
 public:
-    Receiver();
-    virtual ~Receiver();
+    ConsentRequestReceiver();
+    virtual ~ConsentRequestReceiver();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -53,16 +52,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// Receiver members
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<ReceiverType> getType() const;
-    bool typeIsSet() const;
-    void unsetType();
-
-    void setType(const std::shared_ptr<ReceiverType>& value);
+    /// ConsentRequestReceiver members
 
     /// <summary>
     /// Consent request receiver identifiers
@@ -84,8 +74,6 @@ public:
 
 
 protected:
-    std::shared_ptr<ReceiverType> m_Type;
-    bool m_TypeIsSet;
     std::vector<std::shared_ptr<StringStringKeyValuePair>> m_Identifiers;
     bool m_IdentifiersIsSet;
     std::shared_ptr<IdentificationStrategy> m_IdentificationStrategy;
@@ -96,4 +84,4 @@ protected:
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_Receiver_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_ConsentRequestReceiver_H_ */

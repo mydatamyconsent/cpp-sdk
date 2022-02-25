@@ -75,20 +75,20 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentTypeName() const;
-    bool documentTypeNameIsSet() const;
-    void unsetDocumentTypeName();
+    utility::string_t getRTypeName() const;
+    bool rTypeNameIsSet() const;
+    void unsetr_typeName();
 
-    void setDocumentTypeName(const utility::string_t& value);
+    void setRTypeName(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocumentIdentifier() const;
-    bool documentIdentifierIsSet() const;
-    void unsetDocumentIdentifier();
+    utility::string_t getIdentifier() const;
+    bool identifierIsSet() const;
+    void unsetIdentifier();
 
-    void setDocumentIdentifier(const utility::string_t& value);
+    void setIdentifier(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -120,6 +120,24 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    utility::datetime getIssuedAtUtc() const;
+    bool issuedAtUtcIsSet() const;
+    void unsetIssuedAtUtc();
+
+    void setIssuedAtUtc(const utility::datetime& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getValidFromUtc() const;
+    bool validFromUtcIsSet() const;
+    void unsetValidFromUtc();
+
+    void setValidFromUtc(const utility::datetime& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
     utility::datetime getExpiresAtUtc() const;
     bool expiresAtUtcIsSet() const;
     void unsetExpiresAtUtc();
@@ -129,11 +147,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<AnyType> getMetadata() const;
-    bool metadataIsSet() const;
-    void unsetMetadata();
+    std::shared_ptr<AnyType> getMetaData() const;
+    bool metaDataIsSet() const;
+    void unsetMetaData();
 
-    void setMetadata(const std::shared_ptr<AnyType>& value);
+    void setMetaData(const std::shared_ptr<AnyType>& value);
 
     /// <summary>
     /// 
@@ -150,20 +168,24 @@ protected:
     bool m_IdIsSet;
     utility::string_t m_DocumentTypeId;
     bool m_DocumentTypeIdIsSet;
-    utility::string_t m_DocumentTypeName;
-    bool m_DocumentTypeNameIsSet;
-    utility::string_t m_DocumentIdentifier;
-    bool m_DocumentIdentifierIsSet;
+    utility::string_t m_r_typeName;
+    bool m_r_typeNameIsSet;
+    utility::string_t m_Identifier;
+    bool m_IdentifierIsSet;
     std::shared_ptr<DocumentIssueRequestStatus> m_Status;
     bool m_StatusIsSet;
     utility::string_t m_Description;
     bool m_DescriptionIsSet;
     std::shared_ptr<AnyType> m_Receiver;
     bool m_ReceiverIsSet;
+    utility::datetime m_IssuedAtUtc;
+    bool m_IssuedAtUtcIsSet;
+    utility::datetime m_ValidFromUtc;
+    bool m_ValidFromUtcIsSet;
     utility::datetime m_ExpiresAtUtc;
     bool m_ExpiresAtUtcIsSet;
-    std::shared_ptr<AnyType> m_Metadata;
-    bool m_MetadataIsSet;
+    std::shared_ptr<AnyType> m_MetaData;
+    bool m_MetaDataIsSet;
     utility::datetime m_CreatedAtUtc;
     bool m_CreatedAtUtcIsSet;
 };
