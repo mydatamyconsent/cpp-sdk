@@ -12,7 +12,7 @@
 
 
 
-#include "UserDocumentDetailsDto.h"
+#include "UserDocumentDetails.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -20,7 +20,7 @@ namespace models {
 
 
 
-UserDocumentDetailsDto::UserDocumentDetailsDto()
+UserDocumentDetails::UserDocumentDetails()
 {
     m_Id = utility::conversions::to_string_t("");
     m_IdIsSet = false;
@@ -50,16 +50,16 @@ UserDocumentDetailsDto::UserDocumentDetailsDto()
     m_OwnerIdIsSet = false;
 }
 
-UserDocumentDetailsDto::~UserDocumentDetailsDto()
+UserDocumentDetails::~UserDocumentDetails()
 {
 }
 
-void UserDocumentDetailsDto::validate()
+void UserDocumentDetails::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value UserDocumentDetailsDto::toJson() const
+web::json::value UserDocumentDetails::toJson() const
 {
 
     web::json::value val = web::json::value::object();
@@ -124,7 +124,7 @@ web::json::value UserDocumentDetailsDto::toJson() const
     return val;
 }
 
-bool UserDocumentDetailsDto::fromJson(const web::json::value& val)
+bool UserDocumentDetails::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
@@ -271,7 +271,7 @@ bool UserDocumentDetailsDto::fromJson(const web::json::value& val)
     return ok;
 }
 
-void UserDocumentDetailsDto::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void UserDocumentDetails::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
@@ -336,7 +336,7 @@ void UserDocumentDetailsDto::toMultipart(std::shared_ptr<MultipartFormData> mult
     }
 }
 
-bool UserDocumentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool UserDocumentDetails::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -432,283 +432,283 @@ bool UserDocumentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> mu
     return ok;
 }
 
-utility::string_t UserDocumentDetailsDto::getId() const
+utility::string_t UserDocumentDetails::getId() const
 {
     return m_Id;
 }
 
-void UserDocumentDetailsDto::setId(const utility::string_t& value)
+void UserDocumentDetails::setId(const utility::string_t& value)
 {
     m_Id = value;
     m_IdIsSet = true;
 }
 
-bool UserDocumentDetailsDto::idIsSet() const
+bool UserDocumentDetails::idIsSet() const
 {
     return m_IdIsSet;
 }
 
-void UserDocumentDetailsDto::unsetId()
+void UserDocumentDetails::unsetId()
 {
     m_IdIsSet = false;
 }
-std::shared_ptr<DocumentCategoryType> UserDocumentDetailsDto::getCategoryType() const
+std::shared_ptr<DocumentCategoryType> UserDocumentDetails::getCategoryType() const
 {
     return m_CategoryType;
 }
 
-void UserDocumentDetailsDto::setCategoryType(const std::shared_ptr<DocumentCategoryType>& value)
+void UserDocumentDetails::setCategoryType(const std::shared_ptr<DocumentCategoryType>& value)
 {
     m_CategoryType = value;
     m_CategoryTypeIsSet = true;
 }
 
-bool UserDocumentDetailsDto::categoryTypeIsSet() const
+bool UserDocumentDetails::categoryTypeIsSet() const
 {
     return m_CategoryTypeIsSet;
 }
 
-void UserDocumentDetailsDto::unsetCategoryType()
+void UserDocumentDetails::unsetCategoryType()
 {
     m_CategoryTypeIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getRTypeId() const
+utility::string_t UserDocumentDetails::getRTypeId() const
 {
     return m_r_typeId;
 }
 
-void UserDocumentDetailsDto::setRTypeId(const utility::string_t& value)
+void UserDocumentDetails::setRTypeId(const utility::string_t& value)
 {
     m_r_typeId = value;
     m_r_typeIdIsSet = true;
 }
 
-bool UserDocumentDetailsDto::rTypeIdIsSet() const
+bool UserDocumentDetails::rTypeIdIsSet() const
 {
     return m_r_typeIdIsSet;
 }
 
-void UserDocumentDetailsDto::unsetr_typeId()
+void UserDocumentDetails::unsetr_typeId()
 {
     m_r_typeIdIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getRTypeName() const
+utility::string_t UserDocumentDetails::getRTypeName() const
 {
     return m_r_typeName;
 }
 
-void UserDocumentDetailsDto::setRTypeName(const utility::string_t& value)
+void UserDocumentDetails::setRTypeName(const utility::string_t& value)
 {
     m_r_typeName = value;
     m_r_typeNameIsSet = true;
 }
 
-bool UserDocumentDetailsDto::rTypeNameIsSet() const
+bool UserDocumentDetails::rTypeNameIsSet() const
 {
     return m_r_typeNameIsSet;
 }
 
-void UserDocumentDetailsDto::unsetr_typeName()
+void UserDocumentDetails::unsetr_typeName()
 {
     m_r_typeNameIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getFullName() const
+utility::string_t UserDocumentDetails::getFullName() const
 {
     return m_FullName;
 }
 
-void UserDocumentDetailsDto::setFullName(const utility::string_t& value)
+void UserDocumentDetails::setFullName(const utility::string_t& value)
 {
     m_FullName = value;
     m_FullNameIsSet = true;
 }
 
-bool UserDocumentDetailsDto::fullNameIsSet() const
+bool UserDocumentDetails::fullNameIsSet() const
 {
     return m_FullNameIsSet;
 }
 
-void UserDocumentDetailsDto::unsetFullName()
+void UserDocumentDetails::unsetFullName()
 {
     m_FullNameIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getIdentifier() const
+utility::string_t UserDocumentDetails::getIdentifier() const
 {
     return m_Identifier;
 }
 
-void UserDocumentDetailsDto::setIdentifier(const utility::string_t& value)
+void UserDocumentDetails::setIdentifier(const utility::string_t& value)
 {
     m_Identifier = value;
     m_IdentifierIsSet = true;
 }
 
-bool UserDocumentDetailsDto::identifierIsSet() const
+bool UserDocumentDetails::identifierIsSet() const
 {
     return m_IdentifierIsSet;
 }
 
-void UserDocumentDetailsDto::unsetIdentifier()
+void UserDocumentDetails::unsetIdentifier()
 {
     m_IdentifierIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getAccountId() const
+utility::string_t UserDocumentDetails::getAccountId() const
 {
     return m_AccountId;
 }
 
-void UserDocumentDetailsDto::setAccountId(const utility::string_t& value)
+void UserDocumentDetails::setAccountId(const utility::string_t& value)
 {
     m_AccountId = value;
     m_AccountIdIsSet = true;
 }
 
-bool UserDocumentDetailsDto::accountIdIsSet() const
+bool UserDocumentDetails::accountIdIsSet() const
 {
     return m_AccountIdIsSet;
 }
 
-void UserDocumentDetailsDto::unsetAccountId()
+void UserDocumentDetails::unsetAccountId()
 {
     m_AccountIdIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getIssuerId() const
+utility::string_t UserDocumentDetails::getIssuerId() const
 {
     return m_IssuerId;
 }
 
-void UserDocumentDetailsDto::setIssuerId(const utility::string_t& value)
+void UserDocumentDetails::setIssuerId(const utility::string_t& value)
 {
     m_IssuerId = value;
     m_IssuerIdIsSet = true;
 }
 
-bool UserDocumentDetailsDto::issuerIdIsSet() const
+bool UserDocumentDetails::issuerIdIsSet() const
 {
     return m_IssuerIdIsSet;
 }
 
-void UserDocumentDetailsDto::unsetIssuerId()
+void UserDocumentDetails::unsetIssuerId()
 {
     m_IssuerIdIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getIssuerName() const
+utility::string_t UserDocumentDetails::getIssuerName() const
 {
     return m_IssuerName;
 }
 
-void UserDocumentDetailsDto::setIssuerName(const utility::string_t& value)
+void UserDocumentDetails::setIssuerName(const utility::string_t& value)
 {
     m_IssuerName = value;
     m_IssuerNameIsSet = true;
 }
 
-bool UserDocumentDetailsDto::issuerNameIsSet() const
+bool UserDocumentDetails::issuerNameIsSet() const
 {
     return m_IssuerNameIsSet;
 }
 
-void UserDocumentDetailsDto::unsetIssuerName()
+void UserDocumentDetails::unsetIssuerName()
 {
     m_IssuerNameIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getStorageUrl() const
+utility::string_t UserDocumentDetails::getStorageUrl() const
 {
     return m_StorageUrl;
 }
 
-void UserDocumentDetailsDto::setStorageUrl(const utility::string_t& value)
+void UserDocumentDetails::setStorageUrl(const utility::string_t& value)
 {
     m_StorageUrl = value;
     m_StorageUrlIsSet = true;
 }
 
-bool UserDocumentDetailsDto::storageUrlIsSet() const
+bool UserDocumentDetails::storageUrlIsSet() const
 {
     return m_StorageUrlIsSet;
 }
 
-void UserDocumentDetailsDto::unsetStorageUrl()
+void UserDocumentDetails::unsetStorageUrl()
 {
     m_StorageUrlIsSet = false;
 }
-bool UserDocumentDetailsDto::isIsQuickAccessEnabled() const
+bool UserDocumentDetails::isIsQuickAccessEnabled() const
 {
     return m_IsQuickAccessEnabled;
 }
 
-void UserDocumentDetailsDto::setIsQuickAccessEnabled(bool value)
+void UserDocumentDetails::setIsQuickAccessEnabled(bool value)
 {
     m_IsQuickAccessEnabled = value;
     m_IsQuickAccessEnabledIsSet = true;
 }
 
-bool UserDocumentDetailsDto::isQuickAccessEnabledIsSet() const
+bool UserDocumentDetails::isQuickAccessEnabledIsSet() const
 {
     return m_IsQuickAccessEnabledIsSet;
 }
 
-void UserDocumentDetailsDto::unsetIsQuickAccessEnabled()
+void UserDocumentDetails::unsetIsQuickAccessEnabled()
 {
     m_IsQuickAccessEnabledIsSet = false;
 }
-bool UserDocumentDetailsDto::isIsOwner() const
+bool UserDocumentDetails::isIsOwner() const
 {
     return m_IsOwner;
 }
 
-void UserDocumentDetailsDto::setIsOwner(bool value)
+void UserDocumentDetails::setIsOwner(bool value)
 {
     m_IsOwner = value;
     m_IsOwnerIsSet = true;
 }
 
-bool UserDocumentDetailsDto::isOwnerIsSet() const
+bool UserDocumentDetails::isOwnerIsSet() const
 {
     return m_IsOwnerIsSet;
 }
 
-void UserDocumentDetailsDto::unsetIsOwner()
+void UserDocumentDetails::unsetIsOwner()
 {
     m_IsOwnerIsSet = false;
 }
-std::vector<std::shared_ptr<DigitalSignature>>& UserDocumentDetailsDto::getDigitalSignatureDetails()
+std::vector<std::shared_ptr<DigitalSignature>>& UserDocumentDetails::getDigitalSignatureDetails()
 {
     return m_DigitalSignatureDetails;
 }
 
-void UserDocumentDetailsDto::setDigitalSignatureDetails(const std::vector<std::shared_ptr<DigitalSignature>>& value)
+void UserDocumentDetails::setDigitalSignatureDetails(const std::vector<std::shared_ptr<DigitalSignature>>& value)
 {
     m_DigitalSignatureDetails = value;
     m_DigitalSignatureDetailsIsSet = true;
 }
 
-bool UserDocumentDetailsDto::digitalSignatureDetailsIsSet() const
+bool UserDocumentDetails::digitalSignatureDetailsIsSet() const
 {
     return m_DigitalSignatureDetailsIsSet;
 }
 
-void UserDocumentDetailsDto::unsetDigitalSignatureDetails()
+void UserDocumentDetails::unsetDigitalSignatureDetails()
 {
     m_DigitalSignatureDetailsIsSet = false;
 }
-utility::string_t UserDocumentDetailsDto::getOwnerId() const
+utility::string_t UserDocumentDetails::getOwnerId() const
 {
     return m_OwnerId;
 }
 
-void UserDocumentDetailsDto::setOwnerId(const utility::string_t& value)
+void UserDocumentDetails::setOwnerId(const utility::string_t& value)
 {
     m_OwnerId = value;
     m_OwnerIdIsSet = true;
 }
 
-bool UserDocumentDetailsDto::ownerIdIsSet() const
+bool UserDocumentDetails::ownerIdIsSet() const
 {
     return m_OwnerIdIsSet;
 }
 
-void UserDocumentDetailsDto::unsetOwnerId()
+void UserDocumentDetails::unsetOwnerId()
 {
     m_OwnerIdIsSet = false;
 }

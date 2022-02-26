@@ -12,7 +12,7 @@
 
 
 
-#include "OrganizationDocumentDetailsDto.h"
+#include "OrganizationDocumentDetails.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -20,7 +20,7 @@ namespace models {
 
 
 
-OrganizationDocumentDetailsDto::OrganizationDocumentDetailsDto()
+OrganizationDocumentDetails::OrganizationDocumentDetails()
 {
     m_Id = utility::conversions::to_string_t("");
     m_IdIsSet = false;
@@ -46,16 +46,16 @@ OrganizationDocumentDetailsDto::OrganizationDocumentDetailsDto()
     m_IssuerNameIsSet = false;
 }
 
-OrganizationDocumentDetailsDto::~OrganizationDocumentDetailsDto()
+OrganizationDocumentDetails::~OrganizationDocumentDetails()
 {
 }
 
-void OrganizationDocumentDetailsDto::validate()
+void OrganizationDocumentDetails::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value OrganizationDocumentDetailsDto::toJson() const
+web::json::value OrganizationDocumentDetails::toJson() const
 {
 
     web::json::value val = web::json::value::object();
@@ -108,7 +108,7 @@ web::json::value OrganizationDocumentDetailsDto::toJson() const
     return val;
 }
 
-bool OrganizationDocumentDetailsDto::fromJson(const web::json::value& val)
+bool OrganizationDocumentDetails::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
@@ -225,7 +225,7 @@ bool OrganizationDocumentDetailsDto::fromJson(const web::json::value& val)
     return ok;
 }
 
-void OrganizationDocumentDetailsDto::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void OrganizationDocumentDetails::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
@@ -278,7 +278,7 @@ void OrganizationDocumentDetailsDto::toMultipart(std::shared_ptr<MultipartFormDa
     }
 }
 
-bool OrganizationDocumentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool OrganizationDocumentDetails::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -356,223 +356,223 @@ bool OrganizationDocumentDetailsDto::fromMultiPart(std::shared_ptr<MultipartForm
     return ok;
 }
 
-utility::string_t OrganizationDocumentDetailsDto::getId() const
+utility::string_t OrganizationDocumentDetails::getId() const
 {
     return m_Id;
 }
 
-void OrganizationDocumentDetailsDto::setId(const utility::string_t& value)
+void OrganizationDocumentDetails::setId(const utility::string_t& value)
 {
     m_Id = value;
     m_IdIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::idIsSet() const
+bool OrganizationDocumentDetails::idIsSet() const
 {
     return m_IdIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetId()
+void OrganizationDocumentDetails::unsetId()
 {
     m_IdIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getOrganizationId() const
+utility::string_t OrganizationDocumentDetails::getOrganizationId() const
 {
     return m_OrganizationId;
 }
 
-void OrganizationDocumentDetailsDto::setOrganizationId(const utility::string_t& value)
+void OrganizationDocumentDetails::setOrganizationId(const utility::string_t& value)
 {
     m_OrganizationId = value;
     m_OrganizationIdIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::organizationIdIsSet() const
+bool OrganizationDocumentDetails::organizationIdIsSet() const
 {
     return m_OrganizationIdIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetOrganizationId()
+void OrganizationDocumentDetails::unsetOrganizationId()
 {
     m_OrganizationIdIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getOrganizationName() const
+utility::string_t OrganizationDocumentDetails::getOrganizationName() const
 {
     return m_OrganizationName;
 }
 
-void OrganizationDocumentDetailsDto::setOrganizationName(const utility::string_t& value)
+void OrganizationDocumentDetails::setOrganizationName(const utility::string_t& value)
 {
     m_OrganizationName = value;
     m_OrganizationNameIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::organizationNameIsSet() const
+bool OrganizationDocumentDetails::organizationNameIsSet() const
 {
     return m_OrganizationNameIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetOrganizationName()
+void OrganizationDocumentDetails::unsetOrganizationName()
 {
     m_OrganizationNameIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getRTypeId() const
+utility::string_t OrganizationDocumentDetails::getRTypeId() const
 {
     return m_r_typeId;
 }
 
-void OrganizationDocumentDetailsDto::setRTypeId(const utility::string_t& value)
+void OrganizationDocumentDetails::setRTypeId(const utility::string_t& value)
 {
     m_r_typeId = value;
     m_r_typeIdIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::rTypeIdIsSet() const
+bool OrganizationDocumentDetails::rTypeIdIsSet() const
 {
     return m_r_typeIdIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetr_typeId()
+void OrganizationDocumentDetails::unsetr_typeId()
 {
     m_r_typeIdIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getRTypeName() const
+utility::string_t OrganizationDocumentDetails::getRTypeName() const
 {
     return m_r_typeName;
 }
 
-void OrganizationDocumentDetailsDto::setRTypeName(const utility::string_t& value)
+void OrganizationDocumentDetails::setRTypeName(const utility::string_t& value)
 {
     m_r_typeName = value;
     m_r_typeNameIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::rTypeNameIsSet() const
+bool OrganizationDocumentDetails::rTypeNameIsSet() const
 {
     return m_r_typeNameIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetr_typeName()
+void OrganizationDocumentDetails::unsetr_typeName()
 {
     m_r_typeNameIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getName() const
+utility::string_t OrganizationDocumentDetails::getName() const
 {
     return m_Name;
 }
 
-void OrganizationDocumentDetailsDto::setName(const utility::string_t& value)
+void OrganizationDocumentDetails::setName(const utility::string_t& value)
 {
     m_Name = value;
     m_NameIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::nameIsSet() const
+bool OrganizationDocumentDetails::nameIsSet() const
 {
     return m_NameIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetName()
+void OrganizationDocumentDetails::unsetName()
 {
     m_NameIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getIdentifier() const
+utility::string_t OrganizationDocumentDetails::getIdentifier() const
 {
     return m_Identifier;
 }
 
-void OrganizationDocumentDetailsDto::setIdentifier(const utility::string_t& value)
+void OrganizationDocumentDetails::setIdentifier(const utility::string_t& value)
 {
     m_Identifier = value;
     m_IdentifierIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::identifierIsSet() const
+bool OrganizationDocumentDetails::identifierIsSet() const
 {
     return m_IdentifierIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetIdentifier()
+void OrganizationDocumentDetails::unsetIdentifier()
 {
     m_IdentifierIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getStorageUrl() const
+utility::string_t OrganizationDocumentDetails::getStorageUrl() const
 {
     return m_StorageUrl;
 }
 
-void OrganizationDocumentDetailsDto::setStorageUrl(const utility::string_t& value)
+void OrganizationDocumentDetails::setStorageUrl(const utility::string_t& value)
 {
     m_StorageUrl = value;
     m_StorageUrlIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::storageUrlIsSet() const
+bool OrganizationDocumentDetails::storageUrlIsSet() const
 {
     return m_StorageUrlIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetStorageUrl()
+void OrganizationDocumentDetails::unsetStorageUrl()
 {
     m_StorageUrlIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getCountryIso2() const
+utility::string_t OrganizationDocumentDetails::getCountryIso2() const
 {
     return m_CountryIso2;
 }
 
-void OrganizationDocumentDetailsDto::setCountryIso2(const utility::string_t& value)
+void OrganizationDocumentDetails::setCountryIso2(const utility::string_t& value)
 {
     m_CountryIso2 = value;
     m_CountryIso2IsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::countryIso2IsSet() const
+bool OrganizationDocumentDetails::countryIso2IsSet() const
 {
     return m_CountryIso2IsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetCountryIso2()
+void OrganizationDocumentDetails::unsetCountryIso2()
 {
     m_CountryIso2IsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getIssuerId() const
+utility::string_t OrganizationDocumentDetails::getIssuerId() const
 {
     return m_IssuerId;
 }
 
-void OrganizationDocumentDetailsDto::setIssuerId(const utility::string_t& value)
+void OrganizationDocumentDetails::setIssuerId(const utility::string_t& value)
 {
     m_IssuerId = value;
     m_IssuerIdIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::issuerIdIsSet() const
+bool OrganizationDocumentDetails::issuerIdIsSet() const
 {
     return m_IssuerIdIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetIssuerId()
+void OrganizationDocumentDetails::unsetIssuerId()
 {
     m_IssuerIdIsSet = false;
 }
-utility::string_t OrganizationDocumentDetailsDto::getIssuerName() const
+utility::string_t OrganizationDocumentDetails::getIssuerName() const
 {
     return m_IssuerName;
 }
 
-void OrganizationDocumentDetailsDto::setIssuerName(const utility::string_t& value)
+void OrganizationDocumentDetails::setIssuerName(const utility::string_t& value)
 {
     m_IssuerName = value;
     m_IssuerNameIsSet = true;
 }
 
-bool OrganizationDocumentDetailsDto::issuerNameIsSet() const
+bool OrganizationDocumentDetails::issuerNameIsSet() const
 {
     return m_IssuerNameIsSet;
 }
 
-void OrganizationDocumentDetailsDto::unsetIssuerName()
+void OrganizationDocumentDetails::unsetIssuerName()
 {
     m_IssuerNameIsSet = false;
 }

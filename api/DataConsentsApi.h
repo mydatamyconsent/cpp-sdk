@@ -30,14 +30,14 @@
 #include "model/FinancialAccount.h"
 #include "Object.h"
 #include "model/OrganizationDataConsentInfoDtoPaginatedList.h"
-#include "model/OrganizationDocumentDetailsDto.h"
+#include "model/OrganizationDocumentDetails.h"
 #include "model/OrganizationDocumentDownloadDto.h"
 #include "model/OrganizationFinancialAccountDto.h"
 #include "model/OrganizationFinancialTransactionsDtoPaginatedList.h"
 #include "model/UserAccountFinancialTransactionsDtoPaginatedList.h"
 #include "model/UserDataConsentInfoDtoPaginatedList.h"
-#include "model/UserDocumentDetailsDto.h"
-#include "model/UserDocumentDownloadDto.h"
+#include "model/UserDocumentDetails.h"
+#include "model/UserDocumentDownload.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -64,7 +64,7 @@ public:
     /// </remarks>
     /// <param name="consentId">Consent id.</param>
     /// <param name="documentId">Document id.</param>
-    pplx::task<std::shared_ptr<UserDocumentDownloadDto>> downloadConsentedDocumentById(
+    pplx::task<std::shared_ptr<UserDocumentDownload>> downloadConsentedDocumentById(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;
@@ -150,7 +150,7 @@ public:
     /// </remarks>
     /// <param name="consentId">Consent id.</param>
     /// <param name="documentId">Document Id.</param>
-    pplx::task<std::shared_ptr<UserDocumentDetailsDto>> getConsentedDocumentById(
+    pplx::task<std::shared_ptr<UserDocumentDetails>> getConsentedDocumentById(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;
@@ -264,7 +264,7 @@ public:
     /// </remarks>
     /// <param name="consentId">Consent id.</param>
     /// <param name="documentId">Document Id.</param>
-    pplx::task<std::shared_ptr<OrganizationDocumentDetailsDto>> getOrganizationConsentedDocumentById(
+    pplx::task<std::shared_ptr<OrganizationDocumentDetails>> getOrganizationConsentedDocumentById(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;

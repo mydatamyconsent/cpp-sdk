@@ -11,13 +11,13 @@
  */
 
 /*
- * UserDocumentDetailsDto.h
+ * UserDocumentDetails.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_UserDocumentDetailsDto_H_
-#define MYDATAMYCONSENT_MODELS_UserDocumentDetailsDto_H_
+#ifndef MYDATAMYCONSENT_MODELS_UserDocumentDetails_H_
+#define MYDATAMYCONSENT_MODELS_UserDocumentDetails_H_
 
 
 #include "ModelBase.h"
@@ -34,12 +34,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  UserDocumentDetailsDto
+class  UserDocumentDetails
     : public ModelBase
 {
 public:
-    UserDocumentDetailsDto();
-    virtual ~UserDocumentDetailsDto();
+    UserDocumentDetails();
+    virtual ~UserDocumentDetails();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -53,7 +53,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// UserDocumentDetailsDto members
+    /// UserDocumentDetails members
 
     /// <summary>
     /// 
@@ -217,4 +217,4 @@ protected:
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_UserDocumentDetailsDto_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_UserDocumentDetails_H_ */

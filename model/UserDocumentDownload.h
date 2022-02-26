@@ -11,13 +11,13 @@
  */
 
 /*
- * UserDocumentDownloadDto.h
+ * UserDocumentDownload.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_UserDocumentDownloadDto_H_
-#define MYDATAMYCONSENT_MODELS_UserDocumentDownloadDto_H_
+#ifndef MYDATAMYCONSENT_MODELS_UserDocumentDownload_H_
+#define MYDATAMYCONSENT_MODELS_UserDocumentDownload_H_
 
 
 #include "ModelBase.h"
@@ -31,12 +31,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  UserDocumentDownloadDto
+class  UserDocumentDownload
     : public ModelBase
 {
 public:
-    UserDocumentDownloadDto();
-    virtual ~UserDocumentDownloadDto();
+    UserDocumentDownload();
+    virtual ~UserDocumentDownload();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,7 +50,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// UserDocumentDownloadDto members
+    /// UserDocumentDownload members
 
     /// <summary>
     /// 
@@ -64,11 +64,20 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getStorageUrl() const;
-    bool storageUrlIsSet() const;
-    void unsetStorageUrl();
+    utility::string_t getDownloadUrl() const;
+    bool downloadUrlIsSet() const;
+    void unsetDownloadUrl();
 
-    void setStorageUrl(const utility::string_t& value);
+    void setDownloadUrl(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getExpiresAtUtc() const;
+    bool expiresAtUtcIsSet() const;
+    void unsetExpiresAtUtc();
+
+    void setExpiresAtUtc(const utility::datetime& value);
 
     /// <summary>
     /// 
@@ -83,8 +92,10 @@ public:
 protected:
     utility::string_t m_Id;
     bool m_IdIsSet;
-    utility::string_t m_StorageUrl;
-    bool m_StorageUrlIsSet;
+    utility::string_t m_DownloadUrl;
+    bool m_DownloadUrlIsSet;
+    utility::datetime m_ExpiresAtUtc;
+    bool m_ExpiresAtUtcIsSet;
     utility::string_t m_OwnerId;
     bool m_OwnerIdIsSet;
 };
@@ -93,4 +104,4 @@ protected:
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_UserDocumentDownloadDto_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_UserDocumentDownload_H_ */

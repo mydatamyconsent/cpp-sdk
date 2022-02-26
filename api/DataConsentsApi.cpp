@@ -34,7 +34,7 @@ DataConsentsApi::~DataConsentsApi()
 {
 }
 
-pplx::task<std::shared_ptr<UserDocumentDownloadDto>> DataConsentsApi::downloadConsentedDocumentById(utility::string_t consentId, utility::string_t documentId) const
+pplx::task<std::shared_ptr<UserDocumentDownload>> DataConsentsApi::downloadConsentedDocumentById(utility::string_t consentId, utility::string_t documentId) const
 {
 
 
@@ -137,7 +137,7 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<UserDocumentDownloadDto> localVarResult(new UserDocumentDownloadDto());
+        std::shared_ptr<UserDocumentDownload> localVarResult(new UserDocumentDownload());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -410,7 +410,7 @@ pplx::task<std::shared_ptr<DataConsentFinancialsDto>> DataConsentsApi::getAllCon
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/individuals/{consentId}/accounts");
+    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/individuals/{consentId}/financial-accounts");
     boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("consentId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(consentId));
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
@@ -779,7 +779,7 @@ pplx::task<std::shared_ptr<DataConsentFinancialsDto>> DataConsentsApi::getConsen
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/organizations/{consentId}/accounts");
+    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/organizations/{consentId}/financial-accounts");
     boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("consentId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(consentId));
 
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
@@ -902,7 +902,7 @@ pplx::task<std::shared_ptr<FinancialAccount>> DataConsentsApi::getConsentedAccou
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/individuals/{consentId}/accounts/{accountId}");
+    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/individuals/{consentId}/financial-accounts/{accountId}");
     boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("consentId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(consentId));
 boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("accountId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(accountId));
 
@@ -1021,7 +1021,7 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<UserDocumentDetailsDto>> DataConsentsApi::getConsentedDocumentById(utility::string_t consentId, utility::string_t documentId) const
+pplx::task<std::shared_ptr<UserDocumentDetails>> DataConsentsApi::getConsentedDocumentById(utility::string_t consentId, utility::string_t documentId) const
 {
 
 
@@ -1124,7 +1124,7 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<UserDocumentDetailsDto> localVarResult(new UserDocumentDetailsDto());
+        std::shared_ptr<UserDocumentDetails> localVarResult(new UserDocumentDetails());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -1150,7 +1150,7 @@ pplx::task<std::shared_ptr<OrganizationFinancialAccountDto>> DataConsentsApi::ge
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/organizations/{consentId}/accounts/{accountId}");
+    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/organizations/{consentId}/financial-accounts/{accountId}");
     boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("consentId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(consentId));
 boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("accountId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(accountId));
 
@@ -1274,7 +1274,7 @@ pplx::task<std::shared_ptr<UserAccountFinancialTransactionsDtoPaginatedList>> Da
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/individuals/{consentId}/accounts/{accountId}/transactions");
+    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/individuals/{consentId}/financial-accounts/{accountId}/transactions");
     boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("consentId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(consentId));
 boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("accountId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(accountId));
 
@@ -1702,7 +1702,7 @@ pplx::task<std::shared_ptr<OrganizationFinancialTransactionsDtoPaginatedList>> D
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/organizations/{consentId}/accounts/{accountId}/transactions");
+    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/consents/organizations/{consentId}/financial-accounts/{accountId}/transactions");
     boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("consentId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(consentId));
 boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("accountId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(accountId));
 
@@ -1964,7 +1964,7 @@ pplx::task<std::shared_ptr<DataConsentDetailsDto>> DataConsentsApi::getOrganizat
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<OrganizationDocumentDetailsDto>> DataConsentsApi::getOrganizationConsentedDocumentById(utility::string_t consentId, utility::string_t documentId) const
+pplx::task<std::shared_ptr<OrganizationDocumentDetails>> DataConsentsApi::getOrganizationConsentedDocumentById(utility::string_t consentId, utility::string_t documentId) const
 {
 
 
@@ -2067,7 +2067,7 @@ boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utilit
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<OrganizationDocumentDetailsDto> localVarResult(new OrganizationDocumentDetailsDto());
+        std::shared_ptr<OrganizationDocumentDetails> localVarResult(new OrganizationDocumentDetails());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

@@ -119,8 +119,8 @@ model/OrganizationDataConsentInfoDtoPaginatedList.cpp
 model/OrganizationDataConsentInfoDtoPaginatedList.h
 model/OrganizationDataConsentRequestResponse.cpp
 model/OrganizationDataConsentRequestResponse.h
-model/OrganizationDocumentDetailsDto.cpp
-model/OrganizationDocumentDetailsDto.h
+model/OrganizationDocumentDetails.cpp
+model/OrganizationDocumentDetails.h
 model/OrganizationDocumentDownloadDto.cpp
 model/OrganizationDocumentDownloadDto.h
 model/OrganizationFinancialAccountDto.cpp
@@ -155,7 +155,7 @@ model/UserDataConsentInfoDto.cpp
 model/UserDataConsentInfoDto.h
 model/UserDataConsentInfoDtoPaginatedList.cpp
 model/UserDataConsentInfoDtoPaginatedList.h
-model/UserDocumentDetailsDto.cpp
-model/UserDocumentDetailsDto.h
-model/UserDocumentDownloadDto.cpp
-model/UserDocumentDownloadDto.h
+model/UserDocumentDetails.cpp
+model/UserDocumentDetails.h
+model/UserDocumentDownload.cpp
+model/UserDocumentDownload.h

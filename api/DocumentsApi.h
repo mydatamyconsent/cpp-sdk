@@ -116,10 +116,10 @@ public:
     /// 
     /// </remarks>
     /// <param name="issueRequestId">Issue Request Id System.Guid.</param>
-    /// <param name="formFile"> (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
+    /// <param name="formFile"></param>
     pplx::task<utility::string_t> uploadDocumentForIndividual(
         utility::string_t issueRequestId,
-        boost::optional<std::shared_ptr<HttpContent>> formFile
+        std::shared_ptr<HttpContent> formFile
     ) const;
     /// <summary>
     /// Upload a document for issuance request of organization.

@@ -716,7 +716,7 @@ pplx::task<std::shared_ptr<DocumentIssueRequestDetails>> DocumentsApi::issueDocu
         return localVarResult;
     });
 }
-pplx::task<utility::string_t> DocumentsApi::uploadDocumentForIndividual(utility::string_t issueRequestId, boost::optional<std::shared_ptr<HttpContent>> formFile) const
+pplx::task<utility::string_t> DocumentsApi::uploadDocumentForIndividual(utility::string_t issueRequestId, std::shared_ptr<HttpContent> formFile) const
 {
 
 
@@ -764,9 +764,8 @@ pplx::task<utility::string_t> DocumentsApi::uploadDocumentForIndividual(utility:
     std::unordered_set<utility::string_t> localVarConsumeHttpContentTypes;
     localVarConsumeHttpContentTypes.insert( utility::conversions::to_string_t("multipart/form-data") );
 
-    if (formFile && *formFile != nullptr)
     {
-        localVarFileParams[ utility::conversions::to_string_t("formFile") ] = *formFile;
+        localVarFileParams[ utility::conversions::to_string_t("formFile") ] = formFile;
     }
 
     std::shared_ptr<IHttpBody> localVarHttpBody;
