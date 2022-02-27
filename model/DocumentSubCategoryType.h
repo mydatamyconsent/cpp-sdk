@@ -47,20 +47,28 @@ public:
     enum class eDocumentSubCategoryType
     {
         DocumentSubCategoryType_IDENTITY,
-        DocumentSubCategoryType_HOUSE,
+        DocumentSubCategoryType_PROPERTY,
         DocumentSubCategoryType_VEHICLE,
-        DocumentSubCategoryType_MARKSMEMOS,
+        DocumentSubCategoryType_ADMITANDIDCARDS,
+        DocumentSubCategoryType_MARKSHEETS,
         DocumentSubCategoryType_TRANSCRIPTS,
         DocumentSubCategoryType_CERTIFICATES,
         DocumentSubCategoryType_PRESCRIPTIONS,
         DocumentSubCategoryType_MEDICALREPORTS,
         DocumentSubCategoryType_DISCHARGESUMMARY,
-        DocumentSubCategoryType_BILLS,
-        DocumentSubCategoryType_INVOICES,
+        DocumentSubCategoryType_ACCOUNTANDCERTIFICATES,
+        DocumentSubCategoryType_BILLSANDINVOICES,
+        DocumentSubCategoryType_INSURANCE,
+        DocumentSubCategoryType_RECEIPTSANDSUBSCRIPTIONS,
         DocumentSubCategoryType_TAXES,
+        DocumentSubCategoryType_LICENCESANDCERTIFICATES,
         DocumentSubCategoryType_CORPORATES,
         DocumentSubCategoryType_COMPETITIONS,
         DocumentSubCategoryType_INTELLECTUALPROPERTIES,
+        DocumentSubCategoryType_OTHERS,
+        DocumentSubCategoryType_APPLICATIONSANDCERTIFICATES,
+        DocumentSubCategoryType_LICENSES,
+        DocumentSubCategoryType_ORGANIZATIONIDS,
     };
 
     eDocumentSubCategoryType getValue() const;

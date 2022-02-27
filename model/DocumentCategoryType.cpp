@@ -33,8 +33,12 @@ DocumentCategoryType::eDocumentCategoryType toEnum(const EnumUnderlyingType& val
         return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_HEALTH;
     if (val == utility::conversions::to_string_t(U("Finance")))
         return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_FINANCE;
-    if (val == utility::conversions::to_string_t(U("Certificates")))
-        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_CERTIFICATES;
+    if (val == utility::conversions::to_string_t(U("WorkAndAwards")))
+        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_WORKANDAWARDS;
+    if (val == utility::conversions::to_string_t(U("LicencesAndCertificates")))
+        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_LICENCESANDCERTIFICATES;
+    if (val == utility::conversions::to_string_t(U("Others")))
+        return DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_OTHERS;
     return {};
 }
 
@@ -50,8 +54,12 @@ EnumUnderlyingType fromEnum(DocumentCategoryType::eDocumentCategoryType e)
         return U("Health");
     case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_FINANCE:
         return U("Finance");
-    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_CERTIFICATES:
-        return U("Certificates");
+    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_WORKANDAWARDS:
+        return U("WorkAndAwards");
+    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_LICENCESANDCERTIFICATES:
+        return U("LicencesAndCertificates");
+    case DocumentCategoryType::eDocumentCategoryType::DocumentCategoryType_OTHERS:
+        return U("Others");
     default:
         break;
     }

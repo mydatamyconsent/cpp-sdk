@@ -50,7 +50,9 @@ public:
         DocumentCategoryType_EDUCATION,
         DocumentCategoryType_HEALTH,
         DocumentCategoryType_FINANCE,
-        DocumentCategoryType_CERTIFICATES,
+        DocumentCategoryType_WORKANDAWARDS,
+        DocumentCategoryType_LICENCESANDCERTIFICATES,
+        DocumentCategoryType_OTHERS,
     };
 
     eDocumentCategoryType getValue() const;

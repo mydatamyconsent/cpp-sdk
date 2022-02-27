@@ -27,12 +27,14 @@ DocumentSubCategoryType::eDocumentSubCategoryType toEnum(const EnumUnderlyingTyp
 {
     if (val == utility::conversions::to_string_t(U("Identity")))
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_IDENTITY;
-    if (val == utility::conversions::to_string_t(U("House")))
-        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_HOUSE;
+    if (val == utility::conversions::to_string_t(U("Property")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_PROPERTY;
     if (val == utility::conversions::to_string_t(U("Vehicle")))
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_VEHICLE;
-    if (val == utility::conversions::to_string_t(U("MarksMemos")))
-        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_MARKSMEMOS;
+    if (val == utility::conversions::to_string_t(U("AdmitAndIdCards")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_ADMITANDIDCARDS;
+    if (val == utility::conversions::to_string_t(U("Marksheets")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_MARKSHEETS;
     if (val == utility::conversions::to_string_t(U("Transcripts")))
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_TRANSCRIPTS;
     if (val == utility::conversions::to_string_t(U("Certificates")))
@@ -43,18 +45,32 @@ DocumentSubCategoryType::eDocumentSubCategoryType toEnum(const EnumUnderlyingTyp
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_MEDICALREPORTS;
     if (val == utility::conversions::to_string_t(U("DischargeSummary")))
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_DISCHARGESUMMARY;
-    if (val == utility::conversions::to_string_t(U("Bills")))
-        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_BILLS;
-    if (val == utility::conversions::to_string_t(U("Invoices")))
-        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_INVOICES;
+    if (val == utility::conversions::to_string_t(U("AccountAndCertificates")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_ACCOUNTANDCERTIFICATES;
+    if (val == utility::conversions::to_string_t(U("BillsAndInvoices")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_BILLSANDINVOICES;
+    if (val == utility::conversions::to_string_t(U("Insurance")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_INSURANCE;
+    if (val == utility::conversions::to_string_t(U("ReceiptsAndSubscriptions")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_RECEIPTSANDSUBSCRIPTIONS;
     if (val == utility::conversions::to_string_t(U("Taxes")))
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_TAXES;
+    if (val == utility::conversions::to_string_t(U("LicencesAndCertificates")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_LICENCESANDCERTIFICATES;
     if (val == utility::conversions::to_string_t(U("Corporates")))
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_CORPORATES;
     if (val == utility::conversions::to_string_t(U("Competitions")))
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_COMPETITIONS;
     if (val == utility::conversions::to_string_t(U("IntellectualProperties")))
         return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_INTELLECTUALPROPERTIES;
+    if (val == utility::conversions::to_string_t(U("Others")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_OTHERS;
+    if (val == utility::conversions::to_string_t(U("ApplicationsAndCertificates")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_APPLICATIONSANDCERTIFICATES;
+    if (val == utility::conversions::to_string_t(U("Licenses")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_LICENSES;
+    if (val == utility::conversions::to_string_t(U("OrganizationIds")))
+        return DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_ORGANIZATIONIDS;
     return {};
 }
 
@@ -64,12 +80,14 @@ EnumUnderlyingType fromEnum(DocumentSubCategoryType::eDocumentSubCategoryType e)
     {
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_IDENTITY:
         return U("Identity");
-    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_HOUSE:
-        return U("House");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_PROPERTY:
+        return U("Property");
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_VEHICLE:
         return U("Vehicle");
-    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_MARKSMEMOS:
-        return U("MarksMemos");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_ADMITANDIDCARDS:
+        return U("AdmitAndIdCards");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_MARKSHEETS:
+        return U("Marksheets");
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_TRANSCRIPTS:
         return U("Transcripts");
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_CERTIFICATES:
@@ -80,18 +98,32 @@ EnumUnderlyingType fromEnum(DocumentSubCategoryType::eDocumentSubCategoryType e)
         return U("MedicalReports");
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_DISCHARGESUMMARY:
         return U("DischargeSummary");
-    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_BILLS:
-        return U("Bills");
-    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_INVOICES:
-        return U("Invoices");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_ACCOUNTANDCERTIFICATES:
+        return U("AccountAndCertificates");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_BILLSANDINVOICES:
+        return U("BillsAndInvoices");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_INSURANCE:
+        return U("Insurance");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_RECEIPTSANDSUBSCRIPTIONS:
+        return U("ReceiptsAndSubscriptions");
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_TAXES:
         return U("Taxes");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_LICENCESANDCERTIFICATES:
+        return U("LicencesAndCertificates");
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_CORPORATES:
         return U("Corporates");
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_COMPETITIONS:
         return U("Competitions");
     case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_INTELLECTUALPROPERTIES:
         return U("IntellectualProperties");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_OTHERS:
+        return U("Others");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_APPLICATIONSANDCERTIFICATES:
+        return U("ApplicationsAndCertificates");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_LICENSES:
+        return U("Licenses");
+    case DocumentSubCategoryType::eDocumentSubCategoryType::DocumentSubCategoryType_ORGANIZATIONIDS:
+        return U("OrganizationIds");
     default:
         break;
     }
