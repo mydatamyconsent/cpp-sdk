@@ -47,6 +47,8 @@ model/CreateOrganizationDataConsentRequest.cpp
 model/CreateOrganizationDataConsentRequest.h
 model/DataConsentDetailsDto.cpp
 model/DataConsentDetailsDto.h
+model/DataConsentDocumentDetailsDto.cpp
+model/DataConsentDocumentDetailsDto.h
 model/DataConsentDocumentsDto.cpp
 model/DataConsentDocumentsDto.h
 model/DataConsentFinancialsDto.cpp
@@ -139,6 +141,12 @@ model/SharedWith.cpp
 model/SharedWith.h
 model/StringStringKeyValuePair.cpp
 model/StringStringKeyValuePair.h
+model/SupportedDocumentDetailsDto.cpp
+model/SupportedDocumentDetailsDto.h
+model/SupportedDocumentProviderDetailsDto.cpp
+model/SupportedDocumentProviderDetailsDto.h
+model/SupportedDocumentTypeCategoryDetailsDto.cpp
+model/SupportedDocumentTypeCategoryDetailsDto.h
 model/SupportedEntityType.cpp
 model/SupportedEntityType.h
 model/SupportedIdentifier.cpp

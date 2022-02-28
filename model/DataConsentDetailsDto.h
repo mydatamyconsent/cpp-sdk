@@ -23,7 +23,9 @@
 #include "ModelBase.h"
 
 #include "model/JsonSchema.h"
+#include "model/DataConsentDocumentDetailsDto.h"
 #include <cpprest/details/basic_types.h>
+#include <vector>
 #include "model/DataConsentStatus.h"
 #include "model/Life.h"
 
@@ -175,11 +177,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getDocuments() const;
+    std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>>& getDocuments();
     bool documentsIsSet() const;
     void unsetDocuments();
 
-    void setDocuments(const utility::string_t& value);
+    void setDocuments(const std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>>& value);
 
     /// <summary>
     /// 
@@ -227,7 +229,7 @@ protected:
     bool m_RequestedAtUtcIsSet;
     std::shared_ptr<JsonSchema> m_Identifiers;
     bool m_IdentifiersIsSet;
-    utility::string_t m_Documents;
+    std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>> m_Documents;
     bool m_DocumentsIsSet;
     utility::string_t m_Financials;
     bool m_FinancialsIsSet;

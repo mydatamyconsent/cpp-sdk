@@ -45,7 +45,6 @@ DataConsentDetailsDto::DataConsentDetailsDto()
     m_RequestedAtUtc = utility::datetime();
     m_RequestedAtUtcIsSet = false;
     m_IdentifiersIsSet = false;
-    m_Documents = utility::conversions::to_string_t("");
     m_DocumentsIsSet = false;
     m_Financials = utility::conversions::to_string_t("");
     m_FinancialsIsSet = false;
@@ -274,7 +273,7 @@ bool DataConsentDetailsDto::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("documents")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_documents;
+            std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>> refVal_documents;
             ok &= ModelBase::fromJson(fieldValue, refVal_documents);
             setDocuments(refVal_documents);
         }
@@ -464,7 +463,7 @@ bool DataConsentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> mul
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("documents"))))
     {
-        utility::string_t refVal_documents;
+        std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>> refVal_documents;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("documents"))), refVal_documents );
         setDocuments(refVal_documents);
     }
@@ -743,12 +742,12 @@ void DataConsentDetailsDto::unsetIdentifiers()
 {
     m_IdentifiersIsSet = false;
 }
-utility::string_t DataConsentDetailsDto::getDocuments() const
+std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>>& DataConsentDetailsDto::getDocuments()
 {
     return m_Documents;
 }
 
-void DataConsentDetailsDto::setDocuments(const utility::string_t& value)
+void DataConsentDetailsDto::setDocuments(const std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>>& value)
 {
     m_Documents = value;
     m_DocumentsIsSet = true;
