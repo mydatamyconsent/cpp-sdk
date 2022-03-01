@@ -22,9 +22,10 @@
 
 #include "ModelBase.h"
 
-#include "model/JsonSchema.h"
+#include "model/AnyType.h"
 #include "model/DataConsentDocumentDetailsDto.h"
 #include <cpprest/details/basic_types.h>
+#include "model/Requester.h"
 #include <vector>
 #include "model/DataConsentStatus.h"
 #include "model/Life.h"
@@ -96,29 +97,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getRequesterName() const;
-    bool requesterNameIsSet() const;
-    void unsetRequesterName();
+    std::shared_ptr<Requester> getRequestedByOrg() const;
+    bool requestedByOrgIsSet() const;
+    void unsetRequestedByOrg();
 
-    void setRequesterName(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getRequesterLogo() const;
-    bool requesterLogoIsSet() const;
-    void unsetRequesterLogo();
-
-    void setRequesterLogo(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getLocation() const;
-    bool locationIsSet() const;
-    void unsetLocation();
-
-    void setLocation(const utility::string_t& value);
+    void setRequestedByOrg(const std::shared_ptr<Requester>& value);
 
     /// <summary>
     /// 
@@ -168,11 +151,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::shared_ptr<JsonSchema> getIdentifiers() const;
+    std::shared_ptr<AnyType> getIdentifiers() const;
     bool identifiersIsSet() const;
     void unsetIdentifiers();
 
-    void setIdentifiers(const std::shared_ptr<JsonSchema>& value);
+    void setIdentifiers(const std::shared_ptr<AnyType>& value);
 
     /// <summary>
     /// 
@@ -211,12 +194,8 @@ protected:
     bool m_DescriptionIsSet;
     std::shared_ptr<Life> m_DataLife;
     bool m_DataLifeIsSet;
-    utility::string_t m_RequesterName;
-    bool m_RequesterNameIsSet;
-    utility::string_t m_RequesterLogo;
-    bool m_RequesterLogoIsSet;
-    utility::string_t m_Location;
-    bool m_LocationIsSet;
+    std::shared_ptr<Requester> m_RequestedByOrg;
+    bool m_RequestedByOrgIsSet;
     std::shared_ptr<DataConsentStatus> m_Status;
     bool m_StatusIsSet;
     utility::datetime m_ApprovedAtUtc;
@@ -227,7 +206,7 @@ protected:
     bool m_ExpiresAtUtcIsSet;
     utility::datetime m_RequestedAtUtc;
     bool m_RequestedAtUtcIsSet;
-    std::shared_ptr<JsonSchema> m_Identifiers;
+    std::shared_ptr<AnyType> m_Identifiers;
     bool m_IdentifiersIsSet;
     std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>> m_Documents;
     bool m_DocumentsIsSet;

@@ -29,12 +29,7 @@ DataConsentDetailsDto::DataConsentDetailsDto()
     m_Description = utility::conversions::to_string_t("");
     m_DescriptionIsSet = false;
     m_DataLifeIsSet = false;
-    m_RequesterName = utility::conversions::to_string_t("");
-    m_RequesterNameIsSet = false;
-    m_RequesterLogo = utility::conversions::to_string_t("");
-    m_RequesterLogoIsSet = false;
-    m_Location = utility::conversions::to_string_t("");
-    m_LocationIsSet = false;
+    m_RequestedByOrgIsSet = false;
     m_StatusIsSet = false;
     m_ApprovedAtUtc = utility::datetime();
     m_ApprovedAtUtcIsSet = false;
@@ -82,17 +77,9 @@ web::json::value DataConsentDetailsDto::toJson() const
     {
         val[utility::conversions::to_string_t(U("dataLife"))] = ModelBase::toJson(m_DataLife);
     }
-    if(m_RequesterNameIsSet)
+    if(m_RequestedByOrgIsSet)
     {
-        val[utility::conversions::to_string_t(U("requesterName"))] = ModelBase::toJson(m_RequesterName);
-    }
-    if(m_RequesterLogoIsSet)
-    {
-        val[utility::conversions::to_string_t(U("requesterLogo"))] = ModelBase::toJson(m_RequesterLogo);
-    }
-    if(m_LocationIsSet)
-    {
-        val[utility::conversions::to_string_t(U("location"))] = ModelBase::toJson(m_Location);
+        val[utility::conversions::to_string_t(U("requestedByOrg"))] = ModelBase::toJson(m_RequestedByOrg);
     }
     if(m_StatusIsSet)
     {
@@ -178,34 +165,14 @@ bool DataConsentDetailsDto::fromJson(const web::json::value& val)
             setDataLife(refVal_dataLife);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("requesterName"))))
+    if(val.has_field(utility::conversions::to_string_t(U("requestedByOrg"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requesterName")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requestedByOrg")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_requesterName;
-            ok &= ModelBase::fromJson(fieldValue, refVal_requesterName);
-            setRequesterName(refVal_requesterName);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("requesterLogo"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("requesterLogo")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_requesterLogo;
-            ok &= ModelBase::fromJson(fieldValue, refVal_requesterLogo);
-            setRequesterLogo(refVal_requesterLogo);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("location"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("location")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_location;
-            ok &= ModelBase::fromJson(fieldValue, refVal_location);
-            setLocation(refVal_location);
+            std::shared_ptr<Requester> refVal_requestedByOrg;
+            ok &= ModelBase::fromJson(fieldValue, refVal_requestedByOrg);
+            setRequestedByOrg(refVal_requestedByOrg);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("status"))))
@@ -263,7 +230,7 @@ bool DataConsentDetailsDto::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("identifiers")));
         if(!fieldValue.is_null())
         {
-            std::shared_ptr<JsonSchema> refVal_identifiers;
+            std::shared_ptr<AnyType> refVal_identifiers;
             ok &= ModelBase::fromJson(fieldValue, refVal_identifiers);
             setIdentifiers(refVal_identifiers);
         }
@@ -324,17 +291,9 @@ void DataConsentDetailsDto::toMultipart(std::shared_ptr<MultipartFormData> multi
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("dataLife")), m_DataLife));
     }
-    if(m_RequesterNameIsSet)
+    if(m_RequestedByOrgIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requesterName")), m_RequesterName));
-    }
-    if(m_RequesterLogoIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requesterLogo")), m_RequesterLogo));
-    }
-    if(m_LocationIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("location")), m_Location));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requestedByOrg")), m_RequestedByOrg));
     }
     if(m_StatusIsSet)
     {
@@ -407,23 +366,11 @@ bool DataConsentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("dataLife"))), refVal_dataLife );
         setDataLife(refVal_dataLife);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("requesterName"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("requestedByOrg"))))
     {
-        utility::string_t refVal_requesterName;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requesterName"))), refVal_requesterName );
-        setRequesterName(refVal_requesterName);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("requesterLogo"))))
-    {
-        utility::string_t refVal_requesterLogo;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requesterLogo"))), refVal_requesterLogo );
-        setRequesterLogo(refVal_requesterLogo);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("location"))))
-    {
-        utility::string_t refVal_location;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("location"))), refVal_location );
-        setLocation(refVal_location);
+        std::shared_ptr<Requester> refVal_requestedByOrg;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requestedByOrg"))), refVal_requestedByOrg );
+        setRequestedByOrg(refVal_requestedByOrg);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("status"))))
     {
@@ -457,7 +404,7 @@ bool DataConsentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> mul
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("identifiers"))))
     {
-        std::shared_ptr<JsonSchema> refVal_identifiers;
+        std::shared_ptr<AnyType> refVal_identifiers;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("identifiers"))), refVal_identifiers );
         setIdentifiers(refVal_identifiers);
     }
@@ -562,65 +509,25 @@ void DataConsentDetailsDto::unsetDataLife()
 {
     m_DataLifeIsSet = false;
 }
-utility::string_t DataConsentDetailsDto::getRequesterName() const
+std::shared_ptr<Requester> DataConsentDetailsDto::getRequestedByOrg() const
 {
-    return m_RequesterName;
+    return m_RequestedByOrg;
 }
 
-void DataConsentDetailsDto::setRequesterName(const utility::string_t& value)
+void DataConsentDetailsDto::setRequestedByOrg(const std::shared_ptr<Requester>& value)
 {
-    m_RequesterName = value;
-    m_RequesterNameIsSet = true;
+    m_RequestedByOrg = value;
+    m_RequestedByOrgIsSet = true;
 }
 
-bool DataConsentDetailsDto::requesterNameIsSet() const
+bool DataConsentDetailsDto::requestedByOrgIsSet() const
 {
-    return m_RequesterNameIsSet;
+    return m_RequestedByOrgIsSet;
 }
 
-void DataConsentDetailsDto::unsetRequesterName()
+void DataConsentDetailsDto::unsetRequestedByOrg()
 {
-    m_RequesterNameIsSet = false;
-}
-utility::string_t DataConsentDetailsDto::getRequesterLogo() const
-{
-    return m_RequesterLogo;
-}
-
-void DataConsentDetailsDto::setRequesterLogo(const utility::string_t& value)
-{
-    m_RequesterLogo = value;
-    m_RequesterLogoIsSet = true;
-}
-
-bool DataConsentDetailsDto::requesterLogoIsSet() const
-{
-    return m_RequesterLogoIsSet;
-}
-
-void DataConsentDetailsDto::unsetRequesterLogo()
-{
-    m_RequesterLogoIsSet = false;
-}
-utility::string_t DataConsentDetailsDto::getLocation() const
-{
-    return m_Location;
-}
-
-void DataConsentDetailsDto::setLocation(const utility::string_t& value)
-{
-    m_Location = value;
-    m_LocationIsSet = true;
-}
-
-bool DataConsentDetailsDto::locationIsSet() const
-{
-    return m_LocationIsSet;
-}
-
-void DataConsentDetailsDto::unsetLocation()
-{
-    m_LocationIsSet = false;
+    m_RequestedByOrgIsSet = false;
 }
 std::shared_ptr<DataConsentStatus> DataConsentDetailsDto::getStatus() const
 {
@@ -722,12 +629,12 @@ void DataConsentDetailsDto::unsetRequestedAtUtc()
 {
     m_RequestedAtUtcIsSet = false;
 }
-std::shared_ptr<JsonSchema> DataConsentDetailsDto::getIdentifiers() const
+std::shared_ptr<AnyType> DataConsentDetailsDto::getIdentifiers() const
 {
     return m_Identifiers;
 }
 
-void DataConsentDetailsDto::setIdentifiers(const std::shared_ptr<JsonSchema>& value)
+void DataConsentDetailsDto::setIdentifiers(const std::shared_ptr<AnyType>& value)
 {
     m_Identifiers = value;
     m_IdentifiersIsSet = true;

@@ -111,8 +111,6 @@ model/IssuedDocument.cpp
 model/IssuedDocument.h
 model/IssuedDocumentPaginatedList.cpp
 model/IssuedDocumentPaginatedList.h
-model/JsonSchema.cpp
-model/JsonSchema.h
 model/Life.cpp
 model/Life.h
 model/OrganizationDataConsentInfoDto.cpp
@@ -137,6 +135,8 @@ model/PushUriRequest.cpp
 model/PushUriRequest.h
 model/PushUriResponse.cpp
 model/PushUriResponse.h
+model/Requester.cpp
+model/Requester.h
 model/SharedWith.cpp
 model/SharedWith.h
 model/StringStringKeyValuePair.cpp
