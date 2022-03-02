@@ -61,11 +61,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getId() const;
-    bool idIsSet() const;
-    void unsetId();
+    utility::string_t getConsentRequestId() const;
+    bool consentRequestIdIsSet() const;
+    void unsetConsentRequestId();
 
-    void setId(const utility::string_t& value);
+    void setConsentRequestId(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -133,11 +133,20 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::datetime getExpiresAtUtc() const;
-    bool expiresAtUtcIsSet() const;
-    void unsetExpiresAtUtc();
+    utility::datetime getRevokedAtUtc() const;
+    bool revokedAtUtcIsSet() const;
+    void unsetRevokedAtUtc();
 
-    void setExpiresAtUtc(const utility::datetime& value);
+    void setRevokedAtUtc(const utility::datetime& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    utility::datetime getRequestedExpiresAtUtc() const;
+    bool requestedExpiresAtUtcIsSet() const;
+    void unsetRequestedExpiresAtUtc();
+
+    void setRequestedExpiresAtUtc(const utility::datetime& value);
 
     /// <summary>
     /// 
@@ -166,28 +175,10 @@ public:
 
     void setDocuments(const std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>>& value);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getFinancials() const;
-    bool financialsIsSet() const;
-    void unsetFinancials();
-
-    void setFinancials(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    utility::string_t getHealthRecords() const;
-    bool healthRecordsIsSet() const;
-    void unsetHealthRecords();
-
-    void setHealthRecords(const utility::string_t& value);
-
 
 protected:
-    utility::string_t m_Id;
-    bool m_IdIsSet;
+    utility::string_t m_ConsentRequestId;
+    bool m_ConsentRequestIdIsSet;
     utility::string_t m_Title;
     bool m_TitleIsSet;
     utility::string_t m_Description;
@@ -202,18 +193,16 @@ protected:
     bool m_ApprovedAtUtcIsSet;
     utility::datetime m_RejectedAtUtc;
     bool m_RejectedAtUtcIsSet;
-    utility::datetime m_ExpiresAtUtc;
-    bool m_ExpiresAtUtcIsSet;
+    utility::datetime m_RevokedAtUtc;
+    bool m_RevokedAtUtcIsSet;
+    utility::datetime m_RequestedExpiresAtUtc;
+    bool m_RequestedExpiresAtUtcIsSet;
     utility::datetime m_RequestedAtUtc;
     bool m_RequestedAtUtcIsSet;
     std::shared_ptr<AnyType> m_Identifiers;
     bool m_IdentifiersIsSet;
     std::vector<std::shared_ptr<DataConsentDocumentDetailsDto>> m_Documents;
     bool m_DocumentsIsSet;
-    utility::string_t m_Financials;
-    bool m_FinancialsIsSet;
-    utility::string_t m_HealthRecords;
-    bool m_HealthRecordsIsSet;
 };
 
 
