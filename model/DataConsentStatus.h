@@ -51,6 +51,7 @@ public:
         DataConsentStatus_REJECTED,
         DataConsentStatus_REVOKED,
         DataConsentStatus_EXPIRED,
+        DataConsentStatus_TIMEOUT,
         DataConsentStatus_CANCELED,
     };
 

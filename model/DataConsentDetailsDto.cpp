@@ -33,6 +33,8 @@ DataConsentDetailsDto::DataConsentDetailsDto()
     m_StatusIsSet = false;
     m_ApprovedAtUtc = utility::datetime();
     m_ApprovedAtUtcIsSet = false;
+    m_ApprovedExpiresAtUtc = utility::datetime();
+    m_ApprovedExpiresAtUtcIsSet = false;
     m_RejectedAtUtc = utility::datetime();
     m_RejectedAtUtcIsSet = false;
     m_RevokedAtUtc = utility::datetime();
@@ -86,6 +88,10 @@ web::json::value DataConsentDetailsDto::toJson() const
     if(m_ApprovedAtUtcIsSet)
     {
         val[utility::conversions::to_string_t(U("approvedAtUtc"))] = ModelBase::toJson(m_ApprovedAtUtc);
+    }
+    if(m_ApprovedExpiresAtUtcIsSet)
+    {
+        val[utility::conversions::to_string_t(U("approvedExpiresAtUtc"))] = ModelBase::toJson(m_ApprovedExpiresAtUtc);
     }
     if(m_RejectedAtUtcIsSet)
     {
@@ -189,6 +195,16 @@ bool DataConsentDetailsDto::fromJson(const web::json::value& val)
             setApprovedAtUtc(refVal_approvedAtUtc);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("approvedExpiresAtUtc"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("approvedExpiresAtUtc")));
+        if(!fieldValue.is_null())
+        {
+            utility::datetime refVal_approvedExpiresAtUtc;
+            ok &= ModelBase::fromJson(fieldValue, refVal_approvedExpiresAtUtc);
+            setApprovedExpiresAtUtc(refVal_approvedExpiresAtUtc);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("rejectedAtUtc"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("rejectedAtUtc")));
@@ -287,6 +303,10 @@ void DataConsentDetailsDto::toMultipart(std::shared_ptr<MultipartFormData> multi
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("approvedAtUtc")), m_ApprovedAtUtc));
     }
+    if(m_ApprovedExpiresAtUtcIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("approvedExpiresAtUtc")), m_ApprovedExpiresAtUtc));
+    }
     if(m_RejectedAtUtcIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("rejectedAtUtc")), m_RejectedAtUtc));
@@ -363,6 +383,12 @@ bool DataConsentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         utility::datetime refVal_approvedAtUtc;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("approvedAtUtc"))), refVal_approvedAtUtc );
         setApprovedAtUtc(refVal_approvedAtUtc);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("approvedExpiresAtUtc"))))
+    {
+        utility::datetime refVal_approvedExpiresAtUtc;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("approvedExpiresAtUtc"))), refVal_approvedExpiresAtUtc );
+        setApprovedExpiresAtUtc(refVal_approvedExpiresAtUtc);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("rejectedAtUtc"))))
     {
@@ -542,6 +568,26 @@ bool DataConsentDetailsDto::approvedAtUtcIsSet() const
 void DataConsentDetailsDto::unsetApprovedAtUtc()
 {
     m_ApprovedAtUtcIsSet = false;
+}
+utility::datetime DataConsentDetailsDto::getApprovedExpiresAtUtc() const
+{
+    return m_ApprovedExpiresAtUtc;
+}
+
+void DataConsentDetailsDto::setApprovedExpiresAtUtc(const utility::datetime& value)
+{
+    m_ApprovedExpiresAtUtc = value;
+    m_ApprovedExpiresAtUtcIsSet = true;
+}
+
+bool DataConsentDetailsDto::approvedExpiresAtUtcIsSet() const
+{
+    return m_ApprovedExpiresAtUtcIsSet;
+}
+
+void DataConsentDetailsDto::unsetApprovedExpiresAtUtc()
+{
+    m_ApprovedExpiresAtUtcIsSet = false;
 }
 utility::datetime DataConsentDetailsDto::getRejectedAtUtc() const
 {

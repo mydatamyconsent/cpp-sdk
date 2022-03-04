@@ -124,6 +124,15 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    utility::datetime getApprovedExpiresAtUtc() const;
+    bool approvedExpiresAtUtcIsSet() const;
+    void unsetApprovedExpiresAtUtc();
+
+    void setApprovedExpiresAtUtc(const utility::datetime& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
     utility::datetime getRejectedAtUtc() const;
     bool rejectedAtUtcIsSet() const;
     void unsetRejectedAtUtc();
@@ -191,6 +200,8 @@ protected:
     bool m_StatusIsSet;
     utility::datetime m_ApprovedAtUtc;
     bool m_ApprovedAtUtcIsSet;
+    utility::datetime m_ApprovedExpiresAtUtc;
+    bool m_ApprovedExpiresAtUtcIsSet;
     utility::datetime m_RejectedAtUtc;
     bool m_RejectedAtUtcIsSet;
     utility::datetime m_RevokedAtUtc;
