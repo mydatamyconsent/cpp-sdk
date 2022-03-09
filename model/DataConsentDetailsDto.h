@@ -23,6 +23,7 @@
 #include "ModelBase.h"
 
 #include "model/AnyType.h"
+#include "model/CollectibleTypes.h"
 #include "model/DataConsentDocumentDetailsDto.h"
 #include <cpprest/details/basic_types.h>
 #include "model/Requester.h"
@@ -102,6 +103,15 @@ public:
     void unsetRequestedByOrg();
 
     void setRequestedByOrg(const std::shared_ptr<Requester>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::vector<std::shared_ptr<CollectibleTypes>>& getCollectables();
+    bool collectablesIsSet() const;
+    void unsetCollectables();
+
+    void setCollectables(const std::vector<std::shared_ptr<CollectibleTypes>>& value);
 
     /// <summary>
     /// 
@@ -196,6 +206,8 @@ protected:
     bool m_DataLifeIsSet;
     std::shared_ptr<Requester> m_RequestedByOrg;
     bool m_RequestedByOrgIsSet;
+    std::vector<std::shared_ptr<CollectibleTypes>> m_Collectables;
+    bool m_CollectablesIsSet;
     std::shared_ptr<DataConsentStatus> m_Status;
     bool m_StatusIsSet;
     utility::datetime m_ApprovedAtUtc;

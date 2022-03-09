@@ -37,6 +37,8 @@ model/ApprovedConsentRequest.cpp
 model/ApprovedConsentRequest.h
 model/BankAccountType.cpp
 model/BankAccountType.h
+model/CollectibleTypes.cpp
+model/CollectibleTypes.h
 model/ConsentRequestReceiver.cpp
 model/ConsentRequestReceiver.h
 model/CreateDataProcessingAgreementRequestModel.cpp

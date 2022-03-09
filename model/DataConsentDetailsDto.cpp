@@ -30,6 +30,7 @@ DataConsentDetailsDto::DataConsentDetailsDto()
     m_DescriptionIsSet = false;
     m_DataLifeIsSet = false;
     m_RequestedByOrgIsSet = false;
+    m_CollectablesIsSet = false;
     m_StatusIsSet = false;
     m_ApprovedAtUtc = utility::datetime();
     m_ApprovedAtUtcIsSet = false;
@@ -80,6 +81,10 @@ web::json::value DataConsentDetailsDto::toJson() const
     if(m_RequestedByOrgIsSet)
     {
         val[utility::conversions::to_string_t(U("requestedByOrg"))] = ModelBase::toJson(m_RequestedByOrg);
+    }
+    if(m_CollectablesIsSet)
+    {
+        val[utility::conversions::to_string_t(U("collectables"))] = ModelBase::toJson(m_Collectables);
     }
     if(m_StatusIsSet)
     {
@@ -173,6 +178,16 @@ bool DataConsentDetailsDto::fromJson(const web::json::value& val)
             std::shared_ptr<Requester> refVal_requestedByOrg;
             ok &= ModelBase::fromJson(fieldValue, refVal_requestedByOrg);
             setRequestedByOrg(refVal_requestedByOrg);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("collectables"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("collectables")));
+        if(!fieldValue.is_null())
+        {
+            std::vector<std::shared_ptr<CollectibleTypes>> refVal_collectables;
+            ok &= ModelBase::fromJson(fieldValue, refVal_collectables);
+            setCollectables(refVal_collectables);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("status"))))
@@ -295,6 +310,10 @@ void DataConsentDetailsDto::toMultipart(std::shared_ptr<MultipartFormData> multi
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("requestedByOrg")), m_RequestedByOrg));
     }
+    if(m_CollectablesIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("collectables")), m_Collectables));
+    }
     if(m_StatusIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("status")), m_Status));
@@ -371,6 +390,12 @@ bool DataConsentDetailsDto::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         std::shared_ptr<Requester> refVal_requestedByOrg;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("requestedByOrg"))), refVal_requestedByOrg );
         setRequestedByOrg(refVal_requestedByOrg);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("collectables"))))
+    {
+        std::vector<std::shared_ptr<CollectibleTypes>> refVal_collectables;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("collectables"))), refVal_collectables );
+        setCollectables(refVal_collectables);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("status"))))
     {
@@ -528,6 +553,26 @@ bool DataConsentDetailsDto::requestedByOrgIsSet() const
 void DataConsentDetailsDto::unsetRequestedByOrg()
 {
     m_RequestedByOrgIsSet = false;
+}
+std::vector<std::shared_ptr<CollectibleTypes>>& DataConsentDetailsDto::getCollectables()
+{
+    return m_Collectables;
+}
+
+void DataConsentDetailsDto::setCollectables(const std::vector<std::shared_ptr<CollectibleTypes>>& value)
+{
+    m_Collectables = value;
+    m_CollectablesIsSet = true;
+}
+
+bool DataConsentDetailsDto::collectablesIsSet() const
+{
+    return m_CollectablesIsSet;
+}
+
+void DataConsentDetailsDto::unsetCollectables()
+{
+    m_CollectablesIsSet = false;
 }
 std::shared_ptr<DataConsentStatus> DataConsentDetailsDto::getStatus() const
 {
