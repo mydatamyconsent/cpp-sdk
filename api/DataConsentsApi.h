@@ -57,6 +57,18 @@ public:
     virtual ~DataConsentsApi();
 
     /// <summary>
+    /// Get analysis of a consented document.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    /// <param name="documentId">Document Id.</param>
+    pplx::task<void> downloadConsentedDocumentAnalysis(
+        utility::string_t consentId,
+        utility::string_t documentId
+    ) const;
+    /// <summary>
     /// Download a individuals consented document.
     /// </summary>
     /// <remarks>
@@ -163,6 +175,18 @@ public:
     /// <param name="consentId">Consent id.</param>
     /// <param name="accountId">Account id.</param>
     pplx::task<std::shared_ptr<OrganizationFinancialAccountDto>> getConsentedFinancialAccount(
+        utility::string_t consentId,
+        utility::string_t accountId
+    ) const;
+    /// <summary>
+    /// Get consented financial account insights.
+    /// </summary>
+    /// <remarks>
+    /// 
+    /// </remarks>
+    /// <param name="consentId"></param>
+    /// <param name="accountId"></param>
+    pplx::task<void> getConsentedFinancialAccountInsights(
         utility::string_t consentId,
         utility::string_t accountId
     ) const;
