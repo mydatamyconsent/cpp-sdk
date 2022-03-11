@@ -55,7 +55,7 @@ public:
     /// DocumentIssueRequestDetails members
 
     /// <summary>
-    /// Request Id.
+    /// Document issue request Id.
     /// </summary>
     utility::string_t getId() const;
     bool idIsSet() const;
@@ -64,7 +64,7 @@ public:
     void setId(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document type Id.
     /// </summary>
     utility::string_t getDocumentTypeId() const;
     bool documentTypeIdIsSet() const;
@@ -73,7 +73,7 @@ public:
     void setDocumentTypeId(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document type name.
     /// </summary>
     utility::string_t getRTypeName() const;
     bool rTypeNameIsSet() const;
@@ -82,7 +82,7 @@ public:
     void setRTypeName(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document identifier.
     /// </summary>
     utility::string_t getIdentifier() const;
     bool identifierIsSet() const;
@@ -100,7 +100,7 @@ public:
     void setStatus(const std::shared_ptr<DocumentIssueRequestStatus>& value);
 
     /// <summary>
-    /// 
+    /// Document description.
     /// </summary>
     utility::string_t getDescription() const;
     bool descriptionIsSet() const;
@@ -109,7 +109,7 @@ public:
     void setDescription(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document receiver details.
     /// </summary>
     std::shared_ptr<AnyType> getReceiver() const;
     bool receiverIsSet() const;
@@ -118,7 +118,7 @@ public:
     void setReceiver(const std::shared_ptr<AnyType>& value);
 
     /// <summary>
-    /// 
+    /// Datetime of issue in UTC timezone.
     /// </summary>
     utility::datetime getIssuedAtUtc() const;
     bool issuedAtUtcIsSet() const;
@@ -127,7 +127,7 @@ public:
     void setIssuedAtUtc(const utility::datetime& value);
 
     /// <summary>
-    /// 
+    /// Valid from datetime in UTC timezone.
     /// </summary>
     utility::datetime getValidFromUtc() const;
     bool validFromUtcIsSet() const;
@@ -136,7 +136,7 @@ public:
     void setValidFromUtc(const utility::datetime& value);
 
     /// <summary>
-    /// 
+    /// Datetime of expiry in UTC timezone.
     /// </summary>
     utility::datetime getExpiresAtUtc() const;
     bool expiresAtUtcIsSet() const;
@@ -145,7 +145,7 @@ public:
     void setExpiresAtUtc(const utility::datetime& value);
 
     /// <summary>
-    /// 
+    /// Metadata.
     /// </summary>
     std::shared_ptr<AnyType> getMetaData() const;
     bool metaDataIsSet() const;
@@ -154,7 +154,7 @@ public:
     void setMetaData(const std::shared_ptr<AnyType>& value);
 
     /// <summary>
-    /// 
+    /// Creation datetime of issue request in UTC timezone.
     /// </summary>
     utility::datetime getCreatedAtUtc() const;
     bool createdAtUtcIsSet() const;

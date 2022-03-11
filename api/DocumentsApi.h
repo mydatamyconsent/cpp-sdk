@@ -66,8 +66,8 @@ public:
     /// 
     /// </remarks>
     /// <param name="documentTypeId">Document type id.</param>
-    /// <param name="fromDateTime">From DateTime. (optional, default to utility::datetime())</param>
-    /// <param name="toDateTime">To DateTime. (optional, default to utility::datetime())</param>
+    /// <param name="fromDateTime">From DateTime in UTC timezone. (optional, default to utility::datetime())</param>
+    /// <param name="toDateTime">To DateTime in UTC timezone. (optional, default to utility::datetime())</param>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
     pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> getIssuedDocuments(
@@ -78,7 +78,7 @@ public:
         boost::optional<int32_t> pageSize
     ) const;
     /// <summary>
-    /// Get registered document types.
+    /// Get paginated list of registered document types.
     /// </summary>
     /// <remarks>
     /// 
@@ -115,9 +115,9 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="issueRequestId">Issue Request Id System.Guid.</param>
+    /// <param name="issueRequestId">Document issue request id.</param>
     /// <param name="formFile"></param>
-    pplx::task<utility::string_t> uploadDocumentForIndividual(
+    pplx::task<void> uploadDocumentForIndividual(
         utility::string_t issueRequestId,
         std::shared_ptr<HttpContent> formFile
     ) const;
@@ -127,9 +127,9 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="issueRequestId">Issue Request Id System.Guid.</param>
+    /// <param name="issueRequestId">Document issue request id System.Guid.</param>
     /// <param name="formFile"></param>
-    pplx::task<utility::string_t> uploadDocumentForOrganization(
+    pplx::task<void> uploadDocumentForOrganization(
         utility::string_t issueRequestId,
         std::shared_ptr<HttpContent> formFile
     ) const;

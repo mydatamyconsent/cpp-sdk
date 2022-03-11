@@ -716,7 +716,7 @@ pplx::task<std::shared_ptr<DocumentIssueRequestDetails>> DocumentsApi::issueDocu
         return localVarResult;
     });
 }
-pplx::task<utility::string_t> DocumentsApi::uploadDocumentForIndividual(utility::string_t issueRequestId, std::shared_ptr<HttpContent> formFile) const
+pplx::task<void> DocumentsApi::uploadDocumentForIndividual(utility::string_t issueRequestId, std::shared_ptr<HttpContent> formFile) const
 {
 
 
@@ -737,7 +737,7 @@ pplx::task<utility::string_t> DocumentsApi::uploadDocumentForIndividual(utility:
     // use JSON if possible
     if ( localVarResponseHttpContentTypes.size() == 0 )
     {
-        localVarResponseHttpContentType = utility::conversions::to_string_t("text/plain");
+        localVarResponseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // JSON
     else if ( localVarResponseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != localVarResponseHttpContentTypes.end() )
@@ -748,11 +748,6 @@ pplx::task<utility::string_t> DocumentsApi::uploadDocumentForIndividual(utility:
     else if( localVarResponseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != localVarResponseHttpContentTypes.end() )
     {
         localVarResponseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-    }
-    // plain text
-    else if( localVarResponseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != localVarResponseHttpContentTypes.end() )
-    {
-        localVarResponseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -827,32 +822,10 @@ pplx::task<utility::string_t> DocumentsApi::uploadDocumentForIndividual(utility:
     })
     .then([=](utility::string_t localVarResponse)
     {
-        utility::string_t localVarResult(utility::conversions::to_string_t(""));
-
-        if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value localVarJson = web::json::value::parse(localVarResponse);
-
-            ModelBase::fromJson(localVarJson, localVarResult);
-        }
-        else if(localVarResponseHttpContentType == utility::conversions::to_string_t("text/plain"))
-        {
-            localVarResult = localVarResponse;
-        }
-        // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
-        // {
-        // TODO multipart response parsing
-        // }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling uploadDocumentForIndividual: unsupported response type"));
-        }
-
-        return localVarResult;
+        return void();
     });
 }
-pplx::task<utility::string_t> DocumentsApi::uploadDocumentForOrganization(utility::string_t issueRequestId, std::shared_ptr<HttpContent> formFile) const
+pplx::task<void> DocumentsApi::uploadDocumentForOrganization(utility::string_t issueRequestId, std::shared_ptr<HttpContent> formFile) const
 {
 
 
@@ -873,7 +846,7 @@ pplx::task<utility::string_t> DocumentsApi::uploadDocumentForOrganization(utilit
     // use JSON if possible
     if ( localVarResponseHttpContentTypes.size() == 0 )
     {
-        localVarResponseHttpContentType = utility::conversions::to_string_t("text/plain");
+        localVarResponseHttpContentType = utility::conversions::to_string_t("application/json");
     }
     // JSON
     else if ( localVarResponseHttpContentTypes.find(utility::conversions::to_string_t("application/json")) != localVarResponseHttpContentTypes.end() )
@@ -884,11 +857,6 @@ pplx::task<utility::string_t> DocumentsApi::uploadDocumentForOrganization(utilit
     else if( localVarResponseHttpContentTypes.find(utility::conversions::to_string_t("multipart/form-data")) != localVarResponseHttpContentTypes.end() )
     {
         localVarResponseHttpContentType = utility::conversions::to_string_t("multipart/form-data");
-    }
-    // plain text
-    else if( localVarResponseHttpContentTypes.find(utility::conversions::to_string_t("text/plain")) != localVarResponseHttpContentTypes.end() )
-    {
-        localVarResponseHttpContentType = utility::conversions::to_string_t("text/plain");
     }
     else
     {
@@ -963,29 +931,7 @@ pplx::task<utility::string_t> DocumentsApi::uploadDocumentForOrganization(utilit
     })
     .then([=](utility::string_t localVarResponse)
     {
-        utility::string_t localVarResult(utility::conversions::to_string_t(""));
-
-        if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value localVarJson = web::json::value::parse(localVarResponse);
-
-            ModelBase::fromJson(localVarJson, localVarResult);
-        }
-        else if(localVarResponseHttpContentType == utility::conversions::to_string_t("text/plain"))
-        {
-            localVarResult = localVarResponse;
-        }
-        // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
-        // {
-        // TODO multipart response parsing
-        // }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling uploadDocumentForOrganization: unsupported response type"));
-        }
-
-        return localVarResult;
+        return void();
     });
 }
 

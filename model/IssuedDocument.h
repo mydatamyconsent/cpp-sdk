@@ -53,7 +53,7 @@ public:
     /// IssuedDocument members
 
     /// <summary>
-    /// Document Identifier.
+    /// Document Id.
     /// </summary>
     utility::string_t getId() const;
     bool idIsSet() const;
@@ -62,7 +62,7 @@ public:
     void setId(const utility::string_t& value);
 
     /// <summary>
-    /// Document Identifier. eg: GJ05FG67866586.
+    /// Document Identifier.
     /// </summary>
     utility::string_t getIdentifier() const;
     bool identifierIsSet() const;
@@ -71,7 +71,7 @@ public:
     void setIdentifier(const utility::string_t& value);
 
     /// <summary>
-    /// Document type name. eg: Driving License.
+    /// Document type name.
     /// </summary>
     utility::string_t getDocumentType() const;
     bool documentTypeIsSet() const;
@@ -80,7 +80,7 @@ public:
     void setDocumentType(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// User name.
     /// </summary>
     utility::string_t getIssuedTo() const;
     bool issuedToIsSet() const;
@@ -89,7 +89,7 @@ public:
     void setIssuedTo(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Issued datetime in UTC timezone.
     /// </summary>
     utility::datetime getIssuedAtUtc() const;
     bool issuedAtUtcIsSet() const;
