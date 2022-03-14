@@ -50,9 +50,9 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="pushUriRequest">Push uri request MyDataMyConsent.DeveloperApi.Models.DigiLocker.PushUriRequest. (optional)</param>
+    /// <param name="pushUriRequest">Push URI request payload</param>
     pplx::task<std::shared_ptr<PushUriResponse>> digilockerCompatIssueDocument(
-        boost::optional<std::shared_ptr<PushUriRequest>> pushUriRequest
+        std::shared_ptr<PushUriRequest> pushUriRequest
     ) const;
 
 protected:

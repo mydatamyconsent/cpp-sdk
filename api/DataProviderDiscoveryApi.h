@@ -45,12 +45,12 @@ public:
     virtual ~DataProviderDiscoveryApi();
 
     /// <summary>
-    /// Get a Data Provider details based on provider id.
+    /// Get a Data Provider details by provider id.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="providerId">Provider id.</param>
+    /// <param name="providerId">Data provider id.</param>
     pplx::task<std::shared_ptr<DataProvider>> getDataProviderById(
         utility::string_t providerId
     ) const;
@@ -65,14 +65,14 @@ public:
     /// <param name="organizationCategory">Organization category. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
-    /// <param name="country">ISO2 Country code. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
+    /// <param name="countryIso2Code">ISO2 Country code. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
     pplx::task<std::shared_ptr<DataProviderPaginatedList>> getDataProviders(
         boost::optional<utility::string_t> accountType,
         boost::optional<utility::string_t> documentType,
         boost::optional<utility::string_t> organizationCategory,
         boost::optional<int32_t> pageNo,
         boost::optional<int32_t> pageSize,
-        boost::optional<utility::string_t> country
+        boost::optional<utility::string_t> countryIso2Code
     ) const;
 
 protected:

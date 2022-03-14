@@ -23,11 +23,11 @@
 
 #include "ApiClient.h"
 
-#include "model/CreateDataProcessingAgreementRequestModel.h"
-#include "model/DataProcessingAgreementDto.h"
-#include "model/DataProcessingAgreementDtoPaginatedList.h"
+#include "model/CreateDataProcessingAgreement.h"
+#include "model/DataProcessingAgreement.h"
+#include "model/DataProcessingAgreementPaginatedList.h"
 #include "Object.h"
-#include "model/UpdateDataProcessingAgreementRequestModel.h"
+#include "model/UpdateDataProcessingAgreement.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -52,9 +52,9 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="createDataProcessingAgreementRequestModel">Create data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.CreateDataProcessingAgreementRequestModel. (optional)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> createDataProcessingAgreement(
-        boost::optional<std::shared_ptr<CreateDataProcessingAgreementRequestModel>> createDataProcessingAgreementRequestModel
+    /// <param name="createDataProcessingAgreement">Create data processing agreement payload</param>
+    pplx::task<std::shared_ptr<DataProcessingAgreement>> createDataProcessingAgreement(
+        std::shared_ptr<CreateDataProcessingAgreement> createDataProcessingAgreement
     ) const;
     /// <summary>
     /// Delete a data processing agreement. This will not delete a published or a agreement in use with consents.
@@ -73,18 +73,18 @@ public:
     /// 
     /// </remarks>
     /// <param name="id">Agreement id.</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> getDataProcessingAgreementById(
+    pplx::task<std::shared_ptr<DataProcessingAgreement>> getDataProcessingAgreementById(
         utility::string_t id
     ) const;
     /// <summary>
-    /// Get all data processing agreements.
+    /// Get paginated data processing agreements.
     /// </summary>
     /// <remarks>
     /// 
     /// </remarks>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementDtoPaginatedList>> getDataProcessingAgreements(
+    pplx::task<std::shared_ptr<DataProcessingAgreementPaginatedList>> getDataProcessingAgreements(
         boost::optional<int32_t> pageNo,
         boost::optional<int32_t> pageSize
     ) const;
@@ -105,10 +105,10 @@ public:
     /// 
     /// </remarks>
     /// <param name="id">Agreement id.</param>
-    /// <param name="updateDataProcessingAgreementRequestModel">Updated data processing agreement MyDataMyConsent.Models.DataProcessingAgreements.UpdateDataProcessingAgreementRequestModel. (optional)</param>
-    pplx::task<std::shared_ptr<DataProcessingAgreementDto>> updateDataProcessingAgreement(
+    /// <param name="updateDataProcessingAgreement">Update data processing agreement payload</param>
+    pplx::task<std::shared_ptr<DataProcessingAgreement>> updateDataProcessingAgreement(
         utility::string_t id,
-        boost::optional<std::shared_ptr<UpdateDataProcessingAgreementRequestModel>> updateDataProcessingAgreementRequestModel
+        std::shared_ptr<UpdateDataProcessingAgreement> updateDataProcessingAgreement
     ) const;
 
 protected:

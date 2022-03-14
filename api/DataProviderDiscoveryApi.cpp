@@ -158,7 +158,7 @@ pplx::task<std::shared_ptr<DataProvider>> DataProviderDiscoveryApi::getDataProvi
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<DataProviderPaginatedList>> DataProviderDiscoveryApi::getDataProviders(boost::optional<utility::string_t> accountType, boost::optional<utility::string_t> documentType, boost::optional<utility::string_t> organizationCategory, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize, boost::optional<utility::string_t> country) const
+pplx::task<std::shared_ptr<DataProviderPaginatedList>> DataProviderDiscoveryApi::getDataProviders(boost::optional<utility::string_t> accountType, boost::optional<utility::string_t> documentType, boost::optional<utility::string_t> organizationCategory, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize, boost::optional<utility::string_t> countryIso2Code) const
 {
 
 
@@ -220,9 +220,9 @@ pplx::task<std::shared_ptr<DataProviderPaginatedList>> DataProviderDiscoveryApi:
     {
         localVarQueryParams[utility::conversions::to_string_t("pageSize")] = ApiClient::parameterToString(*pageSize);
     }
-    if (country)
+    if (countryIso2Code)
     {
-        localVarQueryParams[utility::conversions::to_string_t("country")] = ApiClient::parameterToString(*country);
+        localVarQueryParams[utility::conversions::to_string_t("countryIso2Code")] = ApiClient::parameterToString(*countryIso2Code);
     }
 
     std::shared_ptr<IHttpBody> localVarHttpBody;

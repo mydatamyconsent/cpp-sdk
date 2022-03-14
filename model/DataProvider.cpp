@@ -26,23 +26,23 @@ DataProvider::DataProvider()
     m_IdIsSet = false;
     m_Name = utility::conversions::to_string_t("");
     m_NameIsSet = false;
+    m_Category = utility::conversions::to_string_t("");
+    m_CategoryIsSet = false;
     m_LogoUrl = utility::conversions::to_string_t("");
     m_LogoUrlIsSet = false;
     m_Website = utility::conversions::to_string_t("");
     m_WebsiteIsSet = false;
-    m_Email = utility::conversions::to_string_t("");
-    m_EmailIsSet = false;
-    m_SupportPhoneNumber = utility::conversions::to_string_t("");
-    m_SupportPhoneNumberIsSet = false;
+    m_SupportEmail = utility::conversions::to_string_t("");
+    m_SupportEmailIsSet = false;
+    m_HelpLineNumber = utility::conversions::to_string_t("");
+    m_HelpLineNumberIsSet = false;
     m_PrivacyPolicy = utility::conversions::to_string_t("");
     m_PrivacyPolicyIsSet = false;
     m_TermOfService = utility::conversions::to_string_t("");
     m_TermOfServiceIsSet = false;
-    m_Category = utility::conversions::to_string_t("");
-    m_CategoryIsSet = false;
     m_DataProtectionOfficerIsSet = false;
-    m_SupportedAccountTypesIsSet = false;
     m_SupportedDocumentTypesIsSet = false;
+    m_SupportedAccountTypesIsSet = false;
 }
 
 DataProvider::~DataProvider()
@@ -67,6 +67,10 @@ web::json::value DataProvider::toJson() const
     {
         val[utility::conversions::to_string_t(U("name"))] = ModelBase::toJson(m_Name);
     }
+    if(m_CategoryIsSet)
+    {
+        val[utility::conversions::to_string_t(U("category"))] = ModelBase::toJson(m_Category);
+    }
     if(m_LogoUrlIsSet)
     {
         val[utility::conversions::to_string_t(U("logoUrl"))] = ModelBase::toJson(m_LogoUrl);
@@ -75,13 +79,13 @@ web::json::value DataProvider::toJson() const
     {
         val[utility::conversions::to_string_t(U("website"))] = ModelBase::toJson(m_Website);
     }
-    if(m_EmailIsSet)
+    if(m_SupportEmailIsSet)
     {
-        val[utility::conversions::to_string_t(U("email"))] = ModelBase::toJson(m_Email);
+        val[utility::conversions::to_string_t(U("supportEmail"))] = ModelBase::toJson(m_SupportEmail);
     }
-    if(m_SupportPhoneNumberIsSet)
+    if(m_HelpLineNumberIsSet)
     {
-        val[utility::conversions::to_string_t(U("supportPhoneNumber"))] = ModelBase::toJson(m_SupportPhoneNumber);
+        val[utility::conversions::to_string_t(U("helpLineNumber"))] = ModelBase::toJson(m_HelpLineNumber);
     }
     if(m_PrivacyPolicyIsSet)
     {
@@ -91,21 +95,17 @@ web::json::value DataProvider::toJson() const
     {
         val[utility::conversions::to_string_t(U("termOfService"))] = ModelBase::toJson(m_TermOfService);
     }
-    if(m_CategoryIsSet)
-    {
-        val[utility::conversions::to_string_t(U("category"))] = ModelBase::toJson(m_Category);
-    }
     if(m_DataProtectionOfficerIsSet)
     {
         val[utility::conversions::to_string_t(U("dataProtectionOfficer"))] = ModelBase::toJson(m_DataProtectionOfficer);
     }
-    if(m_SupportedAccountTypesIsSet)
-    {
-        val[utility::conversions::to_string_t(U("supportedAccountTypes"))] = ModelBase::toJson(m_SupportedAccountTypes);
-    }
     if(m_SupportedDocumentTypesIsSet)
     {
         val[utility::conversions::to_string_t(U("supportedDocumentTypes"))] = ModelBase::toJson(m_SupportedDocumentTypes);
+    }
+    if(m_SupportedAccountTypesIsSet)
+    {
+        val[utility::conversions::to_string_t(U("supportedAccountTypes"))] = ModelBase::toJson(m_SupportedAccountTypes);
     }
 
     return val;
@@ -135,6 +135,16 @@ bool DataProvider::fromJson(const web::json::value& val)
             setName(refVal_name);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("category"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("category")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_category;
+            ok &= ModelBase::fromJson(fieldValue, refVal_category);
+            setCategory(refVal_category);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("logoUrl"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("logoUrl")));
@@ -155,24 +165,24 @@ bool DataProvider::fromJson(const web::json::value& val)
             setWebsite(refVal_website);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("email"))))
+    if(val.has_field(utility::conversions::to_string_t(U("supportEmail"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("email")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("supportEmail")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_email;
-            ok &= ModelBase::fromJson(fieldValue, refVal_email);
-            setEmail(refVal_email);
+            utility::string_t refVal_supportEmail;
+            ok &= ModelBase::fromJson(fieldValue, refVal_supportEmail);
+            setSupportEmail(refVal_supportEmail);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("supportPhoneNumber"))))
+    if(val.has_field(utility::conversions::to_string_t(U("helpLineNumber"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("supportPhoneNumber")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("helpLineNumber")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_supportPhoneNumber;
-            ok &= ModelBase::fromJson(fieldValue, refVal_supportPhoneNumber);
-            setSupportPhoneNumber(refVal_supportPhoneNumber);
+            utility::string_t refVal_helpLineNumber;
+            ok &= ModelBase::fromJson(fieldValue, refVal_helpLineNumber);
+            setHelpLineNumber(refVal_helpLineNumber);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("privacyPolicy"))))
@@ -195,16 +205,6 @@ bool DataProvider::fromJson(const web::json::value& val)
             setTermOfService(refVal_termOfService);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("category"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("category")));
-        if(!fieldValue.is_null())
-        {
-            utility::string_t refVal_category;
-            ok &= ModelBase::fromJson(fieldValue, refVal_category);
-            setCategory(refVal_category);
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(U("dataProtectionOfficer"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("dataProtectionOfficer")));
@@ -215,16 +215,6 @@ bool DataProvider::fromJson(const web::json::value& val)
             setDataProtectionOfficer(refVal_dataProtectionOfficer);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("supportedAccountTypes"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("supportedAccountTypes")));
-        if(!fieldValue.is_null())
-        {
-            std::vector<utility::string_t> refVal_supportedAccountTypes;
-            ok &= ModelBase::fromJson(fieldValue, refVal_supportedAccountTypes);
-            setSupportedAccountTypes(refVal_supportedAccountTypes);
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(U("supportedDocumentTypes"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("supportedDocumentTypes")));
@@ -233,6 +223,16 @@ bool DataProvider::fromJson(const web::json::value& val)
             std::vector<utility::string_t> refVal_supportedDocumentTypes;
             ok &= ModelBase::fromJson(fieldValue, refVal_supportedDocumentTypes);
             setSupportedDocumentTypes(refVal_supportedDocumentTypes);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("supportedAccountTypes"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("supportedAccountTypes")));
+        if(!fieldValue.is_null())
+        {
+            std::vector<utility::string_t> refVal_supportedAccountTypes;
+            ok &= ModelBase::fromJson(fieldValue, refVal_supportedAccountTypes);
+            setSupportedAccountTypes(refVal_supportedAccountTypes);
         }
     }
     return ok;
@@ -253,6 +253,10 @@ void DataProvider::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("name")), m_Name));
     }
+    if(m_CategoryIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("category")), m_Category));
+    }
     if(m_LogoUrlIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("logoUrl")), m_LogoUrl));
@@ -261,13 +265,13 @@ void DataProvider::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("website")), m_Website));
     }
-    if(m_EmailIsSet)
+    if(m_SupportEmailIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("email")), m_Email));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("supportEmail")), m_SupportEmail));
     }
-    if(m_SupportPhoneNumberIsSet)
+    if(m_HelpLineNumberIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("supportPhoneNumber")), m_SupportPhoneNumber));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("helpLineNumber")), m_HelpLineNumber));
     }
     if(m_PrivacyPolicyIsSet)
     {
@@ -277,21 +281,17 @@ void DataProvider::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("termOfService")), m_TermOfService));
     }
-    if(m_CategoryIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("category")), m_Category));
-    }
     if(m_DataProtectionOfficerIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("dataProtectionOfficer")), m_DataProtectionOfficer));
     }
-    if(m_SupportedAccountTypesIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("supportedAccountTypes")), m_SupportedAccountTypes));
-    }
     if(m_SupportedDocumentTypesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("supportedDocumentTypes")), m_SupportedDocumentTypes));
+    }
+    if(m_SupportedAccountTypesIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("supportedAccountTypes")), m_SupportedAccountTypes));
     }
 }
 
@@ -316,6 +316,12 @@ bool DataProvider::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("name"))), refVal_name );
         setName(refVal_name);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("category"))))
+    {
+        utility::string_t refVal_category;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("category"))), refVal_category );
+        setCategory(refVal_category);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("logoUrl"))))
     {
         utility::string_t refVal_logoUrl;
@@ -328,17 +334,17 @@ bool DataProvider::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("website"))), refVal_website );
         setWebsite(refVal_website);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("email"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("supportEmail"))))
     {
-        utility::string_t refVal_email;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("email"))), refVal_email );
-        setEmail(refVal_email);
+        utility::string_t refVal_supportEmail;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("supportEmail"))), refVal_supportEmail );
+        setSupportEmail(refVal_supportEmail);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("supportPhoneNumber"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("helpLineNumber"))))
     {
-        utility::string_t refVal_supportPhoneNumber;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("supportPhoneNumber"))), refVal_supportPhoneNumber );
-        setSupportPhoneNumber(refVal_supportPhoneNumber);
+        utility::string_t refVal_helpLineNumber;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("helpLineNumber"))), refVal_helpLineNumber );
+        setHelpLineNumber(refVal_helpLineNumber);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("privacyPolicy"))))
     {
@@ -352,29 +358,23 @@ bool DataProvider::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("termOfService"))), refVal_termOfService );
         setTermOfService(refVal_termOfService);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("category"))))
-    {
-        utility::string_t refVal_category;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("category"))), refVal_category );
-        setCategory(refVal_category);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("dataProtectionOfficer"))))
     {
         std::shared_ptr<DataProtectionOfficer> refVal_dataProtectionOfficer;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("dataProtectionOfficer"))), refVal_dataProtectionOfficer );
         setDataProtectionOfficer(refVal_dataProtectionOfficer);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("supportedAccountTypes"))))
-    {
-        std::vector<utility::string_t> refVal_supportedAccountTypes;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("supportedAccountTypes"))), refVal_supportedAccountTypes );
-        setSupportedAccountTypes(refVal_supportedAccountTypes);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("supportedDocumentTypes"))))
     {
         std::vector<utility::string_t> refVal_supportedDocumentTypes;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("supportedDocumentTypes"))), refVal_supportedDocumentTypes );
         setSupportedDocumentTypes(refVal_supportedDocumentTypes);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("supportedAccountTypes"))))
+    {
+        std::vector<utility::string_t> refVal_supportedAccountTypes;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("supportedAccountTypes"))), refVal_supportedAccountTypes );
+        setSupportedAccountTypes(refVal_supportedAccountTypes);
     }
     return ok;
 }
@@ -419,6 +419,26 @@ void DataProvider::unsetName()
 {
     m_NameIsSet = false;
 }
+utility::string_t DataProvider::getCategory() const
+{
+    return m_Category;
+}
+
+void DataProvider::setCategory(const utility::string_t& value)
+{
+    m_Category = value;
+    m_CategoryIsSet = true;
+}
+
+bool DataProvider::categoryIsSet() const
+{
+    return m_CategoryIsSet;
+}
+
+void DataProvider::unsetCategory()
+{
+    m_CategoryIsSet = false;
+}
 utility::string_t DataProvider::getLogoUrl() const
 {
     return m_LogoUrl;
@@ -459,45 +479,45 @@ void DataProvider::unsetWebsite()
 {
     m_WebsiteIsSet = false;
 }
-utility::string_t DataProvider::getEmail() const
+utility::string_t DataProvider::getSupportEmail() const
 {
-    return m_Email;
+    return m_SupportEmail;
 }
 
-void DataProvider::setEmail(const utility::string_t& value)
+void DataProvider::setSupportEmail(const utility::string_t& value)
 {
-    m_Email = value;
-    m_EmailIsSet = true;
+    m_SupportEmail = value;
+    m_SupportEmailIsSet = true;
 }
 
-bool DataProvider::emailIsSet() const
+bool DataProvider::supportEmailIsSet() const
 {
-    return m_EmailIsSet;
+    return m_SupportEmailIsSet;
 }
 
-void DataProvider::unsetEmail()
+void DataProvider::unsetSupportEmail()
 {
-    m_EmailIsSet = false;
+    m_SupportEmailIsSet = false;
 }
-utility::string_t DataProvider::getSupportPhoneNumber() const
+utility::string_t DataProvider::getHelpLineNumber() const
 {
-    return m_SupportPhoneNumber;
-}
-
-void DataProvider::setSupportPhoneNumber(const utility::string_t& value)
-{
-    m_SupportPhoneNumber = value;
-    m_SupportPhoneNumberIsSet = true;
+    return m_HelpLineNumber;
 }
 
-bool DataProvider::supportPhoneNumberIsSet() const
+void DataProvider::setHelpLineNumber(const utility::string_t& value)
 {
-    return m_SupportPhoneNumberIsSet;
+    m_HelpLineNumber = value;
+    m_HelpLineNumberIsSet = true;
 }
 
-void DataProvider::unsetSupportPhoneNumber()
+bool DataProvider::helpLineNumberIsSet() const
 {
-    m_SupportPhoneNumberIsSet = false;
+    return m_HelpLineNumberIsSet;
+}
+
+void DataProvider::unsetHelpLineNumber()
+{
+    m_HelpLineNumberIsSet = false;
 }
 utility::string_t DataProvider::getPrivacyPolicy() const
 {
@@ -539,26 +559,6 @@ void DataProvider::unsetTermOfService()
 {
     m_TermOfServiceIsSet = false;
 }
-utility::string_t DataProvider::getCategory() const
-{
-    return m_Category;
-}
-
-void DataProvider::setCategory(const utility::string_t& value)
-{
-    m_Category = value;
-    m_CategoryIsSet = true;
-}
-
-bool DataProvider::categoryIsSet() const
-{
-    return m_CategoryIsSet;
-}
-
-void DataProvider::unsetCategory()
-{
-    m_CategoryIsSet = false;
-}
 std::shared_ptr<DataProtectionOfficer> DataProvider::getDataProtectionOfficer() const
 {
     return m_DataProtectionOfficer;
@@ -579,26 +579,6 @@ void DataProvider::unsetDataProtectionOfficer()
 {
     m_DataProtectionOfficerIsSet = false;
 }
-std::vector<utility::string_t>& DataProvider::getSupportedAccountTypes()
-{
-    return m_SupportedAccountTypes;
-}
-
-void DataProvider::setSupportedAccountTypes(const std::vector<utility::string_t>& value)
-{
-    m_SupportedAccountTypes = value;
-    m_SupportedAccountTypesIsSet = true;
-}
-
-bool DataProvider::supportedAccountTypesIsSet() const
-{
-    return m_SupportedAccountTypesIsSet;
-}
-
-void DataProvider::unsetSupportedAccountTypes()
-{
-    m_SupportedAccountTypesIsSet = false;
-}
 std::vector<utility::string_t>& DataProvider::getSupportedDocumentTypes()
 {
     return m_SupportedDocumentTypes;
@@ -618,6 +598,26 @@ bool DataProvider::supportedDocumentTypesIsSet() const
 void DataProvider::unsetSupportedDocumentTypes()
 {
     m_SupportedDocumentTypesIsSet = false;
+}
+std::vector<utility::string_t>& DataProvider::getSupportedAccountTypes()
+{
+    return m_SupportedAccountTypes;
+}
+
+void DataProvider::setSupportedAccountTypes(const std::vector<utility::string_t>& value)
+{
+    m_SupportedAccountTypes = value;
+    m_SupportedAccountTypesIsSet = true;
+}
+
+bool DataProvider::supportedAccountTypesIsSet() const
+{
+    return m_SupportedAccountTypesIsSet;
+}
+
+void DataProvider::unsetSupportedAccountTypes()
+{
+    m_SupportedAccountTypesIsSet = false;
 }
 }
 }

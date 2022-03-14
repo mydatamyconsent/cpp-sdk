@@ -75,6 +75,15 @@ public:
     /// <summary>
     /// 
     /// </summary>
+    utility::string_t getCategory() const;
+    bool categoryIsSet() const;
+    void unsetCategory();
+
+    void setCategory(const utility::string_t& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
     utility::string_t getLogoUrl() const;
     bool logoUrlIsSet() const;
     void unsetLogoUrl();
@@ -93,20 +102,20 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getEmail() const;
-    bool emailIsSet() const;
-    void unsetEmail();
+    utility::string_t getSupportEmail() const;
+    bool supportEmailIsSet() const;
+    void unsetSupportEmail();
 
-    void setEmail(const utility::string_t& value);
+    void setSupportEmail(const utility::string_t& value);
 
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getSupportPhoneNumber() const;
-    bool supportPhoneNumberIsSet() const;
-    void unsetSupportPhoneNumber();
+    utility::string_t getHelpLineNumber() const;
+    bool helpLineNumberIsSet() const;
+    void unsetHelpLineNumber();
 
-    void setSupportPhoneNumber(const utility::string_t& value);
+    void setHelpLineNumber(const utility::string_t& value);
 
     /// <summary>
     /// 
@@ -129,29 +138,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getCategory() const;
-    bool categoryIsSet() const;
-    void unsetCategory();
-
-    void setCategory(const utility::string_t& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
     std::shared_ptr<DataProtectionOfficer> getDataProtectionOfficer() const;
     bool dataProtectionOfficerIsSet() const;
     void unsetDataProtectionOfficer();
 
     void setDataProtectionOfficer(const std::shared_ptr<DataProtectionOfficer>& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::vector<utility::string_t>& getSupportedAccountTypes();
-    bool supportedAccountTypesIsSet() const;
-    void unsetSupportedAccountTypes();
-
-    void setSupportedAccountTypes(const std::vector<utility::string_t>& value);
 
     /// <summary>
     /// 
@@ -162,32 +153,41 @@ public:
 
     void setSupportedDocumentTypes(const std::vector<utility::string_t>& value);
 
+    /// <summary>
+    /// 
+    /// </summary>
+    std::vector<utility::string_t>& getSupportedAccountTypes();
+    bool supportedAccountTypesIsSet() const;
+    void unsetSupportedAccountTypes();
+
+    void setSupportedAccountTypes(const std::vector<utility::string_t>& value);
+
 
 protected:
     utility::string_t m_Id;
     bool m_IdIsSet;
     utility::string_t m_Name;
     bool m_NameIsSet;
+    utility::string_t m_Category;
+    bool m_CategoryIsSet;
     utility::string_t m_LogoUrl;
     bool m_LogoUrlIsSet;
     utility::string_t m_Website;
     bool m_WebsiteIsSet;
-    utility::string_t m_Email;
-    bool m_EmailIsSet;
-    utility::string_t m_SupportPhoneNumber;
-    bool m_SupportPhoneNumberIsSet;
+    utility::string_t m_SupportEmail;
+    bool m_SupportEmailIsSet;
+    utility::string_t m_HelpLineNumber;
+    bool m_HelpLineNumberIsSet;
     utility::string_t m_PrivacyPolicy;
     bool m_PrivacyPolicyIsSet;
     utility::string_t m_TermOfService;
     bool m_TermOfServiceIsSet;
-    utility::string_t m_Category;
-    bool m_CategoryIsSet;
     std::shared_ptr<DataProtectionOfficer> m_DataProtectionOfficer;
     bool m_DataProtectionOfficerIsSet;
-    std::vector<utility::string_t> m_SupportedAccountTypes;
-    bool m_SupportedAccountTypesIsSet;
     std::vector<utility::string_t> m_SupportedDocumentTypes;
     bool m_SupportedDocumentTypesIsSet;
+    std::vector<utility::string_t> m_SupportedAccountTypes;
+    bool m_SupportedAccountTypesIsSet;
 };
 
 

@@ -34,7 +34,7 @@ DataConsentRequestsApi::~DataConsentRequestsApi()
 {
 }
 
-pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> DataConsentRequestsApi::cancelIndividualDataConsentRequest(utility::string_t requestId) const
+pplx::task<void> DataConsentRequestsApi::cancelIndividualDataConsentRequest(utility::string_t requestId) const
 {
 
 
@@ -136,28 +136,10 @@ pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> DataConsentReq
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<IndividualDataConsentRequestResponse> localVarResult(new IndividualDataConsentRequestResponse());
-
-        if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value localVarJson = web::json::value::parse(localVarResponse);
-
-            ModelBase::fromJson(localVarJson, localVarResult);
-        }
-        // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
-        // {
-        // TODO multipart response parsing
-        // }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling cancelIndividualDataConsentRequest: unsupported response type"));
-        }
-
-        return localVarResult;
+        return void();
     });
 }
-pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> DataConsentRequestsApi::cancelOrganizationDataConsentRequest(utility::string_t requestId) const
+pplx::task<void> DataConsentRequestsApi::cancelOrganizationDataConsentRequest(utility::string_t requestId) const
 {
 
 
@@ -259,34 +241,16 @@ pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> DataConsentR
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<OrganizationDataConsentRequestResponse> localVarResult(new OrganizationDataConsentRequestResponse());
-
-        if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
-        {
-            web::json::value localVarJson = web::json::value::parse(localVarResponse);
-
-            ModelBase::fromJson(localVarJson, localVarResult);
-        }
-        // else if(localVarResponseHttpContentType == utility::conversions::to_string_t("multipart/form-data"))
-        // {
-        // TODO multipart response parsing
-        // }
-        else
-        {
-            throw ApiException(500
-                , utility::conversions::to_string_t("error calling cancelOrganizationDataConsentRequest: unsupported response type"));
-        }
-
-        return localVarResult;
+        return void();
     });
 }
-pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> DataConsentRequestsApi::createIndividualDataConsentRequest(std::shared_ptr<CreateIndividualDataConsentRequest> createIndividualDataConsentRequest) const
+pplx::task<std::shared_ptr<IndividualDataConsentRequestDetails>> DataConsentRequestsApi::createIndividualDataConsentRequest(std::shared_ptr<CreateDataConsentRequest> createDataConsentRequest) const
 {
 
-    // verify the required parameter 'createIndividualDataConsentRequest' is set
-    if (createIndividualDataConsentRequest == nullptr)
+    // verify the required parameter 'createDataConsentRequest' is set
+    if (createDataConsentRequest == nullptr)
     {
-        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'createIndividualDataConsentRequest' when calling DataConsentRequestsApi->createIndividualDataConsentRequest"));
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'createDataConsentRequest' when calling DataConsentRequestsApi->createIndividualDataConsentRequest"));
     }
 
 
@@ -338,7 +302,7 @@ pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> DataConsentReq
         localVarRequestHttpContentType = utility::conversions::to_string_t("application/json");
         web::json::value localVarJson;
 
-        localVarJson = ModelBase::toJson(createIndividualDataConsentRequest);
+        localVarJson = ModelBase::toJson(createDataConsentRequest);
         
 
         localVarHttpBody = std::shared_ptr<IHttpBody>( new JsonBody( localVarJson ) );
@@ -349,9 +313,9 @@ pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> DataConsentReq
         localVarRequestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
         std::shared_ptr<MultipartFormData> localVarMultipart(new MultipartFormData);
 
-        if(createIndividualDataConsentRequest.get())
+        if(createDataConsentRequest.get())
         {
-            createIndividualDataConsentRequest->toMultipart(localVarMultipart, utility::conversions::to_string_t("createIndividualDataConsentRequest"));
+            createDataConsentRequest->toMultipart(localVarMultipart, utility::conversions::to_string_t("createDataConsentRequest"));
         }
         
 
@@ -404,7 +368,7 @@ pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> DataConsentReq
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<IndividualDataConsentRequestResponse> localVarResult(new IndividualDataConsentRequestResponse());
+        std::shared_ptr<IndividualDataConsentRequestDetails> localVarResult(new IndividualDataConsentRequestDetails());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -425,13 +389,13 @@ pplx::task<std::shared_ptr<IndividualDataConsentRequestResponse>> DataConsentReq
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> DataConsentRequestsApi::createOrganizationDataConsentRequest(std::shared_ptr<CreateOrganizationDataConsentRequest> createOrganizationDataConsentRequest) const
+pplx::task<std::shared_ptr<OrganizationDataConsentRequestDetails>> DataConsentRequestsApi::createOrganizationDataConsentRequest(std::shared_ptr<CreateDataConsentRequest> createDataConsentRequest) const
 {
 
-    // verify the required parameter 'createOrganizationDataConsentRequest' is set
-    if (createOrganizationDataConsentRequest == nullptr)
+    // verify the required parameter 'createDataConsentRequest' is set
+    if (createDataConsentRequest == nullptr)
     {
-        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'createOrganizationDataConsentRequest' when calling DataConsentRequestsApi->createOrganizationDataConsentRequest"));
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'createDataConsentRequest' when calling DataConsentRequestsApi->createOrganizationDataConsentRequest"));
     }
 
 
@@ -483,7 +447,7 @@ pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> DataConsentR
         localVarRequestHttpContentType = utility::conversions::to_string_t("application/json");
         web::json::value localVarJson;
 
-        localVarJson = ModelBase::toJson(createOrganizationDataConsentRequest);
+        localVarJson = ModelBase::toJson(createDataConsentRequest);
         
 
         localVarHttpBody = std::shared_ptr<IHttpBody>( new JsonBody( localVarJson ) );
@@ -494,9 +458,9 @@ pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> DataConsentR
         localVarRequestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
         std::shared_ptr<MultipartFormData> localVarMultipart(new MultipartFormData);
 
-        if(createOrganizationDataConsentRequest.get())
+        if(createDataConsentRequest.get())
         {
-            createOrganizationDataConsentRequest->toMultipart(localVarMultipart, utility::conversions::to_string_t("createOrganizationDataConsentRequest"));
+            createDataConsentRequest->toMultipart(localVarMultipart, utility::conversions::to_string_t("createDataConsentRequest"));
         }
         
 
@@ -549,7 +513,7 @@ pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> DataConsentR
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<OrganizationDataConsentRequestResponse> localVarResult(new OrganizationDataConsentRequestResponse());
+        std::shared_ptr<OrganizationDataConsentRequestDetails> localVarResult(new OrganizationDataConsentRequestDetails());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -570,7 +534,7 @@ pplx::task<std::shared_ptr<OrganizationDataConsentRequestResponse>> DataConsentR
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<UserDataConsentInfoDtoPaginatedList>> DataConsentRequestsApi::getAllConsentRequestsToIndividuals(boost::optional<std::shared_ptr<DataConsentStatus>> status, boost::optional<utility::datetime> startDateTime, boost::optional<utility::datetime> endDateTime, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
+pplx::task<std::shared_ptr<IndividualDataConsentRequestDetailsPaginatedList>> DataConsentRequestsApi::getAllConsentRequestsToIndividuals(boost::optional<std::shared_ptr<DataConsentStatus>> status, boost::optional<utility::datetime> startDateTime, boost::optional<utility::datetime> endDateTime, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
 {
 
 
@@ -691,7 +655,7 @@ pplx::task<std::shared_ptr<UserDataConsentInfoDtoPaginatedList>> DataConsentRequ
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<UserDataConsentInfoDtoPaginatedList> localVarResult(new UserDataConsentInfoDtoPaginatedList());
+        std::shared_ptr<IndividualDataConsentRequestDetailsPaginatedList> localVarResult(new IndividualDataConsentRequestDetailsPaginatedList());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -712,7 +676,7 @@ pplx::task<std::shared_ptr<UserDataConsentInfoDtoPaginatedList>> DataConsentRequ
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<OrganizationDataConsentInfoDtoPaginatedList>> DataConsentRequestsApi::getAllConsentRequestsToOrganizations(boost::optional<std::shared_ptr<DataConsentStatus>> status, boost::optional<utility::datetime> startDateTime, boost::optional<utility::datetime> endDateTime, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
+pplx::task<std::shared_ptr<OrganizationDataConsentRequestDetailsPaginatedList>> DataConsentRequestsApi::getAllConsentRequestsToOrganizations(boost::optional<std::shared_ptr<DataConsentStatus>> status, boost::optional<utility::datetime> startDateTime, boost::optional<utility::datetime> endDateTime, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
 {
 
 
@@ -833,7 +797,7 @@ pplx::task<std::shared_ptr<OrganizationDataConsentInfoDtoPaginatedList>> DataCon
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<OrganizationDataConsentInfoDtoPaginatedList> localVarResult(new OrganizationDataConsentInfoDtoPaginatedList());
+        std::shared_ptr<OrganizationDataConsentRequestDetailsPaginatedList> localVarResult(new OrganizationDataConsentRequestDetailsPaginatedList());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -854,7 +818,7 @@ pplx::task<std::shared_ptr<OrganizationDataConsentInfoDtoPaginatedList>> DataCon
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<DataConsentDetailsDto>> DataConsentRequestsApi::getIndividualConsentRequestById(utility::string_t requestId) const
+pplx::task<std::shared_ptr<DataConsentRequest>> DataConsentRequestsApi::getIndividualConsentRequestById(utility::string_t requestId) const
 {
 
 
@@ -956,7 +920,7 @@ pplx::task<std::shared_ptr<DataConsentDetailsDto>> DataConsentRequestsApi::getIn
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<DataConsentDetailsDto> localVarResult(new DataConsentDetailsDto());
+        std::shared_ptr<DataConsentRequest> localVarResult(new DataConsentRequest());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -977,7 +941,7 @@ pplx::task<std::shared_ptr<DataConsentDetailsDto>> DataConsentRequestsApi::getIn
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<DataConsentDetailsDto>> DataConsentRequestsApi::getOrganizationConsentRequestById(utility::string_t requestId) const
+pplx::task<std::shared_ptr<DataConsentRequest>> DataConsentRequestsApi::getOrganizationConsentRequestById(utility::string_t requestId) const
 {
 
 
@@ -1079,7 +1043,7 @@ pplx::task<std::shared_ptr<DataConsentDetailsDto>> DataConsentRequestsApi::getOr
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<DataConsentDetailsDto> localVarResult(new DataConsentDetailsDto());
+        std::shared_ptr<DataConsentRequest> localVarResult(new DataConsentRequest());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

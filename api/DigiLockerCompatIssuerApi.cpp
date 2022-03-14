@@ -34,8 +34,14 @@ DigiLockerCompatIssuerApi::~DigiLockerCompatIssuerApi()
 {
 }
 
-pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::digilockerCompatIssueDocument(boost::optional<std::shared_ptr<PushUriRequest>> pushUriRequest) const
+pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::digilockerCompatIssueDocument(std::shared_ptr<PushUriRequest> pushUriRequest) const
 {
+
+    // verify the required parameter 'pushUriRequest' is set
+    if (pushUriRequest == nullptr)
+    {
+        throw ApiException(400, utility::conversions::to_string_t("Missing required parameter 'pushUriRequest' when calling DigiLockerCompatIssuerApi->digilockerCompatIssueDocument"));
+    }
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
@@ -86,8 +92,8 @@ pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::digilock
         localVarRequestHttpContentType = utility::conversions::to_string_t("application/json");
         web::json::value localVarJson;
 
-        if (pushUriRequest)
-            localVarJson = ModelBase::toJson(*pushUriRequest);
+        localVarJson = ModelBase::toJson(pushUriRequest);
+        
 
         localVarHttpBody = std::shared_ptr<IHttpBody>( new JsonBody( localVarJson ) );
     }
@@ -97,9 +103,9 @@ pplx::task<std::shared_ptr<PushUriResponse>> DigiLockerCompatIssuerApi::digilock
         localVarRequestHttpContentType = utility::conversions::to_string_t("multipart/form-data");
         std::shared_ptr<MultipartFormData> localVarMultipart(new MultipartFormData);
 
-        if(pushUriRequest && (*pushUriRequest).get())
+        if(pushUriRequest.get())
         {
-            (*pushUriRequest)->toMultipart(localVarMultipart, utility::conversions::to_string_t("pushUriRequest"));
+            pushUriRequest->toMultipart(localVarMultipart, utility::conversions::to_string_t("pushUriRequest"));
         }
         
 

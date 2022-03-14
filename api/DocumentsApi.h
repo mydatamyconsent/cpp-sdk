@@ -95,7 +95,7 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="documentIssueRequest">Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest.</param>
+    /// <param name="documentIssueRequest">Document issue request payload</param>
     pplx::task<std::shared_ptr<DocumentIssueRequestDetails>> issueDocumentToIndividual(
         std::shared_ptr<DocumentIssueRequest> documentIssueRequest
     ) const;
@@ -105,7 +105,7 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="documentIssueRequest">Document issue request MyDataMyConsent.DeveloperApi.Models.DocumentIssueRequest.</param>
+    /// <param name="documentIssueRequest">Document issue request payload</param>
     pplx::task<std::shared_ptr<DocumentIssueRequestDetails>> issueDocumentToOrganization(
         std::shared_ptr<DocumentIssueRequest> documentIssueRequest
     ) const;
