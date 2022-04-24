@@ -50,7 +50,7 @@ public:
         DocumentCategoryType_EDUCATION,
         DocumentCategoryType_HEALTH,
         DocumentCategoryType_FINANCE,
-        DocumentCategoryType_WORKANDAWARDS,
+        DocumentCategoryType_PROFESSIONAL,
         DocumentCategoryType_LICENCESANDCERTIFICATES,
         DocumentCategoryType_OTHERS,
     };
