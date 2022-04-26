@@ -82,6 +82,15 @@ public:
     void setTemplateId(const utility::string_t& value);
 
     /// <summary>
+    /// Data Consent id
+    /// </summary>
+    utility::string_t getConsentId() const;
+    bool consentIdIsSet() const;
+    void unsetConsentId();
+
+    void setConsentId(const utility::string_t& value);
+
+    /// <summary>
     /// Consent request title.
     /// </summary>
     utility::string_t getTitle() const;
@@ -135,6 +144,15 @@ public:
 
     void setCreatedAtUtc(const utility::datetime& value);
 
+    /// <summary>
+    /// Request expiration datetime in UTC timezone
+    /// </summary>
+    utility::datetime getExpiresAtUtc() const;
+    bool expiresAtUtcIsSet() const;
+    void unsetExpiresAtUtc();
+
+    void setExpiresAtUtc(const utility::datetime& value);
+
 
 protected:
     utility::string_t m_Receiver;
@@ -143,6 +161,8 @@ protected:
     bool m_IdIsSet;
     utility::string_t m_TemplateId;
     bool m_TemplateIdIsSet;
+    utility::string_t m_ConsentId;
+    bool m_ConsentIdIsSet;
     utility::string_t m_Title;
     bool m_TitleIsSet;
     utility::string_t m_Description;
@@ -155,6 +175,8 @@ protected:
     bool m_TransactionIdIsSet;
     utility::datetime m_CreatedAtUtc;
     bool m_CreatedAtUtcIsSet;
+    utility::datetime m_ExpiresAtUtc;
+    bool m_ExpiresAtUtcIsSet;
 };
 
 

@@ -27,9 +27,9 @@
 #include "model/DocumentIssueRequestDetails.h"
 #include "model/DocumentTypePaginatedList.h"
 #include "HttpContent.h"
-#include "model/IssuedDocument.h"
 #include "model/IssuedDocumentPaginatedList.h"
 #include "Object.h"
+#include "model/OneOfIssuedDocumentIssuedDocumentDetails.h"
 #include "model/ProblemDetails.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
@@ -56,7 +56,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="documentId">Document id.</param>
-    pplx::task<std::shared_ptr<IssuedDocument>> getIssuedDocumentById(
+    pplx::task<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> getIssuedDocumentById(
         utility::string_t documentId
     ) const;
     /// <summary>

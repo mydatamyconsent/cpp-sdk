@@ -11,18 +11,22 @@
  */
 
 /*
- * DataConsentRequestDetails.h
+ * DataConsent.h
  *
- * DataConsentRequestResponse
+ * Data Consent details.
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_DataConsentRequestDetails_H_
-#define MYDATAMYCONSENT_MODELS_DataConsentRequestDetails_H_
+#ifndef MYDATAMYCONSENT_MODELS_DataConsent_H_
+#define MYDATAMYCONSENT_MODELS_DataConsent_H_
 
 
 #include "ModelBase.h"
 
+#include "model/AnyType.h"
+#include "model/CollectibleTypes.h"
 #include <cpprest/details/basic_types.h>
+#include "model/DataConsentDocument.h"
+#include <vector>
 #include "model/DataConsentStatus.h"
 
 namespace mydatamyconsent {
@@ -30,14 +34,14 @@ namespace models {
 
 
 /// <summary>
-/// DataConsentRequestResponse
+/// Data Consent details.
 /// </summary>
-class  DataConsentRequestDetails
+class  DataConsent
     : public ModelBase
 {
 public:
-    DataConsentRequestDetails();
-    virtual ~DataConsentRequestDetails();
+    DataConsent();
+    virtual ~DataConsent();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,10 +55,10 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// DataConsentRequestDetails members
+    /// DataConsent members
 
     /// <summary>
-    /// Consent request id
+    /// Data consent id.
     /// </summary>
     utility::string_t getId() const;
     bool idIsSet() const;
@@ -63,7 +67,16 @@ public:
     void setId(const utility::string_t& value);
 
     /// <summary>
-    /// Consent request template id
+    /// Data consent request id.
+    /// </summary>
+    utility::string_t getRequestId() const;
+    bool requestIdIsSet() const;
+    void unsetRequestId();
+
+    void setRequestId(const utility::string_t& value);
+
+    /// <summary>
+    /// Consent template id.
     /// </summary>
     utility::string_t getTemplateId() const;
     bool templateIdIsSet() const;
@@ -72,16 +85,7 @@ public:
     void setTemplateId(const utility::string_t& value);
 
     /// <summary>
-    /// Data Consent id
-    /// </summary>
-    utility::string_t getConsentId() const;
-    bool consentIdIsSet() const;
-    void unsetConsentId();
-
-    void setConsentId(const utility::string_t& value);
-
-    /// <summary>
-    /// Consent request title.
+    /// Consent title.
     /// </summary>
     utility::string_t getTitle() const;
     bool titleIsSet() const;
@@ -90,7 +94,7 @@ public:
     void setTitle(const utility::string_t& value);
 
     /// <summary>
-    /// Consent request description.
+    /// Consent description.
     /// </summary>
     utility::string_t getDescription() const;
     bool descriptionIsSet() const;
@@ -99,7 +103,7 @@ public:
     void setDescription(const utility::string_t& value);
 
     /// <summary>
-    /// Consent request purpose.
+    /// Consent purpose.
     /// </summary>
     utility::string_t getPurpose() const;
     bool purposeIsSet() const;
@@ -117,7 +121,7 @@ public:
     void setStatus(const std::shared_ptr<DataConsentStatus>& value);
 
     /// <summary>
-    /// Transaction id
+    /// Transaction id.
     /// </summary>
     utility::string_t getTransactionId() const;
     bool transactionIdIsSet() const;
@@ -126,31 +130,67 @@ public:
     void setTransactionId(const utility::string_t& value);
 
     /// <summary>
-    /// Request creation datetime in UTC timezone
+    /// Consent approval datetime in UTC timezone.
     /// </summary>
-    utility::datetime getCreatedAtUtc() const;
-    bool createdAtUtcIsSet() const;
-    void unsetCreatedAtUtc();
+    utility::datetime getApprovedAtUtc() const;
+    bool approvedAtUtcIsSet() const;
+    void unsetApprovedAtUtc();
 
-    void setCreatedAtUtc(const utility::datetime& value);
+    void setApprovedAtUtc(const utility::datetime& value);
 
     /// <summary>
-    /// Request expiration datetime in UTC timezone
+    /// Data access expiration datetime in UTC timezone.
     /// </summary>
-    utility::datetime getExpiresAtUtc() const;
-    bool expiresAtUtcIsSet() const;
-    void unsetExpiresAtUtc();
+    utility::datetime getDataAccessExpiresAtUtc() const;
+    bool dataAccessExpiresAtUtcIsSet() const;
+    void unsetDataAccessExpiresAtUtc();
 
-    void setExpiresAtUtc(const utility::datetime& value);
+    void setDataAccessExpiresAtUtc(const utility::datetime& value);
+
+    /// <summary>
+    /// Consent revocation datetime in UTC timezone.
+    /// </summary>
+    utility::datetime getRevokedAtUtc() const;
+    bool revokedAtUtcIsSet() const;
+    void unsetRevokedAtUtc();
+
+    void setRevokedAtUtc(const utility::datetime& value);
+
+    /// <summary>
+    /// List of supported collectible types.
+    /// </summary>
+    std::vector<std::shared_ptr<CollectibleTypes>>& getCollectables();
+    bool collectablesIsSet() const;
+    void unsetCollectables();
+
+    void setCollectables(const std::vector<std::shared_ptr<CollectibleTypes>>& value);
+
+    /// <summary>
+    /// Consented identity details.
+    /// </summary>
+    std::shared_ptr<AnyType> getIdentifiers() const;
+    bool identifiersIsSet() const;
+    void unsetIdentifiers();
+
+    void setIdentifiers(const std::shared_ptr<AnyType>& value);
+
+    /// <summary>
+    /// List of consented documents.
+    /// </summary>
+    std::vector<std::shared_ptr<DataConsentDocument>>& getDocuments();
+    bool documentsIsSet() const;
+    void unsetDocuments();
+
+    void setDocuments(const std::vector<std::shared_ptr<DataConsentDocument>>& value);
 
 
 protected:
     utility::string_t m_Id;
     bool m_IdIsSet;
+    utility::string_t m_RequestId;
+    bool m_RequestIdIsSet;
     utility::string_t m_TemplateId;
     bool m_TemplateIdIsSet;
-    utility::string_t m_ConsentId;
-    bool m_ConsentIdIsSet;
     utility::string_t m_Title;
     bool m_TitleIsSet;
     utility::string_t m_Description;
@@ -161,14 +201,22 @@ protected:
     bool m_StatusIsSet;
     utility::string_t m_TransactionId;
     bool m_TransactionIdIsSet;
-    utility::datetime m_CreatedAtUtc;
-    bool m_CreatedAtUtcIsSet;
-    utility::datetime m_ExpiresAtUtc;
-    bool m_ExpiresAtUtcIsSet;
+    utility::datetime m_ApprovedAtUtc;
+    bool m_ApprovedAtUtcIsSet;
+    utility::datetime m_DataAccessExpiresAtUtc;
+    bool m_DataAccessExpiresAtUtcIsSet;
+    utility::datetime m_RevokedAtUtc;
+    bool m_RevokedAtUtcIsSet;
+    std::vector<std::shared_ptr<CollectibleTypes>> m_Collectables;
+    bool m_CollectablesIsSet;
+    std::shared_ptr<AnyType> m_Identifiers;
+    bool m_IdentifiersIsSet;
+    std::vector<std::shared_ptr<DataConsentDocument>> m_Documents;
+    bool m_DocumentsIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_DataConsentRequestDetails_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DataConsent_H_ */

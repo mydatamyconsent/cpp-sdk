@@ -11,32 +11,35 @@
  */
 
 /*
- * IssuedDocument.h
+ * DataConsentDocument.h
  *
- * Issued Document Identifier.
+ * Data Consent document details.
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_IssuedDocument_H_
-#define MYDATAMYCONSENT_MODELS_IssuedDocument_H_
+#ifndef MYDATAMYCONSENT_MODELS_DataConsentDocument_H_
+#define MYDATAMYCONSENT_MODELS_DataConsentDocument_H_
 
 
 #include "ModelBase.h"
 
+#include "model/DataConsentDocumentIssuer.h"
+#include "model/DocumentDigitalSignature.h"
 #include <cpprest/details/basic_types.h>
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
 
 
 /// <summary>
-/// Issued Document Identifier.
+/// Data Consent document details.
 /// </summary>
-class  IssuedDocument
+class  DataConsentDocument
     : public ModelBase
 {
 public:
-    IssuedDocument();
-    virtual ~IssuedDocument();
+    DataConsentDocument();
+    virtual ~DataConsentDocument();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,10 +53,10 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// IssuedDocument members
+    /// DataConsentDocument members
 
     /// <summary>
-    /// Document Id.
+    /// Document id.
     /// </summary>
     utility::string_t getId() const;
     bool idIsSet() const;
@@ -62,7 +65,25 @@ public:
     void setId(const utility::string_t& value);
 
     /// <summary>
-    /// Document Identifier.
+    /// Document name.
+    /// </summary>
+    utility::string_t getName() const;
+    bool nameIsSet() const;
+    void unsetName();
+
+    void setName(const utility::string_t& value);
+
+    /// <summary>
+    /// Document category.
+    /// </summary>
+    utility::string_t getCategory() const;
+    bool categoryIsSet() const;
+    void unsetCategory();
+
+    void setCategory(const utility::string_t& value);
+
+    /// <summary>
+    /// Document identifier.
     /// </summary>
     utility::string_t getIdentifier() const;
     bool identifierIsSet() const;
@@ -71,25 +92,25 @@ public:
     void setIdentifier(const utility::string_t& value);
 
     /// <summary>
-    /// Document type name.
+    /// Document field title.
     /// </summary>
-    utility::string_t getDocumentType() const;
-    bool documentTypeIsSet() const;
-    void unsetDocumentType();
+    utility::string_t getFieldTitle() const;
+    bool fieldTitleIsSet() const;
+    void unsetFieldTitle();
 
-    void setDocumentType(const utility::string_t& value);
+    void setFieldTitle(const utility::string_t& value);
 
     /// <summary>
-    /// User name.
+    /// Document field slug.
     /// </summary>
-    utility::string_t getIssuedTo() const;
-    bool issuedToIsSet() const;
-    void unsetIssuedTo();
+    utility::string_t getFieldSlug() const;
+    bool fieldSlugIsSet() const;
+    void unsetFieldSlug();
 
-    void setIssuedTo(const utility::string_t& value);
+    void setFieldSlug(const utility::string_t& value);
 
     /// <summary>
-    /// Issued datetime in UTC timezone.
+    /// Document issued at datetime in UTC timezone.
     /// </summary>
     utility::datetime getIssuedAtUtc() const;
     bool issuedAtUtcIsSet() const;
@@ -98,7 +119,7 @@ public:
     void setIssuedAtUtc(const utility::datetime& value);
 
     /// <summary>
-    /// Expires datetime in UTC timezone.
+    /// Document expires at datetime in UTC timezone.
     /// </summary>
     utility::datetime getExpiresAtUtc() const;
     bool expiresAtUtcIsSet() const;
@@ -107,34 +128,49 @@ public:
     void setExpiresAtUtc(const utility::datetime& value);
 
     /// <summary>
-    /// Accepted datetime in UTC timezone.
+    /// 
     /// </summary>
-    utility::datetime getAcceptedAtUtc() const;
-    bool acceptedAtUtcIsSet() const;
-    void unsetAcceptedAtUtc();
+    std::shared_ptr<DataConsentDocumentIssuer> getIssuer() const;
+    bool issuerIsSet() const;
+    void unsetIssuer();
 
-    void setAcceptedAtUtc(const utility::datetime& value);
+    void setIssuer(const std::shared_ptr<DataConsentDocumentIssuer>& value);
+
+    /// <summary>
+    /// Digital signatures.
+    /// </summary>
+    std::vector<std::shared_ptr<DocumentDigitalSignature>>& getDigitalSignatures();
+    bool digitalSignaturesIsSet() const;
+    void unsetDigitalSignatures();
+
+    void setDigitalSignatures(const std::vector<std::shared_ptr<DocumentDigitalSignature>>& value);
 
 
 protected:
     utility::string_t m_Id;
     bool m_IdIsSet;
+    utility::string_t m_Name;
+    bool m_NameIsSet;
+    utility::string_t m_Category;
+    bool m_CategoryIsSet;
     utility::string_t m_Identifier;
     bool m_IdentifierIsSet;
-    utility::string_t m_DocumentType;
-    bool m_DocumentTypeIsSet;
-    utility::string_t m_IssuedTo;
-    bool m_IssuedToIsSet;
+    utility::string_t m_FieldTitle;
+    bool m_FieldTitleIsSet;
+    utility::string_t m_FieldSlug;
+    bool m_FieldSlugIsSet;
     utility::datetime m_IssuedAtUtc;
     bool m_IssuedAtUtcIsSet;
     utility::datetime m_ExpiresAtUtc;
     bool m_ExpiresAtUtcIsSet;
-    utility::datetime m_AcceptedAtUtc;
-    bool m_AcceptedAtUtcIsSet;
+    std::shared_ptr<DataConsentDocumentIssuer> m_Issuer;
+    bool m_IssuerIsSet;
+    std::vector<std::shared_ptr<DocumentDigitalSignature>> m_DigitalSignatures;
+    bool m_DigitalSignaturesIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_IssuedDocument_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DataConsentDocument_H_ */

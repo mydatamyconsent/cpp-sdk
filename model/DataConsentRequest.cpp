@@ -26,6 +26,8 @@ DataConsentRequest::DataConsentRequest()
     m_IdIsSet = false;
     m_TemplateId = utility::conversions::to_string_t("");
     m_TemplateIdIsSet = false;
+    m_ConsentId = utility::conversions::to_string_t("");
+    m_ConsentIdIsSet = false;
     m_Title = utility::conversions::to_string_t("");
     m_TitleIsSet = false;
     m_Description = utility::conversions::to_string_t("");
@@ -34,6 +36,7 @@ DataConsentRequest::DataConsentRequest()
     m_PurposeIsSet = false;
     m_DataLifeIsSet = false;
     m_CollectablesIsSet = false;
+    m_ReceiverIsSet = false;
     m_StatusIsSet = false;
     m_CreatedAtUtc = utility::datetime();
     m_CreatedAtUtcIsSet = false;
@@ -71,6 +74,10 @@ web::json::value DataConsentRequest::toJson() const
     {
         val[utility::conversions::to_string_t(U("templateId"))] = ModelBase::toJson(m_TemplateId);
     }
+    if(m_ConsentIdIsSet)
+    {
+        val[utility::conversions::to_string_t(U("consentId"))] = ModelBase::toJson(m_ConsentId);
+    }
     if(m_TitleIsSet)
     {
         val[utility::conversions::to_string_t(U("title"))] = ModelBase::toJson(m_Title);
@@ -90,6 +97,10 @@ web::json::value DataConsentRequest::toJson() const
     if(m_CollectablesIsSet)
     {
         val[utility::conversions::to_string_t(U("collectables"))] = ModelBase::toJson(m_Collectables);
+    }
+    if(m_ReceiverIsSet)
+    {
+        val[utility::conversions::to_string_t(U("receiver"))] = ModelBase::toJson(m_Receiver);
     }
     if(m_StatusIsSet)
     {
@@ -147,6 +158,16 @@ bool DataConsentRequest::fromJson(const web::json::value& val)
             setTemplateId(refVal_templateId);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("consentId"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("consentId")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_consentId;
+            ok &= ModelBase::fromJson(fieldValue, refVal_consentId);
+            setConsentId(refVal_consentId);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("title"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("title")));
@@ -195,6 +216,16 @@ bool DataConsentRequest::fromJson(const web::json::value& val)
             std::vector<std::shared_ptr<CollectibleTypes>> refVal_collectables;
             ok &= ModelBase::fromJson(fieldValue, refVal_collectables);
             setCollectables(refVal_collectables);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("receiver"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("receiver")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<ConsentRequestReceiver> refVal_receiver;
+            ok &= ModelBase::fromJson(fieldValue, refVal_receiver);
+            setReceiver(refVal_receiver);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("status"))))
@@ -285,6 +316,10 @@ void DataConsentRequest::toMultipart(std::shared_ptr<MultipartFormData> multipar
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("templateId")), m_TemplateId));
     }
+    if(m_ConsentIdIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("consentId")), m_ConsentId));
+    }
     if(m_TitleIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("title")), m_Title));
@@ -304,6 +339,10 @@ void DataConsentRequest::toMultipart(std::shared_ptr<MultipartFormData> multipar
     if(m_CollectablesIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("collectables")), m_Collectables));
+    }
+    if(m_ReceiverIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("receiver")), m_Receiver));
     }
     if(m_StatusIsSet)
     {
@@ -356,6 +395,12 @@ bool DataConsentRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("templateId"))), refVal_templateId );
         setTemplateId(refVal_templateId);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("consentId"))))
+    {
+        utility::string_t refVal_consentId;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("consentId"))), refVal_consentId );
+        setConsentId(refVal_consentId);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("title"))))
     {
         utility::string_t refVal_title;
@@ -385,6 +430,12 @@ bool DataConsentRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multip
         std::vector<std::shared_ptr<CollectibleTypes>> refVal_collectables;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("collectables"))), refVal_collectables );
         setCollectables(refVal_collectables);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("receiver"))))
+    {
+        std::shared_ptr<ConsentRequestReceiver> refVal_receiver;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("receiver"))), refVal_receiver );
+        setReceiver(refVal_receiver);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("status"))))
     {
@@ -470,6 +521,26 @@ bool DataConsentRequest::templateIdIsSet() const
 void DataConsentRequest::unsetTemplateId()
 {
     m_TemplateIdIsSet = false;
+}
+utility::string_t DataConsentRequest::getConsentId() const
+{
+    return m_ConsentId;
+}
+
+void DataConsentRequest::setConsentId(const utility::string_t& value)
+{
+    m_ConsentId = value;
+    m_ConsentIdIsSet = true;
+}
+
+bool DataConsentRequest::consentIdIsSet() const
+{
+    return m_ConsentIdIsSet;
+}
+
+void DataConsentRequest::unsetConsentId()
+{
+    m_ConsentIdIsSet = false;
 }
 utility::string_t DataConsentRequest::getTitle() const
 {
@@ -570,6 +641,26 @@ bool DataConsentRequest::collectablesIsSet() const
 void DataConsentRequest::unsetCollectables()
 {
     m_CollectablesIsSet = false;
+}
+std::shared_ptr<ConsentRequestReceiver> DataConsentRequest::getReceiver() const
+{
+    return m_Receiver;
+}
+
+void DataConsentRequest::setReceiver(const std::shared_ptr<ConsentRequestReceiver>& value)
+{
+    m_Receiver = value;
+    m_ReceiverIsSet = true;
+}
+
+bool DataConsentRequest::receiverIsSet() const
+{
+    return m_ReceiverIsSet;
+}
+
+void DataConsentRequest::unsetReceiver()
+{
+    m_ReceiverIsSet = false;
 }
 std::shared_ptr<DataConsentStatus> DataConsentRequest::getStatus() const
 {

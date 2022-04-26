@@ -45,6 +45,16 @@ model/CreateDataConsentRequest.cpp
 model/CreateDataConsentRequest.h
 model/CreateDataProcessingAgreement.cpp
 model/CreateDataProcessingAgreement.h
+model/DataConsent.cpp
+model/DataConsent.h
+model/DataConsentDetails.cpp
+model/DataConsentDetails.h
+model/DataConsentDetailsPaginatedList.cpp
+model/DataConsentDetailsPaginatedList.h
+model/DataConsentDocument.cpp
+model/DataConsentDocument.h
+model/DataConsentDocumentIssuer.cpp
+model/DataConsentDocumentIssuer.h
 model/DataConsentFinancialsDto.cpp
 model/DataConsentFinancialsDto.h
 model/DataConsentRequest.cpp
@@ -69,6 +79,8 @@ model/DataProviderPaginatedList.cpp
 model/DataProviderPaginatedList.h
 model/DocumentCategoryType.cpp
 model/DocumentCategoryType.h
+model/DocumentDigitalSignature.cpp
+model/DocumentDigitalSignature.h
 model/DocumentIssueRequest.cpp
 model/DocumentIssueRequest.h
 model/DocumentIssueRequestDetails.cpp
@@ -105,6 +117,8 @@ model/IndividualDataConsentRequestDetailsPaginatedList.cpp
 model/IndividualDataConsentRequestDetailsPaginatedList.h
 model/IssuedDocument.cpp
 model/IssuedDocument.h
+model/IssuedDocumentDetails.cpp
+model/IssuedDocumentDetails.h
 model/IssuedDocumentPaginatedList.cpp
 model/IssuedDocumentPaginatedList.h
 model/Life.cpp

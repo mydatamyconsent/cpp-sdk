@@ -26,6 +26,7 @@
 #include <cpprest/details/basic_types.h>
 #include <vector>
 #include "model/DataConsentStatus.h"
+#include "model/ConsentRequestReceiver.h"
 #include "model/Life.h"
 
 namespace mydatamyconsent {
@@ -75,6 +76,15 @@ public:
     void setTemplateId(const utility::string_t& value);
 
     /// <summary>
+    /// Data consent id.
+    /// </summary>
+    utility::string_t getConsentId() const;
+    bool consentIdIsSet() const;
+    void unsetConsentId();
+
+    void setConsentId(const utility::string_t& value);
+
+    /// <summary>
     /// Data consent title.
     /// </summary>
     utility::string_t getTitle() const;
@@ -118,6 +128,15 @@ public:
     void unsetCollectables();
 
     void setCollectables(const std::vector<std::shared_ptr<CollectibleTypes>>& value);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<ConsentRequestReceiver> getReceiver() const;
+    bool receiverIsSet() const;
+    void unsetReceiver();
+
+    void setReceiver(const std::shared_ptr<ConsentRequestReceiver>& value);
 
     /// <summary>
     /// 
@@ -188,6 +207,8 @@ protected:
     bool m_IdIsSet;
     utility::string_t m_TemplateId;
     bool m_TemplateIdIsSet;
+    utility::string_t m_ConsentId;
+    bool m_ConsentIdIsSet;
     utility::string_t m_Title;
     bool m_TitleIsSet;
     utility::string_t m_Description;
@@ -198,6 +219,8 @@ protected:
     bool m_DataLifeIsSet;
     std::vector<std::shared_ptr<CollectibleTypes>> m_Collectables;
     bool m_CollectablesIsSet;
+    std::shared_ptr<ConsentRequestReceiver> m_Receiver;
+    bool m_ReceiverIsSet;
     std::shared_ptr<DataConsentStatus> m_Status;
     bool m_StatusIsSet;
     utility::datetime m_CreatedAtUtc;

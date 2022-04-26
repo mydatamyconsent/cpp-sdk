@@ -182,15 +182,6 @@ public:
 
     void setApprovedAtUtc(const utility::datetime& value);
 
-    /// <summary>
-    /// Document type approval status.
-    /// </summary>
-    bool isApproved() const;
-    bool approvedIsSet() const;
-    void unsetApproved();
-
-    void setApproved(bool value);
-
 
 protected:
     utility::string_t m_Id;
@@ -221,8 +212,6 @@ protected:
     bool m_PayableAmountCurrencyIsSet;
     utility::datetime m_ApprovedAtUtc;
     bool m_ApprovedAtUtcIsSet;
-    bool m_Approved;
-    bool m_ApprovedIsSet;
 };
 
 

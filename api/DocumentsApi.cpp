@@ -34,7 +34,7 @@ DocumentsApi::~DocumentsApi()
 {
 }
 
-pplx::task<std::shared_ptr<IssuedDocument>> DocumentsApi::getIssuedDocumentById(utility::string_t documentId) const
+pplx::task<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> DocumentsApi::getIssuedDocumentById(utility::string_t documentId) const
 {
 
 
@@ -136,7 +136,7 @@ pplx::task<std::shared_ptr<IssuedDocument>> DocumentsApi::getIssuedDocumentById(
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<IssuedDocument> localVarResult(new IssuedDocument());
+        std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails> localVarResult(nullptr);
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {

@@ -23,6 +23,9 @@
 
 #include "ApiClient.h"
 
+#include "model/DataConsent.h"
+#include "model/DataConsentDetailsPaginatedList.h"
+#include "model/DataConsentDocument.h"
 #include "model/DataConsentFinancialsDto.h"
 #include "model/DataConsentStatus.h"
 #include "model/FinancialAccount.h"
@@ -56,7 +59,7 @@ public:
     /// </remarks>
     /// <param name="consentId">Data consent id.</param>
     /// <param name="documentId">Consented document Id.</param>
-    pplx::task<std::shared_ptr<Object>> downloadConsentedDocumentAnalysis(
+    pplx::task<void> downloadConsentedDocumentAnalysis(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;
@@ -68,7 +71,7 @@ public:
     /// </remarks>
     /// <param name="consentId">Individual data consent id.</param>
     /// <param name="documentId">Consented document id.</param>
-    pplx::task<std::shared_ptr<Object>> downloadIndividualConsentedDocumentById(
+    pplx::task<void> downloadIndividualConsentedDocumentById(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;
@@ -80,7 +83,7 @@ public:
     /// </remarks>
     /// <param name="consentId">Organization data consent id.</param>
     /// <param name="documentId">Organization consented document Id.</param>
-    pplx::task<std::shared_ptr<Object>> downloadOrganizationConsentedDocumentById(
+    pplx::task<void> downloadOrganizationConsentedDocumentById(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;
@@ -124,7 +127,7 @@ public:
     /// </remarks>
     /// <param name="consentId">Individual data consent id.</param>
     /// <param name="documentId">Consented document id.</param>
-    pplx::task<std::shared_ptr<Object>> getConsentedDocumentById(
+    pplx::task<std::shared_ptr<DataConsentDocument>> getConsentedDocumentById(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;
@@ -180,12 +183,12 @@ public:
     /// <remarks>
     /// GetIndividualDataConsents
     /// </remarks>
-    /// <param name="status">Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional, default to new DataConsentStatus())</param>
+    /// <param name="status">Data consent status. (optional, default to new DataConsentStatus())</param>
     /// <param name="fromDateTime">From datetime in UTC timezone. (optional, default to utility::datetime())</param>
     /// <param name="toDateTime">To datetime in UTC timezone. (optional, default to utility::datetime())</param>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<Object>> getConsents(
+    pplx::task<std::shared_ptr<DataConsentDetailsPaginatedList>> getConsents(
         boost::optional<std::shared_ptr<DataConsentStatus>> status,
         boost::optional<utility::datetime> fromDateTime,
         boost::optional<utility::datetime> toDateTime,
@@ -199,7 +202,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="consentId">Individual data consent id.</param>
-    pplx::task<std::shared_ptr<Object>> getIndividualConsentedDocuments(
+    pplx::task<std::vector<std::shared_ptr<DataConsentDocument>>> getIndividualConsentedDocuments(
         utility::string_t consentId
     ) const;
     /// <summary>
@@ -209,7 +212,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="consentId">Individual data consent id.</param>
-    pplx::task<std::shared_ptr<Object>> getIndividualDataConsentById(
+    pplx::task<std::shared_ptr<DataConsent>> getIndividualDataConsentById(
         utility::string_t consentId
     ) const;
     /// <summary>
@@ -242,7 +245,7 @@ public:
     /// </remarks>
     /// <param name="consentId">Organization data consent id.</param>
     /// <param name="documentId">Organization consented document Id.</param>
-    pplx::task<std::shared_ptr<Object>> getOrganizationConsentedDocumentById(
+    pplx::task<std::shared_ptr<DataConsentDocument>> getOrganizationConsentedDocumentById(
         utility::string_t consentId,
         utility::string_t documentId
     ) const;
@@ -253,7 +256,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="consentId">Organization data consent id.</param>
-    pplx::task<std::shared_ptr<Object>> getOrganizationConsentedDocuments(
+    pplx::task<std::vector<std::shared_ptr<DataConsentDocument>>> getOrganizationConsentedDocuments(
         utility::string_t consentId
     ) const;
     /// <summary>
@@ -263,7 +266,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="consentId">Organization data consent id.</param>
-    pplx::task<std::shared_ptr<Object>> getOrganizationDataConsentById(
+    pplx::task<std::shared_ptr<DataConsent>> getOrganizationDataConsentById(
         utility::string_t consentId
     ) const;
     /// <summary>
@@ -272,12 +275,12 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="status">Data consent status MyDataMyConsent.Domain.Entities.ConsentAggregate.Enums.DataConsentStatus. (optional, default to new DataConsentStatus())</param>
+    /// <param name="status">Data consent status. (optional, default to new DataConsentStatus())</param>
     /// <param name="fromDateTime">From datetime in UTC timezone. (optional, default to utility::datetime())</param>
     /// <param name="toDateTime">To datetime in UTC timezone. (optional, default to utility::datetime())</param>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
-    pplx::task<std::shared_ptr<Object>> getOrganizationDataConsents(
+    pplx::task<std::shared_ptr<DataConsentDetailsPaginatedList>> getOrganizationDataConsents(
         boost::optional<std::shared_ptr<DataConsentStatus>> status,
         boost::optional<utility::datetime> fromDateTime,
         boost::optional<utility::datetime> toDateTime,

@@ -47,8 +47,6 @@ DocumentType::DocumentType()
     m_PayableAmountCurrencyIsSet = false;
     m_ApprovedAtUtc = utility::datetime();
     m_ApprovedAtUtcIsSet = false;
-    m_Approved = false;
-    m_ApprovedIsSet = false;
 }
 
 DocumentType::~DocumentType()
@@ -120,10 +118,6 @@ web::json::value DocumentType::toJson() const
     if(m_ApprovedAtUtcIsSet)
     {
         val[utility::conversions::to_string_t(U("approvedAtUtc"))] = ModelBase::toJson(m_ApprovedAtUtc);
-    }
-    if(m_ApprovedIsSet)
-    {
-        val[utility::conversions::to_string_t(U("approved"))] = ModelBase::toJson(m_Approved);
     }
 
     return val;
@@ -273,16 +267,6 @@ bool DocumentType::fromJson(const web::json::value& val)
             setApprovedAtUtc(refVal_approvedAtUtc);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("approved"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("approved")));
-        if(!fieldValue.is_null())
-        {
-            bool refVal_approved;
-            ok &= ModelBase::fromJson(fieldValue, refVal_approved);
-            setApproved(refVal_approved);
-        }
-    }
     return ok;
 }
 
@@ -348,10 +332,6 @@ void DocumentType::toMultipart(std::shared_ptr<MultipartFormData> multipart, con
     if(m_ApprovedAtUtcIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("approvedAtUtc")), m_ApprovedAtUtc));
-    }
-    if(m_ApprovedIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("approved")), m_Approved));
     }
 }
 
@@ -447,12 +427,6 @@ bool DocumentType::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, c
         utility::datetime refVal_approvedAtUtc;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("approvedAtUtc"))), refVal_approvedAtUtc );
         setApprovedAtUtc(refVal_approvedAtUtc);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("approved"))))
-    {
-        bool refVal_approved;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("approved"))), refVal_approved );
-        setApproved(refVal_approved);
     }
     return ok;
 }
@@ -736,26 +710,6 @@ bool DocumentType::approvedAtUtcIsSet() const
 void DocumentType::unsetApprovedAtUtc()
 {
     m_ApprovedAtUtcIsSet = false;
-}
-bool DocumentType::isApproved() const
-{
-    return m_Approved;
-}
-
-void DocumentType::setApproved(bool value)
-{
-    m_Approved = value;
-    m_ApprovedIsSet = true;
-}
-
-bool DocumentType::approvedIsSet() const
-{
-    return m_ApprovedIsSet;
-}
-
-void DocumentType::unsetApproved()
-{
-    m_ApprovedIsSet = false;
 }
 }
 }

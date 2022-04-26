@@ -11,19 +11,19 @@
  */
 
 /*
- * IssuedDocumentPaginatedList.h
+ * DataConsentDetailsPaginatedList.h
  *
  * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_IssuedDocumentPaginatedList_H_
-#define MYDATAMYCONSENT_MODELS_IssuedDocumentPaginatedList_H_
+#ifndef MYDATAMYCONSENT_MODELS_DataConsentDetailsPaginatedList_H_
+#define MYDATAMYCONSENT_MODELS_DataConsentDetailsPaginatedList_H_
 
 
 #include "ModelBase.h"
 
+#include "model/DataConsentDetails.h"
 #include <vector>
-#include "model/OneOfIssuedDocumentIssuedDocumentDetails.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -32,12 +32,12 @@ namespace models {
 /// <summary>
 /// 
 /// </summary>
-class  IssuedDocumentPaginatedList
+class  DataConsentDetailsPaginatedList
     : public ModelBase
 {
 public:
-    IssuedDocumentPaginatedList();
-    virtual ~IssuedDocumentPaginatedList();
+    DataConsentDetailsPaginatedList();
+    virtual ~DataConsentDetailsPaginatedList();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -51,7 +51,7 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// IssuedDocumentPaginatedList members
+    /// DataConsentDetailsPaginatedList members
 
     /// <summary>
     /// 
@@ -92,11 +92,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>>& getItems();
+    std::vector<std::shared_ptr<DataConsentDetails>>& getItems();
     bool itemsIsSet() const;
     void unsetItems();
 
-    void setItems(const std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>>& value);
+    void setItems(const std::vector<std::shared_ptr<DataConsentDetails>>& value);
 
 
 protected:
@@ -108,7 +108,7 @@ protected:
     bool m_TotalPagesIsSet;
     int64_t m_TotalItems;
     bool m_TotalItemsIsSet;
-    std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> m_Items;
+    std::vector<std::shared_ptr<DataConsentDetails>> m_Items;
     bool m_ItemsIsSet;
 };
 
@@ -116,4 +116,4 @@ protected:
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_IssuedDocumentPaginatedList_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DataConsentDetailsPaginatedList_H_ */

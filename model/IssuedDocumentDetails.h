@@ -11,32 +11,37 @@
  */
 
 /*
- * IssuedDocument.h
+ * IssuedDocumentDetails.h
  *
- * Issued Document Identifier.
+ * 
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_IssuedDocument_H_
-#define MYDATAMYCONSENT_MODELS_IssuedDocument_H_
+#ifndef MYDATAMYCONSENT_MODELS_IssuedDocumentDetails_H_
+#define MYDATAMYCONSENT_MODELS_IssuedDocumentDetails_H_
 
 
 #include "ModelBase.h"
 
+#include "model/DocumentDigitalSignature.h"
+#include "model/IssuedDocument.h"
 #include <cpprest/details/basic_types.h>
+#include "model/DocumentReceiver.h"
+#include <map>
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
 
 
 /// <summary>
-/// Issued Document Identifier.
+/// 
 /// </summary>
-class  IssuedDocument
+class  IssuedDocumentDetails
     : public ModelBase
 {
 public:
-    IssuedDocument();
-    virtual ~IssuedDocument();
+    IssuedDocumentDetails();
+    virtual ~IssuedDocumentDetails();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -50,7 +55,34 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// IssuedDocument members
+    /// IssuedDocumentDetails members
+
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<DocumentReceiver> getReceiver() const;
+    bool receiverIsSet() const;
+    void unsetReceiver();
+
+    void setReceiver(const std::shared_ptr<DocumentReceiver>& value);
+
+    /// <summary>
+    /// Metadata.
+    /// </summary>
+    std::map<utility::string_t, utility::string_t>& getMetadata();
+    bool metadataIsSet() const;
+    void unsetMetadata();
+
+    void setMetadata(const std::map<utility::string_t, utility::string_t>& value);
+
+    /// <summary>
+    /// Digital signatures.
+    /// </summary>
+    std::vector<std::shared_ptr<DocumentDigitalSignature>>& getDigitalSignatures();
+    bool digitalSignaturesIsSet() const;
+    void unsetDigitalSignatures();
+
+    void setDigitalSignatures(const std::vector<std::shared_ptr<DocumentDigitalSignature>>& value);
 
     /// <summary>
     /// Document Id.
@@ -117,6 +149,12 @@ public:
 
 
 protected:
+    std::shared_ptr<DocumentReceiver> m_Receiver;
+    bool m_ReceiverIsSet;
+    std::map<utility::string_t, utility::string_t> m_Metadata;
+    bool m_MetadataIsSet;
+    std::vector<std::shared_ptr<DocumentDigitalSignature>> m_DigitalSignatures;
+    bool m_DigitalSignaturesIsSet;
     utility::string_t m_Id;
     bool m_IdIsSet;
     utility::string_t m_Identifier;
@@ -137,4 +175,4 @@ protected:
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_IssuedDocument_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_IssuedDocumentDetails_H_ */

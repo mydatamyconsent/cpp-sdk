@@ -12,7 +12,7 @@
 
 
 
-#include "IssuedDocumentPaginatedList.h"
+#include "DataConsentDetailsPaginatedList.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -20,7 +20,7 @@ namespace models {
 
 
 
-IssuedDocumentPaginatedList::IssuedDocumentPaginatedList()
+DataConsentDetailsPaginatedList::DataConsentDetailsPaginatedList()
 {
     m_PageIndex = 0;
     m_PageIndexIsSet = false;
@@ -33,16 +33,16 @@ IssuedDocumentPaginatedList::IssuedDocumentPaginatedList()
     m_ItemsIsSet = false;
 }
 
-IssuedDocumentPaginatedList::~IssuedDocumentPaginatedList()
+DataConsentDetailsPaginatedList::~DataConsentDetailsPaginatedList()
 {
 }
 
-void IssuedDocumentPaginatedList::validate()
+void DataConsentDetailsPaginatedList::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value IssuedDocumentPaginatedList::toJson() const
+web::json::value DataConsentDetailsPaginatedList::toJson() const
 {
 
     web::json::value val = web::json::value::object();
@@ -71,7 +71,7 @@ web::json::value IssuedDocumentPaginatedList::toJson() const
     return val;
 }
 
-bool IssuedDocumentPaginatedList::fromJson(const web::json::value& val)
+bool DataConsentDetailsPaginatedList::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
@@ -120,7 +120,7 @@ bool IssuedDocumentPaginatedList::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("items")));
         if(!fieldValue.is_null())
         {
-            std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> refVal_items;
+            std::vector<std::shared_ptr<DataConsentDetails>> refVal_items;
             ok &= ModelBase::fromJson(fieldValue, refVal_items);
             setItems(refVal_items);
         }
@@ -128,7 +128,7 @@ bool IssuedDocumentPaginatedList::fromJson(const web::json::value& val)
     return ok;
 }
 
-void IssuedDocumentPaginatedList::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void DataConsentDetailsPaginatedList::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
@@ -157,7 +157,7 @@ void IssuedDocumentPaginatedList::toMultipart(std::shared_ptr<MultipartFormData>
     }
 }
 
-bool IssuedDocumentPaginatedList::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool DataConsentDetailsPaginatedList::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -192,110 +192,110 @@ bool IssuedDocumentPaginatedList::fromMultiPart(std::shared_ptr<MultipartFormDat
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("items"))))
     {
-        std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> refVal_items;
+        std::vector<std::shared_ptr<DataConsentDetails>> refVal_items;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("items"))), refVal_items );
         setItems(refVal_items);
     }
     return ok;
 }
 
-int32_t IssuedDocumentPaginatedList::getPageIndex() const
+int32_t DataConsentDetailsPaginatedList::getPageIndex() const
 {
     return m_PageIndex;
 }
 
-void IssuedDocumentPaginatedList::setPageIndex(int32_t value)
+void DataConsentDetailsPaginatedList::setPageIndex(int32_t value)
 {
     m_PageIndex = value;
     m_PageIndexIsSet = true;
 }
 
-bool IssuedDocumentPaginatedList::pageIndexIsSet() const
+bool DataConsentDetailsPaginatedList::pageIndexIsSet() const
 {
     return m_PageIndexIsSet;
 }
 
-void IssuedDocumentPaginatedList::unsetPageIndex()
+void DataConsentDetailsPaginatedList::unsetPageIndex()
 {
     m_PageIndexIsSet = false;
 }
-int32_t IssuedDocumentPaginatedList::getPageSize() const
+int32_t DataConsentDetailsPaginatedList::getPageSize() const
 {
     return m_PageSize;
 }
 
-void IssuedDocumentPaginatedList::setPageSize(int32_t value)
+void DataConsentDetailsPaginatedList::setPageSize(int32_t value)
 {
     m_PageSize = value;
     m_PageSizeIsSet = true;
 }
 
-bool IssuedDocumentPaginatedList::pageSizeIsSet() const
+bool DataConsentDetailsPaginatedList::pageSizeIsSet() const
 {
     return m_PageSizeIsSet;
 }
 
-void IssuedDocumentPaginatedList::unsetPageSize()
+void DataConsentDetailsPaginatedList::unsetPageSize()
 {
     m_PageSizeIsSet = false;
 }
-int32_t IssuedDocumentPaginatedList::getTotalPages() const
+int32_t DataConsentDetailsPaginatedList::getTotalPages() const
 {
     return m_TotalPages;
 }
 
-void IssuedDocumentPaginatedList::setTotalPages(int32_t value)
+void DataConsentDetailsPaginatedList::setTotalPages(int32_t value)
 {
     m_TotalPages = value;
     m_TotalPagesIsSet = true;
 }
 
-bool IssuedDocumentPaginatedList::totalPagesIsSet() const
+bool DataConsentDetailsPaginatedList::totalPagesIsSet() const
 {
     return m_TotalPagesIsSet;
 }
 
-void IssuedDocumentPaginatedList::unsetTotalPages()
+void DataConsentDetailsPaginatedList::unsetTotalPages()
 {
     m_TotalPagesIsSet = false;
 }
-int64_t IssuedDocumentPaginatedList::getTotalItems() const
+int64_t DataConsentDetailsPaginatedList::getTotalItems() const
 {
     return m_TotalItems;
 }
 
-void IssuedDocumentPaginatedList::setTotalItems(int64_t value)
+void DataConsentDetailsPaginatedList::setTotalItems(int64_t value)
 {
     m_TotalItems = value;
     m_TotalItemsIsSet = true;
 }
 
-bool IssuedDocumentPaginatedList::totalItemsIsSet() const
+bool DataConsentDetailsPaginatedList::totalItemsIsSet() const
 {
     return m_TotalItemsIsSet;
 }
 
-void IssuedDocumentPaginatedList::unsetTotalItems()
+void DataConsentDetailsPaginatedList::unsetTotalItems()
 {
     m_TotalItemsIsSet = false;
 }
-std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>>& IssuedDocumentPaginatedList::getItems()
+std::vector<std::shared_ptr<DataConsentDetails>>& DataConsentDetailsPaginatedList::getItems()
 {
     return m_Items;
 }
 
-void IssuedDocumentPaginatedList::setItems(const std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>>& value)
+void DataConsentDetailsPaginatedList::setItems(const std::vector<std::shared_ptr<DataConsentDetails>>& value)
 {
     m_Items = value;
     m_ItemsIsSet = true;
 }
 
-bool IssuedDocumentPaginatedList::itemsIsSet() const
+bool DataConsentDetailsPaginatedList::itemsIsSet() const
 {
     return m_ItemsIsSet;
 }
 
-void IssuedDocumentPaginatedList::unsetItems()
+void DataConsentDetailsPaginatedList::unsetItems()
 {
     m_ItemsIsSet = false;
 }

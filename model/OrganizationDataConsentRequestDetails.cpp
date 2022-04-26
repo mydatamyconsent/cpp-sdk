@@ -28,6 +28,8 @@ OrganizationDataConsentRequestDetails::OrganizationDataConsentRequestDetails()
     m_IdIsSet = false;
     m_TemplateId = utility::conversions::to_string_t("");
     m_TemplateIdIsSet = false;
+    m_ConsentId = utility::conversions::to_string_t("");
+    m_ConsentIdIsSet = false;
     m_Title = utility::conversions::to_string_t("");
     m_TitleIsSet = false;
     m_Description = utility::conversions::to_string_t("");
@@ -39,6 +41,8 @@ OrganizationDataConsentRequestDetails::OrganizationDataConsentRequestDetails()
     m_TransactionIdIsSet = false;
     m_CreatedAtUtc = utility::datetime();
     m_CreatedAtUtcIsSet = false;
+    m_ExpiresAtUtc = utility::datetime();
+    m_ExpiresAtUtcIsSet = false;
 }
 
 OrganizationDataConsentRequestDetails::~OrganizationDataConsentRequestDetails()
@@ -67,6 +71,10 @@ web::json::value OrganizationDataConsentRequestDetails::toJson() const
     {
         val[utility::conversions::to_string_t(U("templateId"))] = ModelBase::toJson(m_TemplateId);
     }
+    if(m_ConsentIdIsSet)
+    {
+        val[utility::conversions::to_string_t(U("consentId"))] = ModelBase::toJson(m_ConsentId);
+    }
     if(m_TitleIsSet)
     {
         val[utility::conversions::to_string_t(U("title"))] = ModelBase::toJson(m_Title);
@@ -90,6 +98,10 @@ web::json::value OrganizationDataConsentRequestDetails::toJson() const
     if(m_CreatedAtUtcIsSet)
     {
         val[utility::conversions::to_string_t(U("createdAtUtc"))] = ModelBase::toJson(m_CreatedAtUtc);
+    }
+    if(m_ExpiresAtUtcIsSet)
+    {
+        val[utility::conversions::to_string_t(U("expiresAtUtc"))] = ModelBase::toJson(m_ExpiresAtUtc);
     }
 
     return val;
@@ -127,6 +139,16 @@ bool OrganizationDataConsentRequestDetails::fromJson(const web::json::value& val
             utility::string_t refVal_templateId;
             ok &= ModelBase::fromJson(fieldValue, refVal_templateId);
             setTemplateId(refVal_templateId);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("consentId"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("consentId")));
+        if(!fieldValue.is_null())
+        {
+            utility::string_t refVal_consentId;
+            ok &= ModelBase::fromJson(fieldValue, refVal_consentId);
+            setConsentId(refVal_consentId);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("title"))))
@@ -189,6 +211,16 @@ bool OrganizationDataConsentRequestDetails::fromJson(const web::json::value& val
             setCreatedAtUtc(refVal_createdAtUtc);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("expiresAtUtc"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("expiresAtUtc")));
+        if(!fieldValue.is_null())
+        {
+            utility::datetime refVal_expiresAtUtc;
+            ok &= ModelBase::fromJson(fieldValue, refVal_expiresAtUtc);
+            setExpiresAtUtc(refVal_expiresAtUtc);
+        }
+    }
     return ok;
 }
 
@@ -210,6 +242,10 @@ void OrganizationDataConsentRequestDetails::toMultipart(std::shared_ptr<Multipar
     if(m_TemplateIdIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("templateId")), m_TemplateId));
+    }
+    if(m_ConsentIdIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("consentId")), m_ConsentId));
     }
     if(m_TitleIsSet)
     {
@@ -234,6 +270,10 @@ void OrganizationDataConsentRequestDetails::toMultipart(std::shared_ptr<Multipar
     if(m_CreatedAtUtcIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("createdAtUtc")), m_CreatedAtUtc));
+    }
+    if(m_ExpiresAtUtcIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("expiresAtUtc")), m_ExpiresAtUtc));
     }
 }
 
@@ -263,6 +303,12 @@ bool OrganizationDataConsentRequestDetails::fromMultiPart(std::shared_ptr<Multip
         utility::string_t refVal_templateId;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("templateId"))), refVal_templateId );
         setTemplateId(refVal_templateId);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("consentId"))))
+    {
+        utility::string_t refVal_consentId;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("consentId"))), refVal_consentId );
+        setConsentId(refVal_consentId);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("title"))))
     {
@@ -299,6 +345,12 @@ bool OrganizationDataConsentRequestDetails::fromMultiPart(std::shared_ptr<Multip
         utility::datetime refVal_createdAtUtc;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("createdAtUtc"))), refVal_createdAtUtc );
         setCreatedAtUtc(refVal_createdAtUtc);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("expiresAtUtc"))))
+    {
+        utility::datetime refVal_expiresAtUtc;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("expiresAtUtc"))), refVal_expiresAtUtc );
+        setExpiresAtUtc(refVal_expiresAtUtc);
     }
     return ok;
 }
@@ -362,6 +414,26 @@ bool OrganizationDataConsentRequestDetails::templateIdIsSet() const
 void OrganizationDataConsentRequestDetails::unsetTemplateId()
 {
     m_TemplateIdIsSet = false;
+}
+utility::string_t OrganizationDataConsentRequestDetails::getConsentId() const
+{
+    return m_ConsentId;
+}
+
+void OrganizationDataConsentRequestDetails::setConsentId(const utility::string_t& value)
+{
+    m_ConsentId = value;
+    m_ConsentIdIsSet = true;
+}
+
+bool OrganizationDataConsentRequestDetails::consentIdIsSet() const
+{
+    return m_ConsentIdIsSet;
+}
+
+void OrganizationDataConsentRequestDetails::unsetConsentId()
+{
+    m_ConsentIdIsSet = false;
 }
 utility::string_t OrganizationDataConsentRequestDetails::getTitle() const
 {
@@ -482,6 +554,26 @@ bool OrganizationDataConsentRequestDetails::createdAtUtcIsSet() const
 void OrganizationDataConsentRequestDetails::unsetCreatedAtUtc()
 {
     m_CreatedAtUtcIsSet = false;
+}
+utility::datetime OrganizationDataConsentRequestDetails::getExpiresAtUtc() const
+{
+    return m_ExpiresAtUtc;
+}
+
+void OrganizationDataConsentRequestDetails::setExpiresAtUtc(const utility::datetime& value)
+{
+    m_ExpiresAtUtc = value;
+    m_ExpiresAtUtcIsSet = true;
+}
+
+bool OrganizationDataConsentRequestDetails::expiresAtUtcIsSet() const
+{
+    return m_ExpiresAtUtcIsSet;
+}
+
+void OrganizationDataConsentRequestDetails::unsetExpiresAtUtc()
+{
+    m_ExpiresAtUtcIsSet = false;
 }
 }
 }

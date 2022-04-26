@@ -11,35 +11,32 @@
  */
 
 /*
- * ConsentRequestReceiver.h
+ * DataConsentDocumentIssuer.h
  *
- * 
+ * Data Consent document issuer details.
  */
 
-#ifndef MYDATAMYCONSENT_MODELS_ConsentRequestReceiver_H_
-#define MYDATAMYCONSENT_MODELS_ConsentRequestReceiver_H_
+#ifndef MYDATAMYCONSENT_MODELS_DataConsentDocumentIssuer_H_
+#define MYDATAMYCONSENT_MODELS_DataConsentDocumentIssuer_H_
 
 
 #include "ModelBase.h"
 
-#include "model/IdentificationStrategy.h"
-#include "model/StringStringKeyValuePair.h"
 #include <cpprest/details/basic_types.h>
-#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
 
 
 /// <summary>
-/// 
+/// Data Consent document issuer details.
 /// </summary>
-class  ConsentRequestReceiver
+class  DataConsentDocumentIssuer
     : public ModelBase
 {
 public:
-    ConsentRequestReceiver();
-    virtual ~ConsentRequestReceiver();
+    DataConsentDocumentIssuer();
+    virtual ~DataConsentDocumentIssuer();
 
     /////////////////////////////////////////////
     /// ModelBase overrides
@@ -53,47 +50,36 @@ public:
     bool fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& namePrefix) override;
 
     /////////////////////////////////////////////
-    /// ConsentRequestReceiver members
+    /// DataConsentDocumentIssuer members
 
     /// <summary>
-    /// 
+    /// Document issuer id.
     /// </summary>
-    utility::string_t getCountryIso2Code() const;
-    bool countryIso2CodeIsSet() const;
-    void unsetCountryIso2Code();
+    utility::string_t getId() const;
+    bool idIsSet() const;
+    void unsetId();
 
-    void setCountryIso2Code(const utility::string_t& value);
+    void setId(const utility::string_t& value);
 
     /// <summary>
-    /// 
+    /// Document issuer name.
     /// </summary>
-    std::vector<std::shared_ptr<StringStringKeyValuePair>>& getIdentifiers();
-    bool identifiersIsSet() const;
-    void unsetIdentifiers();
+    utility::string_t getName() const;
+    bool nameIsSet() const;
+    void unsetName();
 
-    void setIdentifiers(const std::vector<std::shared_ptr<StringStringKeyValuePair>>& value);
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<IdentificationStrategy> getIdentificationStrategy() const;
-    bool identificationStrategyIsSet() const;
-    void unsetIdentificationStrategy();
-
-    void setIdentificationStrategy(const std::shared_ptr<IdentificationStrategy>& value);
+    void setName(const utility::string_t& value);
 
 
 protected:
-    utility::string_t m_CountryIso2Code;
-    bool m_CountryIso2CodeIsSet;
-    std::vector<std::shared_ptr<StringStringKeyValuePair>> m_Identifiers;
-    bool m_IdentifiersIsSet;
-    std::shared_ptr<IdentificationStrategy> m_IdentificationStrategy;
-    bool m_IdentificationStrategyIsSet;
+    utility::string_t m_Id;
+    bool m_IdIsSet;
+    utility::string_t m_Name;
+    bool m_NameIsSet;
 };
 
 
 }
 }
 
-#endif /* MYDATAMYCONSENT_MODELS_ConsentRequestReceiver_H_ */
+#endif /* MYDATAMYCONSENT_MODELS_DataConsentDocumentIssuer_H_ */

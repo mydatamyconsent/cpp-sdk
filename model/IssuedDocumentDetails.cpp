@@ -12,7 +12,7 @@
 
 
 
-#include "IssuedDocument.h"
+#include "IssuedDocumentDetails.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -20,8 +20,11 @@ namespace models {
 
 
 
-IssuedDocument::IssuedDocument()
+IssuedDocumentDetails::IssuedDocumentDetails()
 {
+    m_ReceiverIsSet = false;
+    m_MetadataIsSet = false;
+    m_DigitalSignaturesIsSet = false;
     m_Id = utility::conversions::to_string_t("");
     m_IdIsSet = false;
     m_Identifier = utility::conversions::to_string_t("");
@@ -38,20 +41,32 @@ IssuedDocument::IssuedDocument()
     m_AcceptedAtUtcIsSet = false;
 }
 
-IssuedDocument::~IssuedDocument()
+IssuedDocumentDetails::~IssuedDocumentDetails()
 {
 }
 
-void IssuedDocument::validate()
+void IssuedDocumentDetails::validate()
 {
     // TODO: implement validation
 }
 
-web::json::value IssuedDocument::toJson() const
+web::json::value IssuedDocumentDetails::toJson() const
 {
 
     web::json::value val = web::json::value::object();
     
+    if(m_ReceiverIsSet)
+    {
+        val[utility::conversions::to_string_t(U("receiver"))] = ModelBase::toJson(m_Receiver);
+    }
+    if(m_MetadataIsSet)
+    {
+        val[utility::conversions::to_string_t(U("metadata"))] = ModelBase::toJson(m_Metadata);
+    }
+    if(m_DigitalSignaturesIsSet)
+    {
+        val[utility::conversions::to_string_t(U("digitalSignatures"))] = ModelBase::toJson(m_DigitalSignatures);
+    }
     if(m_IdIsSet)
     {
         val[utility::conversions::to_string_t(U("id"))] = ModelBase::toJson(m_Id);
@@ -84,10 +99,40 @@ web::json::value IssuedDocument::toJson() const
     return val;
 }
 
-bool IssuedDocument::fromJson(const web::json::value& val)
+bool IssuedDocumentDetails::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
+    if(val.has_field(utility::conversions::to_string_t(U("receiver"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("receiver")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<DocumentReceiver> refVal_receiver;
+            ok &= ModelBase::fromJson(fieldValue, refVal_receiver);
+            setReceiver(refVal_receiver);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("metadata"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("metadata")));
+        if(!fieldValue.is_null())
+        {
+            std::map<utility::string_t, utility::string_t> refVal_metadata;
+            ok &= ModelBase::fromJson(fieldValue, refVal_metadata);
+            setMetadata(refVal_metadata);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("digitalSignatures"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("digitalSignatures")));
+        if(!fieldValue.is_null())
+        {
+            std::vector<std::shared_ptr<DocumentDigitalSignature>> refVal_digitalSignatures;
+            ok &= ModelBase::fromJson(fieldValue, refVal_digitalSignatures);
+            setDigitalSignatures(refVal_digitalSignatures);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("id"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("id")));
@@ -161,12 +206,24 @@ bool IssuedDocument::fromJson(const web::json::value& val)
     return ok;
 }
 
-void IssuedDocument::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
+void IssuedDocumentDetails::toMultipart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix) const
 {
     utility::string_t namePrefix = prefix;
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
     {
         namePrefix += utility::conversions::to_string_t(U("."));
+    }
+    if(m_ReceiverIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("receiver")), m_Receiver));
+    }
+    if(m_MetadataIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("metadata")), m_Metadata));
+    }
+    if(m_DigitalSignaturesIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("digitalSignatures")), m_DigitalSignatures));
     }
     if(m_IdIsSet)
     {
@@ -198,7 +255,7 @@ void IssuedDocument::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     }
 }
 
-bool IssuedDocument::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
+bool IssuedDocumentDetails::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
 {
     bool ok = true;
     utility::string_t namePrefix = prefix;
@@ -207,6 +264,24 @@ bool IssuedDocument::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
+    if(multipart->hasContent(utility::conversions::to_string_t(U("receiver"))))
+    {
+        std::shared_ptr<DocumentReceiver> refVal_receiver;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("receiver"))), refVal_receiver );
+        setReceiver(refVal_receiver);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("metadata"))))
+    {
+        std::map<utility::string_t, utility::string_t> refVal_metadata;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("metadata"))), refVal_metadata );
+        setMetadata(refVal_metadata);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("digitalSignatures"))))
+    {
+        std::vector<std::shared_ptr<DocumentDigitalSignature>> refVal_digitalSignatures;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("digitalSignatures"))), refVal_digitalSignatures );
+        setDigitalSignatures(refVal_digitalSignatures);
+    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("id"))))
     {
         utility::string_t refVal_id;
@@ -252,143 +327,203 @@ bool IssuedDocument::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
     return ok;
 }
 
-utility::string_t IssuedDocument::getId() const
+std::shared_ptr<DocumentReceiver> IssuedDocumentDetails::getReceiver() const
+{
+    return m_Receiver;
+}
+
+void IssuedDocumentDetails::setReceiver(const std::shared_ptr<DocumentReceiver>& value)
+{
+    m_Receiver = value;
+    m_ReceiverIsSet = true;
+}
+
+bool IssuedDocumentDetails::receiverIsSet() const
+{
+    return m_ReceiverIsSet;
+}
+
+void IssuedDocumentDetails::unsetReceiver()
+{
+    m_ReceiverIsSet = false;
+}
+std::map<utility::string_t, utility::string_t>& IssuedDocumentDetails::getMetadata()
+{
+    return m_Metadata;
+}
+
+void IssuedDocumentDetails::setMetadata(const std::map<utility::string_t, utility::string_t>& value)
+{
+    m_Metadata = value;
+    m_MetadataIsSet = true;
+}
+
+bool IssuedDocumentDetails::metadataIsSet() const
+{
+    return m_MetadataIsSet;
+}
+
+void IssuedDocumentDetails::unsetMetadata()
+{
+    m_MetadataIsSet = false;
+}
+std::vector<std::shared_ptr<DocumentDigitalSignature>>& IssuedDocumentDetails::getDigitalSignatures()
+{
+    return m_DigitalSignatures;
+}
+
+void IssuedDocumentDetails::setDigitalSignatures(const std::vector<std::shared_ptr<DocumentDigitalSignature>>& value)
+{
+    m_DigitalSignatures = value;
+    m_DigitalSignaturesIsSet = true;
+}
+
+bool IssuedDocumentDetails::digitalSignaturesIsSet() const
+{
+    return m_DigitalSignaturesIsSet;
+}
+
+void IssuedDocumentDetails::unsetDigitalSignatures()
+{
+    m_DigitalSignaturesIsSet = false;
+}
+utility::string_t IssuedDocumentDetails::getId() const
 {
     return m_Id;
 }
 
-void IssuedDocument::setId(const utility::string_t& value)
+void IssuedDocumentDetails::setId(const utility::string_t& value)
 {
     m_Id = value;
     m_IdIsSet = true;
 }
 
-bool IssuedDocument::idIsSet() const
+bool IssuedDocumentDetails::idIsSet() const
 {
     return m_IdIsSet;
 }
 
-void IssuedDocument::unsetId()
+void IssuedDocumentDetails::unsetId()
 {
     m_IdIsSet = false;
 }
-utility::string_t IssuedDocument::getIdentifier() const
+utility::string_t IssuedDocumentDetails::getIdentifier() const
 {
     return m_Identifier;
 }
 
-void IssuedDocument::setIdentifier(const utility::string_t& value)
+void IssuedDocumentDetails::setIdentifier(const utility::string_t& value)
 {
     m_Identifier = value;
     m_IdentifierIsSet = true;
 }
 
-bool IssuedDocument::identifierIsSet() const
+bool IssuedDocumentDetails::identifierIsSet() const
 {
     return m_IdentifierIsSet;
 }
 
-void IssuedDocument::unsetIdentifier()
+void IssuedDocumentDetails::unsetIdentifier()
 {
     m_IdentifierIsSet = false;
 }
-utility::string_t IssuedDocument::getDocumentType() const
+utility::string_t IssuedDocumentDetails::getDocumentType() const
 {
     return m_DocumentType;
 }
 
-void IssuedDocument::setDocumentType(const utility::string_t& value)
+void IssuedDocumentDetails::setDocumentType(const utility::string_t& value)
 {
     m_DocumentType = value;
     m_DocumentTypeIsSet = true;
 }
 
-bool IssuedDocument::documentTypeIsSet() const
+bool IssuedDocumentDetails::documentTypeIsSet() const
 {
     return m_DocumentTypeIsSet;
 }
 
-void IssuedDocument::unsetDocumentType()
+void IssuedDocumentDetails::unsetDocumentType()
 {
     m_DocumentTypeIsSet = false;
 }
-utility::string_t IssuedDocument::getIssuedTo() const
+utility::string_t IssuedDocumentDetails::getIssuedTo() const
 {
     return m_IssuedTo;
 }
 
-void IssuedDocument::setIssuedTo(const utility::string_t& value)
+void IssuedDocumentDetails::setIssuedTo(const utility::string_t& value)
 {
     m_IssuedTo = value;
     m_IssuedToIsSet = true;
 }
 
-bool IssuedDocument::issuedToIsSet() const
+bool IssuedDocumentDetails::issuedToIsSet() const
 {
     return m_IssuedToIsSet;
 }
 
-void IssuedDocument::unsetIssuedTo()
+void IssuedDocumentDetails::unsetIssuedTo()
 {
     m_IssuedToIsSet = false;
 }
-utility::datetime IssuedDocument::getIssuedAtUtc() const
+utility::datetime IssuedDocumentDetails::getIssuedAtUtc() const
 {
     return m_IssuedAtUtc;
 }
 
-void IssuedDocument::setIssuedAtUtc(const utility::datetime& value)
+void IssuedDocumentDetails::setIssuedAtUtc(const utility::datetime& value)
 {
     m_IssuedAtUtc = value;
     m_IssuedAtUtcIsSet = true;
 }
 
-bool IssuedDocument::issuedAtUtcIsSet() const
+bool IssuedDocumentDetails::issuedAtUtcIsSet() const
 {
     return m_IssuedAtUtcIsSet;
 }
 
-void IssuedDocument::unsetIssuedAtUtc()
+void IssuedDocumentDetails::unsetIssuedAtUtc()
 {
     m_IssuedAtUtcIsSet = false;
 }
-utility::datetime IssuedDocument::getExpiresAtUtc() const
+utility::datetime IssuedDocumentDetails::getExpiresAtUtc() const
 {
     return m_ExpiresAtUtc;
 }
 
-void IssuedDocument::setExpiresAtUtc(const utility::datetime& value)
+void IssuedDocumentDetails::setExpiresAtUtc(const utility::datetime& value)
 {
     m_ExpiresAtUtc = value;
     m_ExpiresAtUtcIsSet = true;
 }
 
-bool IssuedDocument::expiresAtUtcIsSet() const
+bool IssuedDocumentDetails::expiresAtUtcIsSet() const
 {
     return m_ExpiresAtUtcIsSet;
 }
 
-void IssuedDocument::unsetExpiresAtUtc()
+void IssuedDocumentDetails::unsetExpiresAtUtc()
 {
     m_ExpiresAtUtcIsSet = false;
 }
-utility::datetime IssuedDocument::getAcceptedAtUtc() const
+utility::datetime IssuedDocumentDetails::getAcceptedAtUtc() const
 {
     return m_AcceptedAtUtc;
 }
 
-void IssuedDocument::setAcceptedAtUtc(const utility::datetime& value)
+void IssuedDocumentDetails::setAcceptedAtUtc(const utility::datetime& value)
 {
     m_AcceptedAtUtc = value;
     m_AcceptedAtUtcIsSet = true;
 }
 
-bool IssuedDocument::acceptedAtUtcIsSet() const
+bool IssuedDocumentDetails::acceptedAtUtcIsSet() const
 {
     return m_AcceptedAtUtcIsSet;
 }
 
-void IssuedDocument::unsetAcceptedAtUtc()
+void IssuedDocumentDetails::unsetAcceptedAtUtc()
 {
     m_AcceptedAtUtcIsSet = false;
 }
