@@ -34,7 +34,7 @@ DocumentsApi::~DocumentsApi()
 {
 }
 
-pplx::task<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> DocumentsApi::getIssuedDocumentById(utility::string_t documentId) const
+pplx::task<std::shared_ptr<IssuedDocumentDetails>> DocumentsApi::getIssuedDocumentById(utility::string_t documentId) const
 {
 
 
@@ -136,7 +136,7 @@ pplx::task<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> DocumentsA
     })
     .then([=](utility::string_t localVarResponse)
     {
-        std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails> localVarResult(nullptr);
+        std::shared_ptr<IssuedDocumentDetails> localVarResult(new IssuedDocumentDetails());
 
         if(localVarResponseHttpContentType == utility::conversions::to_string_t("application/json"))
         {
@@ -157,14 +157,13 @@ pplx::task<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> DocumentsA
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> DocumentsApi::getIssuedDocuments(utility::string_t documentTypeId, boost::optional<utility::datetime> fromDateTime, boost::optional<utility::datetime> toDateTime, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
+pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> DocumentsApi::getIssuedDocuments(boost::optional<utility::string_t> documentTypeId, boost::optional<utility::datetime> fromDateTime, boost::optional<utility::datetime> toDateTime, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
 {
 
 
     std::shared_ptr<const ApiConfiguration> localVarApiConfiguration( m_ApiClient->getConfiguration() );
-    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/documents/issued/{documentTypeId}");
-    boost::replace_all(localVarPath, utility::conversions::to_string_t("{") + utility::conversions::to_string_t("documentTypeId") + utility::conversions::to_string_t("}"), ApiClient::parameterToString(documentTypeId));
-
+    utility::string_t localVarPath = utility::conversions::to_string_t("/v1/documents/issued");
+    
     std::map<utility::string_t, utility::string_t> localVarQueryParams;
     std::map<utility::string_t, utility::string_t> localVarHeaderParams( localVarApiConfiguration->getDefaultHeaders() );
     std::map<utility::string_t, utility::string_t> localVarFormParams;
@@ -199,6 +198,10 @@ pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> DocumentsApi::getIssued
 
     std::unordered_set<utility::string_t> localVarConsumeHttpContentTypes;
 
+    if (documentTypeId)
+    {
+        localVarQueryParams[utility::conversions::to_string_t("documentTypeId")] = ApiClient::parameterToString(*documentTypeId);
+    }
     if (fromDateTime)
     {
         localVarQueryParams[utility::conversions::to_string_t("fromDateTime")] = ApiClient::parameterToString(*fromDateTime);
@@ -296,7 +299,7 @@ pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> DocumentsApi::getIssued
         return localVarResult;
     });
 }
-pplx::task<std::shared_ptr<DocumentTypePaginatedList>> DocumentsApi::getRegisteredDocumentTypes(boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
+pplx::task<std::shared_ptr<DocumentTypePaginatedList>> DocumentsApi::getRegisteredDocumentTypes(boost::optional<std::shared_ptr<SupportedEntityType>> supportedEntityType, boost::optional<int32_t> pageNo, boost::optional<int32_t> pageSize) const
 {
 
 
@@ -337,6 +340,10 @@ pplx::task<std::shared_ptr<DocumentTypePaginatedList>> DocumentsApi::getRegister
 
     std::unordered_set<utility::string_t> localVarConsumeHttpContentTypes;
 
+    if (supportedEntityType && *supportedEntityType != nullptr)
+    {
+        localVarQueryParams[utility::conversions::to_string_t("supportedEntityType")] = ApiClient::parameterToString(*supportedEntityType);
+    }
     if (pageNo)
     {
         localVarQueryParams[utility::conversions::to_string_t("pageNo")] = ApiClient::parameterToString(*pageNo);

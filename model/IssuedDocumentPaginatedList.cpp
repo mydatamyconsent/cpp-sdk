@@ -120,7 +120,7 @@ bool IssuedDocumentPaginatedList::fromJson(const web::json::value& val)
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("items")));
         if(!fieldValue.is_null())
         {
-            std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> refVal_items;
+            std::vector<std::shared_ptr<IssuedDocument>> refVal_items;
             ok &= ModelBase::fromJson(fieldValue, refVal_items);
             setItems(refVal_items);
         }
@@ -192,7 +192,7 @@ bool IssuedDocumentPaginatedList::fromMultiPart(std::shared_ptr<MultipartFormDat
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("items"))))
     {
-        std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> refVal_items;
+        std::vector<std::shared_ptr<IssuedDocument>> refVal_items;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("items"))), refVal_items );
         setItems(refVal_items);
     }
@@ -279,12 +279,12 @@ void IssuedDocumentPaginatedList::unsetTotalItems()
 {
     m_TotalItemsIsSet = false;
 }
-std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>>& IssuedDocumentPaginatedList::getItems()
+std::vector<std::shared_ptr<IssuedDocument>>& IssuedDocumentPaginatedList::getItems()
 {
     return m_Items;
 }
 
-void IssuedDocumentPaginatedList::setItems(const std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>>& value)
+void IssuedDocumentPaginatedList::setItems(const std::vector<std::shared_ptr<IssuedDocument>>& value)
 {
     m_Items = value;
     m_ItemsIsSet = true;

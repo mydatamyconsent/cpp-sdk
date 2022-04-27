@@ -22,9 +22,6 @@ namespace models {
 
 IssuedDocumentDetails::IssuedDocumentDetails()
 {
-    m_ReceiverIsSet = false;
-    m_MetadataIsSet = false;
-    m_DigitalSignaturesIsSet = false;
     m_Id = utility::conversions::to_string_t("");
     m_IdIsSet = false;
     m_Identifier = utility::conversions::to_string_t("");
@@ -39,6 +36,9 @@ IssuedDocumentDetails::IssuedDocumentDetails()
     m_ExpiresAtUtcIsSet = false;
     m_AcceptedAtUtc = utility::datetime();
     m_AcceptedAtUtcIsSet = false;
+    m_ReceiverIsSet = false;
+    m_MetadataIsSet = false;
+    m_DigitalSignaturesIsSet = false;
 }
 
 IssuedDocumentDetails::~IssuedDocumentDetails()
@@ -55,18 +55,6 @@ web::json::value IssuedDocumentDetails::toJson() const
 
     web::json::value val = web::json::value::object();
     
-    if(m_ReceiverIsSet)
-    {
-        val[utility::conversions::to_string_t(U("receiver"))] = ModelBase::toJson(m_Receiver);
-    }
-    if(m_MetadataIsSet)
-    {
-        val[utility::conversions::to_string_t(U("metadata"))] = ModelBase::toJson(m_Metadata);
-    }
-    if(m_DigitalSignaturesIsSet)
-    {
-        val[utility::conversions::to_string_t(U("digitalSignatures"))] = ModelBase::toJson(m_DigitalSignatures);
-    }
     if(m_IdIsSet)
     {
         val[utility::conversions::to_string_t(U("id"))] = ModelBase::toJson(m_Id);
@@ -95,6 +83,18 @@ web::json::value IssuedDocumentDetails::toJson() const
     {
         val[utility::conversions::to_string_t(U("acceptedAtUtc"))] = ModelBase::toJson(m_AcceptedAtUtc);
     }
+    if(m_ReceiverIsSet)
+    {
+        val[utility::conversions::to_string_t(U("receiver"))] = ModelBase::toJson(m_Receiver);
+    }
+    if(m_MetadataIsSet)
+    {
+        val[utility::conversions::to_string_t(U("metadata"))] = ModelBase::toJson(m_Metadata);
+    }
+    if(m_DigitalSignaturesIsSet)
+    {
+        val[utility::conversions::to_string_t(U("digitalSignatures"))] = ModelBase::toJson(m_DigitalSignatures);
+    }
 
     return val;
 }
@@ -103,36 +103,6 @@ bool IssuedDocumentDetails::fromJson(const web::json::value& val)
 {
     bool ok = true;
     
-    if(val.has_field(utility::conversions::to_string_t(U("receiver"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("receiver")));
-        if(!fieldValue.is_null())
-        {
-            std::shared_ptr<DocumentReceiver> refVal_receiver;
-            ok &= ModelBase::fromJson(fieldValue, refVal_receiver);
-            setReceiver(refVal_receiver);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("metadata"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("metadata")));
-        if(!fieldValue.is_null())
-        {
-            std::map<utility::string_t, utility::string_t> refVal_metadata;
-            ok &= ModelBase::fromJson(fieldValue, refVal_metadata);
-            setMetadata(refVal_metadata);
-        }
-    }
-    if(val.has_field(utility::conversions::to_string_t(U("digitalSignatures"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("digitalSignatures")));
-        if(!fieldValue.is_null())
-        {
-            std::vector<std::shared_ptr<DocumentDigitalSignature>> refVal_digitalSignatures;
-            ok &= ModelBase::fromJson(fieldValue, refVal_digitalSignatures);
-            setDigitalSignatures(refVal_digitalSignatures);
-        }
-    }
     if(val.has_field(utility::conversions::to_string_t(U("id"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("id")));
@@ -203,6 +173,36 @@ bool IssuedDocumentDetails::fromJson(const web::json::value& val)
             setAcceptedAtUtc(refVal_acceptedAtUtc);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("receiver"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("receiver")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<DocumentReceiver> refVal_receiver;
+            ok &= ModelBase::fromJson(fieldValue, refVal_receiver);
+            setReceiver(refVal_receiver);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("metadata"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("metadata")));
+        if(!fieldValue.is_null())
+        {
+            std::map<utility::string_t, utility::string_t> refVal_metadata;
+            ok &= ModelBase::fromJson(fieldValue, refVal_metadata);
+            setMetadata(refVal_metadata);
+        }
+    }
+    if(val.has_field(utility::conversions::to_string_t(U("digitalSignatures"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("digitalSignatures")));
+        if(!fieldValue.is_null())
+        {
+            std::vector<std::shared_ptr<DocumentDigitalSignature>> refVal_digitalSignatures;
+            ok &= ModelBase::fromJson(fieldValue, refVal_digitalSignatures);
+            setDigitalSignatures(refVal_digitalSignatures);
+        }
+    }
     return ok;
 }
 
@@ -212,18 +212,6 @@ void IssuedDocumentDetails::toMultipart(std::shared_ptr<MultipartFormData> multi
     if(namePrefix.size() > 0 && namePrefix.substr(namePrefix.size() - 1) != utility::conversions::to_string_t(U(".")))
     {
         namePrefix += utility::conversions::to_string_t(U("."));
-    }
-    if(m_ReceiverIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("receiver")), m_Receiver));
-    }
-    if(m_MetadataIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("metadata")), m_Metadata));
-    }
-    if(m_DigitalSignaturesIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("digitalSignatures")), m_DigitalSignatures));
     }
     if(m_IdIsSet)
     {
@@ -253,6 +241,18 @@ void IssuedDocumentDetails::toMultipart(std::shared_ptr<MultipartFormData> multi
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("acceptedAtUtc")), m_AcceptedAtUtc));
     }
+    if(m_ReceiverIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("receiver")), m_Receiver));
+    }
+    if(m_MetadataIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("metadata")), m_Metadata));
+    }
+    if(m_DigitalSignaturesIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("digitalSignatures")), m_DigitalSignatures));
+    }
 }
 
 bool IssuedDocumentDetails::fromMultiPart(std::shared_ptr<MultipartFormData> multipart, const utility::string_t& prefix)
@@ -264,24 +264,6 @@ bool IssuedDocumentDetails::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         namePrefix += utility::conversions::to_string_t(U("."));
     }
 
-    if(multipart->hasContent(utility::conversions::to_string_t(U("receiver"))))
-    {
-        std::shared_ptr<DocumentReceiver> refVal_receiver;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("receiver"))), refVal_receiver );
-        setReceiver(refVal_receiver);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("metadata"))))
-    {
-        std::map<utility::string_t, utility::string_t> refVal_metadata;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("metadata"))), refVal_metadata );
-        setMetadata(refVal_metadata);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("digitalSignatures"))))
-    {
-        std::vector<std::shared_ptr<DocumentDigitalSignature>> refVal_digitalSignatures;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("digitalSignatures"))), refVal_digitalSignatures );
-        setDigitalSignatures(refVal_digitalSignatures);
-    }
     if(multipart->hasContent(utility::conversions::to_string_t(U("id"))))
     {
         utility::string_t refVal_id;
@@ -324,69 +306,27 @@ bool IssuedDocumentDetails::fromMultiPart(std::shared_ptr<MultipartFormData> mul
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("acceptedAtUtc"))), refVal_acceptedAtUtc );
         setAcceptedAtUtc(refVal_acceptedAtUtc);
     }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("receiver"))))
+    {
+        std::shared_ptr<DocumentReceiver> refVal_receiver;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("receiver"))), refVal_receiver );
+        setReceiver(refVal_receiver);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("metadata"))))
+    {
+        std::map<utility::string_t, utility::string_t> refVal_metadata;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("metadata"))), refVal_metadata );
+        setMetadata(refVal_metadata);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("digitalSignatures"))))
+    {
+        std::vector<std::shared_ptr<DocumentDigitalSignature>> refVal_digitalSignatures;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("digitalSignatures"))), refVal_digitalSignatures );
+        setDigitalSignatures(refVal_digitalSignatures);
+    }
     return ok;
 }
 
-std::shared_ptr<DocumentReceiver> IssuedDocumentDetails::getReceiver() const
-{
-    return m_Receiver;
-}
-
-void IssuedDocumentDetails::setReceiver(const std::shared_ptr<DocumentReceiver>& value)
-{
-    m_Receiver = value;
-    m_ReceiverIsSet = true;
-}
-
-bool IssuedDocumentDetails::receiverIsSet() const
-{
-    return m_ReceiverIsSet;
-}
-
-void IssuedDocumentDetails::unsetReceiver()
-{
-    m_ReceiverIsSet = false;
-}
-std::map<utility::string_t, utility::string_t>& IssuedDocumentDetails::getMetadata()
-{
-    return m_Metadata;
-}
-
-void IssuedDocumentDetails::setMetadata(const std::map<utility::string_t, utility::string_t>& value)
-{
-    m_Metadata = value;
-    m_MetadataIsSet = true;
-}
-
-bool IssuedDocumentDetails::metadataIsSet() const
-{
-    return m_MetadataIsSet;
-}
-
-void IssuedDocumentDetails::unsetMetadata()
-{
-    m_MetadataIsSet = false;
-}
-std::vector<std::shared_ptr<DocumentDigitalSignature>>& IssuedDocumentDetails::getDigitalSignatures()
-{
-    return m_DigitalSignatures;
-}
-
-void IssuedDocumentDetails::setDigitalSignatures(const std::vector<std::shared_ptr<DocumentDigitalSignature>>& value)
-{
-    m_DigitalSignatures = value;
-    m_DigitalSignaturesIsSet = true;
-}
-
-bool IssuedDocumentDetails::digitalSignaturesIsSet() const
-{
-    return m_DigitalSignaturesIsSet;
-}
-
-void IssuedDocumentDetails::unsetDigitalSignatures()
-{
-    m_DigitalSignaturesIsSet = false;
-}
 utility::string_t IssuedDocumentDetails::getId() const
 {
     return m_Id;
@@ -526,6 +466,66 @@ bool IssuedDocumentDetails::acceptedAtUtcIsSet() const
 void IssuedDocumentDetails::unsetAcceptedAtUtc()
 {
     m_AcceptedAtUtcIsSet = false;
+}
+std::shared_ptr<DocumentReceiver> IssuedDocumentDetails::getReceiver() const
+{
+    return m_Receiver;
+}
+
+void IssuedDocumentDetails::setReceiver(const std::shared_ptr<DocumentReceiver>& value)
+{
+    m_Receiver = value;
+    m_ReceiverIsSet = true;
+}
+
+bool IssuedDocumentDetails::receiverIsSet() const
+{
+    return m_ReceiverIsSet;
+}
+
+void IssuedDocumentDetails::unsetReceiver()
+{
+    m_ReceiverIsSet = false;
+}
+std::map<utility::string_t, utility::string_t>& IssuedDocumentDetails::getMetadata()
+{
+    return m_Metadata;
+}
+
+void IssuedDocumentDetails::setMetadata(const std::map<utility::string_t, utility::string_t>& value)
+{
+    m_Metadata = value;
+    m_MetadataIsSet = true;
+}
+
+bool IssuedDocumentDetails::metadataIsSet() const
+{
+    return m_MetadataIsSet;
+}
+
+void IssuedDocumentDetails::unsetMetadata()
+{
+    m_MetadataIsSet = false;
+}
+std::vector<std::shared_ptr<DocumentDigitalSignature>>& IssuedDocumentDetails::getDigitalSignatures()
+{
+    return m_DigitalSignatures;
+}
+
+void IssuedDocumentDetails::setDigitalSignatures(const std::vector<std::shared_ptr<DocumentDigitalSignature>>& value)
+{
+    m_DigitalSignatures = value;
+    m_DigitalSignaturesIsSet = true;
+}
+
+bool IssuedDocumentDetails::digitalSignaturesIsSet() const
+{
+    return m_DigitalSignaturesIsSet;
+}
+
+void IssuedDocumentDetails::unsetDigitalSignatures()
+{
+    m_DigitalSignaturesIsSet = false;
 }
 }
 }

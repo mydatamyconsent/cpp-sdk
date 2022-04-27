@@ -23,7 +23,6 @@
 #include "ModelBase.h"
 
 #include "model/DocumentDigitalSignature.h"
-#include "model/IssuedDocument.h"
 #include <cpprest/details/basic_types.h>
 #include "model/DocumentReceiver.h"
 #include <map>
@@ -56,33 +55,6 @@ public:
 
     /////////////////////////////////////////////
     /// IssuedDocumentDetails members
-
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<DocumentReceiver> getReceiver() const;
-    bool receiverIsSet() const;
-    void unsetReceiver();
-
-    void setReceiver(const std::shared_ptr<DocumentReceiver>& value);
-
-    /// <summary>
-    /// Metadata.
-    /// </summary>
-    std::map<utility::string_t, utility::string_t>& getMetadata();
-    bool metadataIsSet() const;
-    void unsetMetadata();
-
-    void setMetadata(const std::map<utility::string_t, utility::string_t>& value);
-
-    /// <summary>
-    /// Digital signatures.
-    /// </summary>
-    std::vector<std::shared_ptr<DocumentDigitalSignature>>& getDigitalSignatures();
-    bool digitalSignaturesIsSet() const;
-    void unsetDigitalSignatures();
-
-    void setDigitalSignatures(const std::vector<std::shared_ptr<DocumentDigitalSignature>>& value);
 
     /// <summary>
     /// Document Id.
@@ -147,14 +119,35 @@ public:
 
     void setAcceptedAtUtc(const utility::datetime& value);
 
+    /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<DocumentReceiver> getReceiver() const;
+    bool receiverIsSet() const;
+    void unsetReceiver();
+
+    void setReceiver(const std::shared_ptr<DocumentReceiver>& value);
+
+    /// <summary>
+    /// Metadata.
+    /// </summary>
+    std::map<utility::string_t, utility::string_t>& getMetadata();
+    bool metadataIsSet() const;
+    void unsetMetadata();
+
+    void setMetadata(const std::map<utility::string_t, utility::string_t>& value);
+
+    /// <summary>
+    /// Digital signatures.
+    /// </summary>
+    std::vector<std::shared_ptr<DocumentDigitalSignature>>& getDigitalSignatures();
+    bool digitalSignaturesIsSet() const;
+    void unsetDigitalSignatures();
+
+    void setDigitalSignatures(const std::vector<std::shared_ptr<DocumentDigitalSignature>>& value);
+
 
 protected:
-    std::shared_ptr<DocumentReceiver> m_Receiver;
-    bool m_ReceiverIsSet;
-    std::map<utility::string_t, utility::string_t> m_Metadata;
-    bool m_MetadataIsSet;
-    std::vector<std::shared_ptr<DocumentDigitalSignature>> m_DigitalSignatures;
-    bool m_DigitalSignaturesIsSet;
     utility::string_t m_Id;
     bool m_IdIsSet;
     utility::string_t m_Identifier;
@@ -169,6 +162,12 @@ protected:
     bool m_ExpiresAtUtcIsSet;
     utility::datetime m_AcceptedAtUtc;
     bool m_AcceptedAtUtcIsSet;
+    std::shared_ptr<DocumentReceiver> m_Receiver;
+    bool m_ReceiverIsSet;
+    std::map<utility::string_t, utility::string_t> m_Metadata;
+    bool m_MetadataIsSet;
+    std::vector<std::shared_ptr<DocumentDigitalSignature>> m_DigitalSignatures;
+    bool m_DigitalSignaturesIsSet;
 };
 
 

@@ -22,8 +22,8 @@
 
 #include "ModelBase.h"
 
+#include "model/IssuedDocument.h"
 #include <vector>
-#include "model/OneOfIssuedDocumentIssuedDocumentDetails.h"
 
 namespace mydatamyconsent {
 namespace models {
@@ -92,11 +92,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>>& getItems();
+    std::vector<std::shared_ptr<IssuedDocument>>& getItems();
     bool itemsIsSet() const;
     void unsetItems();
 
-    void setItems(const std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>>& value);
+    void setItems(const std::vector<std::shared_ptr<IssuedDocument>>& value);
 
 
 protected:
@@ -108,7 +108,7 @@ protected:
     bool m_TotalPagesIsSet;
     int64_t m_TotalItems;
     bool m_TotalItemsIsSet;
-    std::vector<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> m_Items;
+    std::vector<std::shared_ptr<IssuedDocument>> m_Items;
     bool m_ItemsIsSet;
 };
 

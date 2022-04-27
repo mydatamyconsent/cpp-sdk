@@ -27,10 +27,11 @@
 #include "model/DocumentIssueRequestDetails.h"
 #include "model/DocumentTypePaginatedList.h"
 #include "HttpContent.h"
+#include "model/IssuedDocumentDetails.h"
 #include "model/IssuedDocumentPaginatedList.h"
 #include "Object.h"
-#include "model/OneOfIssuedDocumentIssuedDocumentDetails.h"
 #include "model/ProblemDetails.h"
+#include "model/SupportedEntityType.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 
@@ -56,7 +57,7 @@ public:
     /// 
     /// </remarks>
     /// <param name="documentId">Document id.</param>
-    pplx::task<std::shared_ptr<OneOfIssuedDocumentIssuedDocumentDetails>> getIssuedDocumentById(
+    pplx::task<std::shared_ptr<IssuedDocumentDetails>> getIssuedDocumentById(
         utility::string_t documentId
     ) const;
     /// <summary>
@@ -65,13 +66,13 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
-    /// <param name="documentTypeId">Document type id.</param>
+    /// <param name="documentTypeId">Document type id. (optional, default to utility::conversions::to_string_t(&quot;&quot;))</param>
     /// <param name="fromDateTime">From DateTime in UTC timezone. (optional, default to utility::datetime())</param>
     /// <param name="toDateTime">To DateTime in UTC timezone. (optional, default to utility::datetime())</param>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
     pplx::task<std::shared_ptr<IssuedDocumentPaginatedList>> getIssuedDocuments(
-        utility::string_t documentTypeId,
+        boost::optional<utility::string_t> documentTypeId,
         boost::optional<utility::datetime> fromDateTime,
         boost::optional<utility::datetime> toDateTime,
         boost::optional<int32_t> pageNo,
@@ -83,9 +84,11 @@ public:
     /// <remarks>
     /// 
     /// </remarks>
+    /// <param name="supportedEntityType">Supported entity type. (optional, default to new SupportedEntityType())</param>
     /// <param name="pageNo">Page number. (optional, default to 0)</param>
     /// <param name="pageSize">Number of items to return. (optional, default to 0)</param>
     pplx::task<std::shared_ptr<DocumentTypePaginatedList>> getRegisteredDocumentTypes(
+        boost::optional<std::shared_ptr<SupportedEntityType>> supportedEntityType,
         boost::optional<int32_t> pageNo,
         boost::optional<int32_t> pageSize
     ) const;
