@@ -22,6 +22,7 @@
 
 #include "ModelBase.h"
 
+#include "model/PaymentRequest.h"
 #include <cpprest/details/basic_types.h>
 #include "model/DocumentReceiver.h"
 #include <map>
@@ -119,6 +120,15 @@ public:
     void setExpiresAtUtc(const utility::datetime& value);
 
     /// <summary>
+    /// 
+    /// </summary>
+    std::shared_ptr<PaymentRequest> getPaymentRequest() const;
+    bool paymentRequestIsSet() const;
+    void unsetPaymentRequest();
+
+    void setPaymentRequest(const std::shared_ptr<PaymentRequest>& value);
+
+    /// <summary>
     /// Metadata.
     /// </summary>
     std::map<utility::string_t, utility::string_t>& getMetadata();
@@ -143,6 +153,8 @@ protected:
     bool m_ValidFromUtcIsSet;
     utility::datetime m_ExpiresAtUtc;
     bool m_ExpiresAtUtcIsSet;
+    std::shared_ptr<PaymentRequest> m_PaymentRequest;
+    bool m_PaymentRequestIsSet;
     std::map<utility::string_t, utility::string_t> m_Metadata;
     bool m_MetadataIsSet;
 };

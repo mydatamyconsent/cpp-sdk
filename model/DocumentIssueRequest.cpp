@@ -35,6 +35,7 @@ DocumentIssueRequest::DocumentIssueRequest()
     m_ValidFromUtcIsSet = false;
     m_ExpiresAtUtc = utility::datetime();
     m_ExpiresAtUtcIsSet = false;
+    m_PaymentRequestIsSet = false;
     m_MetadataIsSet = false;
 }
 
@@ -79,6 +80,10 @@ web::json::value DocumentIssueRequest::toJson() const
     if(m_ExpiresAtUtcIsSet)
     {
         val[utility::conversions::to_string_t(U("expiresAtUtc"))] = ModelBase::toJson(m_ExpiresAtUtc);
+    }
+    if(m_PaymentRequestIsSet)
+    {
+        val[utility::conversions::to_string_t(U("paymentRequest"))] = ModelBase::toJson(m_PaymentRequest);
     }
     if(m_MetadataIsSet)
     {
@@ -162,6 +167,16 @@ bool DocumentIssueRequest::fromJson(const web::json::value& val)
             setExpiresAtUtc(refVal_expiresAtUtc);
         }
     }
+    if(val.has_field(utility::conversions::to_string_t(U("paymentRequest"))))
+    {
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("paymentRequest")));
+        if(!fieldValue.is_null())
+        {
+            std::shared_ptr<PaymentRequest> refVal_paymentRequest;
+            ok &= ModelBase::fromJson(fieldValue, refVal_paymentRequest);
+            setPaymentRequest(refVal_paymentRequest);
+        }
+    }
     if(val.has_field(utility::conversions::to_string_t(U("metadata"))))
     {
         const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("metadata")));
@@ -209,6 +224,10 @@ void DocumentIssueRequest::toMultipart(std::shared_ptr<MultipartFormData> multip
     if(m_ExpiresAtUtcIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("expiresAtUtc")), m_ExpiresAtUtc));
+    }
+    if(m_PaymentRequestIsSet)
+    {
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("paymentRequest")), m_PaymentRequest));
     }
     if(m_MetadataIsSet)
     {
@@ -266,6 +285,12 @@ bool DocumentIssueRequest::fromMultiPart(std::shared_ptr<MultipartFormData> mult
         utility::datetime refVal_expiresAtUtc;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("expiresAtUtc"))), refVal_expiresAtUtc );
         setExpiresAtUtc(refVal_expiresAtUtc);
+    }
+    if(multipart->hasContent(utility::conversions::to_string_t(U("paymentRequest"))))
+    {
+        std::shared_ptr<PaymentRequest> refVal_paymentRequest;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("paymentRequest"))), refVal_paymentRequest );
+        setPaymentRequest(refVal_paymentRequest);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("metadata"))))
     {
@@ -415,6 +440,26 @@ bool DocumentIssueRequest::expiresAtUtcIsSet() const
 void DocumentIssueRequest::unsetExpiresAtUtc()
 {
     m_ExpiresAtUtcIsSet = false;
+}
+std::shared_ptr<PaymentRequest> DocumentIssueRequest::getPaymentRequest() const
+{
+    return m_PaymentRequest;
+}
+
+void DocumentIssueRequest::setPaymentRequest(const std::shared_ptr<PaymentRequest>& value)
+{
+    m_PaymentRequest = value;
+    m_PaymentRequestIsSet = true;
+}
+
+bool DocumentIssueRequest::paymentRequestIsSet() const
+{
+    return m_PaymentRequestIsSet;
+}
+
+void DocumentIssueRequest::unsetPaymentRequest()
+{
+    m_PaymentRequestIsSet = false;
 }
 std::map<utility::string_t, utility::string_t>& DocumentIssueRequest::getMetadata()
 {

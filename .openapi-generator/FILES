@@ -133,6 +133,8 @@ model/OrganizationFinancialTransactionsDto.cpp
 model/OrganizationFinancialTransactionsDto.h
 model/OrganizationFinancialTransactionsDtoPaginatedList.cpp
 model/OrganizationFinancialTransactionsDtoPaginatedList.h
+model/PaymentRequest.cpp
+model/PaymentRequest.h
 model/ProblemDetails.cpp
 model/ProblemDetails.h
 model/PushUriRequest.cpp
