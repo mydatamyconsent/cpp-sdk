@@ -24,8 +24,7 @@ PaymentRequest::PaymentRequest()
 {
     m_Identifier = utility::conversions::to_string_t("");
     m_IdentifierIsSet = false;
-    m_Amount = utility::conversions::to_string_t("");
-    m_AmountIsSet = false;
+    m_ItemsIsSet = false;
     m_CurrencyCode = utility::conversions::to_string_t("");
     m_CurrencyCodeIsSet = false;
     m_PaymentUrl = utility::conversions::to_string_t("");
@@ -54,9 +53,9 @@ web::json::value PaymentRequest::toJson() const
     {
         val[utility::conversions::to_string_t(U("identifier"))] = ModelBase::toJson(m_Identifier);
     }
-    if(m_AmountIsSet)
+    if(m_ItemsIsSet)
     {
-        val[utility::conversions::to_string_t(U("amount"))] = ModelBase::toJson(m_Amount);
+        val[utility::conversions::to_string_t(U("items"))] = ModelBase::toJson(m_Items);
     }
     if(m_CurrencyCodeIsSet)
     {
@@ -92,14 +91,14 @@ bool PaymentRequest::fromJson(const web::json::value& val)
             setIdentifier(refVal_identifier);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("amount"))))
+    if(val.has_field(utility::conversions::to_string_t(U("items"))))
     {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("amount")));
+        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("items")));
         if(!fieldValue.is_null())
         {
-            utility::string_t refVal_amount;
-            ok &= ModelBase::fromJson(fieldValue, refVal_amount);
-            setAmount(refVal_amount);
+            std::vector<std::shared_ptr<BillPaymentOrderItem>> refVal_items;
+            ok &= ModelBase::fromJson(fieldValue, refVal_items);
+            setItems(refVal_items);
         }
     }
     if(val.has_field(utility::conversions::to_string_t(U("currencyCode"))))
@@ -156,9 +155,9 @@ void PaymentRequest::toMultipart(std::shared_ptr<MultipartFormData> multipart, c
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("identifier")), m_Identifier));
     }
-    if(m_AmountIsSet)
+    if(m_ItemsIsSet)
     {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("amount")), m_Amount));
+        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("items")), m_Items));
     }
     if(m_CurrencyCodeIsSet)
     {
@@ -193,11 +192,11 @@ bool PaymentRequest::fromMultiPart(std::shared_ptr<MultipartFormData> multipart,
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("identifier"))), refVal_identifier );
         setIdentifier(refVal_identifier);
     }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("amount"))))
+    if(multipart->hasContent(utility::conversions::to_string_t(U("items"))))
     {
-        utility::string_t refVal_amount;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("amount"))), refVal_amount );
-        setAmount(refVal_amount);
+        std::vector<std::shared_ptr<BillPaymentOrderItem>> refVal_items;
+        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("items"))), refVal_items );
+        setItems(refVal_items);
     }
     if(multipart->hasContent(utility::conversions::to_string_t(U("currencyCode"))))
     {
@@ -246,25 +245,25 @@ void PaymentRequest::unsetIdentifier()
 {
     m_IdentifierIsSet = false;
 }
-utility::string_t PaymentRequest::getAmount() const
+std::vector<std::shared_ptr<BillPaymentOrderItem>>& PaymentRequest::getItems()
 {
-    return m_Amount;
+    return m_Items;
 }
 
-void PaymentRequest::setAmount(const utility::string_t& value)
+void PaymentRequest::setItems(const std::vector<std::shared_ptr<BillPaymentOrderItem>>& value)
 {
-    m_Amount = value;
-    m_AmountIsSet = true;
+    m_Items = value;
+    m_ItemsIsSet = true;
 }
 
-bool PaymentRequest::amountIsSet() const
+bool PaymentRequest::itemsIsSet() const
 {
-    return m_AmountIsSet;
+    return m_ItemsIsSet;
 }
 
-void PaymentRequest::unsetAmount()
+void PaymentRequest::unsetItems()
 {
-    m_AmountIsSet = false;
+    m_ItemsIsSet = false;
 }
 utility::string_t PaymentRequest::getCurrencyCode() const
 {

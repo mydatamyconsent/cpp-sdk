@@ -22,7 +22,9 @@
 
 #include "ModelBase.h"
 
+#include "model/BillPaymentOrderItem.h"
 #include <cpprest/details/basic_types.h>
+#include <vector>
 
 namespace mydatamyconsent {
 namespace models {
@@ -64,11 +66,11 @@ public:
     /// <summary>
     /// 
     /// </summary>
-    utility::string_t getAmount() const;
-    bool amountIsSet() const;
-    void unsetAmount();
+    std::vector<std::shared_ptr<BillPaymentOrderItem>>& getItems();
+    bool itemsIsSet() const;
+    void unsetItems();
 
-    void setAmount(const utility::string_t& value);
+    void setItems(const std::vector<std::shared_ptr<BillPaymentOrderItem>>& value);
 
     /// <summary>
     /// 
@@ -110,8 +112,8 @@ public:
 protected:
     utility::string_t m_Identifier;
     bool m_IdentifierIsSet;
-    utility::string_t m_Amount;
-    bool m_AmountIsSet;
+    std::vector<std::shared_ptr<BillPaymentOrderItem>> m_Items;
+    bool m_ItemsIsSet;
     utility::string_t m_CurrencyCode;
     bool m_CurrencyCodeIsSet;
     utility::string_t m_PaymentUrl;
