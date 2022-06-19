@@ -29,10 +29,10 @@ jobs:
 
             - name: Cleanup folders
               run: |
-                rm *.h
-                rm *.cpp
-                rm -rf ./model
-                rm -rf ./api
+                rm ./include/*.h
+                rm ./src/*.cpp
+                rm -rf ./src/model
+                rm -rf ./src/api
 
             - name: Generate SDK's
               run: |
