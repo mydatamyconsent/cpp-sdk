@@ -23,7 +23,6 @@
 #include "MyDataMyConsent/ModelBase.h"
 
 #include "MyDataMyConsent/model/BankAccountType.h"
-#include "MyDataMyConsent/model/FileType.h"
 #include <cpprest/details/basic_types.h>
 
 namespace mydatamyconsent {
@@ -162,15 +161,6 @@ public:
 
     void setBankAccountProofUrl(const utility::string_t& value);
 
-    /// <summary>
-    /// 
-    /// </summary>
-    std::shared_ptr<FileType> getFileType() const;
-    bool fileTypeIsSet() const;
-    void unsetFileType();
-
-    void setFileType(const std::shared_ptr<FileType>& value);
-
 
 protected:
     utility::string_t m_Id;
@@ -197,8 +187,6 @@ protected:
     bool m_BankAccountTypeIsSet;
     utility::string_t m_BankAccountProofUrl;
     bool m_BankAccountProofUrlIsSet;
-    std::shared_ptr<FileType> m_FileType;
-    bool m_FileTypeIsSet;
 };
 
 

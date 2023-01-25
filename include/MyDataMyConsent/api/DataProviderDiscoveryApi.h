@@ -25,7 +25,7 @@
 
 #include "MyDataMyConsent/model/DataProvider.h"
 #include "MyDataMyConsent/model/DataProviderPaginatedList.h"
-#include "MyDataMyConsent/Object.h"
+#include "MyDataMyConsent/model/Error.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>
 

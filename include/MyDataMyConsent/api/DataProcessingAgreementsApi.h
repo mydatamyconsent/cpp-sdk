@@ -26,7 +26,7 @@
 #include "MyDataMyConsent/model/CreateDataProcessingAgreement.h"
 #include "MyDataMyConsent/model/DataProcessingAgreement.h"
 #include "MyDataMyConsent/model/DataProcessingAgreementPaginatedList.h"
-#include "MyDataMyConsent/Object.h"
+#include "MyDataMyConsent/model/Error.h"
 #include "MyDataMyConsent/model/UpdateDataProcessingAgreement.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>

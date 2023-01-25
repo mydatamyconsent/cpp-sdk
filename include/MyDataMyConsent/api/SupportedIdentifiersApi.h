@@ -23,7 +23,7 @@
 
 #include "MyDataMyConsent/ApiClient.h"
 
-#include "MyDataMyConsent/Object.h"
+#include "MyDataMyConsent/model/Error.h"
 #include "MyDataMyConsent/model/SupportedIdentifier.h"
 #include <cpprest/details/basic_types.h>
 #include <boost/optional.hpp>

@@ -44,7 +44,6 @@ OrganizationFinancialAccountDto::OrganizationFinancialAccountDto()
     m_BankAccountTypeIsSet = false;
     m_BankAccountProofUrl = utility::conversions::to_string_t("");
     m_BankAccountProofUrlIsSet = false;
-    m_FileTypeIsSet = false;
 }
 
 OrganizationFinancialAccountDto::~OrganizationFinancialAccountDto()
@@ -108,10 +107,6 @@ web::json::value OrganizationFinancialAccountDto::toJson() const
     if(m_BankAccountProofUrlIsSet)
     {
         val[utility::conversions::to_string_t(U("bankAccountProofUrl"))] = ModelBase::toJson(m_BankAccountProofUrl);
-    }
-    if(m_FileTypeIsSet)
-    {
-        val[utility::conversions::to_string_t(U("fileType"))] = ModelBase::toJson(m_FileType);
     }
 
     return val;
@@ -241,16 +236,6 @@ bool OrganizationFinancialAccountDto::fromJson(const web::json::value& val)
             setBankAccountProofUrl(refVal_setBankAccountProofUrl);
         }
     }
-    if(val.has_field(utility::conversions::to_string_t(U("fileType"))))
-    {
-        const web::json::value& fieldValue = val.at(utility::conversions::to_string_t(U("fileType")));
-        if(!fieldValue.is_null())
-        {
-            std::shared_ptr<FileType> refVal_setFileType;
-            ok &= ModelBase::fromJson(fieldValue, refVal_setFileType);
-            setFileType(refVal_setFileType);
-        }
-    }
     return ok;
 }
 
@@ -308,10 +293,6 @@ void OrganizationFinancialAccountDto::toMultipart(std::shared_ptr<MultipartFormD
     if(m_BankAccountProofUrlIsSet)
     {
         multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("bankAccountProofUrl")), m_BankAccountProofUrl));
-    }
-    if(m_FileTypeIsSet)
-    {
-        multipart->add(ModelBase::toHttpContent(namePrefix + utility::conversions::to_string_t(U("fileType")), m_FileType));
     }
 }
 
@@ -395,12 +376,6 @@ bool OrganizationFinancialAccountDto::fromMultiPart(std::shared_ptr<MultipartFor
         utility::string_t refVal_setBankAccountProofUrl;
         ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("bankAccountProofUrl"))), refVal_setBankAccountProofUrl );
         setBankAccountProofUrl(refVal_setBankAccountProofUrl);
-    }
-    if(multipart->hasContent(utility::conversions::to_string_t(U("fileType"))))
-    {
-        std::shared_ptr<FileType> refVal_setFileType;
-        ok &= ModelBase::fromHttpContent(multipart->getContent(utility::conversions::to_string_t(U("fileType"))), refVal_setFileType );
-        setFileType(refVal_setFileType);
     }
     return ok;
 }
@@ -644,26 +619,6 @@ bool OrganizationFinancialAccountDto::bankAccountProofUrlIsSet() const
 void OrganizationFinancialAccountDto::unsetBankAccountProofUrl()
 {
     m_BankAccountProofUrlIsSet = false;
-}
-std::shared_ptr<FileType> OrganizationFinancialAccountDto::getFileType() const
-{
-    return m_FileType;
-}
-
-void OrganizationFinancialAccountDto::setFileType(const std::shared_ptr<FileType>& value)
-{
-    m_FileType = value;
-    m_FileTypeIsSet = true;
-}
-
-bool OrganizationFinancialAccountDto::fileTypeIsSet() const
-{
-    return m_FileTypeIsSet;
-}
-
-void OrganizationFinancialAccountDto::unsetFileType()
-{
-    m_FileTypeIsSet = false;
 }
 }
 }

@@ -26,10 +26,10 @@
 #include "MyDataMyConsent/model/DocumentIssueRequest.h"
 #include "MyDataMyConsent/model/DocumentIssueRequestDetails.h"
 #include "MyDataMyConsent/model/DocumentTypePaginatedList.h"
+#include "MyDataMyConsent/model/Error.h"
 #include "MyDataMyConsent/HttpContent.h"
 #include "MyDataMyConsent/model/IssuedDocumentDetails.h"
 #include "MyDataMyConsent/model/IssuedDocumentPaginatedList.h"
-#include "MyDataMyConsent/Object.h"
 #include "MyDataMyConsent/model/ProblemDetails.h"
 #include "MyDataMyConsent/model/SupportedEntityType.h"
 #include <cpprest/details/basic_types.h>

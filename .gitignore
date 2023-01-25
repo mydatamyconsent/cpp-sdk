@@ -32,3 +32,11 @@ build/
 .vscode/
 .idea/
 cmake-build-*/
+
+# Conan Install generated files
+conaninfo.txt
+conanbuildinfo.txt
+*.cmake
+CMakeUserPresets.json
+conan.lock
+graph_info.json

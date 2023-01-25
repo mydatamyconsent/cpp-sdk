@@ -1,3 +1,4 @@
+CMakeLists.txt
 Config.cmake.in
 README.md
 include/MyDataMyConsent/ApiClient.h
@@ -50,7 +51,8 @@ include/MyDataMyConsent/model/DocumentSubCategoryType.h
 include/MyDataMyConsent/model/DocumentType.h
 include/MyDataMyConsent/model/DocumentTypePaginatedList.h
 include/MyDataMyConsent/model/DocumentsRequired.h
-include/MyDataMyConsent/model/FileType.h
+include/MyDataMyConsent/model/Error.h
+include/MyDataMyConsent/model/ErrorType.h
 include/MyDataMyConsent/model/Financial.h
 include/MyDataMyConsent/model/FinancialAccount.h
 include/MyDataMyConsent/model/FinancialAccountDetailsRequired.h
@@ -129,7 +131,8 @@ src/model/DocumentSubCategoryType.cpp
 src/model/DocumentType.cpp
 src/model/DocumentTypePaginatedList.cpp
 src/model/DocumentsRequired.cpp
-src/model/FileType.cpp
+src/model/Error.cpp
+src/model/ErrorType.cpp
 src/model/Financial.cpp
 src/model/FinancialAccount.cpp
 src/model/FinancialAccountDetailsRequired.cpp

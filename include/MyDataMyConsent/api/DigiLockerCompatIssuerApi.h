@@ -23,7 +23,7 @@
 
 #include "MyDataMyConsent/ApiClient.h"
 
-#include "MyDataMyConsent/Object.h"
+#include "MyDataMyConsent/model/Error.h"
 #include "MyDataMyConsent/model/ProblemDetails.h"
 #include "MyDataMyConsent/model/PushUriRequest.h"
 #include "MyDataMyConsent/model/PushUriResponse.h"

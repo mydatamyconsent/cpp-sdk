@@ -5,9 +5,9 @@ from conan.tools.layout import cmake_layout
 class MyDataMyConsentSDKConan(ConanFile):
     name = "mydatamyconsent"
     version = "1.0.0"
-    description = "A project for cloud-based client-server communication in native code using a modern asynchronous C++ API design"
-    url = "https://github.com/conan-io/conan-center-index"
-    homepage = "https://github.com/Microsoft/cpprestsdk"
+    description = "My Data My Consent Rest API C++ SDK"
+    url = "https://github.com/mydatamyconsent/cpp-sdk"
+    homepage = "https://mydatamyconsent.com"
     topics = ("data-consent", "mydatamyconsent", "data-privacy", "consent", "financial-information", "data")
     license = "MIT"
     requires = "cpprestsdk/2.10.18","boost/1.76.0"
